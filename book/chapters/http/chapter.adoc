@@ -1,0 +1,331 @@
+== HTTP, JSON y APIS
+
+HTTP es el protocolo en el que se basa la Web.
+Fue inventado por Tim Berners-Lee entre los años 1989-1991, HTTP ha visto muchos cambios, manteniendo la mayor parte de su simplicidad y desarrollando su flexibilidad. HTTP ha evolucionado, desde un protocolo destinado al intercambio de archivos en un entorno de un laboratorio semi-seguro, al actual laberinto de Internet, sirviendo ahora para el intercambio de imágenes, vídeos en alta resolución y en 3D.
+
+* https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP
+
+=== Cabeceras (Headers)
+
+El concepto de cabeceras de HTTP, se presentó tanto para las peticiones (*requests*) como para las respuestas (*responses*),
+permitiendo la trasmisión de meta-data y conformando un protocolo muy versátil y ampliable.
+Con el uso de las cabeceras de HTTP, se pudieron transmitir otros documentos además de HTML, mediante la cabecera _Content-Type_.
+
+[,text]
+----
+GET /mypage.html HTTP/1.0
+User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
+
+200 OK
+Date: Tue, 15 Nov 1994 08:12:31 GMT
+Server: CERN/3.0 libwww/2.17
+Content-Type: text/html
+<HTML>
+Una pagina web con una imagen
+    <IMG SRC="/miImagen.gif">
+</HTML>
+----
+
+* https://es.wikipedia.org/wiki/Anexo:Cabeceras_HTTP
+
+=== Métodos
+
+HTTP define una serie predefinida de métodos de petición (algunas veces referido como "verbos") que pueden utilizarse. El protocolo tiene flexibilidad para ir añadiendo nuevos métodos y para así añadir nuevas funcionalidades.
+Cada método indica la acción que desea que se efectúe sobre el recurso identificado. Lo que este recurso representa depende de la aplicación del servidor. Por ejemplo, el recurso puede corresponderse con un archivo que reside en el servidor.
+
+image:http-methods.png[]
+https://en.wikipedia.org/wiki/HTTP#Request_methods
+
+=== Códigos de Respuesta
+
+El código de respuesta, estado o retorno es un número que indica que ha pasado con la petición. El resto del contenido de la respuesta dependerá del valor de este código. El sistema es flexible y de hecho la lista de códigos ha ido aumentando para así adaptarse a los cambios e identificar nuevas situaciones. Cada código tiene un significado concreto. Sin embargo el número de los códigos están elegidos de tal forma que según si pertenece a una centena u otra se pueda identificar el tipo de respuesta que ha dado el servidor:
+
+* Códigos con formato 1xx: Respuestas informativas. Indica que la petición ha sido recibida y se está procesando.
+* Códigos con formato 2xx: Respuestas correctas. Indica que la petición ha sido procesada correctamente.
+* Códigos con formato 3xx: Respuestas de redirección. Indica que el cliente necesita realizar más acciones para finalizar la petición.
+* Códigos con formato 4xx: Errores causados por el cliente. Indica que ha habido un error en el procesado de la petición a causa de que el cliente ha hecho algo mal.
+* Códigos con formato 5xx: Errores causados por el servidor. Indica que ha habido un error en el procesado de la petición a causa de un fallo en el servidor.
+
+*Enlaces*
+
+* https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP
+* https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+
+=== REST
+
+En el año 2000, un nuevo formato para usar HTTP fue diseñado: REST (del inglés: 'Representational State Transfer'). Las acciones de la nueva API, no estaban supeditadas a nuevos métodos HTTP, unicamente al acceso a URIs especificas con métodos HTTP/1.1). Esto permitió que cualquier aplicación Web dispusiera de una API, para permitir la recuperación y modificación de datos, sin tener que actualizar servidores o navegadores; todo lo que se necesitaba era incluido en los archivos servidos por los sitios Web. La contrapartida del modelo REST está en que cada sitio Web define su propia versión no estándar de API RESTful y tiene un control total sobre ella; al contrario del formato *DAV donde clientes y servidores eran interoperables. La arquitectura REST empezó a ser muy común a partir del año 2010.
+
+==== Cabeceras Más Usadas
+
+| Cabecera                                                                            | Descripción      | Ejemplo          |
+|---------------------------------------------------------|------------|------------|
+| https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type[Content-Type] | Define el tipo de contenido que se envía en la petición | application/json |
+| https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Accept[Accept]             |  Define el tipo de contenido que se aceptará en la respuesta | application/json |
+|https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Authorization[Authorization]|Permite enviar tokens de autorización.| Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l|
+
+==== Métodos Más Usados
+
+|===
+| Método | Uso recomendado | Códigos de Estado Comunes
+
+| https://developer.mozilla.org/es/docs/Web/HTTP/Methods/GET[GET]
+| Obtener información
+| 200, 404, 403
+
+| https://developer.mozilla.org/es/docs/Web/HTTP/Methods/POST[POST]
+| Permite crear recursos
+| 201, 202, 404, 403
+
+| https://developer.mozilla.org/es/docs/Web/HTTP/Methods/Put[PUT]
+| Permite actualizar recursos en su totalidad
+| 200, 404, 403
+
+| https://developer.mozilla.org/es/docs/Web/HTTP/Methods/Patch[PATCH]
+| Permite actualizar un campo dentro de un recurso
+| 200, 404, 403
+
+| https://developer.mozilla.org/es/docs/Web/HTTP/Methods/delete[DELETE]
+| Permite eliminar un recurso
+| 200, 404, 403
+|===
+
+*Nota*: No se recomienda el código de estado 204 (No content) debido a que
+no entrega ninguna respuesta (body) al cliente. Es mejor siempre devolver un cuerpo
+con información relacionada a la operación.
+
+* https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP
+* https://apisyouwonthate.com/books/
+* https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3
+
+==== JSON API
+
+JSON API es una convención (no un estándar) para expresar datos de
+APIs en formato JSON o json api. Es decir, es un JavaScript Object Notation en una Interfaz de Programación en Aplicaciones. También puedes pensar en JSON API como un formato que trabaja con HTTP.
+
+* https://jsonapi.org/
+* https://keepcoding.io/blog/json-api-que-es-para-que-sirve/
+
+==== Open API
+
+La especificación OpenAPI es un lenguaje de especificación para
+API HTTP que proporciona un medio estandarizado para definir su API ante otros. Puede descubrir rápidamente cómo funciona una API, configurar la infraestructura, generar código de cliente y crear casos de prueba para sus API. Obtenga más información sobre cómo puede obtener el control de sus API ahora, comprender el ciclo de vida completo de las API y comunicarse con las comunidades de
+desarrolladores dentro y fuera de su organización.
+
+* https://www.openapis.org/
+
+=== Otros Tipos de APIS
+
+==== SOAP
+
+SOAP es una tecnología antigua que requiere un contrato de comunicación estricto entre sistemas. Con el tiempo, se han agregado nuevos estándares de servicios web para adaptarse a los cambios tecnológicos, pero generan gastos generales adicionales. REST se desarrolló después de SOAP y soluciona de forma inherente muchas de sus deficiencias. Los servicios web REST también se denominan servicios web RESTful.
+
+* https://aws.amazon.com/es/compare/the-difference-between-soap-rest/
+
+==== GraphQL
+
+GraphQL es un lenguaje de consulta para API y un tiempo de ejecución para completar esas consultas con sus datos existentes. GraphQL proporciona una descripción completa y comprensible de los datos de su API, brinda a los clientes el poder de solicitar exactamente lo que necesitan y nada más, facilita la evolución de las API con el tiempo y habilita potentes herramientas para desarrolladores.
+
+[,graphql]
+----
+{
+  hero {
+    name
+    friends {
+      name
+      homeWorld {
+        name
+        climate
+      }
+      species {
+        name
+        lifespan
+        origin {
+          name
+        }
+      }
+    }
+  }
+}
+----
+
+* https://graphql.org/
+
+==== gRPC
+
+gRPC es un marco moderno de llamada a procedimiento remoto (RPC) de código abierto y alto rendimiento que puede ejecutarse en cualquier entorno. Puede conectar de manera eficiente servicios dentro y entre centros de datos con soporte conectable para equilibrio de carga, rastreo, verificación de estado y autenticación. También es aplicable en la última milla de la informática distribuida para conectar dispositivos, aplicaciones móviles y navegadores a servicios backend.
+
+* https://grpc.io/
+
+=== Formatos de Archivos
+
+Existen diversos formatos y estándares para compartir datos y configurar los productos de software. Normalmente son formatos de texto plano (pueden ser leidos por un humano) y también hay en formato binario (pueden ser leidos solo por un computador), entre los más populares están _JSON_, _XML_, _YAML_ y _TOML_.
+
+==== Formatos de Serialización
+
+Siempre que desee enviar alguna estructura de datos o un objeto a través de redes informáticas, digamos Internet, debe convertirlo en un formato especial para leerlo y almacenarlo. El proceso se conoce comúnmente como serialización y es de enorme importancia en la web. Un ejemplo de uso común de serialización es al leer datos de bases de datos y transferirlos a través de la web.
+
+Algunas formaciones de serialización incluyen _JSON_ y _XML_.
+
+===== JSON
+
+JSON (JavaScript Object Notation - Notación de Objetos de JavaScript) es un formato ligero de intercambio de datos. Leerlo y escribirlo es simple para humanos, mientras que para las máquinas es simple interpretarlo y generarlo. Está basado en un subconjunto del Lenguaje de Programación JavaScript, Standard ECMA-262 3rd Edition - Diciembre 1999. JSON es un formato de texto que es completamente independiente del lenguaje pero utiliza convenciones que son ampliamente conocidos por los programadores de la familia de lenguajes C, incluyendo C, C{pp}, C#, Java, JavaScript, Perl, Python, y muchos otros. Estas propiedades hacen que JSON sea un lenguaje ideal para el intercambio de datos.
+
+*Ejemplo*
+
+[,json]
+----
+{
+  "squadName": "Super hero squad",
+  "homeTown": "Metro City",
+  "formed": 2016,
+  "secretBase": "Super tower",
+  "active": true,
+  "members": [
+    {
+      "name": "Molecule Man",
+      "age": 29,
+      "secretIdentity": "Dan Jukes",
+      "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
+    },
+    {
+      "name": "Madame Uppercut",
+      "age": 39,
+      "secretIdentity": "Jane Wilson",
+      "powers": [
+        "Million tonne punch",
+        "Damage resistance",
+        "Superhuman reflexes"
+      ]
+    },
+    {
+      "name": "Eternal Flame",
+      "age": 1000000,
+      "secretIdentity": "Unknown",
+      "powers": [
+        "Immortality",
+        "Heat Immunity",
+        "Inferno",
+        "Teleportation",
+        "Interdimensional travel"
+      ]
+    }
+  ]
+}
+----
+
+* https://developer.mozilla.org/es/docs/Learn/JavaScript/Objects/JSON
+* https://www.ecma-international.org/publications-and-standards/standards/ecma-404/
+* https://www.json.org/json-es.html
+
+===== XML
+
+El lenguaje de marcado extensible (XML) permite definir y almacenar datos de forma compartible. XML admite el intercambio de información entre sistemas de computación, como sitios web, bases de datos y aplicaciones de terceros. Las reglas predefinidas facilitan la transmisión de datos como archivos XML a través de cualquier red, ya que el destinatario puede usar esas reglas para leer los datos de forma precisa y eficiente.
+
+*Ejemplo*
+
+[,xml]
+----
+<libro>
+
+<título>Introducción a Amazon Web Services</título>
+
+<autor>Mark Wilkins</autor>
+
+</libro>
+----
+
+* https://aws.amazon.com/es/what-is/xml/
+
+==== Formatos de Configuración
+
+Los formatos de configuración son más adecuados para establecer parámetros en los programas, más que enviar información por las vías de comunicación. Algunos formatos son _YAML_ y _TOML_. _JSON_ también es comunmente usado como un formato de configuración, aunque algunos prefieren utilizar variantes como _JSONC_ que incluye comentarios.
+
+===== YAML
+
+YAML es un lenguaje sencillo que las personas pueden comprender y suele utilizarse en el diseño de archivos de configuración. Para algunas personas, YAML significa otro lenguaje de marcado más; para otras, es un acrónimo recursivo que quiere decir "YAML no es un lenguaje de marcado", lo que enfatiza la idea de que se utiliza para los datos, no para los documentos.
+
+*Ejemplo*
+
+[,yaml]
+----
+name:John
+
+age:18
+
+Hobbies:
+
+ Hobby1:Football
+
+ Hobby2:BasketBall
+
+ Hobby3:Hockey
+
+Job:
+
+-System administrator
+
+-Programmer
+----
+
+* https://www.redhat.com/es/topics/automation/what-is-yaml
+* https://yaml.org/
+* https://geekflare.com/es/yaml-introduction/
+
+===== TOML
+
+TOML se abrevia como Tom's Obvious Markup Language.
+TOML pretende ser un formato de archivo de configuración mínimo que sea fácil de leer debido a una semántica obvia. TOML está diseñado para asignarse sin ambigüedades a una tabla hash. TOML debería ser fácil de analizar en estructuras de datos en una amplia variedad de lenguajes.
+
+*Ejemplo*
+
+[,toml]
+----
+
+
+# This is a TOML document
+
+title = "TOML Example"
+
+[owner]
+name = "Tom Preston-Werner"
+dob = 1979-05-27T07:32:00-08:00
+
+[database]
+enabled = true
+ports = [ 8000, 8001, 8002 ]
+data = [ ["delta", "phi"], [3.14] ]
+temp_targets = { cpu = 79.5, case = 72.0 }
+
+[servers]
+
+[servers.alpha]
+ip = "10.0.0.1"
+role = "frontend"
+
+[servers.beta]
+ip = "10.0.0.2"
+role = "backend"
+----
+
+* https://toml.io/en/
+* https://www.w3schools.io/file/toml-introduction/
+
+=== Clientes APIs
+
+==== Postman
+
+Postman es una plataforma API para crear y utilizar API. Postman simplifica cada paso del ciclo de vida de la API y agiliza la colaboración para que puedas crear mejores API, más rápido.
+
+* https://www.postman.com/
+
+==== Insomnia
+
+Kong Insomnia es una plataforma colaborativa de desarrollo de API de código abierto que facilita la creación de API de alta calidad, sin la sobrecarga y el desorden de otras herramientas.
+
+* https://insomnia.rest/
+
+==== Hoppscotch
+
+Hoppscotch es una suite de desarrollo de API liviana basada en web. Fue creada desde cero teniendo en cuenta la facilidad de uso y la accesibilidad, brindando toda la funcionalidad necesaria para los desarrolladores de API con una interfaz de usuario minimalista y discreta.
+
+* https://hoppscotch.io/

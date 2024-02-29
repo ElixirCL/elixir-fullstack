@@ -679,264 +679,6 @@ anonymous FTP&lt;/A&gt; , etc.&lt;/A&gt;
 </itemizedlist>
 </section>
 </chapter>
-<chapter xml:id="_patrones_y_arquitecturas_de_software">
-<title>Patrones y Arquitecturas de Software</title>
-<simpara>Un estilo arquitectónico establece un marco de referencia a partir del cual es posible construir aplicaciones que comparten un conjunto de atributos y características mediante el cual es posible identificarlos y clasificarlos.</simpara>
-<section xml:id="_arquitectura_en_capas">
-<title>Arquitectura en Capas</title>
-<simpara>La arquitectura en capas es una de las más utilizadas, no solo por su simplicidad, sino porque también es utilizada por defecto cuando no estamos seguros que arquitectura debemos de utilizar para nuestra aplicación.</simpara>
-<simpara>La arquitectura en capas consta en dividir la aplicación en capas, con la intención de que cada capa tenga un rol muy definido, como podría ser, una capa de presentación (UI), una capa de reglas de negocio (servicios) y una capa de acceso a datos (DAO), sin embargo, este estilo arquitectónico no define cuantas capas debe de tener la aplicación, sino más bien, se centra en la separación de la aplicación en capas (Aplica el principio Separación de preocupaciones (SoC)).</simpara>
-<simpara>En la práctica, la mayoría de las veces este estilo arquitectónico es implementado en 4 capas, presentación, negocio, persistencia y base de datos, sin embargo, es habitual ver que la capa de negocio y persistencia se combinan en una solo capa, sobre todo cuando la lógica de persistencia está incrustada dentro de la capa de negocio.</simpara>
-<informalfigure>
-<mediaobject>
-<imageobject>
-<imagedata fileref="book/images/patterns/capas.png"/>
-</imageobject>
-<textobject><phrase>capas</phrase></textobject>
-</mediaobject>
-</informalfigure>
-<simpara>Un detalle a tener en cuenta en esta arquitectura, es que cada capa debe de ser un componente independiente, de tal forma que se puedan desplegar por separado, incluso, es habitual que estos componentes residan en servidores separados pero que se comunican entre sí.</simpara>
-<simpara><emphasis role="strong">Referencias</emphasis></simpara>
-<itemizedlist>
-<listitem>
-<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/capas">https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/capas</link></simpara>
-</listitem>
-</itemizedlist>
-</section>
-<section xml:id="_monolito">
-<title>Monolito</title>
-<simpara>El estilo arquitectónico monolítico consiste en crear una aplicación autosuficiente que contenga absolutamente toda la funcionalidad necesaria para realizar la tarea para la cual fue diseñada, sin contar con dependencias externas que complementen su funcionalidad. En este sentido, sus componentes trabajan juntos, compartiendo los mismos recursos y memoria. En pocas palabras, una aplicación monolítica es una unidad cohesiva de código.</simpara>
-<simpara>Una falsa creencia es que, una aplicación monolítica es un caos por dentro, donde todo el código está amontonado, no hay una estructura clara y que por lo general tiene miles de clases u objetos, sin embargo, esto es solo una mala fama que se le ha dado, si bien es verdad que se podía dar el caso, recordemos que eso también se podría dar en cualquier estilo de arquitectura, pues eso dependen más bien del programador y no del estilo arquitectónico.</simpara>
-<simpara>Otra falsa creencia es creer que las aplicaciones Monolíticas son solo las aplicaciones grandísimas que hacen un montón de cosas, pero lo cierto es que un monolítico puede ser de una sola clase, o de miles, lo que define un estilo monolítico no es el número de clases, archivos o líneas de código, lo que lo define es que es autosuficiente, es decir, que tiene toda la funcionalidad para operar por sí mismo y sin depender de nadie más.</simpara>
-<informalfigure>
-<mediaobject>
-<imageobject>
-<imagedata fileref="book/images/patterns/monolitic-lg.png"/>
-</imageobject>
-<textobject><phrase>monolitic lg</phrase></textobject>
-</mediaobject>
-</informalfigure>
-<simpara>En la imagen podemos apreciar cómo funciona el proceso de compilación de una aplicación Monolítica, el cual todos los paquetes junto con sus dependencias son compilados y da como resultado un solo artefacto, el cual incluye todo el código junto con las dependencias. En este ejemplo decimos que hemos creado un EXE, pero se pudo haber creado un Jar en el caso de Java o un JS en el caso de JavaScript, dependiendo la tecnología utilizada tendremos un artefacto diferente, pero al final, todos contendrán todo el código con sus dependencias.</simpara>
-<simpara><emphasis role="strong">Referencias</emphasis></simpara>
-<itemizedlist>
-<listitem>
-<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/monolitico">https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/monolitico</link></simpara>
-</listitem>
-</itemizedlist>
-</section>
-<section xml:id="_microservicio">
-<title>Microservicio</title>
-<simpara>El estilo de Microservicios consiste en crear pequeños componentes de software que solo hacen una tarea, la hace bien y son totalmente autosuficientes, lo que les permite evolucionar de forma totalmente independiente del resto de componentes.</simpara>
-<simpara>Un Microservicios es un pequeño programa que se especializa en realizar una pequeña tarea y se enfoca únicamente en eso, por ello, decimos que los Microservicios son Altamente Cohesivos, pues toda las operaciones o funcionalidad que tiene dentro está extremadamente relacionadas para resolver un único problema.</simpara>
-<informalfigure>
-<mediaobject>
-<imageobject>
-<imagedata fileref="book/images/patterns/microservicios.png"/>
-</imageobject>
-<textobject><phrase>microservicios</phrase></textobject>
-</mediaobject>
-</informalfigure>
-<simpara>En este sentido, podemos decir que los Microservicios son todo lo contrario a las aplicaciones Monolíticas, pues en una arquitectura de Microservicios se busca desmenuzar una gran aplicación en muchos y pequeños componentes que realizar de forma independiente una pequeña tarea de la problemática general.</simpara>
-</section>
-<section xml:id="_otros_tipos_de_arquitectura">
-<title>Otros tipos de Arquitectura</title>
-<itemizedlist>
-<listitem>
-<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/rest">REST</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/cliente-servidor">Cliente Servidor</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/soa">Service Oriented</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/p2p">Peer 2 Peer</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/eda">Event Driven</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/microkernel">MicroKernel</link></simpara>
-</listitem>
-</itemizedlist>
-</section>
-<section xml:id="_patrón_mvc">
-<title>Patrón MVC</title>
-<simpara>MVC (Modelo-Vista-Controlador) es un patrón en el diseño de software comúnmente utilizado para implementar interfaces de usuario, datos y lógica de control. Enfatiza una separación entre la lógica de negocios y su visualización. Esta "separación de preocupaciones" proporciona una mejor división del trabajo y una mejora de mantenimiento. Algunos otros patrones de diseño se basan en MVC, como MVVM (Modelo-Vista-modelo de vista), MVP (Modelo-Vista-Presentador) y MVW (Modelo-Vista-Whatever).</simpara>
-<simpara>Las tres partes del patrón de diseño de software MVC se pueden describir de la siguiente manera:</simpara>
-<itemizedlist>
-<listitem>
-<simpara>Modelo: Maneja datos y lógica de negocios.</simpara>
-</listitem>
-<listitem>
-<simpara>Vista: Se encarga del disseño y presentación.</simpara>
-</listitem>
-<listitem>
-<simpara>Controlador: Enruta comandos a los modelos y vistas.</simpara>
-</listitem>
-</itemizedlist>
-<section xml:id="_modelo">
-<title>Modelo</title>
-<simpara>El modelo define qué datos debe contener la aplicación. Si el estado de estos datos cambia, el modelo generalmente notificará a la vista (para que la pantalla pueda cambiar según sea necesario) y, a veces, el controlador (si se necesita una lógica diferente para controlar la vista actualizada).</simpara>
-<simpara>Volviendo a nuestra aplicación de lista de compras, el modelo especificará qué datos deben contener los artículos de la lista (artículo, precio, etc.) y qué artículos de la lista ya están presentes.</simpara>
-</section>
-<section xml:id="_vista">
-<title>Vista</title>
-<simpara>La vista define cómo se deben mostrar los datos de la aplicación.</simpara>
-<simpara>En nuestra aplicación de lista de compras, la vista definiría cómo se presenta la lista al usuario y recibiría los datos para mostrar desde el modelo.</simpara>
-</section>
-<section xml:id="_controlador">
-<title>Controlador</title>
-<simpara>El controlador contiene una lógica que actualiza el modelo y/o vista en respuesta a las entradas de los usuarios de la aplicación.</simpara>
-<simpara>Entonces, por ejemplo, nuestra lista de compras podría tener formularios de entrada y botones que nos permitan agregar o eliminar artículos. Estas acciones requieren que se actualice el modelo, por lo que la entrada se envía al controlador, que luego manipula el modelo según corresponda, que luego envía datos actualizados a la vista.</simpara>
-<simpara>Sin embargo, es posible que también se desee actualizar la vista para mostrar los datos en un formato diferente, por ejemplo, cambiar el orden de los artículos de menor a mayor precio o en orden alfabético. En este caso, el controlador podría manejar esto directamente sin necesidad de actualizar el modelo.</simpara>
-<informalfigure>
-<mediaobject>
-<imageobject>
-<imagedata fileref="book/images/patterns/mvc.png"/>
-</imageobject>
-<textobject><phrase>MVC</phrase></textobject>
-</mediaobject>
-</informalfigure>
-</section>
-</section>
-<section xml:id="_lectura_complementaria_2">
-<title>Lectura Complementaria</title>
-<itemizedlist>
-<listitem>
-<simpara><link xl:href="https://developer.mozilla.org/es/docs/Glossary/MVC">https://developer.mozilla.org/es/docs/Glossary/MVC</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador">https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador</link></simpara>
-</listitem>
-</itemizedlist>
-</section>
-</chapter>
-<chapter xml:id="_diseño_de_sistemas_system_design">
-<title>Diseño de Sistemas (System Design)</title>
-<simpara>El diseño del sistema es el proceso de diseñar la
-arquitectura, los componentes y las interfaces de un sistema
-para que cumpla con los requisitos del usuario final. Se refiere al proceso de definir la arquitectura, los módulos, las interfaces y los datos para que un sistema satisfaga requisitos específicos. Es un campo multidisciplinario que implica análisis de compensaciones, equilibrio de requisitos conflictivos y toma de decisiones sobre opciones de
-diseño que impactar el sistema en general.</simpara>
-<simpara>En las últimas dos décadas, ha habido muchos avances en aplicaciones web a gran escala.
-Estos avances han redefinido la forma en que pensamos sobre el desarrollo de software.
-Todas las aplicaciones y servicios que usamos a diario, como Facebook, Instagram y Twitter. ,
-son sistemas escalables. Miles de millones de personas en todo el mundo acceden a estos sistemas simultáneamente,
-por lo que deben diseñarse para manejar grandes cantidades de tráfico y datos. Aquí es donde entra en juego el diseño del sistema.</simpara>
-<simpara>Como desarrollador de software, se espera cada vez más que comprenda los conceptos de diseño de
-sistemas y cómo aplicarlos. En las primeras etapas de su carrera, aprender diseño de sistemas le permitirá abordar
-problemas de diseño de software con más confianza y aplicar principios de diseño a sus proyectos.</simpara>
-<simpara>El diseño de sistemas es un tema enorme. Cada uno tiene un enfoque diferente ya que no existen pautas paso a paso.</simpara>
-<section xml:id="_escalado_horizontal_y_vertical">
-<title>Escalado horizontal y vertical</title>
-<simpara>La escalabilidad se refiere a la capacidad de una aplicación para manejar y soportar una mayor carga de trabajo sin sacrificar la latencia. Una aplicación necesita una potencia informática sólida para escalar bien. Los servidores deben ser lo suficientemente potentes para manejar mayores cargas de tráfico. Hay dos formas principales de escalar una aplicación: horizontalmente y verticalmente.</simpara>
-<section xml:id="_escalado_horizontal">
-<title>Escalado Horizontal</title>
-<simpara>El escalamiento horizontal, o ampliación, significa agregar más
-hardware al conjunto de recursos de hardware existente.
-Aumenta la potencia computacional del sistema en su conjunto.</simpara>
-<simpara>En el escalado horizontal, agrega más máquinas en paralelo para hacer frente a los requisitos crecientes. Necesitará equilibrio de carga para distribuir la carga en todo el sistema. Si alguna máquina falla, las solicitudes se redirigen a las otras máquinas y se escala bien cuando su Los usuarios aumentan y la inconsistencia de los datos es un inconveniente.</simpara>
-</section>
-<section xml:id="_escalado_vertical">
-<title>Escalado Vertical</title>
-<simpara>El escalamiento vertical, o ampliación, significa agregar más potencia a su servidor. Aumenta la potencia de el hardware que ejecuta la aplicación.
-El escalado vertical utiliza una máquina enorme que maneja todas sus solicitudes y mejora el tiempo de respuesta y el rendimiento. Aunque ofrece llamadas de red más rápidas, coherencia de datos y sin equilibrio de carga, tiene un único punto de falla y limitaciones de hardware.</simpara>
-<informalfigure>
-<mediaobject>
-<imageobject>
-<imagedata fileref="book/images/systemd/scaling.png"/>
-</imageobject>
-<textobject><phrase>scaling</phrase></textobject>
-</mediaobject>
-</informalfigure>
-</section>
-</section>
-<section xml:id="_balanceo_de_carga_load_balancer">
-<title>Balanceo de Carga (Load Balancer)</title>
-<simpara>El balanceador de carga nos permite distribuir el tráfico de red entrante entre múltiples recursos,
-lo que garantiza una alta disponibilidad y confiabilidad al enviar solicitudes solo a los recursos que están en línea, lo que brinda la flexibilidad de agregar o restar recursos según lo requiera la demanda.</simpara>
-<informalfigure>
-<mediaobject>
-<imageobject>
-<imagedata fileref="book/images/systemd/load-balancer.png"/>
-</imageobject>
-<textobject><phrase>load balancer</phrase></textobject>
-</mediaobject>
-</informalfigure>
-<simpara>Los sitios web modernos con mucho tráfico deben atender cientos de miles, si no millones, de solicitudes simultáneas de usuarios o clientes. Para escalar de manera rentable y satisfacer estos grandes volúmenes, las mejores prácticas informáticas modernas generalmente requieren agregar más servidores.</simpara>
-<simpara>Un balanceador de carga puede ubicarse frente a los servidores y enrutar las solicitudes de los clientes a través de todos los servidores capaces de satisfacer esas solicitudes de una manera que maximice la velocidad y la utilización de la capacidad. Esto garantiza que ningún servidor tenga exceso de trabajo, lo que podría degradar el rendimiento. se cae, el balanceador de carga redirige el tráfico a los servidores en línea restantes. Cuando se agrega un nuevo servidor al grupo de servidores, el balanceador de carga comienza automáticamente a enviarle solicitudes.</simpara>
-</section>
-<section xml:id="_redundancia_y_replicación">
-<title>Redundancia y Replicación</title>
-<simpara>La replicación es el proceso de compartir información para garantizar la coherencia entre recursos redundantes. Puede replicar componentes de software o hardware para mejorar la confiabilidad, la tolerancia a fallas o la accesibilidad. La replicación se utiliza en muchos sistemas de administración de bases de datos (DBMS), generalmente con una réplica primaria. La relación entre el original y sus copias. El servidor primario recibe todas las actualizaciones, y esas actualizaciones pasan a través de los servidores de réplica. Cada servidor de réplica genera un mensaje cuando recibe correctamente la actualización.</simpara>
-<informalfigure>
-<mediaobject>
-<imageobject>
-<imagedata fileref="book/images/systemd/replicas.png"/>
-</imageobject>
-<textobject><phrase>replicas</phrase></textobject>
-</mediaobject>
-</informalfigure>
-</section>
-<section xml:id="_base_de_datos_fragmentada_database_sharding">
-<title>Base de datos Fragmentada (Database Sharding)</title>
-<simpara>La fragmentación de bases de datos es una técnica para el escalado
-horizontal de bases de datos, donde los datos se
-dividen en múltiples instancias de bases de datos, o fragmentos, para mejorar el rendimiento y reducir el impacto de grandes cantidades de datos en una sola base de datos.</simpara>
-</section>
-<section xml:id="_colas_de_mensajes">
-<title>Colas de mensajes</title>
-<simpara>Una cola de mensajes es una cola que enruta mensajes desde un origen a un destino, o desde el remitente al
-receptor. Sigue la política FIFO (primero en entrar, primero en salir). El mensaje que se envía primero se entrega primero. Las colas de mensajes facilitan la asincronía. Comportamiento, que permite que los módulos se comuniquen entre sí en segundo plano sin obstaculizar las tareas primarias. También facilitan la comunicación entre módulos y proporcionan almacenamiento temporal para los mensajes hasta que sean procesados y consumidos por el consumidor.
-Las más conocidas son <emphasis>Kafka</emphasis> o <emphasis>RabbitMQ</emphasis>.</simpara>
-</section>
-<section xml:id="_caché">
-<title>Caché</title>
-<simpara>El almacenamiento en caché es un concepto de diseño de sistema que implica almacenar datos a los que se accede con frecuencia en una ubicación a la que se puede acceder fácil y rápidamente. El propósito del almacenamiento en caché es mejorar el rendimiento y la eficiencia de un sistema al reducir la cantidad de tiempo que lleva acceder a los datos a los que se accede con frecuencia.</simpara>
-<simpara>El almacenamiento en caché se puede utilizar en una variedad de sistemas diferentes, incluidas aplicaciones web, bases de datos y sistemas operativos. En cada caso, el almacenamiento en caché funciona almacenando datos a los que se accede con frecuencia en una ubicación más cercana al usuario o la aplicación. Esto puede incluir el almacenamiento datos en la memoria o en un disco duro local.</simpara>
-<informalfigure>
-<mediaobject>
-<imageobject>
-<imagedata fileref="book/images/systemd/cache.png"/>
-</imageobject>
-<textobject><phrase>cache</phrase></textobject>
-</mediaobject>
-</informalfigure>
-</section>
-<section xml:id="_lectura_complementaria_3">
-<title>Lectura Complementaria</title>
-<itemizedlist>
-<listitem>
-<simpara><link xl:href="https://www.geeksforgeeks.org/caching-system-design-concept-for-beginners/">https://www.geeksforgeeks.org/caching-system-design-concept-for-beginners/</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://www.geeksforgeeks.org/system-design-tutorial/">https://www.geeksforgeeks.org/system-design-tutorial/</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://www.educative.io/blog/complete-guide-to-system-design">https://www.educative.io/blog/complete-guide-to-system-design</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://github.com/karanpratapsingh/system-design">https://github.com/karanpratapsingh/system-design</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://www.educative.io/blog/system-design-primer">https://www.educative.io/blog/system-design-primer</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers">https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://www.educative.io/courses/web-application-software-architecture-101">https://www.educative.io/courses/web-application-software-architecture-101</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://www.geeksforgeeks.org/database-sharding-a-system-design-concept/">https://www.geeksforgeeks.org/database-sharding-a-system-design-concept/</link></simpara>
-</listitem>
-<listitem>
-<simpara><link xl:href="https://www.educative.io/path/scalability-system-design">https://www.educative.io/path/scalability-system-design</link></simpara>
-</listitem>
-</itemizedlist>
-</section>
-</chapter>
 <chapter xml:id="_mundo_laboral_y_su_estado_del_arte">
 <title>Mundo Laboral y su Estado del Arte</title>
 <simpara>El mundo laboral consiste en diversos escenarios posibles. En el siguiente capítulo se pondrá un breve resumen de lo actualmente disponible.</simpara>
@@ -1878,7 +1620,7 @@ El tener fundamentos sólidos en lo técnico y en lo profesional, permitirá sab
 </itemizedlist>
 </section>
 </section>
-<section xml:id="_lectura_complementaria_4">
+<section xml:id="_lectura_complementaria_2">
 <title>Lectura Complementaria</title>
 <itemizedlist>
 <listitem>
@@ -1904,6 +1646,264 @@ El tener fundamentos sólidos en lo técnico y en lo profesional, permitirá sab
 </listitem>
 <listitem>
 <simpara><link xl:href="https://en.wikipedia.org/wiki/Pareto_principle">Principio de Pareto</link>.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</chapter>
+<chapter xml:id="_patrones_y_arquitecturas_de_software">
+<title>Patrones y Arquitecturas de Software</title>
+<simpara>Un estilo arquitectónico establece un marco de referencia a partir del cual es posible construir aplicaciones que comparten un conjunto de atributos y características mediante el cual es posible identificarlos y clasificarlos.</simpara>
+<section xml:id="_arquitectura_en_capas">
+<title>Arquitectura en Capas</title>
+<simpara>La arquitectura en capas es una de las más utilizadas, no solo por su simplicidad, sino porque también es utilizada por defecto cuando no estamos seguros que arquitectura debemos de utilizar para nuestra aplicación.</simpara>
+<simpara>La arquitectura en capas consta en dividir la aplicación en capas, con la intención de que cada capa tenga un rol muy definido, como podría ser, una capa de presentación (UI), una capa de reglas de negocio (servicios) y una capa de acceso a datos (DAO), sin embargo, este estilo arquitectónico no define cuantas capas debe de tener la aplicación, sino más bien, se centra en la separación de la aplicación en capas (Aplica el principio Separación de preocupaciones (SoC)).</simpara>
+<simpara>En la práctica, la mayoría de las veces este estilo arquitectónico es implementado en 4 capas, presentación, negocio, persistencia y base de datos, sin embargo, es habitual ver que la capa de negocio y persistencia se combinan en una solo capa, sobre todo cuando la lógica de persistencia está incrustada dentro de la capa de negocio.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/patterns/capas.png"/>
+</imageobject>
+<textobject><phrase>capas</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<simpara>Un detalle a tener en cuenta en esta arquitectura, es que cada capa debe de ser un componente independiente, de tal forma que se puedan desplegar por separado, incluso, es habitual que estos componentes residan en servidores separados pero que se comunican entre sí.</simpara>
+<simpara><emphasis role="strong">Referencias</emphasis></simpara>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/capas">https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/capas</link></simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_monolito">
+<title>Monolito</title>
+<simpara>El estilo arquitectónico monolítico consiste en crear una aplicación autosuficiente que contenga absolutamente toda la funcionalidad necesaria para realizar la tarea para la cual fue diseñada, sin contar con dependencias externas que complementen su funcionalidad. En este sentido, sus componentes trabajan juntos, compartiendo los mismos recursos y memoria. En pocas palabras, una aplicación monolítica es una unidad cohesiva de código.</simpara>
+<simpara>Una falsa creencia es que, una aplicación monolítica es un caos por dentro, donde todo el código está amontonado, no hay una estructura clara y que por lo general tiene miles de clases u objetos, sin embargo, esto es solo una mala fama que se le ha dado, si bien es verdad que se podía dar el caso, recordemos que eso también se podría dar en cualquier estilo de arquitectura, pues eso dependen más bien del programador y no del estilo arquitectónico.</simpara>
+<simpara>Otra falsa creencia es creer que las aplicaciones Monolíticas son solo las aplicaciones grandísimas que hacen un montón de cosas, pero lo cierto es que un monolítico puede ser de una sola clase, o de miles, lo que define un estilo monolítico no es el número de clases, archivos o líneas de código, lo que lo define es que es autosuficiente, es decir, que tiene toda la funcionalidad para operar por sí mismo y sin depender de nadie más.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/patterns/monolitic-lg.png"/>
+</imageobject>
+<textobject><phrase>monolitic lg</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<simpara>En la imagen podemos apreciar cómo funciona el proceso de compilación de una aplicación Monolítica, el cual todos los paquetes junto con sus dependencias son compilados y da como resultado un solo artefacto, el cual incluye todo el código junto con las dependencias. En este ejemplo decimos que hemos creado un EXE, pero se pudo haber creado un Jar en el caso de Java o un JS en el caso de JavaScript, dependiendo la tecnología utilizada tendremos un artefacto diferente, pero al final, todos contendrán todo el código con sus dependencias.</simpara>
+<simpara><emphasis role="strong">Referencias</emphasis></simpara>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/monolitico">https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/monolitico</link></simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_microservicio">
+<title>Microservicio</title>
+<simpara>El estilo de Microservicios consiste en crear pequeños componentes de software que solo hacen una tarea, la hace bien y son totalmente autosuficientes, lo que les permite evolucionar de forma totalmente independiente del resto de componentes.</simpara>
+<simpara>Un Microservicios es un pequeño programa que se especializa en realizar una pequeña tarea y se enfoca únicamente en eso, por ello, decimos que los Microservicios son Altamente Cohesivos, pues toda las operaciones o funcionalidad que tiene dentro está extremadamente relacionadas para resolver un único problema.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/patterns/microservicios.png"/>
+</imageobject>
+<textobject><phrase>microservicios</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<simpara>En este sentido, podemos decir que los Microservicios son todo lo contrario a las aplicaciones Monolíticas, pues en una arquitectura de Microservicios se busca desmenuzar una gran aplicación en muchos y pequeños componentes que realizar de forma independiente una pequeña tarea de la problemática general.</simpara>
+</section>
+<section xml:id="_otros_tipos_de_arquitectura">
+<title>Otros tipos de Arquitectura</title>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/rest">REST</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/cliente-servidor">Cliente Servidor</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/soa">Service Oriented</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/p2p">Peer 2 Peer</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/eda">Event Driven</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/microkernel">MicroKernel</link></simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_patrón_mvc">
+<title>Patrón MVC</title>
+<simpara>MVC (Modelo-Vista-Controlador) es un patrón en el diseño de software comúnmente utilizado para implementar interfaces de usuario, datos y lógica de control. Enfatiza una separación entre la lógica de negocios y su visualización. Esta "separación de preocupaciones" proporciona una mejor división del trabajo y una mejora de mantenimiento. Algunos otros patrones de diseño se basan en MVC, como MVVM (Modelo-Vista-modelo de vista), MVP (Modelo-Vista-Presentador) y MVW (Modelo-Vista-Whatever).</simpara>
+<simpara>Las tres partes del patrón de diseño de software MVC se pueden describir de la siguiente manera:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Modelo: Maneja datos y lógica de negocios.</simpara>
+</listitem>
+<listitem>
+<simpara>Vista: Se encarga del disseño y presentación.</simpara>
+</listitem>
+<listitem>
+<simpara>Controlador: Enruta comandos a los modelos y vistas.</simpara>
+</listitem>
+</itemizedlist>
+<section xml:id="_modelo">
+<title>Modelo</title>
+<simpara>El modelo define qué datos debe contener la aplicación. Si el estado de estos datos cambia, el modelo generalmente notificará a la vista (para que la pantalla pueda cambiar según sea necesario) y, a veces, el controlador (si se necesita una lógica diferente para controlar la vista actualizada).</simpara>
+<simpara>Volviendo a nuestra aplicación de lista de compras, el modelo especificará qué datos deben contener los artículos de la lista (artículo, precio, etc.) y qué artículos de la lista ya están presentes.</simpara>
+</section>
+<section xml:id="_vista">
+<title>Vista</title>
+<simpara>La vista define cómo se deben mostrar los datos de la aplicación.</simpara>
+<simpara>En nuestra aplicación de lista de compras, la vista definiría cómo se presenta la lista al usuario y recibiría los datos para mostrar desde el modelo.</simpara>
+</section>
+<section xml:id="_controlador">
+<title>Controlador</title>
+<simpara>El controlador contiene una lógica que actualiza el modelo y/o vista en respuesta a las entradas de los usuarios de la aplicación.</simpara>
+<simpara>Entonces, por ejemplo, nuestra lista de compras podría tener formularios de entrada y botones que nos permitan agregar o eliminar artículos. Estas acciones requieren que se actualice el modelo, por lo que la entrada se envía al controlador, que luego manipula el modelo según corresponda, que luego envía datos actualizados a la vista.</simpara>
+<simpara>Sin embargo, es posible que también se desee actualizar la vista para mostrar los datos en un formato diferente, por ejemplo, cambiar el orden de los artículos de menor a mayor precio o en orden alfabético. En este caso, el controlador podría manejar esto directamente sin necesidad de actualizar el modelo.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/patterns/mvc.png"/>
+</imageobject>
+<textobject><phrase>MVC</phrase></textobject>
+</mediaobject>
+</informalfigure>
+</section>
+</section>
+<section xml:id="_lectura_complementaria_3">
+<title>Lectura Complementaria</title>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://developer.mozilla.org/es/docs/Glossary/MVC">https://developer.mozilla.org/es/docs/Glossary/MVC</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador">https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador</link></simpara>
+</listitem>
+</itemizedlist>
+</section>
+</chapter>
+<chapter xml:id="_diseño_de_sistemas_system_design">
+<title>Diseño de Sistemas (System Design)</title>
+<simpara>El diseño del sistema es el proceso de diseñar la
+arquitectura, los componentes y las interfaces de un sistema
+para que cumpla con los requisitos del usuario final. Se refiere al proceso de definir la arquitectura, los módulos, las interfaces y los datos para que un sistema satisfaga requisitos específicos. Es un campo multidisciplinario que implica análisis de compensaciones, equilibrio de requisitos conflictivos y toma de decisiones sobre opciones de
+diseño que impactar el sistema en general.</simpara>
+<simpara>En las últimas dos décadas, ha habido muchos avances en aplicaciones web a gran escala.
+Estos avances han redefinido la forma en que pensamos sobre el desarrollo de software.
+Todas las aplicaciones y servicios que usamos a diario, como Facebook, Instagram y Twitter. ,
+son sistemas escalables. Miles de millones de personas en todo el mundo acceden a estos sistemas simultáneamente,
+por lo que deben diseñarse para manejar grandes cantidades de tráfico y datos. Aquí es donde entra en juego el diseño del sistema.</simpara>
+<simpara>Como desarrollador de software, se espera cada vez más que comprenda los conceptos de diseño de
+sistemas y cómo aplicarlos. En las primeras etapas de su carrera, aprender diseño de sistemas le permitirá abordar
+problemas de diseño de software con más confianza y aplicar principios de diseño a sus proyectos.</simpara>
+<simpara>El diseño de sistemas es un tema enorme. Cada uno tiene un enfoque diferente ya que no existen pautas paso a paso.</simpara>
+<section xml:id="_escalado_horizontal_y_vertical">
+<title>Escalado horizontal y vertical</title>
+<simpara>La escalabilidad se refiere a la capacidad de una aplicación para manejar y soportar una mayor carga de trabajo sin sacrificar la latencia. Una aplicación necesita una potencia informática sólida para escalar bien. Los servidores deben ser lo suficientemente potentes para manejar mayores cargas de tráfico. Hay dos formas principales de escalar una aplicación: horizontalmente y verticalmente.</simpara>
+<section xml:id="_escalado_horizontal">
+<title>Escalado Horizontal</title>
+<simpara>El escalamiento horizontal, o ampliación, significa agregar más
+hardware al conjunto de recursos de hardware existente.
+Aumenta la potencia computacional del sistema en su conjunto.</simpara>
+<simpara>En el escalado horizontal, agrega más máquinas en paralelo para hacer frente a los requisitos crecientes. Necesitará equilibrio de carga para distribuir la carga en todo el sistema. Si alguna máquina falla, las solicitudes se redirigen a las otras máquinas y se escala bien cuando su Los usuarios aumentan y la inconsistencia de los datos es un inconveniente.</simpara>
+</section>
+<section xml:id="_escalado_vertical">
+<title>Escalado Vertical</title>
+<simpara>El escalamiento vertical, o ampliación, significa agregar más potencia a su servidor. Aumenta la potencia de el hardware que ejecuta la aplicación.
+El escalado vertical utiliza una máquina enorme que maneja todas sus solicitudes y mejora el tiempo de respuesta y el rendimiento. Aunque ofrece llamadas de red más rápidas, coherencia de datos y sin equilibrio de carga, tiene un único punto de falla y limitaciones de hardware.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/systemd/scaling.png"/>
+</imageobject>
+<textobject><phrase>scaling</phrase></textobject>
+</mediaobject>
+</informalfigure>
+</section>
+</section>
+<section xml:id="_balanceo_de_carga_load_balancer">
+<title>Balanceo de Carga (Load Balancer)</title>
+<simpara>El balanceador de carga nos permite distribuir el tráfico de red entrante entre múltiples recursos,
+lo que garantiza una alta disponibilidad y confiabilidad al enviar solicitudes solo a los recursos que están en línea, lo que brinda la flexibilidad de agregar o restar recursos según lo requiera la demanda.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/systemd/load-balancer.png"/>
+</imageobject>
+<textobject><phrase>load balancer</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<simpara>Los sitios web modernos con mucho tráfico deben atender cientos de miles, si no millones, de solicitudes simultáneas de usuarios o clientes. Para escalar de manera rentable y satisfacer estos grandes volúmenes, las mejores prácticas informáticas modernas generalmente requieren agregar más servidores.</simpara>
+<simpara>Un balanceador de carga puede ubicarse frente a los servidores y enrutar las solicitudes de los clientes a través de todos los servidores capaces de satisfacer esas solicitudes de una manera que maximice la velocidad y la utilización de la capacidad. Esto garantiza que ningún servidor tenga exceso de trabajo, lo que podría degradar el rendimiento. se cae, el balanceador de carga redirige el tráfico a los servidores en línea restantes. Cuando se agrega un nuevo servidor al grupo de servidores, el balanceador de carga comienza automáticamente a enviarle solicitudes.</simpara>
+</section>
+<section xml:id="_redundancia_y_replicación">
+<title>Redundancia y Replicación</title>
+<simpara>La replicación es el proceso de compartir información para garantizar la coherencia entre recursos redundantes. Puede replicar componentes de software o hardware para mejorar la confiabilidad, la tolerancia a fallas o la accesibilidad. La replicación se utiliza en muchos sistemas de administración de bases de datos (DBMS), generalmente con una réplica primaria. La relación entre el original y sus copias. El servidor primario recibe todas las actualizaciones, y esas actualizaciones pasan a través de los servidores de réplica. Cada servidor de réplica genera un mensaje cuando recibe correctamente la actualización.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/systemd/replicas.png"/>
+</imageobject>
+<textobject><phrase>replicas</phrase></textobject>
+</mediaobject>
+</informalfigure>
+</section>
+<section xml:id="_base_de_datos_fragmentada_database_sharding">
+<title>Base de datos Fragmentada (Database Sharding)</title>
+<simpara>La fragmentación de bases de datos es una técnica para el escalado
+horizontal de bases de datos, donde los datos se
+dividen en múltiples instancias de bases de datos, o fragmentos, para mejorar el rendimiento y reducir el impacto de grandes cantidades de datos en una sola base de datos.</simpara>
+</section>
+<section xml:id="_colas_de_mensajes">
+<title>Colas de mensajes</title>
+<simpara>Una cola de mensajes es una cola que enruta mensajes desde un origen a un destino, o desde el remitente al
+receptor. Sigue la política FIFO (primero en entrar, primero en salir). El mensaje que se envía primero se entrega primero. Las colas de mensajes facilitan la asincronía. Comportamiento, que permite que los módulos se comuniquen entre sí en segundo plano sin obstaculizar las tareas primarias. También facilitan la comunicación entre módulos y proporcionan almacenamiento temporal para los mensajes hasta que sean procesados y consumidos por el consumidor.
+Las más conocidas son <emphasis>Kafka</emphasis> o <emphasis>RabbitMQ</emphasis>.</simpara>
+</section>
+<section xml:id="_caché">
+<title>Caché</title>
+<simpara>El almacenamiento en caché es un concepto de diseño de sistema que implica almacenar datos a los que se accede con frecuencia en una ubicación a la que se puede acceder fácil y rápidamente. El propósito del almacenamiento en caché es mejorar el rendimiento y la eficiencia de un sistema al reducir la cantidad de tiempo que lleva acceder a los datos a los que se accede con frecuencia.</simpara>
+<simpara>El almacenamiento en caché se puede utilizar en una variedad de sistemas diferentes, incluidas aplicaciones web, bases de datos y sistemas operativos. En cada caso, el almacenamiento en caché funciona almacenando datos a los que se accede con frecuencia en una ubicación más cercana al usuario o la aplicación. Esto puede incluir el almacenamiento datos en la memoria o en un disco duro local.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/systemd/cache.png"/>
+</imageobject>
+<textobject><phrase>cache</phrase></textobject>
+</mediaobject>
+</informalfigure>
+</section>
+<section xml:id="_lectura_complementaria_4">
+<title>Lectura Complementaria</title>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://www.geeksforgeeks.org/caching-system-design-concept-for-beginners/">https://www.geeksforgeeks.org/caching-system-design-concept-for-beginners/</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.geeksforgeeks.org/system-design-tutorial/">https://www.geeksforgeeks.org/system-design-tutorial/</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.educative.io/blog/complete-guide-to-system-design">https://www.educative.io/blog/complete-guide-to-system-design</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://github.com/karanpratapsingh/system-design">https://github.com/karanpratapsingh/system-design</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.educative.io/blog/system-design-primer">https://www.educative.io/blog/system-design-primer</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers">https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.educative.io/courses/web-application-software-architecture-101">https://www.educative.io/courses/web-application-software-architecture-101</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.geeksforgeeks.org/database-sharding-a-system-design-concept/">https://www.geeksforgeeks.org/database-sharding-a-system-design-concept/</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.educative.io/path/scalability-system-design">https://www.educative.io/path/scalability-system-design</link></simpara>
 </listitem>
 </itemizedlist>
 </section>
@@ -4362,10 +4362,13 @@ desarrolladores dentro y fuera de su organización.</simpara>
 </itemizedlist>
 </section>
 </section>
+<section xml:id="_formatos_de_archivos">
+<title>Formatos de Archivos</title>
+<simpara>Existen diversos formatos y estándares para compartir datos y configurar los productos de software. Normalmente son formatos de texto plano (pueden ser leidos por un humano) y también hay en formato binario (pueden ser leidos solo por un computador), entre los más populares están <emphasis>JSON</emphasis>, <emphasis>XML</emphasis>, <emphasis>YAML</emphasis> y <emphasis>TOML</emphasis>.</simpara>
 <section xml:id="_formatos_de_serialización">
 <title>Formatos de Serialización</title>
 <simpara>Siempre que desee enviar alguna estructura de datos o un objeto a través de redes informáticas, digamos Internet, debe convertirlo en un formato especial para leerlo y almacenarlo. El proceso se conoce comúnmente como serialización y es de enorme importancia en la web. Un ejemplo de uso común de serialización es al leer datos de bases de datos y transferirlos a través de la web.</simpara>
-<simpara>Algunas formaciones de serialización incluyen JSON, YAML, TOML, XML.</simpara>
+<simpara>Algunas formaciones de serialización incluyen <emphasis>JSON</emphasis> y <emphasis>XML</emphasis>.</simpara>
 <section xml:id="_json">
 <title>JSON</title>
 <simpara>JSON (JavaScript Object Notation - Notación de Objetos de JavaScript) es un formato ligero de intercambio de datos. Leerlo y escribirlo es simple para humanos, mientras que para las máquinas es simple interpretarlo y generarlo. Está basado en un subconjunto del Lenguaje de Programación JavaScript, Standard ECMA-262 3rd Edition - Diciembre 1999. JSON es un formato de texto que es completamente independiente del lenguaje pero utiliza convenciones que son ampliamente conocidos por los programadores de la familia de lenguajes C, incluyendo C, C&#43;&#43;, C#, Java, JavaScript, Perl, Python, y muchos otros. Estas propiedades hacen que JSON sea un lenguaje ideal para el intercambio de datos.</simpara>
@@ -4419,9 +4422,30 @@ desarrolladores dentro y fuera de su organización.</simpara>
 </listitem>
 </itemizedlist>
 </section>
+<section xml:id="_xml">
+<title>XML</title>
+<simpara>El lenguaje de marcado extensible (XML) permite definir y almacenar datos de forma compartible. XML admite el intercambio de información entre sistemas de computación, como sitios web, bases de datos y aplicaciones de terceros. Las reglas predefinidas facilitan la transmisión de datos como archivos XML a través de cualquier red, ya que el destinatario puede usar esas reglas para leer los datos de forma precisa y eficiente.</simpara>
+<simpara><emphasis role="strong">Ejemplo</emphasis></simpara>
+<programlisting language="xml" linenumbering="numbered">&lt;libro&gt;
+
+&lt;título&gt;Introducción a Amazon Web Services&lt;/título&gt;
+
+&lt;autor&gt;Mark Wilkins&lt;/autor&gt;
+
+&lt;/libro&gt;</programlisting>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://aws.amazon.com/es/what-is/xml/">https://aws.amazon.com/es/what-is/xml/</link></simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section xml:id="_formatos_de_configuración">
+<title>Formatos de Configuración</title>
+<simpara>Los formatos de configuración son más adecuados para establecer parámetros en los programas, más que enviar información por las vías de comunicación. Algunos formatos son <emphasis>YAML</emphasis> y <emphasis>TOML</emphasis>. <emphasis>JSON</emphasis> también es comunmente usado como un formato de configuración, aunque algunos prefieren utilizar variantes como <emphasis>JSONC</emphasis> que incluye comentarios.</simpara>
 <section xml:id="_yaml">
 <title>YAML</title>
-<simpara>YAML es un lenguaje de serialización de datos que las personas pueden comprender y suele utilizarse en el diseño de archivos de configuración. Para algunas personas, YAML significa otro lenguaje de marcado más; para otras, es un acrónimo recursivo que quiere decir "YAML no es un lenguaje de marcado", lo que enfatiza la idea de que se utiliza para los datos, no para los documentos.</simpara>
+<simpara>YAML es un lenguaje sencillo que las personas pueden comprender y suele utilizarse en el diseño de archivos de configuración. Para algunas personas, YAML significa otro lenguaje de marcado más; para otras, es un acrónimo recursivo que quiere decir "YAML no es un lenguaje de marcado", lo que enfatiza la idea de que se utiliza para los datos, no para los documentos.</simpara>
 <simpara><emphasis role="strong">Ejemplo</emphasis></simpara>
 <programlisting language="yaml" linenumbering="numbered">name:John
 
@@ -4489,22 +4513,6 @@ role = "backend"</programlisting>
 </listitem>
 </itemizedlist>
 </section>
-<section xml:id="_xml">
-<title>XML</title>
-<simpara>El lenguaje de marcado extensible (XML) permite definir y almacenar datos de forma compartible. XML admite el intercambio de información entre sistemas de computación, como sitios web, bases de datos y aplicaciones de terceros. Las reglas predefinidas facilitan la transmisión de datos como archivos XML a través de cualquier red, ya que el destinatario puede usar esas reglas para leer los datos de forma precisa y eficiente.</simpara>
-<simpara><emphasis role="strong">Ejemplo</emphasis></simpara>
-<programlisting language="xml" linenumbering="numbered">&lt;libro&gt;
-
-&lt;título&gt;Introducción a Amazon Web Services&lt;/título&gt;
-
-&lt;autor&gt;Mark Wilkins&lt;/autor&gt;
-
-&lt;/libro&gt;</programlisting>
-<itemizedlist>
-<listitem>
-<simpara><link xl:href="https://aws.amazon.com/es/what-is/xml/">https://aws.amazon.com/es/what-is/xml/</link></simpara>
-</listitem>
-</itemizedlist>
 </section>
 </section>
 <section xml:id="_clientes_apis">

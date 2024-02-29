@@ -773,12 +773,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_grpc">9.5.3. gRPC</a></li>
 </ul>
 </li>
-<li><a href="#_formatos_de_serialización">9.6. Formatos de Serialización</a>
+<li><a href="#_formatos_de_archivos">9.6. Formatos de Archivos</a>
 <ul class="sectlevel3">
-<li><a href="#_json">9.6.1. JSON</a></li>
-<li><a href="#_yaml">9.6.2. YAML</a></li>
-<li><a href="#_toml">9.6.3. TOML</a></li>
-<li><a href="#_xml">9.6.4. XML</a></li>
+<li><a href="#_formatos_de_serialización">9.6.1. Formatos de Serialización</a></li>
+<li><a href="#_formatos_de_configuración">9.6.2. Formatos de Configuración</a></li>
 </ul>
 </li>
 <li><a href="#_clientes_apis">9.7. Clientes APIs</a>
@@ -6414,15 +6412,20 @@ desarrolladores dentro y fuera de su organización.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_formatos_de_serialización">9.6. Formatos de Serialización</h3>
+<h3 id="_formatos_de_archivos">9.6. Formatos de Archivos</h3>
+<div class="paragraph">
+<p>Existen diversos formatos y estándares para compartir datos y configurar los productos de software. Normalmente son formatos de texto plano (pueden ser leidos por un humano) y también hay en formato binario (pueden ser leidos solo por un computador), entre los más populares están <em>JSON</em>, <em>XML</em>, <em>YAML</em> y <em>TOML</em>.</p>
+</div>
+<div class="sect3">
+<h4 id="_formatos_de_serialización">9.6.1. Formatos de Serialización</h4>
 <div class="paragraph">
 <p>Siempre que desee enviar alguna estructura de datos o un objeto a través de redes informáticas, digamos Internet, debe convertirlo en un formato especial para leerlo y almacenarlo. El proceso se conoce comúnmente como serialización y es de enorme importancia en la web. Un ejemplo de uso común de serialización es al leer datos de bases de datos y transferirlos a través de la web.</p>
 </div>
 <div class="paragraph">
-<p>Algunas formaciones de serialización incluyen JSON, YAML, TOML, XML.</p>
+<p>Algunas formaciones de serialización incluyen <em>JSON</em> y <em>XML</em>.</p>
 </div>
-<div class="sect3">
-<h4 id="_json">9.6.1. JSON</h4>
+<div class="sect4">
+<h5 id="_json">JSON</h5>
 <div class="paragraph">
 <p>JSON (JavaScript Object Notation - Notación de Objetos de JavaScript) es un formato ligero de intercambio de datos. Leerlo y escribirlo es simple para humanos, mientras que para las máquinas es simple interpretarlo y generarlo. Está basado en un subconjunto del Lenguaje de Programación JavaScript, Standard ECMA-262 3rd Edition - Diciembre 1999. JSON es un formato de texto que es completamente independiente del lenguaje pero utiliza convenciones que son ampliamente conocidos por los programadores de la familia de lenguajes C, incluyendo C, C&#43;&#43;, C#, Java, JavaScript, Perl, Python, y muchos otros. Estas propiedades hacen que JSON sea un lenguaje ideal para el intercambio de datos.</p>
 </div>
@@ -6484,10 +6487,43 @@ desarrolladores dentro y fuera de su organización.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_yaml">9.6.2. YAML</h4>
+<div class="sect4">
+<h5 id="_xml">XML</h5>
 <div class="paragraph">
-<p>YAML es un lenguaje de serialización de datos que las personas pueden comprender y suele utilizarse en el diseño de archivos de configuración. Para algunas personas, YAML significa otro lenguaje de marcado más; para otras, es un acrónimo recursivo que quiere decir "YAML no es un lenguaje de marcado", lo que enfatiza la idea de que se utiliza para los datos, no para los documentos.</p>
+<p>El lenguaje de marcado extensible (XML) permite definir y almacenar datos de forma compartible. XML admite el intercambio de información entre sistemas de computación, como sitios web, bases de datos y aplicaciones de terceros. Las reglas predefinidas facilitan la transmisión de datos como archivos XML a través de cualquier red, ya que el destinatario puede usar esas reglas para leer los datos de forma precisa y eficiente.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ejemplo</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;libro&gt;
+
+&lt;título&gt;Introducción a Amazon Web Services&lt;/título&gt;
+
+&lt;autor&gt;Mark Wilkins&lt;/autor&gt;
+
+&lt;/libro&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://aws.amazon.com/es/what-is/xml/" class="bare">https://aws.amazon.com/es/what-is/xml/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_formatos_de_configuración">9.6.2. Formatos de Configuración</h4>
+<div class="paragraph">
+<p>Los formatos de configuración son más adecuados para establecer parámetros en los programas, más que enviar información por las vías de comunicación. Algunos formatos son <em>YAML</em> y <em>TOML</em>. <em>JSON</em> también es comunmente usado como un formato de configuración, aunque algunos prefieren utilizar variantes como <em>JSONC</em> que incluye comentarios.</p>
+</div>
+<div class="sect4">
+<h5 id="_yaml">YAML</h5>
+<div class="paragraph">
+<p>YAML es un lenguaje sencillo que las personas pueden comprender y suele utilizarse en el diseño de archivos de configuración. Para algunas personas, YAML significa otro lenguaje de marcado más; para otras, es un acrónimo recursivo que quiere decir "YAML no es un lenguaje de marcado", lo que enfatiza la idea de que se utiliza para los datos, no para los documentos.</p>
 </div>
 <div class="paragraph">
 <p><strong>Ejemplo</strong></p>
@@ -6527,8 +6563,8 @@ Job:
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_toml">9.6.3. TOML</h4>
+<div class="sect4">
+<h5 id="_toml">TOML</h5>
 <div class="paragraph">
 <p>TOML se abrevia como Tom&#8217;s Obvious Markup Language.
 TOML pretende ser un formato de archivo de configuración mínimo que sea fácil de leer debido a una semántica obvia. TOML está diseñado para asignarse sin ambigüedades a una tabla hash. TOML debería ser fácil de analizar en estructuras de datos en una amplia variedad de lenguajes.</p>
@@ -6573,32 +6609,6 @@ role = "backend"</code></pre>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_xml">9.6.4. XML</h4>
-<div class="paragraph">
-<p>El lenguaje de marcado extensible (XML) permite definir y almacenar datos de forma compartible. XML admite el intercambio de información entre sistemas de computación, como sitios web, bases de datos y aplicaciones de terceros. Las reglas predefinidas facilitan la transmisión de datos como archivos XML a través de cualquier red, ya que el destinatario puede usar esas reglas para leer los datos de forma precisa y eficiente.</p>
-</div>
-<div class="paragraph">
-<p><strong>Ejemplo</strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;libro&gt;
-
-&lt;título&gt;Introducción a Amazon Web Services&lt;/título&gt;
-
-&lt;autor&gt;Mark Wilkins&lt;/autor&gt;
-
-&lt;/libro&gt;</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://aws.amazon.com/es/what-is/xml/" class="bare">https://aws.amazon.com/es/what-is/xml/</a></p>
-</li>
-</ul>
 </div>
 </div>
 </div>

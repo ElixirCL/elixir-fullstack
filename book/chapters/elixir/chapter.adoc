@@ -1,0 +1,217 @@
+
+== El Lenguaje Elixir
+
+Se recomienda seguir el laboratorio web de Elixir
+https://markm208.github.io/exbook/chapter1/01/index.html
+
+y los capítulos del libro https://joyofelixir.com/
+
+=== Valores
+
+[,elixir]
+----
+booleano = true
+numero = 123_456
+string = "Mi Cadena de Caracteres" <> "Concatenada"
+atomo = :un_atomo
+funcion = fn _ -> "Hola" end
+mapa = %{valor: "hola"}
+lista = [1, "dos", :tres]
+IO.inspect("Imprimir en Terminal")
+# Comentario
+----
+
+=== Módulos
+
+Los módulos son definidos de la siguiente forma
+
+[,elixir]
+----
+defmodule MiModulo do
+
+  @constante "Esta constante no puede ser reasignada"
+
+  def mi_funcion_publica() do
+    "Función Pública"
+  end
+
+  defp mi_funcion_privada() do
+    "Función Privada"
+  end
+end
+----
+
+=== Pattern Matching
+
+Esta técnica propia de los lenguajes funcionales, se utiliza para buscar patrones y decidir qué hacer en cada momento.
+Debemos pensar en el operador `=` no como un signo igual típico de otros lenguajes,
+sino como el que nos encontramos en una función matemática
+del tipo `x = a + 1`. Es decir que estamos diciendo que `x` y `a + 1`
+tienen el mismo valor.
+
+[,elixir]
+----
+# a = 1
+# b = "elixir"
+# c = "ninjas"
+{a, b, c} = {1, "elixir", "ninjas"}
+----
+
+*Enlaces*
+
+* https://joyofelixir.com/6-pattern-matching
+* https://www.youtube.com/watch?v=rz14ierM9Q4
+* https://charlascylon.com/2016-02-24-Elixir-y-el-pattern-matching
+* https://elixirschool.com/es/lessons/basics/pattern_matching
+
+=== Pipe
+
+La programación puede ser desordenada. De hecho tan desordenada que las llamadas de función pueden estar tan contenidas que sean difícil de entender.
+
+Por ejemplo, toma en consideración las siguientes funciones anidadas:
+
+[,c]
+----
+foo(bar(baz(nueva_function(otra_function()))))
+----
+
+Aquí, pasamos el valor de `otra_function/1` a `nueva_function/1`, y de `nueva_function/1` a `baz/1`, `baz/1` a `bar/1`, y finalmente el resultado de `bar/1` a `foo/1`.
+Elixir adopta un enfoque pragmático a este caos sintáctico al darnos el operador pipe.
+El operador pipe que luce así `|>` toma el resultado de una expresión, y se lo pasa a la siguiente.
+Vamos a echar otro vistazo al código anterior reescrito con el operador pipe.
+
+[,elixir]
+----
+otra_function()
+|> nueva_function()
+|> baz()
+|> bar()
+|> foo()
+----
+
+El operador lleva el resultado de la izquierda, y lo pasa a la derecha.
+
+*Enlaces*
+
+* https://elixirschool.com/es/lessons/basics/pipe_operator
+
+=== Dependencias
+
+Para instalar las dependencias debemos utilizar el comando
+
+[,shell]
+----
+$ mix deps.get
+----
+
+Las dependencias están definidas en el archivo `mix.exs`
+
+[,elixir]
+----
+  # Run "mix help deps" to learn about dependencies
+  defp deps do
+    [
+      # {:dep_from_hexpm, "~> 0.3.0"},
+      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
+    ]
+  end
+----
+
+=== Formateo
+
+Para formatear automáticamente nuestro código
+se utiliza el comando
+
+[,shell]
+----
+$ mix format
+----
+
+Esto permite estandarizar
+el estilo del código y no tener problemas al momento
+de programar en equipo.
+
+=== Pruebas (Testing)
+
+Para realizar pruebas se utiliza el comando
+
+[,shell]
+----
+$ mix test
+----
+
+=== Pruebas Unitarias
+
+Las pruebas unitarias consisten en aislar una parte del código y comprobar que funciona a la perfección. Son pequeños tests que validan el comportamiento de un objeto y la lógica.
+El unit testing suele realizarse durante la fase de desarrollo de aplicaciones de software o móviles. Normalmente las llevan a cabo los desarrolladores, aunque en la práctica, también pueden realizarlas los responsables de QA.
+Hay una especie de mito respecto a las pruebas unitarias. Algunos desarrolladores están convencidos de que son una pérdida de tiempo y las evitan buscando ahorrar tiempo.
+Nada más alejado de la realidad.
+Con ellas se detectan antes errores que, sin las pruebas unitarias, no se podrían detectar hasta fases más avanzadas como las pruebas de sistema, de integración e incluso en la beta.
+Realizar pruebas unitarias con regularidad supone, al final, un ahorro de tiempo y dinero.
+
+*Enlaces*
+
+* https://www.yeeply.com/blog/que-son-pruebas-unitarias/
+
+=== Phoenix Framework
+
+Si bien es posible crear backends con _Elixir_ completamente
+utilizando `mix` y `plug`. El framework más recomendado es https://www.phoenixframework.org/[*Phoenix*].
+
+Phoenix es un framework de desarrollo web escrito en Elixir que implementa el patrón Model View Controller (MVC) del lado del servidor.
+Muchos de sus componentes y conceptos nos resultarán familiares a aquellos que tengamos experiencia en otros frameworks web como Ruby on Rails o Python con Django.
+
+Phoenix ofrece lo mejor de ambos mundos: alta productividad de los desarrolladores y alto rendimiento de las aplicaciones.
+También tiene algunos giros nuevos e interesantes, como canales para implementar funciones en tiempo real y plantillas precompiladas para una velocidad increíble.
+
+*Enlaces*
+
+* https://www.phoenixframework.org/
+* https://elixir-lang.org/learning.html
+
+=== ¿Por qué utilizar Phoenix frente a las alternativas?
+
+Hoy en día existen diversas alternativas para elaborar soluciones
+de backend. Entre las más populares encontramos a
+https://github.com/nitrogen[Nitrogen con Erlang], PHP con Laravel, Python con Django, Ruby con Rails,
+Java con Springboot y muchas otras con Javascript.
+
+Si bien un proyecto puede ser exitoso, robusto y bien estructurado
+con cualquier tecnología. Lo ideal es siempre utilizar
+tecnologías que sean altamente cohesionadas y faciliten elaborar sistemas bien estructurados
+desde un comienzo, que cuenten con las protecciones necesarias de seguridad. Con estándares y documentación amplia que
+faciliten el aprendizaje de nuevos desarrolladores.
+
+_Phoenix_ cuenta con los más de treinta años de la máquina virtual de _Erlang_ para su robustez y altos estándares de seguridad,
+además de la sintaxis amigable y moderna del lenguaje de programación _Elixir_.
+
+Debido a la alta concurrencia de las necesidades actuales (con millones de dispositivos conectados a la vez), utilizar
+tecnologías que solucionen estos problemas de fábrica es un gran acierto.
+
+El autor _Sasa Juric_ en su charla "El alma de Elixir". Nos muestra por qué razón
+es una buena idea utilizar soluciones basadas en la máquina virtual de _Erlang_,
+ya que nos permite reducir enormemente la cantidad de dependencias de la solución,
+utilizando componentes que vienen de fábrica para resolver problemas comunes en sistemas
+distribuidos.
+
+image::erlang.png[]
+
+El simplificar nuestra estructura de servidores al utilizar una base sólida como la _BEAM_,
+nos da una reducción de la entropía (menor cantidad de componentes) y una reducción de costos significativa.
+
+Un ejemplo es el caso de la empresa *Pinterest* donde uno de
+los sistemas que se ejecutaba en 200 servidores _Python_ ahora se ejecuta en cuatro servidores Elixir.
+El efecto combinado de una mejor arquitectura y Elixir ahorró a _Pinterest_ más de $2 millones por año en costos de servidor.
+Además, el rendimiento y la confiabilidad de los sistemas aumentaron a pesar de funcionar con mucho menos hardware.
+Cuando el sistema de notificaciones se ejecutaba en Java,
+estaba en 30 instancias _c32.xl_.
+Cuando se cambió a Elixir, podía ejecutarse en 15.
+A pesar de ejecutarse en menos hardware, los tiempos de respuesta se redujeron significativamente, al igual que los errores.
+
+Un lenguaje que permite a las empresas ahorrar dinero mientras mejora la confiabilidad y el rendimiento parece una fantasía. Elixir puede demostrar este increíble resultado porque el lenguaje está construido sobre Erlang, una plataforma diseñada para software concurrente que debe permanecer en línea. -Los sitios de comercio y los productos SaaS son solo algunos ejemplos, la mayoría del software empresarial actual tiene este requisito. La historia de Elixir mejorando un producto mientras reduce costos se repite.
+
+*Enlaces*
+
+* https://www.youtube.com/watch?v=JvBT4XBdoUE
+* https://paraxial.io/blog/elixir-savings
+* https://www.youtube.com/watch?v=xrIjfIjssLE
