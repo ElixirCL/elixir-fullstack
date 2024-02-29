@@ -3,41 +3,41 @@
 :imagesdir: book/
 
 // Ruta Por Capítulo
-:imagesdir: book/images/01/
-include::01/chapter.adoc[]
+:imagesdir: book/images/history/
+include::history/chapter.adoc[]
 
-:imagesdir: book/images/02/
-include::02/chapter.adoc[]
+:imagesdir: book/images/jobs/
+include::jobs/chapter.adoc[]
 
-:imagesdir: book/images/03/
-include::03/chapter.adoc[]
+:imagesdir: book/images/patterns/
+include::patterns/chapter.adoc[]
 
-:imagesdir: book/images/04/
-include::04/chapter.adoc[]
+:imagesdir: book/images/systemd/
+include::systemd/chapter.adoc[]
 
-:imagesdir: book/images/05/
-include::05/chapter.adoc[]
+:imagesdir: book/images/github/
+include::github/chapter.adoc[]
 
-:imagesdir: book/images/06/
-include::06/chapter.adoc[]
+:imagesdir: book/images/hosting/
+include::hosting/chapter.adoc[]
 
-:imagesdir: book/images/07/
-include::07/chapter.adoc[]
+:imagesdir: book/images/networking/
+include::networking/chapter.adoc[]
 
-:imagesdir: book/images/08/
-include::08/chapter.adoc[]
+:imagesdir: book/images/http/
+include::http/chapter.adoc[]
 
-:imagesdir: book/images/09/
-include::09/chapter.adoc[]
+:imagesdir: book/images/security/
+include::security/chapter.adoc[]
 
-:imagesdir: book/images/10/
-include::10/chapter.adoc[]
+:imagesdir: book/images/html/
+include::html/chapter.adoc[]
 
-:imagesdir: book/images/11/
-include::11/chapter.adoc[]
+:imagesdir: book/images/javascript/
+include::javascript/chapter.adoc[]
 
-:imagesdir: book/images/12/
-include::12/chapter.adoc[]
+:imagesdir: book/images/elixir/
+include::elixir/chapter.adoc[]
 
-:imagesdir: book/images/13/
-include::13/chapter.adoc[]
+:imagesdir: book/images/mobile/
+include::mobile/chapter.adoc[]

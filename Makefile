@@ -1,4 +1,4 @@
-.PHONY: html docbook pdf epub build clean
+.PHONY: html docbook pdf epub build clean server
 
 # Consider Docker https://github.com/asciidoctor/docker-asciidoctor
 
@@ -7,6 +7,11 @@ build b:
 	@make html
 	@make docbook
 	@make pdf
+
+server s:
+	@make html
+	@echo "http://localhost:8000"
+	@cd docs && python3 -m http.server
 
 html h:
 	@mkdir -p docs/book/
