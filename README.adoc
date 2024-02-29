@@ -1,0 +1,42 @@
+:toc: macro
+:toc-title: Tabla de Contenidos
+:toclevels: 3
+
+# Elixir FullStack
+
+Escrito por https://ninjas.cl[Camilo Castro] y https://github.com/ElixirCL/elixir-fullstack/graphs/contributors[colaboradores]footnote:[https://github.com/ElixirCL/elixir-fullstack/graphs/contributors]. Para https://ninjas.cl[Ninjas.cl]{fn-ninjas} y https://elixircl.github.io[Elixir Chile].
+
+Esta obra está bajo una http://creativecommons.org/licenses/by-nc-sa/4.0/[Licencia Creative Commons Atribución-No-Comercial-Compartir-Igual 4.0 Internacional]footnote:[http://creativecommons.org/licenses/by-nc-sa/4.0/]
+
+http://creativecommons.org/licenses/by-nc-sa/4.0/[image:cc.png[Licencia Creative Commons]]
+
+A menos que se especifique explícitamente, el código fuente esta bajo una licencia https://opensource.org/licenses/BSD-2-Clause[BSD-2]footnote:[https://opensource.org/licenses/BSD-2-Clause].
+
+
+## https://elixircl.github.io/elixir-fullstack/[Leer Online]
+
+Este libro puede ser leido gratuitamente en  https://elixircl.github.io/elixir-fullstack.
+
+## Licencia
+
+### Documento
+
+Esta obra está bajo una http://creativecommons.org/licenses/by-nc-sa/4.0/[Licencia Creative Commons Atribución-No-Comercial-Compartir-Igual 4.0 Internacional]
+
+http://creativecommons.org/licenses/by-nc-sa/4.0/[image:https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png[Licencia Creative Commons]]
+
+### Código Fuente
+
+A menos que se especifique explícitamente, el código fuente esta bajo una licencia https://opensource.org/licenses/BSD-2-Clause[BSD-2].
+
+
+## 🤩 Créditos
+
+++++
+<p>
+  Hecho con <i class="fa fa-heart">&#9829;</i> por
+  <a href="https://ninjas.cl">
+    Ninjas.cl
+  </a>.
+</p>
+++++

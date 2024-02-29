@@ -1,0 +1,247 @@
+= AsciiDoc Article Title
+Firstname Lastname <author@asciidoctor.org>
+1.0, July 29, 2014, Asciidoctor 1.5 article template
+:toc: left
+:toclevels: 5
+:icons: font
+:stem: latexmath
+:quick-uri: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+
+Content entered directly below the header but before the first section heading is called the preamble.
+
+== Text formatting
+
+This is a paragraph of regular text.
+
+This is a paragraph with a *bold* word and an _italicized_ word. *_Bold italic_* is also possible.
+
+Words can also have internal b**ol**d and it__ali__c formatting.
+
+Some constrained `monospace text`, and some ``u``nconstrained ``m``onospace ``t``ext.
+
+Some Superscript^®^ text and some subscript text: H~2~O.
+
+=== Links
+
+The text at the end of this sentence is cross referenced to <<_third_level_heading,the third level heading>>
+
+This is a link to the https://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual^].
+
+This is an attribute reference {quick-uri}[which links this text to the Asciidoctor Quick Reference Guide^].
+
+=== Replacements
+
+* copyright: (C)
+* registered trademark: (R)
+* trademark: (TM)
+* em dash (between words): --
+* ellipses: ...
+* arrows: -> => <- <=
+* apostrophe: Sam's
+* XML entity (e.g., dagger): &#8224;
+
+=== Math
+
+Find the area under the graph of \$y = x^2\$ between \$x= 1\$ and \$x = 2\$.
+
+\[ \int_1^2 x^2 dx = \left[ \frac{x^3}{3} \right]_1^2 = \frac{2^3}{3} - \frac{1^3}{3} = \frac{7}{3} \]
+
+== Images
+
+.Image caption
+image::resources/picture.jpg[This is the image alt text.]
+
+== Footnotes
+
+This is another paragraph.footnote:[This is footnote text and will be displayed at the bottom of the article.]
+
+== Headings
+=== Second level heading
+==== Third level heading
+===== Fourth level heading
+====== Fifth level heading
+
+== Lists
+
+=== Unordered lists
+
+.Unordered list title
+* list item 1
+** nested list item
+*** nested nested list item 1
+*** nested nested list item 2
+* list item 2
+
+=== Ordered lists
+
+.Ordered list title
+. ordered list item
+.. nested ordered list item
+. ordered list item
+.. second level list item
+... third level list item
+... another third level list item
+... a final third level list item
+.. another second level list item
+
+You can override the number scheme for any level by setting its style (the first positional entry in a block attribute list). You can also set the starting number using the start attribute:
+
+["lowerroman", start=5]
+. Five
+. Six
+[loweralpha]
+.. a
+.. b
+.. c
+. Seven
+
+=== Labelled lists
+
+Here's an example of a labeled list that identifies parts of a computer:
+
+CPU:: The brain of the computer.
+Hard drive:: Permanent storage for operating system and/or user files.
+RAM:: Temporarily stores information the CPU uses during operation.
+Keyboard:: Used to enter text or control items on the screen.
+Mouse:: Used to point to and select items on your computer screen.
+Monitor:: Displays information in visual form using text and graphics.
+
+.A horizontal labelled list
+[horizontal]
+CPU:: The brain of the computer.
+Hard drive:: Permanent storage for operating system and/or user files.
+RAM:: Temporarily stores information the CPU uses during operation.
+
+.Labelled list with bullets
+Diary::
+* Milk
+* Eggs
+Bakery::
+* Bread
+Produce::
+* Bananas
+
+=== Mixed lists
+
+.Mixed unordered and ordered lists
+. Linux
+* Fedora
+* Ubuntu
+* Slackware
+. BSD
+* FreeBSD
+* NetBSD
+
+Here’s a list that mixes all three types of lists:
+
+Operating Systems::
+  . Linux
+    * Fedora
+    * Ubuntu
+    * Slackware
+  . BSD
+    * FreeBSD
+    * NetBSD
+Cloud Providers::
+  . PaaS
+    * OpenShift
+    * CloudBees
+  . IaaS
+    * Amazon EC2
+    * Rackspace
+
+== Blocks
+
+.Example block title
+====
+Content in an example block is subject to normal substitutions.
+====
+
+.Sidebar title
+****
+Sidebars contain aside text and are subject to normal substitutions.
+****
+
+[#id-for-listing-block]
+.Listing block title
+----
+Content in a listing block is subject to verbatim substitutions.
+Listing block content is commonly used to preserve code input.
+----
+
+== Tables
+
+.A simple table with a title
+|===
+|Column heading 1 |Column heading 2
+
+|Column 1, row 1
+|Column 2, row 1
+
+|Column 1, row 2
+|Column 2, row 2
+|===
+
+====
+.A table containing another nested table
+[cols=".^,<.^a,>.^a"]
+|===
+| \[X_nY_m\]
+| * \(X\) a ante \(i\)
+* \(Y\) a ante \(j\)
+| [cols=">.^"]
+!===
+! Trad. ! Stock. ! Esteq.
+!===
+|===
+====
+
+
+== Quotes
+
+[quote, firstname lastname, movie title]
+____
+This is a block quote or a prose excerpt.
+This is subject to normal substitutions.
+____
+
+[verse, firstname lastname, poem title and more]
+____
+This is a verse block.
+  Indents and endlines are preserved in verse blocks.
+____
+
+== Admonitions
+
+TIP: This is a tip. There are five admonition labels: Tip, Note, Important, Caution and Warning.
+
+NOTE: This is a note.
+
+IMPORTANT: This is important.
+
+CAUTION: Caution -- be careful!
+
+WARNING: This is a warning.
+
+=== Admonition blocks
+
+[NOTE]
+.A "NOTE" type admonition
+====
+This is an example of an admonition block.
+
+Unlike an admonition paragraph, it may contain any AsciiDoc content.
+The style can be any one of the admonition labels:
+
+* NOTE
+* TIP
+* WARNING
+* CAUTION
+* IMPORTANT
+====
+
+
+// This is a comment and won't be rendered.
+
+// Based on https://github.com/asciidoctor/asciidoctor.org/blob/master/docs/_includes/asciidoc-article-template.adoc[Asciidoctor article template] and the https://asciidoctor.org/docs/asciidoc-writers-guide/[AsaciiDoc Writer's Guide]
+

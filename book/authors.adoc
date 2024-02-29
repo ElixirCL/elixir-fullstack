@@ -1,0 +1,8 @@
+[preface]
+[role="authors"]
+
+== Sobre el Autor
+
+Camilo Castro es un Ingeniero en Software especializado
+en el desarrollo de aplicaciones Web y Móviles. 
+Actualmente su lenguaje de programación preferido es _Elixir_.

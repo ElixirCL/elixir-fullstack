@@ -1,0 +1,9 @@
+// [glossary]
+// == Glosario
+
+// Lista de conceptos utilizados a lo largo de este documento.
+
+// [glossary]
+
+// stack::
+//   Significa _"pila"_. Comunmente en la informática un _stack_ tecnológico tiene que ver con el conjunto de herramientas usado para desarrollar una solución de software.

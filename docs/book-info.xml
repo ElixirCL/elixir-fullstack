@@ -1,0 +1,44 @@
+<author>
+    <personname>
+        <honorific>Mr</honorific>
+        <firstname>Camilo</firstname>
+        <surname>Castro</surname>
+    </personname>
+</author>
+<isbn>XXX-XXXX-XXXX</isbn>
+<edition>1</edition>
+<copyright>
+  <year>2023</year>
+  <holder>Ninjas.cl.</holder>
+</copyright>
+<legalnotice>
+  <para>
+    Copyright &#169; by Camilo Castro
+  </para>
+  <para>
+    All rights reserved. This book or any portion thereof may not be reproduced or used in any manner whatsoever without the express written permission of the publisher except for the use of brief quotations in a book review.
+  </para>
+  <para>
+    Printed in Chile
+  </para>
+  <para>
+    First Printing, 2023
+  </para>
+  <para>
+    ISBN 0-9000000-0-0
+  </para>
+  <para>
+    Publisher
+  </para>
+  <para>
+    www.ninjas.cl
+  </para>
+</legalnotice>
+<cover>
+    <mediaobject>
+        <imageobject>
+            <imagedata fileref="assets/asal-lotfi-8ePZbdxnpi0-unsplash.jpg">
+            </imagedata>
+        </imageobject>
+    </mediaobject>
+</cover>

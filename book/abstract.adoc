@@ -1,0 +1,17 @@
+[abstract]
+== Introducción
+
+El siguiente documento da una pequeña pincelada sobre los conceptos
+necesarios para ser un desarrollador _"Full-Stack"_. Una persona
+capaz de entender los distintos componentes que engloban 
+un producto de software, principalmente en el área Web y Móvil.
+
+Se comienza con la introducción a la historia de la tecnología, 
+para luego ir al estado del ecosistema laboral actual, para continuar
+con una descripción de distintas tecnologías utilizadas en proyectos
+web y móviles. Finalmente termina con una descripción sobre el
+ecosistema de aplicaciones móviles.
+
+Es una información muy útil para las personas que están recién comenzando
+dentro del rubro y también para personas experimentadas que deseen
+repasar ciertos conceptos.

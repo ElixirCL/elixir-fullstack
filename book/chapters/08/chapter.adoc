@@ -1,0 +1,149 @@
+== Frontend con Javascript
+
+Las siglas DOM significan Document Object Model, o lo que es lo mismo, la estructura del documento HTML. Una página HTML está formada por múltiples etiquetas HTML, anidadas una dentro de otra, formando un árbol de etiquetas relacionadas entre sí, que se denomina árbol DOM (o simplemente DOM).
+
+image::que-es-dom.png[]
+
+En Javascript, cuando nos referimos al DOM nos referimos a esta estructura de árbol, mediante la cuál podemos acceder a ella y modificar los elementos del HTML desde Javascript, añadiendo nuevas etiquetas, modificando o eliminando otras, cambiando sus atributos HTML, añadiendo clases, cambiando el contenido de texto, etc.
+
+Si únicamente utilizamos HTML/CSS, solo podremos crear páginas «estáticas», es decir, páginas que no pueden mostrarse de una forma diferente dependiendo de acciones del usuario. Si añadimos Javascript, podremos crear páginas «dinámicas», es decir, aprovechar la potencia y flexibilidad que nos da un lenguaje de programación para crear documentos y páginas mucho más ricas, con una experiencia más completa y con las que se pueden automatizar un gran abanico de tareas y acciones.
+
+* https://lenguajejs.com/javascript/dom/que-es/
+
+=== Sintaxis Básica
+
+[,js]
+----
+(() => {
+    // Variables
+    let mivar = 1313;
+
+    // Constantes
+    const constante = 42;
+    const funcion = () => 42;
+    const funcion2 = function(parametro) {
+        return parametro;
+    };
+
+    console.log(constante);
+    console.log(funcion());
+    console.log(funcion2(42))
+
+    // Objetos
+    const objeto = {
+        valor: "este es otro valor",
+        funcion: (parametro) => {
+            return parametro;
+        }
+    };
+
+    objeto.clave = "Una nueva clave";
+
+    console.log(JSON.stringify(objeto));
+
+    // Transformacion de un String Json a Objeto
+    const json = JSON.parse(`
+        {"clave": "este es un valor"}
+    `);
+
+    console.log(json["clave"]);
+
+    // Creación de una clase
+    class Clase {
+        metodo(parametro) {
+            return parametro;
+        }
+    }
+
+    console.log((new Clase()).metodo(42));
+})();
+----
+
+=== Función Auto ejecutable
+
+Cuando necesitamos manipular el DOM desde la consola del navegador
+u otros contextos, se recomienda encapsular el código
+dentro de una función para evitar conflictos.
+
+Una forma de realizar esto es utilizar una *Función Auto Ejecutable* que
+es invocada automáticamente luego de ser definida.
+
+[,js]
+----
+(() => {
+ // Código
+})();
+----
+
+* https://keepcoding.io/blog/funciones-autoejecutables-en-javascript/
+
+=== Funcional
+
+[,js]
+----
+(() => {
+    [1, 2, 3].forEach(item => console.log(item + 1));
+
+    console.log(
+        [3, 4, 5].map(item => item + 1)
+    );
+
+    console.log(
+        [6, 7, 8].reduce((acc, valor) => acc + valor, 0)
+    );
+
+    console.log(
+        [10, 11, 12].filter(number => number % 2 == 0)
+    );
+})();
+----
+
+=== Manipulación del DOM
+
+El DOM puede ser manipulado al buscar elementos
+utilizando los atributos `id` y  `class` (entre otros) del HTML.
+
+*Ejemplo buscando por id*
+
+[,html]
+----
+<div id="mi-elemento">Cambiame</div>
+----
+
+[,js]
+----
+(() => {
+    const elemento = document.getElementById("mi-elemento");
+    elemento.innerHTML = '<p>Nuevo HTML</p>';
+})();
+----
+
+*Ejemplo buscando por tipo de elemento*
+
+[,html]
+----
+<div id="imagenes">
+    <img class="imagen" src="https://place-hold.it/300x200">
+    <img class="imagen" src="https://place-hold.it/300x300">
+</div>
+----
+
+[,js]
+----
+(() => {
+    const elementos = document.getElementsByTagName("img");
+    Array.from(elementos).forEach(elemento => {
+       elemento.src = "https://place-hold.it/400x400"
+    });
+})();
+----
+
+* https://developer.mozilla.org/es/docs/Web/API/Document/getElementById
+* https://developer.mozilla.org/es/docs/Web/API/Document/getElementsByClassName
+* https://developer.mozilla.org/es/docs/Web/API/Document/getElementsByTagName
+
+=== Inspector del Navegador
+
+Inspeccionar elementos es una característica de los navegadores web que permite ver y editar el código fuente de un sitio web, incluidos sus archivos HTML, CSS, JavaScript y multimedia. Cuando modificas el código fuente con la herramienta de inspección, los cambios se muestran en vivo dentro de la ventana del navegador.
+
+* https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/open_the_inspector/index.html

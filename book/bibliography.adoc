@@ -1,0 +1,16 @@
+[bibliography]
+== Bibliografía
+
+Una lista de recursos complementarios y referenciales.
+
+[bibliography]
+.Libros
+
+- [[[webdesignplayground]]] Paul McFedries. 'Web Design Playground: HTML & CSS The Interactive Way'. https://www.manning.com/books/web-design-playground. ISBN 978-1617294402.
+
+- [[revolucionariosciber]] Eden Medina. 'Revolucionarios cibernéticos. Tecnología y política en el Chile de Salvador Allende'. https://lom.cl/products/revolucionarios-ciberneticos-tecnologia-y-politica-en-el-chile-de-salvador-allende. ISBN 978-9560004352.
+
+- [[tejiendolared]] Tim Berners-Lee. 'Tejiendo la Red'. ISBN 84-323-1040-9
+
+//.Sitios Web
+//- [[[googlepython]]] Google. 'Python Class' http://code.google.com/edu/languages/google-python-class/

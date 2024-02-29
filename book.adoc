@@ -1,0 +1,78 @@
+= Elixir FullStack
+Camilo A. Castro <https://github.com/clsource[@clsource]>
+:doctype: book
+:encoding: utf-8
+:numbered:
+:icons: font
+:username: clsource
+:source: https://github.com/ElixirCL/elixir-fullstack
+:producer: Ninjas.cl
+:copyright: CC-BY-NC-SA 4.0
+:lang: es
+:description: Un libro sobre desarrollo fullstack con Elixir.
+:keywords: web, mobile, programación, lenguaje, referencia, elixir, fullstack
+:imagesdir: book/images
+:front-cover-image: image:cover.jpg[Front Cover,1050,1600]
+:epub-chapter-level: 2
+:toc: left
+:toclevels: 3
+:ext-relative:
+:source-linenums-option:
+:source-highlighter: highlight.js
+:highlightjs-languages: css, javascript, markdown, ruby, wren, elixir, erlang, swift, rust, python, yaml
+:highlightjs-theme: srcery
+:highlightjsdir: highlight
+:stem: latexmath
+:appendix-caption: Anexo
+:appendix-refsig: {appendix-caption}
+:example-caption: Ejemplo
+:figure-caption: Figura
+:caution-caption: Precaución
+:important-caption: Importante
+:tip-caption: Sugerencia
+:note-caption: Nota
+:warning-caption: Aviso
+:chapter-label: Capítulo
+:last-update-label: Última actualización
+ifdef::listing-caption[:listing-caption: Lista]
+ifdef::preface-title[:preface-title: Prefacio]
+:table-caption: Tabla
+:toc-title: Tabla de Contenido
+:untitled-label: Sin título
+:version-label: Versión
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:outfilesuffix: .adoc
+:!toc-title:
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+
+////
+Organize your book chapter by chapter
+////
+include::book/colophon.adoc[]
+
+include::book/authors.adoc[]
+
+include::book/dedication.adoc[]
+
+include::book/foreword.adoc[]
+
+include::book/abstract.adoc[]
+
+include::book/chapters/chapters.adoc[]
+
+//include::book/afterword.adoc[]
+
+//include::book/appendixes/appendixes.adoc[]
+
+//include::book/glossary.adoc[]
+
+include::book/bibliography.adoc[]
+
+include::book/index.adoc[]
