@@ -1732,34 +1732,45 @@ El tener fundamentos sólidos en lo técnico y en lo profesional, permitirá sab
 </listitem>
 </itemizedlist>
 </section>
-<section xml:id="_patrón_mvc">
-<title>Patrón MVC</title>
-<simpara>MVC (Modelo-Vista-Controlador) es un patrón en el diseño de software comúnmente utilizado para implementar interfaces de usuario, datos y lógica de control. Enfatiza una separación entre la lógica de negocios y su visualización. Esta "separación de preocupaciones" proporciona una mejor división del trabajo y una mejora de mantenimiento. Algunos otros patrones de diseño se basan en MVC, como MVVM (Modelo-Vista-modelo de vista), MVP (Modelo-Vista-Presentador) y MVW (Modelo-Vista-Whatever).</simpara>
-<simpara>Las tres partes del patrón de diseño de software MVC se pueden describir de la siguiente manera:</simpara>
+<section xml:id="_patrón_modelo_vista_controlador">
+<title>Patrón Modelo Vista Controlador</title>
+<simpara>MVC (Modelo-Vista-Controlador) es un patrón en el diseño de software comúnmente utilizado para implementar interfaces de usuario, datos y lógica de control. Enfatiza una separación entre la lógica de negocios y su visualización. Esta "separación de preocupaciones" proporciona una mejor división del trabajo y una mejora de mantenimiento. Algunos otros patrones de diseño se basan en MVC, como MVVM (Modelo-Vista-VistaModelo), MVP (Modelo-Vista-Presentador) y MVW (Modelo-Vista-Whatever).</simpara>
+<simpara>El patrón Modelo-Vista-Controlador (MVC), es uno de los primeros que se debería aprender. Es tan fundamental que ha sobrevivido décadas en la industria y sus ideas se han esparcido por muchas plataformas. Es el padre de muchos otros patrones derivados como MVVM (Modelo-Vista-VistaModelo), entre otros.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/patterns/mvc1.png"/>
+</imageobject>
+<textobject><phrase>MVC</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<simpara>Este patrón es esencial debido a que ayuda a responder una de las preguntas más comunes: <emphasis>¿Dónde debería poner esta pieza de código?</emphasis>.</simpara>
+<simpara>El patrón <emphasis>MVC</emphasis> es uno de arquitectura. Entrega un mapa de la estructura de la aplicación y como su nombre dice, consiste en tres capas: modelo, vista y controlador.</simpara>
+<simpara>El siguiente diagrama de Apple muestra un poco la relación de las vistas y controladores.</simpara>
+<simpara><inlinemediaobject>
+<imageobject>
+<imagedata fileref="book/images/patterns/applemvc.png"/>
+</imageobject>
+<textobject><phrase>Apple MVC</phrase></textobject>
+</inlinemediaobject></simpara>
 <itemizedlist>
 <listitem>
-<simpara>Modelo: Maneja datos y lógica de negocios.</simpara>
-</listitem>
-<listitem>
-<simpara>Vista: Se encarga del disseño y presentación.</simpara>
-</listitem>
-<listitem>
-<simpara>Controlador: Enruta comandos a los modelos y vistas.</simpara>
+<simpara><link xl:href="https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/index.html">https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/index.html</link></simpara>
 </listitem>
 </itemizedlist>
+<simpara>El principal problema de MVC y por qué razón nacieron otros patrones derivados es debido a la tendencia de que los controladores crecían de forma exponencial. Incluso llegando a ser llamado Massive View Controllers, por la cantidad de responsabilidades que tenían que cumplir.</simpara>
 <section xml:id="_modelo">
 <title>Modelo</title>
-<simpara>El modelo define qué datos debe contener la aplicación. Si el estado de estos datos cambia, el modelo generalmente notificará a la vista (para que la pantalla pueda cambiar según sea necesario) y, a veces, el controlador (si se necesita una lógica diferente para controlar la vista actualizada).</simpara>
+<simpara>La capa modelo (<emphasis>model</emphasis>), es la capa que maneja los datos y la lógica de negocios, independiente de su representación visual. Define qué datos debe contener la aplicación. Si el estado de estos datos cambia, el modelo generalmente notificará a la vista (para que la pantalla pueda cambiar según sea necesario) y, a veces, el controlador (si se necesita una lógica diferente para controlar la vista actualizada).</simpara>
 <simpara>Volviendo a nuestra aplicación de lista de compras, el modelo especificará qué datos deben contener los artículos de la lista (artículo, precio, etc.) y qué artículos de la lista ya están presentes.</simpara>
 </section>
 <section xml:id="_vista">
 <title>Vista</title>
-<simpara>La vista define cómo se deben mostrar los datos de la aplicación.</simpara>
-<simpara>En nuestra aplicación de lista de compras, la vista definiría cómo se presenta la lista al usuario y recibiría los datos para mostrar desde el modelo.</simpara>
+<simpara>La capa vista (<emphasis>view</emphasis>) es la que muestra la información al usuario y permite interacciones, independiente de la capa de datos. La vista define cómo se deben mostrar los datos de la aplicación. En nuestra aplicación de lista de compras, la vista definiría cómo se presenta la lista al usuario y recibiría los datos para mostrar desde el modelo.</simpara>
 </section>
 <section xml:id="_controlador">
 <title>Controlador</title>
-<simpara>El controlador contiene una lógica que actualiza el modelo y/o vista en respuesta a las entradas de los usuarios de la aplicación.</simpara>
+<simpara>La capa controlador (<emphasis>controller</emphasis>) es la que actúa como puente entre modelo y vista. Almacena y manipula el estado de la aplicación y proporciona datos a las vista, interpreta las acciones del usuario según las reglas de negocio. El controlador contiene una lógica que actualiza el modelo y/o vista en respuesta a las entradas de los usuarios de la aplicación.</simpara>
 <simpara>Entonces, por ejemplo, nuestra lista de compras podría tener formularios de entrada y botones que nos permitan agregar o eliminar artículos. Estas acciones requieren que se actualice el modelo, por lo que la entrada se envía al controlador, que luego manipula el modelo según corresponda, que luego envía datos actualizados a la vista.</simpara>
 <simpara>Sin embargo, es posible que también se desee actualizar la vista para mostrar los datos en un formato diferente, por ejemplo, cambiar el orden de los artículos de menor a mayor precio o en orden alfabético. En este caso, el controlador podría manejar esto directamente sin necesidad de actualizar el modelo.</simpara>
 <informalfigure>
@@ -1772,6 +1783,60 @@ El tener fundamentos sólidos en lo técnico y en lo profesional, permitirá sab
 </informalfigure>
 </section>
 </section>
+<section xml:id="_patrón_modelo_vista_vista_modelo">
+<title>Patrón Modelo Vista Vista-Modelo</title>
+<simpara>El patrón Modelo-Vista-VistaModelo (<emphasis>MVVM</emphasis>), es un patrón de arquitectura que facilita estructurar la aplicación dividiéndola en tres roles.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/patterns/mvvm.png"/>
+</imageobject>
+<textobject><phrase>MVVM</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<itemizedlist>
+<listitem>
+<simpara>El modelo (<emphasis>model</emphasis>): representa los datos y lógica de negocio de la aplicación.</simpara>
+</listitem>
+<listitem>
+<simpara>La vista (<emphasis>view</emphasis>): Muestra la información al usuario y permite la interacción.</simpara>
+</listitem>
+<listitem>
+<simpara>La vista-modelo (<emphasis>view-model</emphasis>): Actúa como puente entre las capas de vista y modelo. Contiene el estado de la vista y maneja la lógica de interacciones.</simpara>
+</listitem>
+</itemizedlist>
+<section xml:id="_diferencias_entre_mvc_y_mvvm">
+<title>¿Diferencias entre MVC y MVVM?</title>
+<simpara>Al comparar los patrones de <emphasis>MVC</emphasis> y <emphasis>MVVM</emphasis> es notable la similitud y son casi idénticos.</simpara>
+<simpara>La principal diferencia radica en que <emphasis>MVC</emphasis> hace énfasis en los controladores. Encargados de manejar las interacciones para varias vistas. En cambio en <emphasis>MVVM</emphasis> la vista-modelo es un único componente que controla el comportamiento y estado de una única vista. Comúnmente representado como un componente.</simpara>
+<simpara>Otra diferencia es la forma de comunicación entre la vista y su controlador. En <emphasis>MVC</emphasis> la vista y el controlador tienen funciones definidas que son llamadas de forma imperativa para informar sobre una acción o requerir actualizar la información en la vista. Por otra parte en <emphasis>MVVM</emphasis> la vista y la vista-modelo están unidas por un mecanismo de enlazado (binding) que automáticamente informa sobre interacciones realizadas en la vista y cambios ocurridos en la vista-modelo. Estos mecanismos de enlazado varían según la plataforma.</simpara>
+<simpara>Las capas de <emphasis>MVC</emphasis> interactúan y son interpretadas dependiendo de algunos factores como:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>La plataforma donde se implementa.</simpara>
+</listitem>
+<listitem>
+<simpara>La experiencia del profesional y su interpretación del patrón.</simpara>
+</listitem>
+<listitem>
+<simpara>La moda del día (Los devs igual pueden seguir modas).</simpara>
+</listitem>
+</itemizedlist>
+<simpara>El patrón Modelo-Vista-VistaModelo (<emphasis>MVVM</emphasis>) es principalmente una versión de <emphasis>MVC</emphasis> bajo un nombre diferente.</simpara>
+<simpara>Si bien hay ligeras diferencias, perfectamente se pueden utilizar los conceptos de <emphasis>MVC</emphasis> y <emphasis>MVVM</emphasis> de forma unificada sin problemas.</simpara>
+</section>
+</section>
+<section xml:id="_la_importancia_de_mvc_y_mvvm">
+<title>La Importancia de MVC y MVVM</title>
+<simpara>El utilizar un patrón de arquitectura como <emphasis>MVVM</emphasis> con roles claramente definidos nos ayudan cumplir principios de diseño como la separación de conceptos. Lo que es una piedra angular para mantener código bien organizado, fácilmente entendible y que sus pruebas unitarias son viables de implementar.</simpara>
+<simpara>Utilizar patrones de arquitectura como <emphasis>MVVM</emphasis> es sumamente importante. A pesar de que los frameworks otorgen herramientas innovadoras para elaborar aplicaciones, si no utilizamos patrones de arquitectura el código se irá acumulando, aumentando de complejidad, para finalmente crear monolitos masivos que son difíciles de mantener y probar.</simpara>
+<simpara>El hecho de que algunos frameworks manejen automáticamente la actualización de las vistas no justifica abandonar las buenas prácticas en el desarrollo de software que han existido por décadas en múltiples plataformas.</simpara>
+</section>
+<section xml:id="_más_allá_de_mvc">
+<title>Más allá de MVC</title>
+<simpara>Los patrones de arquitectura como <emphasis>MVC</emphasis> y <emphasis>MVVM</emphasis> tienen su foco en aplicaciones donde principalmente tenemos interacciones de usuario (UX), pero muchas veces las aplicaciones deben comunicar con servicios externos y otros elementos que necesitan otras formas de gestionar la arquitectura de código.</simpara>
+<simpara>Para esto se recomienda utilizar patrones como los definidos en el Diseño Orientado a Dominio (Domain Driven Design) y arquitectura Hexagonal.</simpara>
+</section>
 <section xml:id="_lectura_complementaria_3">
 <title>Lectura Complementaria</title>
 <itemizedlist>
@@ -1780,6 +1845,21 @@ El tener fundamentos sólidos en lo técnico y en lo profesional, permitirá sab
 </listitem>
 <listitem>
 <simpara><link xl:href="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador">https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://matteomanferdini.com/mvvm-swiftui/">https://matteomanferdini.com/mvvm-swiftui/</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://en.wikipedia.org/wiki/Separation_of_concerns">https://en.wikipedia.org/wiki/Separation_of_concerns</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://en.wikipedia.org/wiki/Coupling_(computer_programming">https://en.wikipedia.org/wiki/Coupling_(computer_programming</link>)</simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://en.wikipedia.org/wiki/Hexagonal_architecture_(software">https://en.wikipedia.org/wiki/Hexagonal_architecture_(software</link>)</simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://en.wikipedia.org/wiki/Domain-driven_design">https://en.wikipedia.org/wiki/Domain-driven_design</link></simpara>
 </listitem>
 </itemizedlist>
 </section>
@@ -1799,6 +1879,95 @@ por lo que deben diseñarse para manejar grandes cantidades de tráfico y datos.
 sistemas y cómo aplicarlos. En las primeras etapas de su carrera, aprender diseño de sistemas le permitirá abordar
 problemas de diseño de software con más confianza y aplicar principios de diseño a sus proyectos.</simpara>
 <simpara>El diseño de sistemas es un tema enorme. Cada uno tiene un enfoque diferente ya que no existen pautas paso a paso.</simpara>
+<section xml:id="_estimación_de_costos">
+<title>Estimación de Costos</title>
+<simpara>Una estimación es un ejercicio de calcular los costos y requerimientos de un sistema de forma que se pueda tener una idea y referencia sobre el funcionamiento y costos futuros del mismo.</simpara>
+<simpara>Estimar nos permite validar si la solución está dentro de los parámetros aceptables y analizar su factibilidad técnica y económica. La estimación es suficiente con que sea cercana al valor real, debido a que muchas variables pueden afectar los costos en el futuro.</simpara>
+<simpara>Para poder estimar se necesitan algunas nociones y métricas básicas que pueden ser aplicadas a cualquier sistema.</simpara>
+<section xml:id="_unidad_de_volumen_de_datos">
+<title>Unidad de Volumen de Datos</title>
+<simpara>El almacenamiento y transferencia de datos comunmente se mide en <emphasis>Bytes</emphasis> y potencias de 2, debido a que un caracter <emphasis>ASCII</emphasis> es 1 byte (8 bits).</simpara>
+<simpara>La siguiente tabla muestra la unidad de volumen de datos.</simpara>
+<informaltable frame="all" rowsep="1" colsep="1">
+<tgroup cols="4">
+<colspec colname="col_1" colwidth="25*"/>
+<colspec colname="col_2" colwidth="25*"/>
+<colspec colname="col_3" colwidth="25*"/>
+<colspec colname="col_4" colwidth="25*"/>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara>Potencia</simpara></entry>
+<entry align="left" valign="top"><simpara>Valor Aproximado</simpara></entry>
+<entry align="left" valign="top"><simpara>Nombre</simpara></entry>
+<entry align="left" valign="top"><simpara>Abreviación</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>1</simpara></entry>
+<entry align="left" valign="top"><simpara>1 Uno (bit)</simpara></entry>
+<entry align="left" valign="top"><simpara>Bit</simpara></entry>
+<entry align="left" valign="top"><simpara>b</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>8</simpara></entry>
+<entry align="left" valign="top"><simpara>8 Ocho (bits)</simpara></entry>
+<entry align="left" valign="top"><simpara>Byte</simpara></entry>
+<entry align="left" valign="top"><simpara>B</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>10</simpara></entry>
+<entry align="left" valign="top"><simpara>1 Mil (bits)</simpara></entry>
+<entry align="left" valign="top"><simpara>Kilobyte</simpara></entry>
+<entry align="left" valign="top"><simpara>1 KB</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>20</simpara></entry>
+<entry align="left" valign="top"><simpara>1 Millón (bits)</simpara></entry>
+<entry align="left" valign="top"><simpara>Megabyte</simpara></entry>
+<entry align="left" valign="top"><simpara>1 MB</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>30</simpara></entry>
+<entry align="left" valign="top"><simpara>1 Mil Millón (bits)</simpara></entry>
+<entry align="left" valign="top"><simpara>Gigabyte</simpara></entry>
+<entry align="left" valign="top"><simpara>1 GB</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>40</simpara></entry>
+<entry align="left" valign="top"><simpara>1 Billón (bits)</simpara></entry>
+<entry align="left" valign="top"><simpara>Terabyte</simpara></entry>
+<entry align="left" valign="top"><simpara>1 TB</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>50</simpara></entry>
+<entry align="left" valign="top"><simpara>1 Cuatrillón (bits)</simpara></entry>
+<entry align="left" valign="top"><simpara>Petabyte</simpara></entry>
+<entry align="left" valign="top"><simpara>1 PB</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</section>
+<section xml:id="_números_de_latencia">
+<title>Números de Latencia</title>
+<simpara>La latencia nos indica cuánto se demora un proceso desde que se hace la petición hasta recibir una respuesta. A mayor cantidad de latencia, mayor será el tiempo que necesitemos esperar para obtener una respuesta. El tiempo de retraso de las latencias puede crear ineficiencias, especialmente en las operaciones en tiempo real.</simpara>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/systemd/latenciagrafico.png"/>
+</imageobject>
+<textobject><phrase>Latencia Gráfico</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<informalfigure>
+<mediaobject>
+<imageobject>
+<imagedata fileref="book/images/systemd/latencia.jpg"/>
+</imageobject>
+<textobject><phrase>Latencia</phrase></textobject>
+</mediaobject>
+</informalfigure>
+</section>
+</section>
 <section xml:id="_escalado_horizontal_y_vertical">
 <title>Escalado horizontal y vertical</title>
 <simpara>La escalabilidad se refiere a la capacidad de una aplicación para manejar y soportar una mayor carga de trabajo sin sacrificar la latencia. Una aplicación necesita una potencia informática sólida para escalar bien. Los servidores deben ser lo suficientemente potentes para manejar mayores cargas de tráfico. Hay dos formas principales de escalar una aplicación: horizontalmente y verticalmente.</simpara>
@@ -1904,6 +2073,12 @@ Las más conocidas son <emphasis>Kafka</emphasis> o <emphasis>RabbitMQ</emphasis
 </listitem>
 <listitem>
 <simpara><link xl:href="https://www.educative.io/path/scalability-system-design">https://www.educative.io/path/scalability-system-design</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://aws.amazon.com/es/what-is/latency/">https://aws.amazon.com/es/what-is/latency/</link></simpara>
+</listitem>
+<listitem>
+<simpara>Libro System Design Interview <xref linkend="systemdesign"/>.</simpara>
 </listitem>
 </itemizedlist>
 </section>
@@ -5441,6 +5616,9 @@ A pesar de ejecutarse en menos hardware, los tiempos de respuesta se redujeron s
 </bibliomixed>
 <bibliomixed>
 <bibliomisc><anchor xml:id="tejiendolared" xreflabel="[tejiendolared]"/> Tim Berners-Lee. 'Tejiendo la Red'. ISBN 84-323-1040-9</bibliomisc>
+</bibliomixed>
+<bibliomixed>
+<bibliomisc><anchor xml:id="systemdesign" xreflabel="[systemdesign]"/> Alex Xu. 'System Design Interview: An Insider’s Guide'. ISBN 979-8664653403.</bibliomisc>
 </bibliomixed>
 </bibliodiv>
 </bibliography>

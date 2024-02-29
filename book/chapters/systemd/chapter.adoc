@@ -16,6 +16,44 @@ problemas de diseño de software con más confianza y aplicar principios de dise
 
 El diseño de sistemas es un tema enorme. Cada uno tiene un enfoque diferente ya que no existen pautas paso a paso.
 
+=== Estimación de Costos
+
+Una estimación es un ejercicio de calcular los costos y requerimientos de un sistema de forma que se pueda tener una idea y referencia sobre el funcionamiento y costos futuros del mismo.
+
+Estimar nos permite validar si la solución está dentro de los parámetros aceptables y analizar su factibilidad técnica y económica. La estimación es suficiente con que sea cercana al valor real, debido a que muchas variables pueden afectar los costos en el futuro.
+
+Para poder estimar se necesitan algunas nociones y métricas básicas que pueden ser aplicadas a cualquier sistema.
+
+==== Unidad de Volumen de Datos
+
+El almacenamiento y transferencia de datos comunmente se mide en _Bytes_ y potencias de 2, debido a que un caracter _ASCII_ es 1 byte (8 bits).
+
+La siguiente tabla muestra la unidad de volumen de datos.
+
+|===
+| Potencia | Valor Aproximado | Nombre | Abreviación 
+| 1 | 1 Uno (bit) | Bit | b 
+| 8 | 8 Ocho (bits) | Byte | B 
+| 10 | 1 Mil (bits)| Kilobyte | 1 KB 
+| 20 | 1 Millón (bits)| Megabyte | 1 MB 
+| 30 | 1 Mil Millón (bits)| Gigabyte | 1 GB 
+| 40 | 1 Billón (bits)| Terabyte | 1 TB 
+| 50 | 1 Cuatrillón (bits)| Petabyte | 1 PB  
+|===
+
+==== Números de Latencia
+
+La latencia nos indica cuánto se demora un proceso desde que se hace la petición hasta recibir una respuesta. A mayor cantidad de latencia, mayor será el tiempo que necesitemos esperar para obtener una respuesta. El tiempo de retraso de las latencias puede crear ineficiencias, especialmente en las operaciones en tiempo real.
+
+Los siguientes gráficos contienen números aproximados, ya que según el avance tecnológico pueden variar con los años.
+
+Basado en los números de Jeff Dean y Peter Norvig (http://norvig.com/21-days.html#answers).
+
+
+image::latenciagrafico.png[Latencia Gráfico]
+
+image::latencia.jpg[Latencia]
+
 === Escalado horizontal y vertical
 
 La escalabilidad se refiere a la capacidad de una aplicación para manejar y soportar una mayor carga de trabajo sin sacrificar la latencia. Una aplicación necesita una potencia informática sólida para escalar bien. Los servidores deben ser lo suficientemente potentes para manejar mayores cargas de tráfico. Hay dos formas principales de escalar una aplicación: horizontalmente y verticalmente.
@@ -83,3 +121,5 @@ image::cache.png[]
 * https://www.educative.io/courses/web-application-software-architecture-101
 * https://www.geeksforgeeks.org/database-sharding-a-system-design-concept/
 * https://www.educative.io/path/scalability-system-design
+* https://aws.amazon.com/es/what-is/latency/
+* Libro System Design Interview <<systemdesign>>.

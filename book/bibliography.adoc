@@ -12,5 +12,7 @@ Una lista de recursos complementarios y referenciales.
 
 - [[tejiendolared]] Tim Berners-Lee. 'Tejiendo la Red'. ISBN 84-323-1040-9
 
+- [[systemdesign]] Alex Xu. 'System Design Interview: An Insider’s Guide'. ISBN 979-8664653403.
+
 //.Sitios Web
 //- [[[googlepython]]] Google. 'Python Class' http://code.google.com/edu/languages/google-python-class/
