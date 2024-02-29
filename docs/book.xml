@@ -5119,8 +5119,8 @@ del tipo <literal>x = a + 1</literal>. Es decir que estamos diciendo que <litera
 tienen el mismo valor.</simpara>
 <programlisting language="elixir" linenumbering="numbered"># a = 1
 # b = "elixir"
-# c = "cinf1085"
-{a, b, c} = {1, "elixir", "cinf1085"}</programlisting>
+# c = "ninjas"
+{a, b, c} = {1, "elixir", "ninjas"}</programlisting>
 <simpara><emphasis role="strong">Enlaces</emphasis></simpara>
 <itemizedlist>
 <listitem>

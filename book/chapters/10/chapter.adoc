@@ -53,8 +53,8 @@ tienen el mismo valor.
 ----
 # a = 1
 # b = "elixir"
-# c = "cinf1085"
-{a, b, c} = {1, "elixir", "cinf1085"}
+# c = "ninjas"
+{a, b, c} = {1, "elixir", "ninjas"}
 ----
 
 *Enlaces*
