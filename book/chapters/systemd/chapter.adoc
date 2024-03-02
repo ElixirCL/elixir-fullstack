@@ -285,6 +285,7 @@ Una vez que las necesidades de la aplicación lo requieran, se puede buscar la c
 
 La escalabilidad se refiere a la capacidad de una aplicación para manejar y soportar una mayor carga de trabajo sin sacrificar la latencia. Una aplicación necesita una potencia informática sólida para escalar bien. Los servidores deben ser lo suficientemente potentes para manejar mayores cargas de tráfico. Hay dos formas principales de escalar una aplicación: horizontalmente y verticalmente.
 
+
 ==== Escalado Horizontal
 
 El escalamiento horizontal, o ampliación, significa agregar más
@@ -297,8 +298,6 @@ En el escalado horizontal, agrega más máquinas en paralelo para hacer frente a
 
 El escalamiento vertical, o ampliación, significa agregar más potencia a su servidor. Aumenta la potencia de el hardware que ejecuta la aplicación.
 El escalado vertical utiliza una máquina enorme que maneja todas sus solicitudes y mejora el tiempo de respuesta y el rendimiento. Aunque ofrece llamadas de red más rápidas, coherencia de datos y sin equilibrio de carga, tiene un único punto de falla y limitaciones de hardware.
-
-image::scaling.png[]
 
 === Balanceo de Carga (Load Balancer)
 

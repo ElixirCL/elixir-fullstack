@@ -2268,27 +2268,27 @@ obtenemos el 50% de 300 millones.</simpara>
 </listitem>
 </itemizedlist>
 <simpara>Sabemos que con 150 millones de usuarios diarios, cada usuario realiza 2 posts por día. Esto lo debemos transformar a segundos.</simpara>
-<screen>posts_por_dia = 150 millones usuarios * 2 posts
+<programlisting language="text" linenumbering="numbered">posts_por_dia = 150 millones usuarios * 2 posts
 horas_por_dia = 24
 segundos_por_dia = 3600
 
 QPS = posts_por_dia / horas_por_dia / segundos_por_dia
-QPS = ~3500 Queries por Segundo.</screen>
+QPS = ~3500 Queries por Segundo.</programlisting>
 <simpara>Ahora si tomamos la cantidad total de usuarios y asumiendo que todos
 los usuarios realizan dos posts en un mismo día</simpara>
-<screen>QPS_MAX = 2 * QPS = ~7000 Queries por Segundo.</screen>
+<programlisting language="text" linenumbering="numbered">QPS_MAX = 2 * QPS = ~7000 Queries por Segundo.</programlisting>
 </section>
 <section xml:id="_almacenamiento_estimado">
 <title>Almacenamiento Estimado</title>
 <simpara>Ahora si definimos que cada post contiene la siguiente información:</simpara>
-<screen>id  varchar(64) -- cadena de caracteres de 64 bytes
+<programlisting language="sql" linenumbering="numbered">id  varchar(64) -- cadena de caracteres de 64 bytes
 text varchar(140) -- cadena de caracteres de 140 bytes
-media blob(1MB) -- imagen de 1 MegaByte</screen>
+media blob(1MB) -- imagen de 1 MegaByte</programlisting>
 <simpara>Utilizando la <literal>QPS</literal> podemos calcular cuánto espacio de almacenamiento necesitamos.</simpara>
-<screen>peso_imagen = 10% * 1 MB
+<programlisting language="text" linenumbering="numbered">peso_imagen = 10% * 1 MB
 posts_por_dia * peso_imagen
 terabytes_por_dia = 30
-terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes</screen>
+terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes</programlisting>
 </section>
 </section>
 </section>
@@ -2393,14 +2393,6 @@ Aumenta la potencia computacional del sistema en su conjunto.</simpara>
 <title>Escalado Vertical</title>
 <simpara>El escalamiento vertical, o ampliación, significa agregar más potencia a su servidor. Aumenta la potencia de el hardware que ejecuta la aplicación.
 El escalado vertical utiliza una máquina enorme que maneja todas sus solicitudes y mejora el tiempo de respuesta y el rendimiento. Aunque ofrece llamadas de red más rápidas, coherencia de datos y sin equilibrio de carga, tiene un único punto de falla y limitaciones de hardware.</simpara>
-<informalfigure>
-<mediaobject>
-<imageobject>
-<imagedata fileref="book/images/systemd/scaling.png"/>
-</imageobject>
-<textobject><phrase>scaling</phrase></textobject>
-</mediaobject>
-</informalfigure>
 </section>
 </section>
 <section xml:id="_balanceo_de_carga_load_balancer">
@@ -6023,13 +6015,25 @@ A pesar de ejecutarse en menos hardware, los tiempos de respuesta se redujeron s
 <bibliomisc><anchor xml:id="webdesignplayground" xreflabel="[webdesignplayground]"/>[webdesignplayground] Paul McFedries. 'Web Design Playground: HTML &amp; CSS The Interactive Way'. <link xl:href="https://www.manning.com/books/web-design-playground">https://www.manning.com/books/web-design-playground</link>. ISBN 978-1617294402.</bibliomisc>
 </bibliomixed>
 <bibliomixed>
-<bibliomisc><anchor xml:id="revolucionariosciber" xreflabel="[revolucionariosciber]"/> Eden Medina. 'Revolucionarios cibernéticos. Tecnología y política en el Chile de Salvador Allende'. <link xl:href="https://lom.cl/products/revolucionarios-ciberneticos-tecnologia-y-politica-en-el-chile-de-salvador-allende">https://lom.cl/products/revolucionarios-ciberneticos-tecnologia-y-politica-en-el-chile-de-salvador-allende</link>. ISBN 978-9560004352.</bibliomisc>
+<bibliomisc>[<anchor xml:id="grokkingwas" xreflabel="[grokkingwas]"/> Malcolm McDonald. 'Grokking Web Application Security'. <link xl:href="https://www.manning.com/books/grokking-web-application-security">https://www.manning.com/books/grokking-web-application-security</link>. ISBN 978-1633438262.</bibliomisc>
 </bibliomixed>
 <bibliomixed>
-<bibliomisc><anchor xml:id="tejiendolared" xreflabel="[tejiendolared]"/> Tim Berners-Lee. 'Tejiendo la Red'. ISBN 84-323-1040-9</bibliomisc>
+<bibliomisc><anchor xml:id="elixirinaction" xreflabel="[elixirinaction]"/>[elixirinaction] Saša Jurić. 'Elixir in Action'. <link xl:href="https://www.manning.com/books/elixir-in-action-third-edition">https://www.manning.com/books/elixir-in-action-third-edition</link>. ISBN 978-1633438514.</bibliomisc>
 </bibliomixed>
 <bibliomixed>
-<bibliomisc><anchor xml:id="systemdesign" xreflabel="[systemdesign]"/> Alex Xu. 'System Design Interview: An Insider’s Guide'. ISBN 979-8664653403.</bibliomisc>
+<bibliomisc><anchor xml:id="joyofelixir" xreflabel="[joyofelixir]"/>[joyofelixir] Ryan Bigg. 'Joy of Elixir'. <link xl:href="https://joyofelixir.com/">https://joyofelixir.com/</link>.</bibliomisc>
+</bibliomixed>
+<bibliomixed>
+<bibliomisc><anchor xml:id="elixirpa" xreflabel="[elixirpa]"/>[elixirpa] Stefan Wintermeyer. 'An Elixir, Phoenix and Ash Beginner&#8217;s Guide'. <link xl:href="https://elixir-phoenix-ash.com">https://elixir-phoenix-ash.com</link>.</bibliomisc>
+</bibliomixed>
+<bibliomixed>
+<bibliomisc><anchor xml:id="revolucionariosciber" xreflabel="[revolucionariosciber]"/>[revolucionariosciber] Eden Medina. 'Revolucionarios cibernéticos. Tecnología y política en el Chile de Salvador Allende'. <link xl:href="https://lom.cl/products/revolucionarios-ciberneticos-tecnologia-y-politica-en-el-chile-de-salvador-allende">https://lom.cl/products/revolucionarios-ciberneticos-tecnologia-y-politica-en-el-chile-de-salvador-allende</link>. ISBN 978-9560004352.</bibliomisc>
+</bibliomixed>
+<bibliomixed>
+<bibliomisc><anchor xml:id="tejiendolared" xreflabel="[tejiendolared]"/>[tejiendolared] Tim Berners-Lee. 'Tejiendo la Red'. ISBN 84-323-1040-9.</bibliomisc>
+</bibliomixed>
+<bibliomixed>
+<bibliomisc><anchor xml:id="systemdesign" xreflabel="[systemdesign]"/>[systemdesign] Alex Xu. 'System Design Interview: An Insider’s Guide'. ISBN 979-8664653403.</bibliomisc>
 </bibliomixed>
 </bibliodiv>
 </bibliography>
