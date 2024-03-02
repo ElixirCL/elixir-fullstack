@@ -585,18 +585,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_enlaces">5.1.5. Enlaces</a></li>
 </ul>
 </li>
-<li><a href="#_escalado_horizontal_y_vertical">5.2. Escalado horizontal y vertical</a>
+<li><a href="#_tipos_de_configuración_de_servidores">5.2. Tipos de Configuración de Servidores</a>
 <ul class="sectlevel3">
-<li><a href="#_escalado_horizontal">5.2.1. Escalado Horizontal</a></li>
-<li><a href="#_escalado_vertical">5.2.2. Escalado Vertical</a></li>
+<li><a href="#_servidor_único">5.2.1. Servidor Único</a></li>
+<li><a href="#_servidor_de_base_de_datos_separado">5.2.2. Servidor de Base de Datos Separado</a></li>
+<li><a href="#_una_máquina_por_servicio">5.2.3. Una Máquina por Servicio</a></li>
 </ul>
 </li>
-<li><a href="#_balanceo_de_carga_load_balancer">5.3. Balanceo de Carga (Load Balancer)</a></li>
-<li><a href="#_redundancia_y_replicación">5.4. Redundancia y Replicación</a></li>
-<li><a href="#_base_de_datos_fragmentada_database_sharding">5.5. Base de datos Fragmentada (Database Sharding)</a></li>
-<li><a href="#_colas_de_mensajes">5.6. Colas de mensajes</a></li>
-<li><a href="#_caché">5.7. Caché</a></li>
-<li><a href="#_lectura_complementaria_4">5.8. Lectura Complementaria</a></li>
+<li><a href="#_escalado_horizontal_y_vertical">5.3. Escalado horizontal y vertical</a>
+<ul class="sectlevel3">
+<li><a href="#_escalado_horizontal">5.3.1. Escalado Horizontal</a></li>
+<li><a href="#_escalado_vertical">5.3.2. Escalado Vertical</a></li>
+</ul>
+</li>
+<li><a href="#_balanceo_de_carga_load_balancer">5.4. Balanceo de Carga (Load Balancer)</a></li>
+<li><a href="#_redundancia_y_replicación">5.5. Redundancia y Replicación</a></li>
+<li><a href="#_base_de_datos_fragmentada_database_sharding">5.6. Base de datos Fragmentada (Database Sharding)</a></li>
+<li><a href="#_colas_de_mensajes">5.7. Colas de mensajes</a></li>
+<li><a href="#_caché">5.8. Caché</a></li>
+<li><a href="#_lectura_complementaria_4">5.9. Lectura Complementaria</a></li>
 </ul>
 </li>
 <li><a href="#_github_static_site_generators_markdown_linux_y_vim">6. Github, Static Site Generators, Markdown, Linux y Vim</a>
@@ -3622,12 +3629,12 @@ obtenemos el 50% de 300 millones.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>posts_por_dia = 150 millones usuarios * 2 posts
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">posts_por_dia = 150 millones usuarios * 2 posts
 horas_por_dia = 24
 segundos_por_dia = 3600
 
 QPS = posts_por_dia / horas_por_dia / segundos_por_dia
-QPS = ~3500 Queries por Segundo.</pre>
+QPS = ~3500 Queries por Segundo.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3636,7 +3643,7 @@ los usuarios realizan dos posts en un mismo día</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>QPS_MAX = 2 * QPS = ~7000 Queries por Segundo.</pre>
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">QPS_MAX = 2 * QPS = ~7000 Queries por Segundo.</code></pre>
 </div>
 </div>
 </div>
@@ -3647,9 +3654,9 @@ los usuarios realizan dos posts en un mismo día</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>id  varchar(64) -- cadena de caracteres de 64 bytes
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">id  varchar(64) -- cadena de caracteres de 64 bytes
 text varchar(140) -- cadena de caracteres de 140 bytes
-media blob(1MB) -- imagen de 1 MegaByte</pre>
+media blob(1MB) -- imagen de 1 MegaByte</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3657,10 +3664,10 @@ media blob(1MB) -- imagen de 1 MegaByte</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>peso_imagen = 10% * 1 MB
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">peso_imagen = 10% * 1 MB
 posts_por_dia * peso_imagen
 terabytes_por_dia = 30
-terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes</pre>
+terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes</code></pre>
 </div>
 </div>
 </div>
@@ -3681,12 +3688,119 @@ terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_escalado_horizontal_y_vertical">5.2. Escalado horizontal y vertical</h3>
+<h3 id="_tipos_de_configuración_de_servidores">5.2. Tipos de Configuración de Servidores</h3>
+<div class="paragraph">
+<p>Los servidores pueden estar configurados de distinta forma
+dependiendo de las necesidades de la aplicación y las capacidades
+técnicas requeridas. En el ciclo de vida de la aplicación se puede
+dar situaciones en las que se deba aumentar los recursos disponibles
+y de que forma son distribuidos.</p>
+</div>
+<div class="sect3">
+<h4 id="_servidor_único">5.2.1. Servidor Único</h4>
+<div class="paragraph">
+<p>Este es una configuración inicial. Todos los servicios de la aplicación (servidor web, base de datos, almacenamiento de archivos, etc). Están dentro de
+una sola máquina y comparten recursos de red, procesador, memoria y almacenamiento.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Es fácil de configurar.</p>
+</li>
+<li>
+<p>Es relativamente barato.</p>
+</li>
+<li>
+<p>Ideal para aplicaciones pequeñas y de poco alcance.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Desventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Propenso a errores por agotamiento de memoria o disco.</p>
+</li>
+<li>
+<p>Solamente un servidor, si este es atacado o comprometido en seguridad, puede significar una brecha total o caida total del servicio.</p>
+</li>
+<li>
+<p>Puede tener mayor latencia para usuarios lejos de la región donde está ubicado el servidor.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_servidor_de_base_de_datos_separado">5.2.2. Servidor de Base de Datos Separado</h4>
+<div class="paragraph">
+<p>El siguiente nivel en la configuración es separar el servidor de la base de datos, dandole una instancia propia del servidor de aplicaciones.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La base de datos tiene sus recursos separados del servidor de aplicaciones.</p>
+</li>
+<li>
+<p>Permite escalar individualmente cada servidor según necesidades.</p>
+</li>
+<li>
+<p>La seguridad es mayor al no compartir la misma máquina.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Desventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Aumenta los costos de mantenimiento al tener más máquinas funcionando.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_una_máquina_por_servicio">5.2.3. Una Máquina por Servicio</h4>
+<div class="paragraph">
+<p>Una vez que las necesidades de la aplicación lo requieran, se puede buscar la configuración a través de la separación de una máquina por servicio. Por ejemplo si la aplicación tiene: servidor web, base de datos, almacenamiento de archivos y procesamiento de datos. Se podría tener una máquina por cada elemento del sistema, una máquina para el servidor web, otra máquina para la base de datos, otra para el sistema de almacenamiento y otra para el procesamiento de datos.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cada componente es separado y puede escalar individualmente.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Desventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Los costos aumentan considerablemente.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_escalado_horizontal_y_vertical">5.3. Escalado horizontal y vertical</h3>
 <div class="paragraph">
 <p>La escalabilidad se refiere a la capacidad de una aplicación para manejar y soportar una mayor carga de trabajo sin sacrificar la latencia. Una aplicación necesita una potencia informática sólida para escalar bien. Los servidores deben ser lo suficientemente potentes para manejar mayores cargas de tráfico. Hay dos formas principales de escalar una aplicación: horizontalmente y verticalmente.</p>
 </div>
 <div class="sect3">
-<h4 id="_escalado_horizontal">5.2.1. Escalado Horizontal</h4>
+<h4 id="_escalado_horizontal">5.3.1. Escalado Horizontal</h4>
 <div class="paragraph">
 <p>El escalamiento horizontal, o ampliación, significa agregar más
 hardware al conjunto de recursos de hardware existente.
@@ -3697,7 +3811,7 @@ Aumenta la potencia computacional del sistema en su conjunto.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_escalado_vertical">5.2.2. Escalado Vertical</h4>
+<h4 id="_escalado_vertical">5.3.2. Escalado Vertical</h4>
 <div class="paragraph">
 <p>El escalamiento vertical, o ampliación, significa agregar más potencia a su servidor. Aumenta la potencia de el hardware que ejecuta la aplicación.
 El escalado vertical utiliza una máquina enorme que maneja todas sus solicitudes y mejora el tiempo de respuesta y el rendimiento. Aunque ofrece llamadas de red más rápidas, coherencia de datos y sin equilibrio de carga, tiene un único punto de falla y limitaciones de hardware.</p>
@@ -3710,7 +3824,7 @@ El escalado vertical utiliza una máquina enorme que maneja todas sus solicitude
 </div>
 </div>
 <div class="sect2">
-<h3 id="_balanceo_de_carga_load_balancer">5.3. Balanceo de Carga (Load Balancer)</h3>
+<h3 id="_balanceo_de_carga_load_balancer">5.4. Balanceo de Carga (Load Balancer)</h3>
 <div class="paragraph">
 <p>El balanceador de carga nos permite distribuir el tráfico de red entrante entre múltiples recursos,
 lo que garantiza una alta disponibilidad y confiabilidad al enviar solicitudes solo a los recursos que están en línea, lo que brinda la flexibilidad de agregar o restar recursos según lo requiera la demanda.</p>
@@ -3728,7 +3842,7 @@ lo que garantiza una alta disponibilidad y confiabilidad al enviar solicitudes s
 </div>
 </div>
 <div class="sect2">
-<h3 id="_redundancia_y_replicación">5.4. Redundancia y Replicación</h3>
+<h3 id="_redundancia_y_replicación">5.5. Redundancia y Replicación</h3>
 <div class="paragraph">
 <p>La replicación es el proceso de compartir información para garantizar la coherencia entre recursos redundantes. Puede replicar componentes de software o hardware para mejorar la confiabilidad, la tolerancia a fallas o la accesibilidad. La replicación se utiliza en muchos sistemas de administración de bases de datos (DBMS), generalmente con una réplica primaria. La relación entre el original y sus copias. El servidor primario recibe todas las actualizaciones, y esas actualizaciones pasan a través de los servidores de réplica. Cada servidor de réplica genera un mensaje cuando recibe correctamente la actualización.</p>
 </div>
@@ -3739,7 +3853,7 @@ lo que garantiza una alta disponibilidad y confiabilidad al enviar solicitudes s
 </div>
 </div>
 <div class="sect2">
-<h3 id="_base_de_datos_fragmentada_database_sharding">5.5. Base de datos Fragmentada (Database Sharding)</h3>
+<h3 id="_base_de_datos_fragmentada_database_sharding">5.6. Base de datos Fragmentada (Database Sharding)</h3>
 <div class="paragraph">
 <p>La fragmentación de bases de datos es una técnica para el escalado
 horizontal de bases de datos, donde los datos se
@@ -3747,7 +3861,7 @@ dividen en múltiples instancias de bases de datos, o fragmentos, para mejorar e
 </div>
 </div>
 <div class="sect2">
-<h3 id="_colas_de_mensajes">5.6. Colas de mensajes</h3>
+<h3 id="_colas_de_mensajes">5.7. Colas de mensajes</h3>
 <div class="paragraph">
 <p>Una cola de mensajes es una cola que enruta mensajes desde un origen a un destino, o desde el remitente al
 receptor. Sigue la política FIFO (primero en entrar, primero en salir). El mensaje que se envía primero se entrega primero. Las colas de mensajes facilitan la asincronía. Comportamiento, que permite que los módulos se comuniquen entre sí en segundo plano sin obstaculizar las tareas primarias. También facilitan la comunicación entre módulos y proporcionan almacenamiento temporal para los mensajes hasta que sean procesados y consumidos por el consumidor.
@@ -3755,7 +3869,7 @@ Las más conocidas son <em>Kafka</em> o <em>RabbitMQ</em>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_caché">5.7. Caché</h3>
+<h3 id="_caché">5.8. Caché</h3>
 <div class="paragraph">
 <p>El almacenamiento en caché es un concepto de diseño de sistema que implica almacenar datos a los que se accede con frecuencia en una ubicación a la que se puede acceder fácil y rápidamente. El propósito del almacenamiento en caché es mejorar el rendimiento y la eficiencia de un sistema al reducir la cantidad de tiempo que lleva acceder a los datos a los que se accede con frecuencia.</p>
 </div>
@@ -3769,7 +3883,7 @@ Las más conocidas son <em>Kafka</em> o <em>RabbitMQ</em>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_lectura_complementaria_4">5.8. Lectura Complementaria</h3>
+<h3 id="_lectura_complementaria_4">5.9. Lectura Complementaria</h3>
 <div class="ulist">
 <ul>
 <li>

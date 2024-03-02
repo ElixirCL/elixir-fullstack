@@ -185,7 +185,7 @@ obtenemos el 50% de 300 millones.
 
 Sabemos que con 150 millones de usuarios diarios, cada usuario realiza 2 posts por día. Esto lo debemos transformar a segundos.
 
-[text]
+[,text]
 ----
 posts_por_dia = 150 millones usuarios * 2 posts 
 horas_por_dia = 24
@@ -198,7 +198,7 @@ QPS = ~3500 Queries por Segundo.
 Ahora si tomamos la cantidad total de usuarios y asumiendo que todos
 los usuarios realizan dos posts en un mismo día
 
-[text]
+[,text]
 ----
 QPS_MAX = 2 * QPS = ~7000 Queries por Segundo.
 ----
@@ -207,7 +207,7 @@ QPS_MAX = 2 * QPS = ~7000 Queries por Segundo.
 
 Ahora si definimos que cada post contiene la siguiente información:
 
-[sql]
+[,sql]
 ----
 id  varchar(64) -- cadena de caracteres de 64 bytes
 text varchar(140) -- cadena de caracteres de 140 bytes
@@ -216,7 +216,7 @@ media blob(1MB) -- imagen de 1 MegaByte
 
 Utilizando la `QPS` podemos calcular cuánto espacio de almacenamiento necesitamos.
 
-[text]
+[,text]
 ----
 peso_imagen = 10% * 1 MB
 posts_por_dia * peso_imagen 
@@ -230,6 +230,56 @@ terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes
 
 - https://gist.github.com/jboner/2841832
 
+=== Tipos de Configuración de Servidores
+
+Los servidores pueden estar configurados de distinta forma
+dependiendo de las necesidades de la aplicación y las capacidades
+técnicas requeridas. En el ciclo de vida de la aplicación se puede
+dar situaciones en las que se deba aumentar los recursos disponibles
+y de que forma son distribuidos.
+
+==== Servidor Único
+
+Este es una configuración inicial. Todos los servicios de la aplicación (servidor web, base de datos, almacenamiento de archivos, etc). Están dentro de
+una sola máquina y comparten recursos de red, procesador, memoria y almacenamiento.
+
+*Ventajas*
+
+- Es fácil de configurar.
+- Es relativamente barato.
+- Ideal para aplicaciones pequeñas y de poco alcance.
+
+*Desventajas*
+
+- Propenso a errores por agotamiento de memoria o disco.
+- Solamente un servidor, si este es atacado o comprometido en seguridad, puede significar una brecha total o caida total del servicio.
+- Puede tener mayor latencia para usuarios lejos de la región donde está ubicado el servidor.
+
+==== Servidor de Base de Datos Separado
+
+El siguiente nivel en la configuración es separar el servidor de la base de datos, dandole una instancia propia del servidor de aplicaciones.
+
+*Ventajas*
+
+- La base de datos tiene sus recursos separados del servidor de aplicaciones.
+- Permite escalar individualmente cada servidor según necesidades.
+- La seguridad es mayor al no compartir la misma máquina.
+
+*Desventajas*
+
+- Aumenta los costos de mantenimiento al tener más máquinas funcionando.
+
+==== Una Máquina por Servicio
+
+Una vez que las necesidades de la aplicación lo requieran, se puede buscar la configuración a través de la separación de una máquina por servicio. Por ejemplo si la aplicación tiene: servidor web, base de datos, almacenamiento de archivos y procesamiento de datos. Se podría tener una máquina por cada elemento del sistema, una máquina para el servidor web, otra máquina para la base de datos, otra para el sistema de almacenamiento y otra para el procesamiento de datos.
+
+*Ventajas*
+
+- Cada componente es separado y puede escalar individualmente.
+
+*Desventajas*
+
+- Los costos aumentan considerablemente.
 
 === Escalado horizontal y vertical
 

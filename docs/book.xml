@@ -2304,6 +2304,81 @@ terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes</screen>
 </itemizedlist>
 </section>
 </section>
+<section xml:id="_tipos_de_configuración_de_servidores">
+<title>Tipos de Configuración de Servidores</title>
+<simpara>Los servidores pueden estar configurados de distinta forma
+dependiendo de las necesidades de la aplicación y las capacidades
+técnicas requeridas. En el ciclo de vida de la aplicación se puede
+dar situaciones en las que se deba aumentar los recursos disponibles
+y de que forma son distribuidos.</simpara>
+<section xml:id="_servidor_único">
+<title>Servidor Único</title>
+<simpara>Este es una configuración inicial. Todos los servicios de la aplicación (servidor web, base de datos, almacenamiento de archivos, etc). Están dentro de
+una sola máquina y comparten recursos de red, procesador, memoria y almacenamiento.</simpara>
+<simpara><emphasis role="strong">Ventajas</emphasis></simpara>
+<itemizedlist>
+<listitem>
+<simpara>Es fácil de configurar.</simpara>
+</listitem>
+<listitem>
+<simpara>Es relativamente barato.</simpara>
+</listitem>
+<listitem>
+<simpara>Ideal para aplicaciones pequeñas y de poco alcance.</simpara>
+</listitem>
+</itemizedlist>
+<simpara><emphasis role="strong">Desventajas</emphasis></simpara>
+<itemizedlist>
+<listitem>
+<simpara>Propenso a errores por agotamiento de memoria o disco.</simpara>
+</listitem>
+<listitem>
+<simpara>Solamente un servidor, si este es atacado o comprometido en seguridad, puede significar una brecha total o caida total del servicio.</simpara>
+</listitem>
+<listitem>
+<simpara>Puede tener mayor latencia para usuarios lejos de la región donde está ubicado el servidor.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_servidor_de_base_de_datos_separado">
+<title>Servidor de Base de Datos Separado</title>
+<simpara>El siguiente nivel en la configuración es separar el servidor de la base de datos, dandole una instancia propia del servidor de aplicaciones.</simpara>
+<simpara><emphasis role="strong">Ventajas</emphasis></simpara>
+<itemizedlist>
+<listitem>
+<simpara>La base de datos tiene sus recursos separados del servidor de aplicaciones.</simpara>
+</listitem>
+<listitem>
+<simpara>Permite escalar individualmente cada servidor según necesidades.</simpara>
+</listitem>
+<listitem>
+<simpara>La seguridad es mayor al no compartir la misma máquina.</simpara>
+</listitem>
+</itemizedlist>
+<simpara><emphasis role="strong">Desventajas</emphasis></simpara>
+<itemizedlist>
+<listitem>
+<simpara>Aumenta los costos de mantenimiento al tener más máquinas funcionando.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_una_máquina_por_servicio">
+<title>Una Máquina por Servicio</title>
+<simpara>Una vez que las necesidades de la aplicación lo requieran, se puede buscar la configuración a través de la separación de una máquina por servicio. Por ejemplo si la aplicación tiene: servidor web, base de datos, almacenamiento de archivos y procesamiento de datos. Se podría tener una máquina por cada elemento del sistema, una máquina para el servidor web, otra máquina para la base de datos, otra para el sistema de almacenamiento y otra para el procesamiento de datos.</simpara>
+<simpara><emphasis role="strong">Ventajas</emphasis></simpara>
+<itemizedlist>
+<listitem>
+<simpara>Cada componente es separado y puede escalar individualmente.</simpara>
+</listitem>
+</itemizedlist>
+<simpara><emphasis role="strong">Desventajas</emphasis></simpara>
+<itemizedlist>
+<listitem>
+<simpara>Los costos aumentan considerablemente.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
 <section xml:id="_escalado_horizontal_y_vertical">
 <title>Escalado horizontal y vertical</title>
 <simpara>La escalabilidad se refiere a la capacidad de una aplicación para manejar y soportar una mayor carga de trabajo sin sacrificar la latencia. Una aplicación necesita una potencia informática sólida para escalar bien. Los servidores deben ser lo suficientemente potentes para manejar mayores cargas de tráfico. Hay dos formas principales de escalar una aplicación: horizontalmente y verticalmente.</simpara>
