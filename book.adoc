@@ -19,7 +19,7 @@ Camilo A. Castro <https://github.com/clsource[@clsource]>
 :ext-relative:
 :source-linenums-option:
 :source-highlighter: highlight.js
-:highlightjs-languages: css, javascript, markdown, ruby, wren, elixir, erlang, swift, rust, python, yaml
+:highlightjs-languages: css, javascript, markdown, ruby, wren, elixir, erlang, swift, rust, python, yaml, sql, text, sh
 :highlightjs-theme: srcery
 :highlightjsdir: highlight
 :stem: latexmath

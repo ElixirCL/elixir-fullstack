@@ -30,6 +30,7 @@ El almacenamiento y transferencia de datos comunmente se mide en _Bytes_ y poten
 
 La siguiente tabla muestra la unidad de volumen de datos.
 
+[options="header"]
 |===
 | Potencia | Valor Aproximado | Nombre | Abreviación 
 | 1 | 1 Uno (bit) | Bit | b 
@@ -41,6 +42,24 @@ La siguiente tabla muestra la unidad de volumen de datos.
 | 50 | 1 Cuatrillón (bits)| Petabyte | 1 PB  
 |===
 
+==== Tipos de Datos
+
+Los tipos de datos que pueden ser usados en una base de datos tienen una cantidad
+de almacenamiento definido. Va a cambiar dependiendo del motor de base de datos usado. La siguiente tabla muestra un aproximado de los tipos de datos más comunes.
+
+[options="header"]
+|===
+| Tipo de Dato | Tamaño de Almacenamiento | Descripción
+| boolean (booleano) | 1 byte | verdadero o falso.
+| smallint (entero pequeño) | 2 bytes | Un entero con valores acotados.
+| integer (entero) | 4 bytes | Un número entero tradicional.
+| bigint (entero grande) | 8 bytes | Un número entero con mayor capacidad. Para números aún más grandes.
+| float (decimal) | 4 bytes | Un número decimal con 6 decimales de precisión.
+| double (decimal con doble precisión) | 8 bytes | Un número decimal con 15 decimales de precisión.
+| varchar (caracteres variable) | (4 + n) byte | Se suma la cantidad de caracteres más 4 para obtener el total de espacio requerido.
+| blob (binario) | variable | Un archivo binario almacenado. El tamaño dependerá de cada archivo.
+|===
+
 ==== Números de Latencia
 
 La latencia nos indica cuánto se demora un proceso desde que se hace la petición hasta recibir una respuesta. A mayor cantidad de latencia, mayor será el tiempo que necesitemos esperar para obtener una respuesta. El tiempo de retraso de las latencias puede crear ineficiencias, especialmente en las operaciones en tiempo real.
@@ -49,10 +68,168 @@ Los siguientes gráficos contienen números aproximados, ya que según el avance
 
 Basado en los números de Jeff Dean y Peter Norvig (http://norvig.com/21-days.html#answers).
 
-
 image::latenciagrafico.png[Latencia Gráfico]
 
+[options="header"]
+|===
+|Operation |ns |µs |ms |note
+|L1 cache reference |0.5 ns | | |
+
+|Branch mispredict |5 ns | | |
+
+|L2 cache reference |7 ns | | |14x L1 cache
+
+|Mutex lock/unlock |25 ns | | |
+
+|Main memory reference |100 ns | | |20x L2 cache, 200x L1 cache
+
+|Compress 1K bytes with Zippy |3,000 ns |3 µs | |
+
+|Send 1K bytes over 1 Gbps network |10,000 ns |10 µs | |
+
+|Read 4K randomly from SSD* |150,000 ns |150 µs | |~1GB/sec SSD
+
+|Read 1 MB sequentially from memory |250,000 ns |250 µs | |
+
+|Round trip within same datacenter |500,000 ns |500 µs | |
+
+|Read 1 MB sequentially from SSD* |1,000,000 ns |1,000 µs |1 ms
+|~1GB/sec SSD, 4X memory
+
+|Disk seek |10,000,000 ns |10,000 µs |10 ms |20x datacenter roundtrip
+
+|Read 1 MB sequentially from disk |20,000,000 ns |20,000 µs |20 ms |80x
+memory, 20X SSD
+
+|Send packet CA -> Netherlands -> CA |150,000,000 ns |150,000 µs |150 ms
+|
+|===
+
+- 1 ns = 10^-9 segundos
+- 1 us = 10^-6 segundos = 1,000 ns
+- 1 ms = 10^-3 segundos = 1,000 us = 1,000,000 ns
+
 image::latencia.jpg[Latencia]
+
+===== Cachés L1 y L2: 1 ns, 10 ns
+Normalmente están integrados en el chip del microprocesador. A menos que trabaje directamente con hardware, probablemente no necesite preocuparse por ellos.
+
+===== Acceso a RAM: 100 ns
+Se necesitan alrededor de 100 ns para leer datos de la memoria. Redis es un almacén de datos en memoria, por lo que se necesitan unos 100 ns para leer datos de Redis.
+
+===== Envía 1K bytes a través de una red de 1 Gbps: 10 us
+Se necesitan alrededor de 10 usuarios para enviar 1 KB de datos desde Memcached a través de la red.
+
+===== Leer desde SSD: 100 us
+RocksDB es un almacén K/V basado en disco, por lo que la latencia de lectura es de alrededor de 100 us en SSD.
+
+===== Operación de inserción de base de datos: 1 ms.
+La confirmación de Postgresql puede tardar 1 ms. La base de datos necesita almacenar los datos, crear el índice y vaciar los registros. Todas estas acciones toman tiempo.
+
+===== Enviar paquete CA->Países Bajos->CA: 100 ms
+Si tenemos una llamada de larga distancia por Zoom, la latencia podría rondar los 100 ms.
+
+===== Reintentar/actualizar interno: 1-10s
+En un sistema de monitoreo, el intervalo de actualización generalmente se establece en 5 a 10 segundos (valor predeterminado en Grafana).
+
+===== Resumen
+
+Al leer los datos se puede concluir las siguientes cosas:
+
+- Leer de la memoria es más rápido que leer de un disco duro.
+- Leer del disco duro solo cuando sea obligatorio.
+- Los algoritmos de compresión son rápidos y se recomienda su utilización al enviar los datos por la red.
+- Los centros de datos de diferentes regiones requerirán más tiempo para transferir datos entre ellos.
+
+==== Estimación General
+
+El primer paso en el proceso de estimación es definir los objetivos.
+
+- Nivel mínimo: Objetivo que no tiene grandes exigencias. ¿Cuánto es lo mínimo que el sistema necesitaría para funcionar correctamente?.
+
+- Nivel promedio: Objetivo que busca definir el comportamiento normal de un sistema. ¿Cuánto es lo que necesitaría el sistema en un día normal?.
+
+- Nivel crítico: Objetivo que busca definir el comportamiento exigente de un sistema. ¿Cuánto es lo que necesitaría el sistema en un día de alta exigencia?.
+
+Una vez definido el objetivo y los supuestos a cumplir, se debe transformar a datos como
+tamaño de almacenamiento o tamaño de transferencia. Ya que normalmente son los
+necesarios para comparar con la tabla de precios de un proveedor de servicios. Al tener el tamaño de almacenamiento o transferencia, se puede estimar los costos monetarios necesarios para lograr los objetivos planteados.
+
+===== Cantidad de Usuarios Diarios (CUD)
+
+La cantidad de usuarios diarios nos ayudará a definir cuán grande es el volumen de consultas por segundo de un sistema, teniendo en consideración las operaciones que los usuarios realicen.
+
+===== Consultas por Segundo (QPS: Queries per Second)
+
+Una métrica común es ¿Cúantas consultas tendrá por segundo la aplicación?.
+Esto nos permite determinar la cantidad de almacenamiento y datos necesarios
+en los casos hipotéticos acordados.
+
+===== Ejemplo: Red Microblogging
+
+Una red microblogging similar a sistemas como Mastodon o X (Twitter).
+
+====== Objetivos y Supuestos
+- 300 millones de usuarios activos mensuales.
+- 50% utiliza el sistema diariamente.
+- Se realizan 2 posts por día en promedio.
+- 10% de los posts contienen imagenes (media).
+- Los datos se almacenan por 5 años.
+
+====== Obtención de las QPS (Querys per Second)
+
+El primer paso es obtener la cantidad de usuarios diarios (CUD), para esto
+obtenemos el 50% de 300 millones.
+
+- 300 millones (Usuarios Mensuales) * 50% (Uso diario) = 150 millones (Usuarios Diarios)
+
+Sabemos que con 150 millones de usuarios diarios, cada usuario realiza 2 posts por día. Esto lo debemos transformar a segundos.
+
+[text]
+----
+posts_por_dia = 150 millones usuarios * 2 posts 
+horas_por_dia = 24
+segundos_por_dia = 3600
+
+QPS = posts_por_dia / horas_por_dia / segundos_por_dia
+QPS = ~3500 Queries por Segundo.
+----
+
+Ahora si tomamos la cantidad total de usuarios y asumiendo que todos
+los usuarios realizan dos posts en un mismo día
+
+[text]
+----
+QPS_MAX = 2 * QPS = ~7000 Queries por Segundo.
+----
+
+====== Almacenamiento Estimado
+
+Ahora si definimos que cada post contiene la siguiente información:
+
+[sql]
+----
+id  varchar(64) -- cadena de caracteres de 64 bytes
+text varchar(140) -- cadena de caracteres de 140 bytes
+media blob(1MB) -- imagen de 1 MegaByte
+----
+
+Utilizando la `QPS` podemos calcular cuánto espacio de almacenamiento necesitamos.
+
+[text]
+----
+peso_imagen = 10% * 1 MB
+posts_por_dia * peso_imagen 
+terabytes_por_dia = 30
+terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes
+----
+
+==== Enlaces
+
+- https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7126968760971714560-aZ7T?trk=public_profile_like_view
+
+- https://gist.github.com/jboner/2841832
+
 
 === Escalado horizontal y vertical
 

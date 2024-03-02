@@ -579,7 +579,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_estimación_de_costos">5.1. Estimación de Costos</a>
 <ul class="sectlevel3">
 <li><a href="#_unidad_de_volumen_de_datos">5.1.1. Unidad de Volumen de Datos</a></li>
-<li><a href="#_números_de_latencia">5.1.2. Números de Latencia</a></li>
+<li><a href="#_tipos_de_datos">5.1.2. Tipos de Datos</a></li>
+<li><a href="#_números_de_latencia">5.1.3. Números de Latencia</a></li>
+<li><a href="#_estimación_general">5.1.4. Estimación General</a></li>
+<li><a href="#_enlaces">5.1.5. Enlaces</a></li>
 </ul>
 </li>
 <li><a href="#_escalado_horizontal_y_vertical">5.2. Escalado horizontal y vertical</a>
@@ -3202,13 +3205,15 @@ problemas de diseño de software con más confianza y aplicar principios de dise
 <col style="width: 25%;">
 <col style="width: 25%;">
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Potencia</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Valor Aproximado</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Abreviación</p></td>
+<th class="tableblock halign-left valign-top">Potencia</th>
+<th class="tableblock halign-left valign-top">Valor Aproximado</th>
+<th class="tableblock halign-left valign-top">Nombre</th>
+<th class="tableblock halign-left valign-top">Abreviación</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1 Uno (bit)</p></td>
@@ -3255,19 +3260,423 @@ problemas de diseño de software con más confianza y aplicar principios de dise
 </table>
 </div>
 <div class="sect3">
-<h4 id="_números_de_latencia">5.1.2. Números de Latencia</h4>
+<h4 id="_tipos_de_datos">5.1.2. Tipos de Datos</h4>
+<div class="paragraph">
+<p>Los tipos de datos que pueden ser usados en una base de datos tienen una cantidad
+de almacenamiento definido. Va a cambiar dependiendo del motor de base de datos usado. La siguiente tabla muestra un aproximado de los tipos de datos más comunes.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Tipo de Dato</th>
+<th class="tableblock halign-left valign-top">Tamaño de Almacenamiento</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean (booleano)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 byte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">verdadero o falso.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smallint (entero pequeño)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un entero con valores acotados.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">integer (entero)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un número entero tradicional.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bigint (entero grande)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un número entero con mayor capacidad. Para números aún más grandes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float (decimal)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un número decimal con 6 decimales de precisión.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">double (decimal con doble precisión)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un número decimal con 15 decimales de precisión.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">varchar (caracteres variable)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(4 + n) byte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se suma la cantidad de caracteres más 4 para obtener el total de espacio requerido.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blob (binario)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un archivo binario almacenado. El tamaño dependerá de cada archivo.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_números_de_latencia">5.1.3. Números de Latencia</h4>
 <div class="paragraph">
 <p>La latencia nos indica cuánto se demora un proceso desde que se hace la petición hasta recibir una respuesta. A mayor cantidad de latencia, mayor será el tiempo que necesitemos esperar para obtener una respuesta. El tiempo de retraso de las latencias puede crear ineficiencias, especialmente en las operaciones en tiempo real.</p>
+</div>
+<div class="paragraph">
+<p>Los siguientes gráficos contienen números aproximados, ya que según el avance tecnológico pueden variar con los años.</p>
+</div>
+<div class="paragraph">
+<p>Basado en los números de Jeff Dean y Peter Norvig (<a href="http://norvig.com/21-days.html#answers" class="bare">http://norvig.com/21-days.html#answers</a>).</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="book/images/systemd/latenciagrafico.png" alt="Latencia Gráfico">
 </div>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">ns</th>
+<th class="tableblock halign-left valign-top">µs</th>
+<th class="tableblock halign-left valign-top">ms</th>
+<th class="tableblock halign-left valign-top">note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L1 cache reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5 ns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Branch mispredict</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 ns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L2 cache reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7 ns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14x L1 cache</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mutex lock/unlock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25 ns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Main memory reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100 ns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20x L2 cache, 200x L1 cache</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compress 1K bytes with Zippy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 µs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Send 1K bytes over 1 Gbps network</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 µs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read 4K randomly from SSD*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150 µs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">~1GB/sec SSD</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read 1 MB sequentially from memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">250,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">250 µs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Round trip within same datacenter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">500,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">500 µs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read 1 MB sequentially from SSD*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1,000,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1,000 µs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 ms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">~1GB/sec SSD, 4X memory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disk seek</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10,000,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10,000 µs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 ms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20x datacenter roundtrip</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read 1 MB sequentially from disk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20,000,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20,000 µs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 ms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80x
+memory, 20X SSD</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Send packet CA &#8594; Netherlands &#8594; CA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150,000,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150,000 µs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150 ms</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>1 ns = 10^-9 segundos</p>
+</li>
+<li>
+<p>1 us = 10^-6 segundos = 1,000 ns</p>
+</li>
+<li>
+<p>1 ms = 10^-3 segundos = 1,000 us = 1,000,000 ns</p>
+</li>
+</ul>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="book/images/systemd/latencia.jpg" alt="Latencia">
 </div>
+</div>
+<div class="sect4">
+<h5 id="_cachés_l1_y_l2_1_ns_10_ns">Cachés L1 y L2: 1 ns, 10 ns</h5>
+<div class="paragraph">
+<p>Normalmente están integrados en el chip del microprocesador. A menos que trabaje directamente con hardware, probablemente no necesite preocuparse por ellos.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_acceso_a_ram_100_ns">Acceso a RAM: 100 ns</h5>
+<div class="paragraph">
+<p>Se necesitan alrededor de 100 ns para leer datos de la memoria. Redis es un almacén de datos en memoria, por lo que se necesitan unos 100 ns para leer datos de Redis.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_envía_1k_bytes_a_través_de_una_red_de_1_gbps_10_us">Envía 1K bytes a través de una red de 1 Gbps: 10 us</h5>
+<div class="paragraph">
+<p>Se necesitan alrededor de 10 usuarios para enviar 1 KB de datos desde Memcached a través de la red.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_leer_desde_ssd_100_us">Leer desde SSD: 100 us</h5>
+<div class="paragraph">
+<p>RocksDB es un almacén K/V basado en disco, por lo que la latencia de lectura es de alrededor de 100 us en SSD.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_operación_de_inserción_de_base_de_datos_1_ms">Operación de inserción de base de datos: 1 ms.</h5>
+<div class="paragraph">
+<p>La confirmación de Postgresql puede tardar 1 ms. La base de datos necesita almacenar los datos, crear el índice y vaciar los registros. Todas estas acciones toman tiempo.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_enviar_paquete_capaíses_bajosca_100_ms">Enviar paquete CA&#8594;Países Bajos&#8594;CA: 100 ms</h5>
+<div class="paragraph">
+<p>Si tenemos una llamada de larga distancia por Zoom, la latencia podría rondar los 100 ms.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_reintentaractualizar_interno_1_10s">Reintentar/actualizar interno: 1-10s</h5>
+<div class="paragraph">
+<p>En un sistema de monitoreo, el intervalo de actualización generalmente se establece en 5 a 10 segundos (valor predeterminado en Grafana).</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_resumen">Resumen</h5>
+<div class="paragraph">
+<p>Al leer los datos se puede concluir las siguientes cosas:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Leer de la memoria es más rápido que leer de un disco duro.</p>
+</li>
+<li>
+<p>Leer del disco duro solo cuando sea obligatorio.</p>
+</li>
+<li>
+<p>Los algoritmos de compresión son rápidos y se recomienda su utilización al enviar los datos por la red.</p>
+</li>
+<li>
+<p>Los centros de datos de diferentes regiones requerirán más tiempo para transferir datos entre ellos.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_estimación_general">5.1.4. Estimación General</h4>
+<div class="paragraph">
+<p>El primer paso en el proceso de estimación es definir los objetivos.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Nivel mínimo: Objetivo que no tiene grandes exigencias. ¿Cuánto es lo mínimo que el sistema necesitaría para funcionar correctamente?.</p>
+</li>
+<li>
+<p>Nivel promedio: Objetivo que busca definir el comportamiento normal de un sistema. ¿Cuánto es lo que necesitaría el sistema en un día normal?.</p>
+</li>
+<li>
+<p>Nivel crítico: Objetivo que busca definir el comportamiento exigente de un sistema. ¿Cuánto es lo que necesitaría el sistema en un día de alta exigencia?.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Una vez definido el objetivo y los supuestos a cumplir, se debe transformar a datos como
+tamaño de almacenamiento o tamaño de transferencia. Ya que normalmente son los
+necesarios para comparar con la tabla de precios de un proveedor de servicios. Al tener el tamaño de almacenamiento o transferencia, se puede estimar los costos monetarios necesarios para lograr los objetivos planteados.</p>
+</div>
+<div class="sect4">
+<h5 id="_cantidad_de_usuarios_diarios_cud">Cantidad de Usuarios Diarios (CUD)</h5>
+<div class="paragraph">
+<p>La cantidad de usuarios diarios nos ayudará a definir cuán grande es el volumen de consultas por segundo de un sistema, teniendo en consideración las operaciones que los usuarios realicen.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_consultas_por_segundo_qps_queries_per_second">Consultas por Segundo (QPS: Queries per Second)</h5>
+<div class="paragraph">
+<p>Una métrica común es ¿Cúantas consultas tendrá por segundo la aplicación?.
+Esto nos permite determinar la cantidad de almacenamiento y datos necesarios
+en los casos hipotéticos acordados.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_ejemplo_red_microblogging">Ejemplo: Red Microblogging</h5>
+<div class="paragraph">
+<p>Una red microblogging similar a sistemas como Mastodon o X (Twitter).</p>
+</div>
+<div class="sect5">
+<h6 id="_objetivos_y_supuestos">Objetivos y Supuestos</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>300 millones de usuarios activos mensuales.</p>
+</li>
+<li>
+<p>50% utiliza el sistema diariamente.</p>
+</li>
+<li>
+<p>Se realizan 2 posts por día en promedio.</p>
+</li>
+<li>
+<p>10% de los posts contienen imagenes (media).</p>
+</li>
+<li>
+<p>Los datos se almacenan por 5 años.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_obtención_de_las_qps_querys_per_second">Obtención de las QPS (Querys per Second)</h6>
+<div class="paragraph">
+<p>El primer paso es obtener la cantidad de usuarios diarios (CUD), para esto
+obtenemos el 50% de 300 millones.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>300 millones (Usuarios Mensuales) * 50% (Uso diario) = 150 millones (Usuarios Diarios)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sabemos que con 150 millones de usuarios diarios, cada usuario realiza 2 posts por día. Esto lo debemos transformar a segundos.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>posts_por_dia = 150 millones usuarios * 2 posts
+horas_por_dia = 24
+segundos_por_dia = 3600
+
+QPS = posts_por_dia / horas_por_dia / segundos_por_dia
+QPS = ~3500 Queries por Segundo.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ahora si tomamos la cantidad total de usuarios y asumiendo que todos
+los usuarios realizan dos posts en un mismo día</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>QPS_MAX = 2 * QPS = ~7000 Queries por Segundo.</pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_almacenamiento_estimado">Almacenamiento Estimado</h6>
+<div class="paragraph">
+<p>Ahora si definimos que cada post contiene la siguiente información:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>id  varchar(64) -- cadena de caracteres de 64 bytes
+text varchar(140) -- cadena de caracteres de 140 bytes
+media blob(1MB) -- imagen de 1 MegaByte</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Utilizando la <code>QPS</code> podemos calcular cuánto espacio de almacenamiento necesitamos.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>peso_imagen = 10% * 1 MB
+posts_por_dia * peso_imagen
+terabytes_por_dia = 30
+terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enlaces">5.1.5. Enlaces</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7126968760971714560-aZ7T?trk=public_profile_like_view" class="bare">https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7126968760971714560-aZ7T?trk=public_profile_like_view</a></p>
+</li>
+<li>
+<p><a href="https://gist.github.com/jboner/2841832" class="bare">https://gist.github.com/jboner/2841832</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -8200,7 +8609,7 @@ A pesar de ejecutarse en menos hardware, los tiempos de respuesta se redujeron s
 </div>
 <div id="footer">
 <div id="footer-text">
-Última actualización 2024-02-28 22:40:41 -0300
+Última actualización 2024-03-01 22:45:51 -0300
 </div>
 </div>
 <script src="highlight/highlight.min.js"></script>
@@ -8215,6 +8624,9 @@ A pesar de ejecutarse en menos hardware, los tiempos de respuesta se redujeron s
 <script src="highlight/languages/rust.min.js"></script>
 <script src="highlight/languages/python.min.js"></script>
 <script src="highlight/languages/yaml.min.js"></script>
+<script src="highlight/languages/sql.min.js"></script>
+<script src="highlight/languages/text.min.js"></script>
+<script src="highlight/languages/sh.min.js"></script>
 <script>
 if (!hljs.initHighlighting.called) {
   hljs.initHighlighting.called = true

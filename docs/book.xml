@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
 <info>
 <title>Elixir FullStack</title>
-<date>2024-02-28</date>
+<date>2024-03-01</date>
 <copyright>
 <holder>CC-BY-NC-SA 4.0</holder>
 </copyright>
@@ -1894,13 +1894,15 @@ problemas de diseño de software con más confianza y aplicar principios de dise
 <colspec colname="col_2" colwidth="25*"/>
 <colspec colname="col_3" colwidth="25*"/>
 <colspec colname="col_4" colwidth="25*"/>
-<tbody>
+<thead>
 <row>
-<entry align="left" valign="top"><simpara>Potencia</simpara></entry>
-<entry align="left" valign="top"><simpara>Valor Aproximado</simpara></entry>
-<entry align="left" valign="top"><simpara>Nombre</simpara></entry>
-<entry align="left" valign="top"><simpara>Abreviación</simpara></entry>
+<entry align="left" valign="top">Potencia</entry>
+<entry align="left" valign="top">Valor Aproximado</entry>
+<entry align="left" valign="top">Nombre</entry>
+<entry align="left" valign="top">Abreviación</entry>
 </row>
+</thead>
+<tbody>
 <row>
 <entry align="left" valign="top"><simpara>1</simpara></entry>
 <entry align="left" valign="top"><simpara>1 Uno (bit)</simpara></entry>
@@ -1947,9 +1949,72 @@ problemas de diseño de software con más confianza y aplicar principios de dise
 </tgroup>
 </informaltable>
 </section>
+<section xml:id="_tipos_de_datos">
+<title>Tipos de Datos</title>
+<simpara>Los tipos de datos que pueden ser usados en una base de datos tienen una cantidad
+de almacenamiento definido. Va a cambiar dependiendo del motor de base de datos usado. La siguiente tabla muestra un aproximado de los tipos de datos más comunes.</simpara>
+<informaltable frame="all" rowsep="1" colsep="1">
+<tgroup cols="3">
+<colspec colname="col_1" colwidth="33.3333*"/>
+<colspec colname="col_2" colwidth="33.3333*"/>
+<colspec colname="col_3" colwidth="33.3334*"/>
+<thead>
+<row>
+<entry align="left" valign="top">Tipo de Dato</entry>
+<entry align="left" valign="top">Tamaño de Almacenamiento</entry>
+<entry align="left" valign="top">Descripción</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara>boolean (booleano)</simpara></entry>
+<entry align="left" valign="top"><simpara>1 byte</simpara></entry>
+<entry align="left" valign="top"><simpara>verdadero o falso.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>smallint (entero pequeño)</simpara></entry>
+<entry align="left" valign="top"><simpara>2 bytes</simpara></entry>
+<entry align="left" valign="top"><simpara>Un entero con valores acotados.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>integer (entero)</simpara></entry>
+<entry align="left" valign="top"><simpara>4 bytes</simpara></entry>
+<entry align="left" valign="top"><simpara>Un número entero tradicional.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>bigint (entero grande)</simpara></entry>
+<entry align="left" valign="top"><simpara>8 bytes</simpara></entry>
+<entry align="left" valign="top"><simpara>Un número entero con mayor capacidad. Para números aún más grandes.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>float (decimal)</simpara></entry>
+<entry align="left" valign="top"><simpara>4 bytes</simpara></entry>
+<entry align="left" valign="top"><simpara>Un número decimal con 6 decimales de precisión.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>double (decimal con doble precisión)</simpara></entry>
+<entry align="left" valign="top"><simpara>8 bytes</simpara></entry>
+<entry align="left" valign="top"><simpara>Un número decimal con 15 decimales de precisión.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>varchar (caracteres variable)</simpara></entry>
+<entry align="left" valign="top"><simpara>(4 + n) byte</simpara></entry>
+<entry align="left" valign="top"><simpara>Se suma la cantidad de caracteres más 4 para obtener el total de espacio requerido.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>blob (binario)</simpara></entry>
+<entry align="left" valign="top"><simpara>variable</simpara></entry>
+<entry align="left" valign="top"><simpara>Un archivo binario almacenado. El tamaño dependerá de cada archivo.</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</section>
 <section xml:id="_números_de_latencia">
 <title>Números de Latencia</title>
 <simpara>La latencia nos indica cuánto se demora un proceso desde que se hace la petición hasta recibir una respuesta. A mayor cantidad de latencia, mayor será el tiempo que necesitemos esperar para obtener una respuesta. El tiempo de retraso de las latencias puede crear ineficiencias, especialmente en las operaciones en tiempo real.</simpara>
+<simpara>Los siguientes gráficos contienen números aproximados, ya que según el avance tecnológico pueden variar con los años.</simpara>
+<simpara>Basado en los números de Jeff Dean y Peter Norvig (<link xl:href="http://norvig.com/21-days.html#answers">http://norvig.com/21-days.html#answers</link>).</simpara>
 <informalfigure>
 <mediaobject>
 <imageobject>
@@ -1958,6 +2023,136 @@ problemas de diseño de software con más confianza y aplicar principios de dise
 <textobject><phrase>Latencia Gráfico</phrase></textobject>
 </mediaobject>
 </informalfigure>
+<informaltable frame="all" rowsep="1" colsep="1">
+<tgroup cols="5">
+<colspec colname="col_1" colwidth="20*"/>
+<colspec colname="col_2" colwidth="20*"/>
+<colspec colname="col_3" colwidth="20*"/>
+<colspec colname="col_4" colwidth="20*"/>
+<colspec colname="col_5" colwidth="20*"/>
+<thead>
+<row>
+<entry align="left" valign="top">Operation</entry>
+<entry align="left" valign="top">ns</entry>
+<entry align="left" valign="top">µs</entry>
+<entry align="left" valign="top">ms</entry>
+<entry align="left" valign="top">note</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara>L1 cache reference</simpara></entry>
+<entry align="left" valign="top"><simpara>0.5 ns</simpara></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Branch mispredict</simpara></entry>
+<entry align="left" valign="top"><simpara>5 ns</simpara></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>L2 cache reference</simpara></entry>
+<entry align="left" valign="top"><simpara>7 ns</simpara></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"><simpara>14x L1 cache</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Mutex lock/unlock</simpara></entry>
+<entry align="left" valign="top"><simpara>25 ns</simpara></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Main memory reference</simpara></entry>
+<entry align="left" valign="top"><simpara>100 ns</simpara></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"><simpara>20x L2 cache, 200x L1 cache</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Compress 1K bytes with Zippy</simpara></entry>
+<entry align="left" valign="top"><simpara>3,000 ns</simpara></entry>
+<entry align="left" valign="top"><simpara>3 µs</simpara></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Send 1K bytes over 1 Gbps network</simpara></entry>
+<entry align="left" valign="top"><simpara>10,000 ns</simpara></entry>
+<entry align="left" valign="top"><simpara>10 µs</simpara></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Read 4K randomly from SSD*</simpara></entry>
+<entry align="left" valign="top"><simpara>150,000 ns</simpara></entry>
+<entry align="left" valign="top"><simpara>150 µs</simpara></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"><simpara>~1GB/sec SSD</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Read 1 MB sequentially from memory</simpara></entry>
+<entry align="left" valign="top"><simpara>250,000 ns</simpara></entry>
+<entry align="left" valign="top"><simpara>250 µs</simpara></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Round trip within same datacenter</simpara></entry>
+<entry align="left" valign="top"><simpara>500,000 ns</simpara></entry>
+<entry align="left" valign="top"><simpara>500 µs</simpara></entry>
+<entry align="left" valign="top"></entry>
+<entry align="left" valign="top"></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Read 1 MB sequentially from SSD*</simpara></entry>
+<entry align="left" valign="top"><simpara>1,000,000 ns</simpara></entry>
+<entry align="left" valign="top"><simpara>1,000 µs</simpara></entry>
+<entry align="left" valign="top"><simpara>1 ms</simpara></entry>
+<entry align="left" valign="top"><simpara>~1GB/sec SSD, 4X memory</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Disk seek</simpara></entry>
+<entry align="left" valign="top"><simpara>10,000,000 ns</simpara></entry>
+<entry align="left" valign="top"><simpara>10,000 µs</simpara></entry>
+<entry align="left" valign="top"><simpara>10 ms</simpara></entry>
+<entry align="left" valign="top"><simpara>20x datacenter roundtrip</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Read 1 MB sequentially from disk</simpara></entry>
+<entry align="left" valign="top"><simpara>20,000,000 ns</simpara></entry>
+<entry align="left" valign="top"><simpara>20,000 µs</simpara></entry>
+<entry align="left" valign="top"><simpara>20 ms</simpara></entry>
+<entry align="left" valign="top"><simpara>80x
+memory, 20X SSD</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Send packet CA &#8594; Netherlands &#8594; CA</simpara></entry>
+<entry align="left" valign="top"><simpara>150,000,000 ns</simpara></entry>
+<entry align="left" valign="top"><simpara>150,000 µs</simpara></entry>
+<entry align="left" valign="top"><simpara>150 ms</simpara></entry>
+<entry align="left" valign="top"></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+<itemizedlist>
+<listitem>
+<simpara>1 ns = 10^-9 segundos</simpara>
+</listitem>
+<listitem>
+<simpara>1 us = 10^-6 segundos = 1,000 ns</simpara>
+</listitem>
+<listitem>
+<simpara>1 ms = 10^-3 segundos = 1,000 us = 1,000,000 ns</simpara>
+</listitem>
+</itemizedlist>
 <informalfigure>
 <mediaobject>
 <imageobject>
@@ -1966,6 +2161,147 @@ problemas de diseño de software con más confianza y aplicar principios de dise
 <textobject><phrase>Latencia</phrase></textobject>
 </mediaobject>
 </informalfigure>
+<section xml:id="_cachés_l1_y_l2_1_ns_10_ns">
+<title>Cachés L1 y L2: 1 ns, 10 ns</title>
+<simpara>Normalmente están integrados en el chip del microprocesador. A menos que trabaje directamente con hardware, probablemente no necesite preocuparse por ellos.</simpara>
+</section>
+<section xml:id="_acceso_a_ram_100_ns">
+<title>Acceso a RAM: 100 ns</title>
+<simpara>Se necesitan alrededor de 100 ns para leer datos de la memoria. Redis es un almacén de datos en memoria, por lo que se necesitan unos 100 ns para leer datos de Redis.</simpara>
+</section>
+<section xml:id="_envía_1k_bytes_a_través_de_una_red_de_1_gbps_10_us">
+<title>Envía 1K bytes a través de una red de 1 Gbps: 10 us</title>
+<simpara>Se necesitan alrededor de 10 usuarios para enviar 1 KB de datos desde Memcached a través de la red.</simpara>
+</section>
+<section xml:id="_leer_desde_ssd_100_us">
+<title>Leer desde SSD: 100 us</title>
+<simpara>RocksDB es un almacén K/V basado en disco, por lo que la latencia de lectura es de alrededor de 100 us en SSD.</simpara>
+</section>
+<section xml:id="_operación_de_inserción_de_base_de_datos_1_ms">
+<title>Operación de inserción de base de datos: 1 ms.</title>
+<simpara>La confirmación de Postgresql puede tardar 1 ms. La base de datos necesita almacenar los datos, crear el índice y vaciar los registros. Todas estas acciones toman tiempo.</simpara>
+</section>
+<section xml:id="_enviar_paquete_capaíses_bajosca_100_ms">
+<title>Enviar paquete CA&#8594;Países Bajos&#8594;CA: 100 ms</title>
+<simpara>Si tenemos una llamada de larga distancia por Zoom, la latencia podría rondar los 100 ms.</simpara>
+</section>
+<section xml:id="_reintentaractualizar_interno_1_10s">
+<title>Reintentar/actualizar interno: 1-10s</title>
+<simpara>En un sistema de monitoreo, el intervalo de actualización generalmente se establece en 5 a 10 segundos (valor predeterminado en Grafana).</simpara>
+</section>
+<section xml:id="_resumen">
+<title>Resumen</title>
+<simpara>Al leer los datos se puede concluir las siguientes cosas:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Leer de la memoria es más rápido que leer de un disco duro.</simpara>
+</listitem>
+<listitem>
+<simpara>Leer del disco duro solo cuando sea obligatorio.</simpara>
+</listitem>
+<listitem>
+<simpara>Los algoritmos de compresión son rápidos y se recomienda su utilización al enviar los datos por la red.</simpara>
+</listitem>
+<listitem>
+<simpara>Los centros de datos de diferentes regiones requerirán más tiempo para transferir datos entre ellos.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section xml:id="_estimación_general">
+<title>Estimación General</title>
+<simpara>El primer paso en el proceso de estimación es definir los objetivos.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Nivel mínimo: Objetivo que no tiene grandes exigencias. ¿Cuánto es lo mínimo que el sistema necesitaría para funcionar correctamente?.</simpara>
+</listitem>
+<listitem>
+<simpara>Nivel promedio: Objetivo que busca definir el comportamiento normal de un sistema. ¿Cuánto es lo que necesitaría el sistema en un día normal?.</simpara>
+</listitem>
+<listitem>
+<simpara>Nivel crítico: Objetivo que busca definir el comportamiento exigente de un sistema. ¿Cuánto es lo que necesitaría el sistema en un día de alta exigencia?.</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Una vez definido el objetivo y los supuestos a cumplir, se debe transformar a datos como
+tamaño de almacenamiento o tamaño de transferencia. Ya que normalmente son los
+necesarios para comparar con la tabla de precios de un proveedor de servicios. Al tener el tamaño de almacenamiento o transferencia, se puede estimar los costos monetarios necesarios para lograr los objetivos planteados.</simpara>
+<section xml:id="_cantidad_de_usuarios_diarios_cud">
+<title>Cantidad de Usuarios Diarios (CUD)</title>
+<simpara>La cantidad de usuarios diarios nos ayudará a definir cuán grande es el volumen de consultas por segundo de un sistema, teniendo en consideración las operaciones que los usuarios realicen.</simpara>
+</section>
+<section xml:id="_consultas_por_segundo_qps_queries_per_second">
+<title>Consultas por Segundo (QPS: Queries per Second)</title>
+<simpara>Una métrica común es ¿Cúantas consultas tendrá por segundo la aplicación?.
+Esto nos permite determinar la cantidad de almacenamiento y datos necesarios
+en los casos hipotéticos acordados.</simpara>
+</section>
+<section xml:id="_ejemplo_red_microblogging">
+<title>Ejemplo: Red Microblogging</title>
+<simpara>Una red microblogging similar a sistemas como Mastodon o X (Twitter).</simpara>
+<section xml:id="_objetivos_y_supuestos">
+<title>Objetivos y Supuestos</title>
+<itemizedlist>
+<listitem>
+<simpara>300 millones de usuarios activos mensuales.</simpara>
+</listitem>
+<listitem>
+<simpara>50% utiliza el sistema diariamente.</simpara>
+</listitem>
+<listitem>
+<simpara>Se realizan 2 posts por día en promedio.</simpara>
+</listitem>
+<listitem>
+<simpara>10% de los posts contienen imagenes (media).</simpara>
+</listitem>
+<listitem>
+<simpara>Los datos se almacenan por 5 años.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_obtención_de_las_qps_querys_per_second">
+<title>Obtención de las QPS (Querys per Second)</title>
+<simpara>El primer paso es obtener la cantidad de usuarios diarios (CUD), para esto
+obtenemos el 50% de 300 millones.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>300 millones (Usuarios Mensuales) * 50% (Uso diario) = 150 millones (Usuarios Diarios)</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Sabemos que con 150 millones de usuarios diarios, cada usuario realiza 2 posts por día. Esto lo debemos transformar a segundos.</simpara>
+<screen>posts_por_dia = 150 millones usuarios * 2 posts
+horas_por_dia = 24
+segundos_por_dia = 3600
+
+QPS = posts_por_dia / horas_por_dia / segundos_por_dia
+QPS = ~3500 Queries por Segundo.</screen>
+<simpara>Ahora si tomamos la cantidad total de usuarios y asumiendo que todos
+los usuarios realizan dos posts en un mismo día</simpara>
+<screen>QPS_MAX = 2 * QPS = ~7000 Queries por Segundo.</screen>
+</section>
+<section xml:id="_almacenamiento_estimado">
+<title>Almacenamiento Estimado</title>
+<simpara>Ahora si definimos que cada post contiene la siguiente información:</simpara>
+<screen>id  varchar(64) -- cadena de caracteres de 64 bytes
+text varchar(140) -- cadena de caracteres de 140 bytes
+media blob(1MB) -- imagen de 1 MegaByte</screen>
+<simpara>Utilizando la <literal>QPS</literal> podemos calcular cuánto espacio de almacenamiento necesitamos.</simpara>
+<screen>peso_imagen = 10% * 1 MB
+posts_por_dia * peso_imagen
+terabytes_por_dia = 30
+terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes</screen>
+</section>
+</section>
+</section>
+<section xml:id="_enlaces">
+<title>Enlaces</title>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7126968760971714560-aZ7T?trk=public_profile_like_view">https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7126968760971714560-aZ7T?trk=public_profile_like_view</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://gist.github.com/jboner/2841832">https://gist.github.com/jboner/2841832</link></simpara>
+</listitem>
+</itemizedlist>
 </section>
 </section>
 <section xml:id="_escalado_horizontal_y_vertical">
