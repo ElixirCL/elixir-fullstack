@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
 <info>
 <title>Elixir FullStack</title>
-<date>2024-03-01</date>
+<date>2024-04-11</date>
 <copyright>
 <holder>CC-BY-NC-SA 4.0</holder>
 </copyright>
@@ -5988,23 +5988,215 @@ A pesar de ejecutarse en menos hardware, los tiempos de respuesta se redujeron s
 </chapter>
 <chapter xml:id="_aplicaciones_móviles_2">
 <title>Aplicaciones Móviles</title>
+<simpara>Las aplicaciones móviles son ejecutadas en los denominados "Teléfonos Inteligentes" o <emphasis>Smartphones</emphasis>.
+La industria de las aplicaciones móviles está dominada principalmente por dos sistemas operativos:
+<emphasis>Android</emphasis> (Google) e <emphasis>iOS</emphasis> (Apple). Aunque existen otros menores como <emphasis>Tinzen</emphasis> (Samsung) y <emphasis>HarmonyOS</emphasis> (Hwuawei).</simpara>
+<section xml:id="_comparación_entre_android_e_ios">
+<title>Comparación entre Android e iOS</title>
+<informaltable frame="all" rowsep="1" colsep="1">
+<tgroup cols="5">
+<colspec colname="col_1" colwidth="20*"/>
+<colspec colname="col_2" colwidth="20*"/>
+<colspec colname="col_3" colwidth="20*"/>
+<colspec colname="col_4" colwidth="20*"/>
+<colspec colname="col_5" colwidth="20*"/>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara>Plataforma</simpara></entry>
+<entry align="left" valign="top"><simpara>Precio cuenta Dev</simpara></entry>
+<entry align="left" valign="top"><simpara>Lenguajes de Programación</simpara></entry>
+<entry align="left" valign="top"><simpara>Tienda</simpara></entry>
+<entry align="left" valign="top"><simpara>Comentario</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Android</simpara></entry>
+<entry align="left" valign="top"><simpara>$20 USD (único)</simpara></entry>
+<entry align="left" valign="top"><simpara>Kotlin, Java</simpara></entry>
+<entry align="left" valign="top"><simpara>Playstore</simpara></entry>
+<entry align="left" valign="top"><simpara>Popular en Latinoamérica y países donde no hay Apple Store oficial.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>iOS</simpara></entry>
+<entry align="left" valign="top"><simpara>$100 USD (al año)</simpara></entry>
+<entry align="left" valign="top"><simpara>Swift, Objective-C</simpara></entry>
+<entry align="left" valign="top"><simpara>Appstore</simpara></entry>
+<entry align="left" valign="top"><simpara>Popular en países donde existen Apple Store oficiales, debido a su más elevado precio.</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</section>
+<section xml:id="_tecnologías_nativas">
+<title>Tecnologías Nativas</title>
 <itemizedlist>
 <listitem>
-<simpara>Ecosistema Móvil</simpara>
+<simpara><emphasis>Android</emphasis> utiliza los lenguajes de programación <link xl:href="https://kotlinlang.org/">Kotlin</link> y
+<link xl:href="https://docs.oracle.com/en/java/">Java</link>.</simpara>
 </listitem>
 <listitem>
-<simpara>Tecnologías para crear Apps Móviles</simpara>
-</listitem>
-<listitem>
-<simpara>Precios y valores</simpara>
-</listitem>
-<listitem>
-<simpara>¿Qué usar Android o iOS?</simpara>
-</listitem>
-<listitem>
-<simpara>¿Cómo crear una app Android?.</simpara>
+<simpara><emphasis>iOS</emphasis> utiliza los lenguajes de programación <link xl:href="https://www.swift.org/">Swift</link> y
+<link xl:href="https://en.wikipedia.org/wiki/Objective-C">Objective-C</link>.</simpara>
 </listitem>
 </itemizedlist>
+</section>
+<section xml:id="_tecnologías_alternativas">
+<title>Tecnologías Alternativas</title>
+<simpara>En los últimos años nacieron varias formas nuevas de crear aplicaciones móviles.
+Enfocadas en reutilizar el código y reducir el esfuerzo del desarrollador
+necesario para dar vida a una aplicación. Se ha seleccionado algunas tecnologías
+diferentes: Onsen, NativeScript, React Native, Jasonelle, Elixir Desktop y LiveNative.
+Para permitir una comparación, aunque no es una lista exhaustiva.</simpara>
+<section xml:id="_categorías">
+<title>Categorías</title>
+<simpara>Entre los frameworks de desarrollo móvil nos encontramos con dos grandes categorías.</simpara>
+<section xml:id="_frameworks_nativos">
+<title>Frameworks Nativos</title>
+<simpara>Son tecnologías que permiten compilar a nativo la aplicación (no utilizan un navegador web como base).</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Aplicaciones hechas con Kotlin/Swift/C.</simpara>
+</listitem>
+<listitem>
+<simpara>Aplicaciones hechas con frameworks de videojuegos (Godot, SDL, Unity, Unreal).</simpara>
+</listitem>
+<listitem>
+<simpara>Aplicaciones que tras un proceso de compilación, ejecutan el código nativo (React Native, Native Script, LiveNative).</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_cuándo_usar">
+<title>¿Cuándo usar?</title>
+<simpara>La mayoría de las opciones utilizan o están inspiradas en tecnologías que surgieron de la web (
+Javascript, CSS, HTML). Por lo tanto, en determinadas situaciones es mejor seguir con las tecnologías de
+desarrollador oficiales para Android o iOS. Algunas razones válidas son:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>La organización invirtió mucho en Kotlin o Swift Developers.</simpara>
+</listitem>
+<listitem>
+<simpara>Los desarrolladores son verdaderos expertos en Java, Kotlin, Objective-C o Swift. Tienen muchos años de experiencia y utilizar una de las nuevas tecnologías debería ser un proceso lento.</simpara>
+</listitem>
+<listitem>
+<simpara>La organización ya tiene implementados procesos de pruebas, herramientas de integración continua, mejores prácticas y otras cosas. Adoptar estas nuevas tecnologías significa rehacer todo el proceso de definición de herramientas adaptadas a las nuevas tecnologías.</simpara>
+</listitem>
+<listitem>
+<simpara>El uso de nuevas tecnologías debe ser sólo en proyectos experimentales o no críticos. Si no se toma con suficiente cuidado, la organización corre el riesgo de ralentizar la productividad y frustrar a los desarrolladores.</simpara>
+</listitem>
+<listitem>
+<simpara>Si el cliente requiere algo hecho sólo con código nativo. Los requisitos sólo se pueden realizar con SDK oficiales.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_frameworks_webview">
+<title>Frameworks WebView</title>
+<simpara>Los frameworks tipo <emphasis>WebView</emphasis> permiten crear aplicaciones utilizando las tecnologías web (HTML, JS, CSS).
+Básicamente son un navegador web que permite utilizar algunas APIs nativas a través de puentes
+creados con código nativo.</simpara>
+<simpara>Son muy populares sobre todo si ya tienes una aplicación web y debes adaptarla a móvil, o para hacer
+prototipos rápidos.</simpara>
+<simpara>En ésta categoría están.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Onsen</simpara>
+</listitem>
+<listitem>
+<simpara>Ionic</simpara>
+</listitem>
+<listitem>
+<simpara>Elixir Desktop</simpara>
+</listitem>
+<listitem>
+<simpara>Jasonelle</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_cuándo_usar_2">
+<title>¿Cuándo usar?</title>
+<simpara>Útil para crear aplicaciones y prototipos rápidos.
+Algunos prototipos requerirán integrar herramientas nativas, la web no cuenta con todas las apis que tiene una opción nativa.
+La experiencia de usuario web (Web UX) es diferente a UX móvil nativo. Tener en cuenta que al diseñar interfaces y experiencias de usuario,
+especialmente cuando se utilizan entradas seleccionadas u otros componentes. La contraparte nativa podría ser más grande y podría romper el diseño original.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>Pequeñas aplicaciones</simpara>
+</listitem>
+<listitem>
+<simpara>Prototipos rápidos</simpara>
+</listitem>
+<listitem>
+<simpara>Aplicaciones simples de línea de negocios (<link xl:href="https://en.wikipedia.org/wiki/Line_of_business">https://en.wikipedia.org/wiki/Line_of_business</link>).</simpara>
+</listitem>
+<listitem>
+<simpara>Aplicaciones que utilizan mucho formularios y gráficos para la entrada y presentación de datos.</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section xml:id="_cúal_usar">
+<title>¿Cúal usar?</title>
+<simpara>Si la organización está formada principalmente por desarrolladores web, utilizar Onsen o Jasonelle
+podría ser la primera opción para empezar a crear aplicaciones móviles.</simpara>
+<simpara>Si usan React, entonces React Native podría ser la opción correcta.
+Si lo prefiere, puede elegir Angular Onsen y NativeScript.</simpara>
+<simpara><emphasis>Elixir Desktop</emphasis> y <emphasis>LiveNative</emphasis> son dos opciones muy buenas que permiten utilizar
+la potente tecnología de <emphasis>Elixir</emphasis> para el desarrollo de aplicaciones móviles.
+No solamente tendrás una aplicación móvil, si no también el backend completo,
+por lo que eligiendo la tecnologías de <emphasis>Elixir</emphasis> simplificarás en gran medida
+los componentes necesarios para tener una aplicación móvil robusta y preparada para el futuro.</simpara>
+<informaltable frame="all" rowsep="1" colsep="1">
+<tgroup cols="4">
+<colspec colname="col_1" colwidth="25*"/>
+<colspec colname="col_2" colwidth="25*"/>
+<colspec colname="col_3" colwidth="25*"/>
+<colspec colname="col_4" colwidth="25*"/>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara>Framework</simpara></entry>
+<entry align="left" valign="top"><simpara>Web</simpara></entry>
+<entry align="left" valign="top"><simpara>Categoría</simpara></entry>
+<entry align="left" valign="top"><simpara>Comentario</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Jasonelle</simpara></entry>
+<entry align="left" valign="top"><simpara><link xl:href="https://jasonelle.com">https://jasonelle.com</link></simpara></entry>
+<entry align="left" valign="top"><simpara>WebView + Javascript</simpara></entry>
+<entry align="left" valign="top"><simpara>Es un envoltorio (wrapper) para una url y convertirla a aplicación.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Onsen</simpara></entry>
+<entry align="left" valign="top"><simpara><link xl:href="https://onsen.io/">https://onsen.io/</link></simpara></entry>
+<entry align="left" valign="top"><simpara>WebView + Javascript</simpara></entry>
+<entry align="left" valign="top"><simpara>Puedes generar tu aplicación con HTML, CSS y JS. Alternativa a <emphasis>IONIC</emphasis>.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Elixir Desktop</simpara></entry>
+<entry align="left" valign="top"><simpara><link xl:href="https://github.com/elixir-desktop/desktop">https://github.com/elixir-desktop/desktop</link></simpara></entry>
+<entry align="left" valign="top"><simpara>WebView + Elixir</simpara></entry>
+<entry align="left" valign="top"><simpara>Ejecuta un servidor web local con el framework <link xl:href="https://www.phoenixframework.org/">Phoenix</link>.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Native Script</simpara></entry>
+<entry align="left" valign="top"><simpara><link xl:href="https://nativescript.org/">https://nativescript.org/</link></simpara></entry>
+<entry align="left" valign="top"><simpara>Nativo + Typescript</simpara></entry>
+<entry align="left" valign="top"><simpara>Permite crear aplicaciones nativas usando Typescript y ser un puente para otras tecnologías.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>React Native</simpara></entry>
+<entry align="left" valign="top"><simpara><link xl:href="https://reactnative.dev/">https://reactnative.dev/</link></simpara></entry>
+<entry align="left" valign="top"><simpara>Nativo + Javascript</simpara></entry>
+<entry align="left" valign="top"><simpara>Enfocado en generar aplicaciones para iOS y Android usando Javascript y el frontend framework <emphasis>React</emphasis>.</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>LiveNative</simpara></entry>
+<entry align="left" valign="top"><simpara><link xl:href="https://github.com/liveview-native">https://github.com/liveview-native</link></simpara></entry>
+<entry align="left" valign="top"><simpara>Nativo + Elixir</simpara></entry>
+<entry align="left" valign="top"><simpara>Permite generar aplicaciones nativas conectándose a un servidor con Phoenix framework.</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+</section>
+</section>
 </chapter>
 <bibliography xml:id="_bibliografía">
 <title>Bibliografía</title>

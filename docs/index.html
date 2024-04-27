@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.20">
+<meta name="generator" content="Asciidoctor 2.0.22">
 <meta name="description" content="Un libro sobre desarrollo fullstack con Elixir.">
 <meta name="keywords" content="web, mobile, programación, lenguaje, referencia, elixir, fullstack">
 <meta name="author" content="Camilo A. Castro">
@@ -144,7 +144,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -166,6 +166,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -331,7 +332,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -892,7 +893,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_por_qué_utilizar_phoenix_frente_a_las_alternativas">13.10. ¿Por qué utilizar Phoenix frente a las alternativas?</a></li>
 </ul>
 </li>
-<li><a href="#_aplicaciones_móviles_2">14. Aplicaciones Móviles</a></li>
+<li><a href="#_aplicaciones_móviles_2">14. Aplicaciones Móviles</a>
+<ul class="sectlevel2">
+<li><a href="#_comparación_entre_android_e_ios">14.1. Comparación entre Android e iOS</a></li>
+<li><a href="#_tecnologías_nativas">14.2. Tecnologías Nativas</a></li>
+<li><a href="#_tecnologías_alternativas">14.3. Tecnologías Alternativas</a>
+<ul class="sectlevel3">
+<li><a href="#_categorías">14.3.1. Categorías</a></li>
+<li><a href="#_cúal_usar">14.3.2. ¿Cúal usar?</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#_bibliografía">Bibliografía</a></li>
 <li><a href="#_índice">Índice</a></li>
 </ul>
@@ -8648,24 +8660,248 @@ A pesar de ejecutarse en menos hardware, los tiempos de respuesta se redujeron s
 <div class="sect1">
 <h2 id="_aplicaciones_móviles_2">14. Aplicaciones Móviles</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Las aplicaciones móviles son ejecutadas en los denominados "Teléfonos Inteligentes" o <em>Smartphones</em>.
+La industria de las aplicaciones móviles está dominada principalmente por dos sistemas operativos:
+<em>Android</em> (Google) e <em>iOS</em> (Apple). Aunque existen otros menores como <em>Tinzen</em> (Samsung) y <em>HarmonyOS</em> (Hwuawei).</p>
+</div>
+<div class="sect2">
+<h3 id="_comparación_entre_android_e_ios">14.1. Comparación entre Android e iOS</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plataforma</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Precio cuenta Dev</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lenguajes de Programación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tienda</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comentario</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Android</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$20 USD (único)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kotlin, Java</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Playstore</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Popular en Latinoamérica y países donde no hay Apple Store oficial.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iOS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$100 USD (al año)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Swift, Objective-C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Appstore</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Popular en países donde existen Apple Store oficiales, debido a su más elevado precio.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_tecnologías_nativas">14.2. Tecnologías Nativas</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Ecosistema Móvil</p>
+<p><em>Android</em> utiliza los lenguajes de programación <a href="https://kotlinlang.org/">Kotlin</a> y
+<a href="https://docs.oracle.com/en/java/">Java</a>.</p>
 </li>
 <li>
-<p>Tecnologías para crear Apps Móviles</p>
-</li>
-<li>
-<p>Precios y valores</p>
-</li>
-<li>
-<p>¿Qué usar Android o iOS?</p>
-</li>
-<li>
-<p>¿Cómo crear una app Android?.</p>
+<p><em>iOS</em> utiliza los lenguajes de programación <a href="https://www.swift.org/">Swift</a> y
+<a href="https://en.wikipedia.org/wiki/Objective-C">Objective-C</a>.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tecnologías_alternativas">14.3. Tecnologías Alternativas</h3>
+<div class="paragraph">
+<p>En los últimos años nacieron varias formas nuevas de crear aplicaciones móviles.
+Enfocadas en reutilizar el código y reducir el esfuerzo del desarrollador
+necesario para dar vida a una aplicación. Se ha seleccionado algunas tecnologías
+diferentes: Onsen, NativeScript, React Native, Jasonelle, Elixir Desktop y LiveNative.
+Para permitir una comparación, aunque no es una lista exhaustiva.</p>
+</div>
+<div class="sect3">
+<h4 id="_categorías">14.3.1. Categorías</h4>
+<div class="paragraph">
+<p>Entre los frameworks de desarrollo móvil nos encontramos con dos grandes categorías.</p>
+</div>
+<div class="sect4">
+<h5 id="_frameworks_nativos">Frameworks Nativos</h5>
+<div class="paragraph">
+<p>Son tecnologías que permiten compilar a nativo la aplicación (no utilizan un navegador web como base).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Aplicaciones hechas con Kotlin/Swift/C.</p>
+</li>
+<li>
+<p>Aplicaciones hechas con frameworks de videojuegos (Godot, SDL, Unity, Unreal).</p>
+</li>
+<li>
+<p>Aplicaciones que tras un proceso de compilación, ejecutan el código nativo (React Native, Native Script, LiveNative).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_cuándo_usar">¿Cuándo usar?</h5>
+<div class="paragraph">
+<p>La mayoría de las opciones utilizan o están inspiradas en tecnologías que surgieron de la web (
+Javascript, CSS, HTML). Por lo tanto, en determinadas situaciones es mejor seguir con las tecnologías de
+desarrollador oficiales para Android o iOS. Algunas razones válidas son:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La organización invirtió mucho en Kotlin o Swift Developers.</p>
+</li>
+<li>
+<p>Los desarrolladores son verdaderos expertos en Java, Kotlin, Objective-C o Swift. Tienen muchos años de experiencia y utilizar una de las nuevas tecnologías debería ser un proceso lento.</p>
+</li>
+<li>
+<p>La organización ya tiene implementados procesos de pruebas, herramientas de integración continua, mejores prácticas y otras cosas. Adoptar estas nuevas tecnologías significa rehacer todo el proceso de definición de herramientas adaptadas a las nuevas tecnologías.</p>
+</li>
+<li>
+<p>El uso de nuevas tecnologías debe ser sólo en proyectos experimentales o no críticos. Si no se toma con suficiente cuidado, la organización corre el riesgo de ralentizar la productividad y frustrar a los desarrolladores.</p>
+</li>
+<li>
+<p>Si el cliente requiere algo hecho sólo con código nativo. Los requisitos sólo se pueden realizar con SDK oficiales.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_frameworks_webview">Frameworks WebView</h5>
+<div class="paragraph">
+<p>Los frameworks tipo <em>WebView</em> permiten crear aplicaciones utilizando las tecnologías web (HTML, JS, CSS).
+Básicamente son un navegador web que permite utilizar algunas APIs nativas a través de puentes
+creados con código nativo.</p>
+</div>
+<div class="paragraph">
+<p>Son muy populares sobre todo si ya tienes una aplicación web y debes adaptarla a móvil, o para hacer
+prototipos rápidos.</p>
+</div>
+<div class="paragraph">
+<p>En ésta categoría están.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Onsen</p>
+</li>
+<li>
+<p>Ionic</p>
+</li>
+<li>
+<p>Elixir Desktop</p>
+</li>
+<li>
+<p>Jasonelle</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_cuándo_usar_2">¿Cuándo usar?</h5>
+<div class="paragraph">
+<p>Útil para crear aplicaciones y prototipos rápidos.
+Algunos prototipos requerirán integrar herramientas nativas, la web no cuenta con todas las apis que tiene una opción nativa.
+La experiencia de usuario web (Web UX) es diferente a UX móvil nativo. Tener en cuenta que al diseñar interfaces y experiencias de usuario,
+especialmente cuando se utilizan entradas seleccionadas u otros componentes. La contraparte nativa podría ser más grande y podría romper el diseño original.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pequeñas aplicaciones</p>
+</li>
+<li>
+<p>Prototipos rápidos</p>
+</li>
+<li>
+<p>Aplicaciones simples de línea de negocios (<a href="https://en.wikipedia.org/wiki/Line_of_business">https://en.wikipedia.org/wiki/Line_of_business</a>).</p>
+</li>
+<li>
+<p>Aplicaciones que utilizan mucho formularios y gráficos para la entrada y presentación de datos.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_cúal_usar">14.3.2. ¿Cúal usar?</h4>
+<div class="paragraph">
+<p>Si la organización está formada principalmente por desarrolladores web, utilizar Onsen o Jasonelle
+podría ser la primera opción para empezar a crear aplicaciones móviles.</p>
+</div>
+<div class="paragraph">
+<p>Si usan React, entonces React Native podría ser la opción correcta.
+Si lo prefiere, puede elegir Angular Onsen y NativeScript.</p>
+</div>
+<div class="paragraph">
+<p><em>Elixir Desktop</em> y <em>LiveNative</em> son dos opciones muy buenas que permiten utilizar
+la potente tecnología de <em>Elixir</em> para el desarrollo de aplicaciones móviles.
+No solamente tendrás una aplicación móvil, si no también el backend completo,
+por lo que eligiendo la tecnologías de <em>Elixir</em> simplificarás en gran medida
+los componentes necesarios para tener una aplicación móvil robusta y preparada para el futuro.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Categoría</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comentario</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jasonelle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://jasonelle.com">https://jasonelle.com</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebView + Javascript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Es un envoltorio (wrapper) para una url y convertirla a aplicación.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Onsen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://onsen.io/">https://onsen.io/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebView + Javascript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Puedes generar tu aplicación con HTML, CSS y JS. Alternativa a <em>IONIC</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elixir Desktop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/elixir-desktop/desktop">https://github.com/elixir-desktop/desktop</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebView + Elixir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ejecuta un servidor web local con el framework <a href="https://www.phoenixframework.org/">Phoenix</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Native Script</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://nativescript.org/">https://nativescript.org/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nativo + Typescript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permite crear aplicaciones nativas usando Typescript y ser un puente para otras tecnologías.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React Native</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://reactnative.dev/">https://reactnative.dev/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nativo + Javascript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enfocado en generar aplicaciones para iOS y Android usando Javascript y el frontend framework <em>React</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LiveNative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/liveview-native">https://github.com/liveview-native</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nativo + Elixir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permite generar aplicaciones nativas conectándose a un servidor con Phoenix framework.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -8730,7 +8966,7 @@ A pesar de ejecutarse en menos hardware, los tiempos de respuesta se redujeron s
 </div>
 <div id="footer">
 <div id="footer-text">
-Última actualización 2024-03-01 22:45:51 -0300
+Última actualización 2024-04-11 10:17:16 -0400
 </div>
 </div>
 <script src="highlight/highlight.min.js"></script>
