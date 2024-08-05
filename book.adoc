@@ -12,7 +12,7 @@ Camilo A. Castro <https://github.com/clsource[@clsource]>
 :description: Un libro sobre desarrollo fullstack con Elixir.
 :keywords: web, mobile, programación, lenguaje, referencia, elixir, fullstack
 :imagesdir: book/images
-:front-cover-image: image:cover.jpg[Front Cover,1050,1600]
+:front-cover-image: image:cover.jpg[Front Cover, fit=fill]
 :epub-chapter-level: 2
 :toc: left
 :toclevels: 3

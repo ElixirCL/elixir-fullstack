@@ -4,7 +4,7 @@
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="es">
 <info>
 <title>Elixir FullStack</title>
-<date>2024-04-11</date>
+<date>2024-08-05</date>
 <copyright>
 <holder>CC-BY-NC-SA 4.0</holder>
 </copyright>
@@ -20,7 +20,7 @@
 <cover role="front">
 <mediaobject>
 <imageobject>
-<imagedata fileref="book/images/cover.jpg" contentwidth="1050" contentdepth="1600"/>
+<imagedata fileref="book/images/cover.jpg"/>
 </imageobject>
 </mediaobject>
 </cover>
@@ -5990,7 +5990,7 @@ A pesar de ejecutarse en menos hardware, los tiempos de respuesta se redujeron s
 <title>Aplicaciones Móviles</title>
 <simpara>Las aplicaciones móviles son ejecutadas en los denominados "Teléfonos Inteligentes" o <emphasis>Smartphones</emphasis>.
 La industria de las aplicaciones móviles está dominada principalmente por dos sistemas operativos:
-<emphasis>Android</emphasis> (Google) e <emphasis>iOS</emphasis> (Apple). Aunque existen otros menores como <emphasis>Tinzen</emphasis> (Samsung) y <emphasis>HarmonyOS</emphasis> (Hwuawei).</simpara>
+<emphasis>Android</emphasis> (Google) e <emphasis>iOS</emphasis> (Apple). Aunque existen otros menores como <link xl:href="https://www.tizen.org/">Tizen</link> (Samsung) y <link xl:href="https://www.harmonyos.com/en/">HarmonyOS</link> (Hwuawei).</simpara>
 <section xml:id="_comparación_entre_android_e_ios">
 <title>Comparación entre Android e iOS</title>
 <informaltable frame="all" rowsep="1" colsep="1">
