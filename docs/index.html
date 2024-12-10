@@ -6992,13 +6992,37 @@ Cada método indica la acción que desea que se efectúe sobre el recurso identi
 </div>
 <div class="sect3">
 <h4 id="_cabeceras_más_usadas">9.4.1. Cabeceras Más Usadas</h4>
-<div class="paragraph">
-<p>| Cabecera                                                                            | Descripción      | Ejemplo          |
-|---------------------------------------------------------|------------|------------|
-| <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type">Content-Type</a> | Define el tipo de contenido que se envía en la petición | application/json |
-| <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Accept">Accept</a>             |  Define el tipo de contenido que se aceptará en la respuesta | application/json |
-|https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Authorization[Authorization]|Permite enviar tokens de autorización.| Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l|</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Cabecera</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+<th class="tableblock halign-left valign-top">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type">Content-Type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Define el tipo de contenido que se envía en la petición</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application/json</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Accept">Accept</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Define el tipo de contenido que se aceptará en la respuesta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application/json</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Authorization">Authorization</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permite enviar tokens de autorización.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="_métodos_más_usados">9.4.2. Métodos Más Usados</h4>
@@ -7408,7 +7432,41 @@ role = "backend"</code></pre>
 <div class="sect1">
 <h2 id="_seguridad_de_aplicaciones_web">10. Seguridad de Aplicaciones Web</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>En el ciclo de desarrollo se debe resolver tempranamente los requerimientos de seguridad, regulaciones, cumplimiento y riesgos asociados. Por lo que se deben considerar en las primeras etapas de planificación del proyecto. Es adecuado seguir las recomendaciones de seguridad de la última versión del <a href="https://owasp.org/Top10/">Owasp Top 10</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Beneficios de considerar</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reducir la probabilidad de una falla de seguridad y sus consecuencias, como pérdida de reputación comercial o multas.</p>
+</li>
+<li>
+<p>Evitar fisuras que permitan liberar información delicada que pueden costar millones de dólares por incidente.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Para mayor información se recomiendan los siguientes recursos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/mirego/elixir-security-advisories" class="bare">https://github.com/mirego/elixir-security-advisories</a></p>
+</li>
+<li>
+<p><a href="https://softwarepatternslexicon.com/patterns-elixir/23/2/" class="bare">https://softwarepatternslexicon.com/patterns-elixir/23/2/</a></p>
+</li>
+<li>
+<p><a href="https://hacksplaining.com/lessons" class="bare">https://hacksplaining.com/lessons</a></p>
+</li>
+<li>
+<p><a href="https://www.manning.com/books/grokking-web-application-security" class="bare">https://www.manning.com/books/grokking-web-application-security</a></p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect1">

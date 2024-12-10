@@ -4802,11 +4802,37 @@ Cada método indica la acción que desea que se efectúe sobre el recurso identi
 <simpara>En el año 2000, un nuevo formato para usar HTTP fue diseñado: REST (del inglés: 'Representational State Transfer'). Las acciones de la nueva API, no estaban supeditadas a nuevos métodos HTTP, unicamente al acceso a URIs especificas con métodos HTTP/1.1). Esto permitió que cualquier aplicación Web dispusiera de una API, para permitir la recuperación y modificación de datos, sin tener que actualizar servidores o navegadores; todo lo que se necesitaba era incluido en los archivos servidos por los sitios Web. La contrapartida del modelo REST está en que cada sitio Web define su propia versión no estándar de API RESTful y tiene un control total sobre ella; al contrario del formato *DAV donde clientes y servidores eran interoperables. La arquitectura REST empezó a ser muy común a partir del año 2010.</simpara>
 <section xml:id="_cabeceras_más_usadas">
 <title>Cabeceras Más Usadas</title>
-<simpara>| Cabecera                                                                            | Descripción      | Ejemplo          |
-|---------------------------------------------------------|------------|------------|
-| <link xl:href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type">Content-Type</link> | Define el tipo de contenido que se envía en la petición | application/json |
-| <link xl:href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Accept">Accept</link>             |  Define el tipo de contenido que se aceptará en la respuesta | application/json |
-|https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Authorization[Authorization]|Permite enviar tokens de autorización.| Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l|</simpara>
+<informaltable frame="all" rowsep="1" colsep="1">
+<tgroup cols="3">
+<colspec colname="col_1" colwidth="33.3333*"/>
+<colspec colname="col_2" colwidth="33.3333*"/>
+<colspec colname="col_3" colwidth="33.3334*"/>
+<thead>
+<row>
+<entry align="left" valign="top">Cabecera</entry>
+<entry align="left" valign="top">Descripción</entry>
+<entry align="left" valign="top">Ejemplo</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara><link xl:href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type">Content-Type</link></simpara></entry>
+<entry align="left" valign="top"><simpara>Define el tipo de contenido que se envía en la petición</simpara></entry>
+<entry align="left" valign="top"><simpara>application/json</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><link xl:href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Accept">Accept</link></simpara></entry>
+<entry align="left" valign="top"><simpara>Define el tipo de contenido que se aceptará en la respuesta</simpara></entry>
+<entry align="left" valign="top"><simpara>application/json</simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara><link xl:href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Authorization">Authorization</link></simpara></entry>
+<entry align="left" valign="top"><simpara>Permite enviar tokens de autorización.</simpara></entry>
+<entry align="left" valign="top"><simpara>Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
 </section>
 <section xml:id="_métodos_más_usados">
 <title>Métodos Más Usados</title>
@@ -5126,7 +5152,31 @@ role = "backend"</programlisting>
 </chapter>
 <chapter xml:id="_seguridad_de_aplicaciones_web">
 <title>Seguridad de Aplicaciones Web</title>
-
+<simpara>En el ciclo de desarrollo se debe resolver tempranamente los requerimientos de seguridad, regulaciones, cumplimiento y riesgos asociados. Por lo que se deben considerar en las primeras etapas de planificación del proyecto. Es adecuado seguir las recomendaciones de seguridad de la última versión del <link xl:href="https://owasp.org/Top10/">Owasp Top 10</link>.</simpara>
+<simpara><emphasis role="strong">Beneficios de considerar</emphasis></simpara>
+<itemizedlist>
+<listitem>
+<simpara>Reducir la probabilidad de una falla de seguridad y sus consecuencias, como pérdida de reputación comercial o multas.</simpara>
+</listitem>
+<listitem>
+<simpara>Evitar fisuras que permitan liberar información delicada que pueden costar millones de dólares por incidente.</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Para mayor información se recomiendan los siguientes recursos:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://github.com/mirego/elixir-security-advisories">https://github.com/mirego/elixir-security-advisories</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://softwarepatternslexicon.com/patterns-elixir/23/2/">https://softwarepatternslexicon.com/patterns-elixir/23/2/</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://hacksplaining.com/lessons">https://hacksplaining.com/lessons</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://www.manning.com/books/grokking-web-application-security">https://www.manning.com/books/grokking-web-application-security</link></simpara>
+</listitem>
+</itemizedlist>
 </chapter>
 <chapter xml:id="_html_css_y_git">
 <title>HTML, CSS y GIT</title>

@@ -2,7 +2,7 @@
 
 Las aplicaciones móviles son ejecutadas en los denominados "Teléfonos Inteligentes" o _Smartphones_.
 La industria de las aplicaciones móviles está dominada principalmente por dos sistemas operativos:
-_Android_ (Google) e _iOS_ (Apple). Aunque existen otros menores como _Tinzen_ (Samsung) y _HarmonyOS_ (Hwuawei).
+_Android_ (Google) e _iOS_ (Apple). Aunque existen otros menores como https://www.tizen.org/[Tizen] (Samsung) y https://www.harmonyos.com/en/[HarmonyOS] (Hwuawei).
 
 === Comparación entre Android e iOS
 

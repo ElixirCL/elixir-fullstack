@@ -57,11 +57,13 @@ En el año 2000, un nuevo formato para usar HTTP fue diseñado: REST (del inglé
 
 ==== Cabeceras Más Usadas
 
-| Cabecera                                                                            | Descripción      | Ejemplo          |
-|---------------------------------------------------------|------------|------------|
-| https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type[Content-Type] | Define el tipo de contenido que se envía en la petición | application/json |
-| https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Accept[Accept]             |  Define el tipo de contenido que se aceptará en la respuesta | application/json |
-|https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Authorization[Authorization]|Permite enviar tokens de autorización.| Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l|
+|===
+| Cabecera                                                                            | Descripción      | Ejemplo          
+
+| https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type[Content-Type] | Define el tipo de contenido que se envía en la petición | application/json 
+| https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Accept[Accept]             |  Define el tipo de contenido que se aceptará en la respuesta | application/json 
+|https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Authorization[Authorization]|Permite enviar tokens de autorización.| Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l
+|===
 
 ==== Métodos Más Usados
 
