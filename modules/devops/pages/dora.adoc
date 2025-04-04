@@ -72,13 +72,13 @@ _Pull Request_ y los distintos eventos del ciclo de vida de un cambio.
 .Histograma de Development Cycle Time (Tech Lead)
 [vega]
 ----
-include::example:$././dev-cycle-tl.json[]
+include::example:$./dev-cycle-tl.json[]
 ----
 
 .Histograma de Development Cycle Time (Engineer Manager)
 [vega]
 ----
-include::example:$././dev-cycle.json[]
+include::example:$./dev-cycle.json[]
 ----
 
 == Deploy Frecuency
@@ -120,14 +120,18 @@ cada deployment.
 .Histograma de Deploy Frequency
 [vega]
 ----
-include::example:$./deploy-frecuency.json[]
+include::example:$deploy-frecuency.json[]
 ----
 
 [NOTE]
 ====
 Para los datos del gráfico anterior podemos notar que el promedio de despliegues a producción para este repositorio
 es *0.87* por semana.
-
+:$
+:$
+:$
+:$
+:$
 - stem:[Promedio = (Semana 1 + Semana 2 + .... + Semana 15) / 15]
 - stem:[Promedio = (0 + 0 + 0 + 0 + 0 + 2 + 4 + 3 + 0 + 0 + 0 + 0 + 0 + 0 + 4) / 15]
 - stem:[Promedio = 13/15]
@@ -167,7 +171,7 @@ La fuente de datos es un servicio de manejo de incidentes que pueda entregar los
 .Histograma de MTTR
 [vega]
 ----
-include::example:$./mttr.json[]
+include::example:$mttr.json[]
 ----
 
 == Change Failure Rate
@@ -202,5 +206,5 @@ La fuente de datos es un servicio de manejo de incidentes que pueda entregar los
 .Histograma de Change Failure Rate
 [vega]
 ----
-include::example:$./change-failure.json[]
+include::example:$change-failure.json[]
 ----
