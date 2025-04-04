@@ -1,5 +1,6 @@
 .DS_Store
-Thumbs.db
+.vscode
+.idea
 node_modules/
-docs/book.pdf
-update.sh
+dbml-error.log
+

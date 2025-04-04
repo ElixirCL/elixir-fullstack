@@ -1,0 +1,15 @@
+= Elixir Full Stack
+
+include::authors.adoc[]
+
+include::dedication.adoc[]
+
+include::foreword.adoc[]
+
+include::abstract.adoc[]
+
+include::colophon.adoc[]
+
+include::glossary.adoc[]
+
+include::bibliography.adoc[]

@@ -1,0 +1,461 @@
+= HTML, CSS y GIT
+
+HTML (Lenguaje de Marcas de Hipertexto, del inglés HyperText Markup Language) es el componente más básico de la Web. Define el significado y la estructura del contenido web. Además de HTML, generalmente se utilizan otras tecnologías para describir la apariencia/presentación de una página web (CSS) o la funcionalidad/comportamiento (JavaScript).
+
+* https://developer.mozilla.org/es/docs/Web/HTML
+
+== Algunos Templates de Ejemplo
+
+* https://html5up.net/
+* https://templated.co/
+
+== Buenas Prácticas
+
+== Comenzar por el DOCTYPE
+
+`<!DOCTYPE>` informa al navegador qué versión de HTML (o XML) se usó para escribir el documento. Doctype es una declaración no una etiqueta. Además, podemos referirnos a ella como "document type declaration" o por las siglas "DTD".
+
+Para los documentos html el tag recomendado es:
+
+[,html]
+----
+<!DOCTYPE html>
+----
+
+* https://developer.mozilla.org/es/docs/Glossary/Doctype
+
+== Usar minúsculas en los tags
+
+El utilizar mayúsculas era muy popular en los primeros años,
+pero hoy en día se recomienda utilizar los tags en minúsculas.
+
+[,html]
+----
+<UL></UL> <!-- Es válido, pero no recomendable -->
+<ul></ul> <!-- Es mejor usar los tags en minúsculas -->
+----
+
+== Utilizar UTF-8
+
+La etiqueta `<meta charset="">` permite definir que caracteres son los utilizados
+por el documento. En los primeros días, había muchas opciones como `Windows-1252`.
+Sin embargo hoy en día utilizar `utf-8` es lo recomendado y cualquier
+lenguaje humano puede ser mostrado con dicha codificación.
+
+[,html]
+----
+<meta charset="utf-8">
+----
+
+* https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML
+* https://blog.hubspot.com/website/what-is-utf-8
+* https://www.w3.org/International/questions/qa-choosing-encodings
+
+== Utilizar CSS
+
+En los primeros días, antes de CSS se incluían los estilos dentro de los tags html.
+Esto llevaba a mucha repetición y suciedad en el código. Siempre utilizar css para dar estilo y formato a los documentos HTML.
+
+[,html]
+----
+<body bgcolor="#000"> <!-- No -->
+<body style="background-color: #000"><!-- Válido, pero no recomendado -->
+<body class="bg-black"><!-- Se recomienda utilizar clases por sobre estilos inline -->
+----
+
+== Mantener un orden coherente
+
+Es recomendable que el orden sea coherente, por ejemplo,
+una etiqueta `h2` debe venir despúes de una `h1`.
+
+[,html]
+----
+<!-- Correcto -->
+<h1>Mi Título</h1>
+<h2>Mi Subtítuo</h2>
+
+<!-- No recomendable -->
+<h1>Mi Título</h1>
+<h3>Mi Subtítuo</h3>
+----
+
+== Cerrar los tags
+
+Los navegadores hacen todo lo posible para interpretar un documento HTML y mostrar un resultado,
+aún si las etiquetas son mal usadas o le falta información. El navegador llenará los espacios lo mejor que pueda.
+Como desarrolladores debemos ser responsables y verificar que las etiquetas se utilicen de forma correcta y esten cerradas apropiadamente.
+
+[,html]
+----
+<head>
+<style>
+* {
+    color: white
+}
+<!-- Se debe cerrar con las etiquetas </style> y </head> antes de partir con body -->
+<body></body>
+----
+
+== Considerar ayuda a no videntes
+
+Si bien esto no es obligatorio para que un documento sea válido y bien estructurado,
+considerar a las personas con dificultades de visión u otra condición de diferencia dentro
+de los elementos para facilitarles la experiencia dentro del sistema web.
+
+* https://www.a11yproject.com/posts/what-is-semantic-html/
+
+== CSS
+
+Hojas de Estilo en Cascada (del inglés Cascading Style Sheets) o CSS es el lenguaje de estilos utilizado para describir la presentación de documentos HTML o XML (en-US) (incluyendo varios lenguajes basados en XML como SVG, MathML o XHTML). CSS describe como debe ser renderizado el elemento estructurado en la pantalla, en papel, en el habla o en otros medios.
+
+Se recomienda aprender a utilizar _CSS_ de forma manual, antes de aventurarse a utilizar frameworks
+como Bootstrap o Tailwind.
+
+* https://developer.mozilla.org/es/docs/Web/CSS
+
+== Algunos Frameworks de CSS
+
+* https://getbootstrap.com/
+* https://tailwindcss.com/
+* https://bulma.io/
+* https://get.foundation/
+* https://github.com/picocss/pico
+
+____
+Nota: Tailwind es una de las opciones más populares del momento y se recomienda su uso por sobre Bootstrap.
+____
+
+== Metodologías
+
+Existen algunas metodologías para organización del CSS.
+Se recomiendan utilizar si se debe programar mucho CSS personalizado.
+Aunque en la actualidad se prefiere utilizar herramientas más automatizadas como Tailwind
+para nombrar las clases.
+
+* https://getbem.com/introduction/
+* http://smacss.com/
+* https://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/
+
+== Transpiladores
+
+Existen algunos transpiladores de CSS como:
+
+* https://sass-lang.com/
+* https://lesscss.org/
+
+Aunque actualmente se prefieren otras alternativas
+como Tailwind por sobre estos lenguajes intermedios,
+debido a que las nuevas características de CSS3 implementan mucha de las ideas
+que estas herramientas brindaban en los primeros años de CSS.
+
+== Conceptos Importantes
+
+* https://developer.mozilla.org/es/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox[Flexbox]
+* https://developer.mozilla.org/es/docs/Web/CSS/CSS_grid_layout[CSS Grid]
+* https://developer.mozilla.org/es/docs/Web/CSS/color_value[Color]
+
+== Herramientas de Aprendizaje
+
+* https://flexboxfroggy.com/#es[Flexbox Froggy]
+* https://codepip.com/games/grid-garden/[Grid Garden]
+
+== Navegador Firefox Developer
+
+Es una versión de _Firefox_ especialmente diseñada
+para los desarrolladores. Tiene herramientas especiales
+que permitirán facilitar el trabajar con CSS.
+
+* https://www.mozilla.org/es-ES/firefox/developer/
+
+== GIT
+
+¿Qué es un control de versiones, y por qué debería
+importarte? Un control de versiones es un sistema que registra los cambios realizados en un archivo o conjunto de archivos a lo largo del tiempo, de modo que puedas recuperar versiones específicas más adelante.
+
+Dicho sistema te permite regresar a versiones anteriores de tus archivos, regresar a una versión anterior del proyecto completo, comparar cambios a lo largo del tiempo, ver quién modificó por última vez algo que pueda estar causando problemas, ver quién introdujo un problema y cuándo, y mucho más. Usar un VCS también significa generalmente que si arruinas o pierdes archivos, será posible recuperarlos fácilmente. Adicionalmente, obtendrás todos estos beneficios a un costo muy bajo.
+
+== Metodologías
+
+Existen numerosas formas de organizar los proyectos que utilizan Git,
+tales como Gitflow, Github Flow, Gitlab Flow, pero la más recomendable
+es el _Desarrollo Basado En Tronco_.
+
+El desarrollo basado en tronco (o main), consiste en separar las ramas
+por ambiente, teniendo una rama principal que es la fuente de la verdad donde
+todos los desarrollos deben basarse.
+
+[,mermaid]
+----
+flowchart TD
+    A1(Rama Main) --> B1
+    B1(Rama Staging)  --> B2(Rama Production)
+----
+
+=== main (tronco, trunk, master)
+
+La rama principal. Todos los _Pull Request_ deben ser hacia esta rama y no deben tener conflictos con ella.
+Los desarrolladores crean una rama desde el tronco, para luego mandar su _Pull Request_,
+el cual debe estar actualizado con la última versión del _tronco main_,
+ser aprobado por los responsables mediante un _Code Review_ y pasar todas las pruebas unitarias.
+
+* Los desarrolladores realizan pruebas en su ambiente local.
+* Cuando el producto está lo suficientemente maduro y estable, pasa a la siguiente rama que es _staging_.
+* Se realiza un squash commits al pasar a la siguiente rama.
+* Se crea una nueva etiqueta con la versión de staging.
+* Se elimina la rama transitoria que elaboró el desarrollador (ej: camilo/1085) al hacer un merge exitoso con main.
+
+=== staging (ambiente de pruebas pre-producción)
+
+Esta es la rama del ambiente de pruebas que replica el ambiente de producción. Este ambiente
+es el paso anterior a producción y se deben realizar pruebas manuales y automatizadas para validar que el código funcionará y
+cumplirá las expectativas y requisitos del producto en producción.
+
+* Una vez se ha validado el producto en este ambiente, pasa a la siguiente rama que es _producción_.
+* Se realiza un squash commits al pasar a la siguiente rama.
+* Se crea una nueva etiqueta con la versión de producción.
+
+=== production (ambiente de producción)
+
+Esta es la rama que aloja el producto que es finalmente mostrado al cliente y usuario final. Debe ser el código más
+estable, probado y robusto posible, que ha pasado por las pruebas locales y de staging anteriores.
+Nunca se debe pasar un código desde `main` a `production` sin antes pasar por `staging`.
+
+== Versionado
+
+Hay diversas formas de versionar el código, entre las más conocidas están: SemVer y Calver.
+Cada una tiene sus beneficios y complicaciones.
+
+Lo importante es que podemos utilizar las Etiquetas de Git (Tags) para poder marcar cada
+nueva versión del producto de software dentro de la historia.
+
+La recomendación es usar SemVer si la cantidad de releases es muy frecuente y Calver
+cuando se realicen releases menos frecuentes.
+
+[,shell]
+----
+$ git tag -a v1.4 -m "v1.4"
+$ git tag
+v0.1
+v1.3
+v1.4
+----
+
+== Changelog
+
+Un changelog (registro de cambios), es un archivo que contiene una lista cronológicamente ordenada de los cambios más destacables para cada versión de un proyecto.
+Las personas. Ya sean consumidores o desarrolladores, los usuarios finales del software son seres humanos a los que le importa lo que hay en el software. Cuando el software cambia, la gente quiere saber el porqué y el cómo.
+Si bien utilizar _Conventional Commits_ ayuda, no es recomendable usar el registro de git como changelog y es
+preferible utilizar un archivo separado y dedicado.
+
+=== Directrices
+
+* Están hechos para los seres humanos, no para las máquinas.
+* Debe haber una entrada para cada versión.
+* Los mismos tipos de cambios deben ser agrupados.
+* Versiones y secciones deben ser enlazables.
+* La última versión va primero.
+* Debe mostrar la fecha de publicación de cada versión.
+* Indicar si el proyecto sigue el Versionamiento Semántico.
+
+=== Tipos de cambios
+
+* `Added` para funcionalidades nuevas.
+* `Changed` para los cambios en las funcionalidades existentes.
+* `Deprecated` para indicar que una característica o funcionalidad está obsoleta y que se eliminará en las próximas versiones.
+* `Removed` para las características en desuso que se eliminaron en esta versión.
+* `Fixed` para corrección de errores.
+* `Security` en caso de vulnerabilidades.
+
+=== Ejemplo
+
+[,markdown]
+----
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.1.1] - 2023-03-05
+
+### Added
+
+- Arabic translation (#444).
+----
+
+*Enlaces*
+
+* https://semver.org/
+* https://calver.org/
+* https://git-scm.com/book/es/v2/Fundamentos-de-Git-Etiquetado
+* https://keepachangelog.com/es-ES/1.0.0/
+* https://github.com/conventional-changelog/conventional-changelog
+* https://github.com/lintingzhen/commitizen-go
+
+== Algunos Comandos
+
+== git init
+
+Inicia un nuevo repositorio de git.
+
+[,shell]
+----
+$ git init
+----
+
+== git add `ruta del archivo`
+
+Agrega un archivo al registro de git.
+
+[,shell]
+----
+$ git add mi_archivo
+----
+
+== git status
+
+Muestra el estado actual del historial de cambios
+por guardar.
+
+[,shell]
+----
+$ git status
+----
+
+== git commit -m `mensaje`
+
+El historial de cambios se guarda de forma definitiva, adjuntando un mensaje significativo.
+
+[,shell]
+----
+$ git commit -m 'nuevo cambio'
+----
+
+== git checkout -b `rama`
+
+Crea una nueva rama y la asigna como la rama de trabajo actual.
+
+[,shell]
+----
+$ git checkout -b mi_rama
+$ git checkout -b camilo/1085
+----
+
+____
+Nota: Se recomendaría crear ramas con el formato (nombre usuario)/(número de issue) para ahorrar espacio y facilitar búsquedas al tener mejor orden.
+____
+
+== git checkout `rama`
+
+Cambia hacia una rama que ya existe y la asigna como la rama de trabajo actual.
+
+== git merge `nombre`
+
+Obtiene los cambios de una rama y los combina con los cambios de la rama actual.
+
+[,shell]
+----
+$ git merge main
+----
+
+== git remote add `nombre` `repo.remoto.git`
+
+Añade un nuevo repositorio remoto.
+
+[,shell]
+----
+$ git remote add git@github.com:elixircl/elixir-fullstack.git
+----
+
+* `origin`: Normalmente asignado al repositorio remoto que se tiene permisos de escritura.
+* `upstream`: Asignado a un repositorio remoto que solamente se tiene lectura.
+
+== git clone `repo.remoto.git`
+
+Clona un repositorio remoto.
+
+[,shell]
+----
+$ git clone git@github.com:elixircl/elixir-fullstack.git
+----
+
+== git pull `nombre del repo remoto`
+
+Obtiene los cambios del repositorio remoto y las almacena
+en nuestra rama local.
+
+[,shell]
+----
+$ git pull origin main
+----
+
+== git push `remoto` `rama`
+
+Envía nuestros cambios a la rama dentro del repositorio remoto.
+
+[,shell]
+----
+$ git push origin main
+----
+
+== Conventional Commits
+
+La especificación de Commits Convencionales es una convención ligera sobre los mensajes de commits. Proporciona un conjunto sencillo de reglas para crear un historial de commits explícito; lo que hace más fácil escribir herramientas automatizadas encima del historial. Esta convención encaja con SemVer, al describir en los mensajes de los commits las funcionalidades, arreglos, y cambios de ruptura hechos.
+
+El mensaje del commit debe ser estructurado de la siguiente manera:
+
+[,text]
+----
+<tipo>[ámbito opcional]: <descripción>
+
+[cuerpo opcional]
+
+[nota(s) al pie opcional(es)]
+----
+
+== Tipos
+
+* `fix`: un commit de tipo fix corrige un error en la base del código (se correlaciona con PATCH en el Versionado Semántico).
+* `feat`: un commit de tipo feat introduce una nueva funcionalidad en la base del código (se correlaciona con MINOR en el Versionado Semántico).
+* tipos distintos a `fix:` y `feat:` están permitidos, por ejemplo (basados en la convención de Angular) que recomienda `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`, y otros.
+
+*Ejemplos*
+
+[,text]
+----
+docs(changelog): update changelog to beta.5
+----
+
+[,text]
+----
+fix(release): need to depend on latest rxjs and zone.js
+
+The version in our package.json gets copied to the one we publish, and users need the latest of these.
+----
+
+*Uso de Número de Issue*
+
+También es válido poner en el ámbito el número de issue
+relacionado.
+
+[,text]
+----
+docs(1085): added conventional commits.
+----
+
+* https://www.conventionalcommits.org/es/v1.0.0/
+* https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines
+
+== Lectura Complementaria
+
+* https://git-scm.com/book/es/v2
+* https://trunkbaseddevelopment.com/
+* https://about.gitlab.com/topics/version-control/what-is-gitlab-flow/
+* https://about.gitlab.com/blog/2020/03/05/what-is-gitlab-flow/
+* https://www.atlassian.com/es/continuous-delivery/continuous-integration/trunk-based-development
+* https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+* https://docs.github.com/en/get-started/quickstart/github-flow
+* https://killercoda.com/pawelpiwosz/course/gitFundamentals/

@@ -1,0 +1,105 @@
+= Aplicaciones Móviles
+
+Las aplicaciones móviles son ejecutadas en los denominados "Teléfonos Inteligentes" o _Smartphones_.
+La industria de las aplicaciones móviles está dominada principalmente por dos sistemas operativos:
+_Android_ (Google) e _iOS_ (Apple). Aunque existen otros menores como https://www.tizen.org/[Tizen] (Samsung) y https://www.harmonyos.com/en/[HarmonyOS] (Hwuawei).
+
+== Comparación entre Android e iOS
+
+|===
+| Plataforma | Precio cuenta Dev | Lenguajes de Programación | Tienda | Comentario
+| Android | $20 USD (único) | Kotlin, Java | Playstore | Popular en Latinoamérica y países donde no hay Apple Store oficial.
+| iOS | $100 USD (al año) | Swift, Objective-C | Appstore | Popular en países donde existen Apple Store oficiales, debido a su más elevado precio.
+|===
+
+== Tecnologías Nativas
+
+- _Android_ utiliza los lenguajes de programación https://kotlinlang.org/[Kotlin] y
+https://docs.oracle.com/en/java/[Java].
+
+- _iOS_ utiliza los lenguajes de programación https://www.swift.org/[Swift] y
+https://en.wikipedia.org/wiki/Objective-C[Objective-C].
+
+== Tecnologías Alternativas
+
+En los últimos años nacieron varias formas nuevas de crear aplicaciones móviles.
+Enfocadas en reutilizar el código y reducir el esfuerzo del desarrollador
+necesario para dar vida a una aplicación. Se ha seleccionado algunas tecnologías
+diferentes: Onsen, NativeScript, React Native, Jasonelle, Elixir Desktop y LiveNative.
+Para permitir una comparación, aunque no es una lista exhaustiva.
+
+=== Categorías
+
+Entre los frameworks de desarrollo móvil nos encontramos con dos grandes categorías.
+
+==== Frameworks Nativos
+
+Son tecnologías que permiten compilar a nativo la aplicación (no utilizan un navegador web como base).
+
+- Aplicaciones hechas con Kotlin/Swift/C.
+- Aplicaciones hechas con frameworks de videojuegos (Godot, SDL, Unity, Unreal).
+- Aplicaciones que tras un proceso de compilación, ejecutan el código nativo (React Native, Native Script, LiveNative).
+
+==== ¿Cuándo usar?
+
+La mayoría de las opciones utilizan o están inspiradas en tecnologías que surgieron de la web (
+Javascript, CSS, HTML). Por lo tanto, en determinadas situaciones es mejor seguir con las tecnologías de
+desarrollador oficiales para Android o iOS. Algunas razones válidas son:
+
+- La organización invirtió mucho en Kotlin o Swift Developers.
+- Los desarrolladores son verdaderos expertos en Java, Kotlin, Objective-C o Swift. Tienen muchos años de experiencia y utilizar una de las nuevas tecnologías debería ser un proceso lento.
+- La organización ya tiene implementados procesos de pruebas, herramientas de integración continua, mejores prácticas y otras cosas. Adoptar estas nuevas tecnologías significa rehacer todo el proceso de definición de herramientas adaptadas a las nuevas tecnologías.
+- El uso de nuevas tecnologías debe ser sólo en proyectos experimentales o no críticos. Si no se toma con suficiente cuidado, la organización corre el riesgo de ralentizar la productividad y frustrar a los desarrolladores.
+- Si el cliente requiere algo hecho sólo con código nativo. Los requisitos sólo se pueden realizar con SDK oficiales.
+
+==== Frameworks WebView
+
+Los frameworks tipo _WebView_ permiten crear aplicaciones utilizando las tecnologías web (HTML, JS, CSS).
+Básicamente son un navegador web que permite utilizar algunas APIs nativas a través de puentes
+creados con código nativo.
+
+Son muy populares sobre todo si ya tienes una aplicación web y debes adaptarla a móvil, o para hacer
+prototipos rápidos.
+
+En ésta categoría están.
+
+- Onsen
+- Ionic
+- Elixir Desktop
+- Jasonelle
+
+==== ¿Cuándo usar?
+
+Útil para crear aplicaciones y prototipos rápidos.
+Algunos prototipos requerirán integrar herramientas nativas, la web no cuenta con todas las apis que tiene una opción nativa.
+La experiencia de usuario web (Web UX) es diferente a UX móvil nativo. Tener en cuenta que al diseñar interfaces y experiencias de usuario,
+especialmente cuando se utilizan entradas seleccionadas u otros componentes. La contraparte nativa podría ser más grande y podría romper el diseño original.
+
+- Pequeñas aplicaciones
+- Prototipos rápidos
+- Aplicaciones simples de línea de negocios (https://en.wikipedia.org/wiki/Line_of_business[https://en.wikipedia.org/wiki/Line_of_business]).
+- Aplicaciones que utilizan mucho formularios y gráficos para la entrada y presentación de datos.
+
+=== ¿Cúal usar?
+
+Si la organización está formada principalmente por desarrolladores web, utilizar Onsen o Jasonelle
+podría ser la primera opción para empezar a crear aplicaciones móviles.
+
+Si usan React, entonces React Native podría ser la opción correcta.
+Si lo prefiere, puede elegir Angular Onsen y NativeScript.
+
+_Elixir Desktop_ y _LiveNative_ son dos opciones muy buenas que permiten utilizar
+la potente tecnología de _Elixir_ para el desarrollo de aplicaciones móviles.
+No solamente tendrás una aplicación móvil, si no también el backend completo,
+por lo que eligiendo la tecnologías de _Elixir_ simplificarás en gran medida
+los componentes necesarios para tener una aplicación móvil robusta y preparada para el futuro.
+
+|===
+| Framework | Web | Categoría | Comentario
+| Jasonelle | https://jasonelle.com[https://jasonelle.com] | WebView + Javascript | Es un envoltorio (wrapper) para una url y convertirla a aplicación.
+| Onsen | https://onsen.io/[https://onsen.io/] | WebView + Javascript | Puedes generar tu aplicación con HTML, CSS y JS. Alternativa a _IONIC_.
+| Elixir Desktop | https://github.com/elixir-desktop/desktop[https://github.com/elixir-desktop/desktop] | WebView + Elixir | Ejecuta un servidor web local con el framework https://www.phoenixframework.org/[Phoenix].
+| Native Script | https://nativescript.org/[https://nativescript.org/] | Nativo + Typescript | Permite crear aplicaciones nativas usando Typescript y ser un puente para otras tecnologías.
+| React Native | https://reactnative.dev/[https://reactnative.dev/] | Nativo + Javascript | Enfocado en generar aplicaciones para iOS y Android usando Javascript y el frontend framework _React_.
+| LiveNative | https://github.com/liveview-native[https://github.com/liveview-native] | Nativo + Elixir | Permite generar aplicaciones nativas conectándose a un servidor con Phoenix framework.
+|===

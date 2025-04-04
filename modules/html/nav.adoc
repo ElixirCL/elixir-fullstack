@@ -1,0 +1,2 @@
+.HTML
+* xref:chapter.adoc[]

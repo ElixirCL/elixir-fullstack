@@ -1,0 +1,22 @@
+name: ROOT
+version: ~
+title: Elixir Full-Stack
+display_version: Spanish
+asciidoc:
+  attributes:
+    page-home: Inicio
+nav:
+  - modules/ROOT/nav.adoc
+  - modules/history/nav.adoc
+  - modules/jobs/nav.adoc
+  - modules/patterns/nav.adoc
+  - modules/systemd/nav.adoc
+  - modules/github/nav.adoc
+  - modules/hosting/nav.adoc
+  - modules/networking/nav.adoc
+  - modules/http/nav.adoc
+  - modules/security/nav.adoc
+  - modules/html/nav.adoc
+  - modules/javascript/nav.adoc
+  - modules/elixir/nav.adoc
+  - modules/mobile/nav.adoc

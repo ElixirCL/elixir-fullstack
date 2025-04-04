@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aplicaciones Móviles :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/mobile/chapter.html">
+    <link rel="prev" href="../elixir/chapter.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Patrones de Diseño</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/chapter.html">Patrones y Arquitecturas de Software</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">chapter.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Aplicaciones Móviles</li>
+    <li><a href="chapter.html">Aplicaciones Móviles</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/mobile/pages/chapter.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Aplicaciones Móviles</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Las aplicaciones móviles son ejecutadas en los denominados "Teléfonos Inteligentes" o <em>Smartphones</em>.
+La industria de las aplicaciones móviles está dominada principalmente por dos sistemas operativos:
+<em>Android</em> (Google) e <em>iOS</em> (Apple). Aunque existen otros menores como <a href="https://www.tizen.org/">Tizen</a> (Samsung) y <a href="https://www.harmonyos.com/en/">HarmonyOS</a> (Hwuawei).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="comparación-entre-android-e-ios"><a class="anchor" href="#comparación-entre-android-e-ios"></a>Comparación entre Android e iOS</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plataforma</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Precio cuenta Dev</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lenguajes de Programación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tienda</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comentario</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Android</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$20 USD (único)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kotlin, Java</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Playstore</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Popular en Latinoamérica y países donde no hay Apple Store oficial.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iOS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$100 USD (al año)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Swift, Objective-C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Appstore</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Popular en países donde existen Apple Store oficiales, debido a su más elevado precio.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tecnologías-nativas"><a class="anchor" href="#tecnologías-nativas"></a>Tecnologías Nativas</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><em>Android</em> utiliza los lenguajes de programación <a href="https://kotlinlang.org/">Kotlin</a> y
+<a href="https://docs.oracle.com/en/java/">Java</a>.</p>
+</li>
+<li>
+<p><em>iOS</em> utiliza los lenguajes de programación <a href="https://www.swift.org/">Swift</a> y
+<a href="https://en.wikipedia.org/wiki/Objective-C">Objective-C</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tecnologías-alternativas"><a class="anchor" href="#tecnologías-alternativas"></a>Tecnologías Alternativas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En los últimos años nacieron varias formas nuevas de crear aplicaciones móviles.
+Enfocadas en reutilizar el código y reducir el esfuerzo del desarrollador
+necesario para dar vida a una aplicación. Se ha seleccionado algunas tecnologías
+diferentes: Onsen, NativeScript, React Native, Jasonelle, Elixir Desktop y LiveNative.
+Para permitir una comparación, aunque no es una lista exhaustiva.</p>
+</div>
+<div class="sect2">
+<h3 id="categorías"><a class="anchor" href="#categorías"></a>Categorías</h3>
+<div class="paragraph">
+<p>Entre los frameworks de desarrollo móvil nos encontramos con dos grandes categorías.</p>
+</div>
+<div class="sect3">
+<h4 id="frameworks-nativos"><a class="anchor" href="#frameworks-nativos"></a>Frameworks Nativos</h4>
+<div class="paragraph">
+<p>Son tecnologías que permiten compilar a nativo la aplicación (no utilizan un navegador web como base).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Aplicaciones hechas con Kotlin/Swift/C.</p>
+</li>
+<li>
+<p>Aplicaciones hechas con frameworks de videojuegos (Godot, SDL, Unity, Unreal).</p>
+</li>
+<li>
+<p>Aplicaciones que tras un proceso de compilación, ejecutan el código nativo (React Native, Native Script, LiveNative).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cuándo-usar"><a class="anchor" href="#cuándo-usar"></a>¿Cuándo usar?</h4>
+<div class="paragraph">
+<p>La mayoría de las opciones utilizan o están inspiradas en tecnologías que surgieron de la web (
+Javascript, CSS, HTML). Por lo tanto, en determinadas situaciones es mejor seguir con las tecnologías de
+desarrollador oficiales para Android o iOS. Algunas razones válidas son:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La organización invirtió mucho en Kotlin o Swift Developers.</p>
+</li>
+<li>
+<p>Los desarrolladores son verdaderos expertos en Java, Kotlin, Objective-C o Swift. Tienen muchos años de experiencia y utilizar una de las nuevas tecnologías debería ser un proceso lento.</p>
+</li>
+<li>
+<p>La organización ya tiene implementados procesos de pruebas, herramientas de integración continua, mejores prácticas y otras cosas. Adoptar estas nuevas tecnologías significa rehacer todo el proceso de definición de herramientas adaptadas a las nuevas tecnologías.</p>
+</li>
+<li>
+<p>El uso de nuevas tecnologías debe ser sólo en proyectos experimentales o no críticos. Si no se toma con suficiente cuidado, la organización corre el riesgo de ralentizar la productividad y frustrar a los desarrolladores.</p>
+</li>
+<li>
+<p>Si el cliente requiere algo hecho sólo con código nativo. Los requisitos sólo se pueden realizar con SDK oficiales.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="frameworks-webview"><a class="anchor" href="#frameworks-webview"></a>Frameworks WebView</h4>
+<div class="paragraph">
+<p>Los frameworks tipo <em>WebView</em> permiten crear aplicaciones utilizando las tecnologías web (HTML, JS, CSS).
+Básicamente son un navegador web que permite utilizar algunas APIs nativas a través de puentes
+creados con código nativo.</p>
+</div>
+<div class="paragraph">
+<p>Son muy populares sobre todo si ya tienes una aplicación web y debes adaptarla a móvil, o para hacer
+prototipos rápidos.</p>
+</div>
+<div class="paragraph">
+<p>En ésta categoría están.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Onsen</p>
+</li>
+<li>
+<p>Ionic</p>
+</li>
+<li>
+<p>Elixir Desktop</p>
+</li>
+<li>
+<p>Jasonelle</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cuándo-usar-2"><a class="anchor" href="#cuándo-usar-2"></a>¿Cuándo usar?</h4>
+<div class="paragraph">
+<p>Útil para crear aplicaciones y prototipos rápidos.
+Algunos prototipos requerirán integrar herramientas nativas, la web no cuenta con todas las apis que tiene una opción nativa.
+La experiencia de usuario web (Web UX) es diferente a UX móvil nativo. Tener en cuenta que al diseñar interfaces y experiencias de usuario,
+especialmente cuando se utilizan entradas seleccionadas u otros componentes. La contraparte nativa podría ser más grande y podría romper el diseño original.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pequeñas aplicaciones</p>
+</li>
+<li>
+<p>Prototipos rápidos</p>
+</li>
+<li>
+<p>Aplicaciones simples de línea de negocios (<a href="https://en.wikipedia.org/wiki/Line_of_business">https://en.wikipedia.org/wiki/Line_of_business</a>).</p>
+</li>
+<li>
+<p>Aplicaciones que utilizan mucho formularios y gráficos para la entrada y presentación de datos.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cúal-usar"><a class="anchor" href="#cúal-usar"></a>¿Cúal usar?</h3>
+<div class="paragraph">
+<p>Si la organización está formada principalmente por desarrolladores web, utilizar Onsen o Jasonelle
+podría ser la primera opción para empezar a crear aplicaciones móviles.</p>
+</div>
+<div class="paragraph">
+<p>Si usan React, entonces React Native podría ser la opción correcta.
+Si lo prefiere, puede elegir Angular Onsen y NativeScript.</p>
+</div>
+<div class="paragraph">
+<p><em>Elixir Desktop</em> y <em>LiveNative</em> son dos opciones muy buenas que permiten utilizar
+la potente tecnología de <em>Elixir</em> para el desarrollo de aplicaciones móviles.
+No solamente tendrás una aplicación móvil, si no también el backend completo,
+por lo que eligiendo la tecnologías de <em>Elixir</em> simplificarás en gran medida
+los componentes necesarios para tener una aplicación móvil robusta y preparada para el futuro.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Categoría</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comentario</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jasonelle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://jasonelle.com">https://jasonelle.com</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebView + Javascript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Es un envoltorio (wrapper) para una url y convertirla a aplicación.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Onsen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://onsen.io/">https://onsen.io/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebView + Javascript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Puedes generar tu aplicación con HTML, CSS y JS. Alternativa a <em>IONIC</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elixir Desktop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/elixir-desktop/desktop">https://github.com/elixir-desktop/desktop</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WebView + Elixir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ejecuta un servidor web local con el framework <a href="https://www.phoenixframework.org/">Phoenix</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Native Script</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://nativescript.org/">https://nativescript.org/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nativo + Typescript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permite crear aplicaciones nativas usando Typescript y ser un puente para otras tecnologías.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React Native</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://reactnative.dev/">https://reactnative.dev/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nativo + Javascript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enfocado en generar aplicaciones para iOS y Android usando Javascript y el frontend framework <em>React</em>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LiveNative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/liveview-native">https://github.com/liveview-native</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nativo + Elixir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permite generar aplicaciones nativas conectándose a un servidor con Phoenix framework.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../elixir/chapter.html">El Lenguaje Elixir</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

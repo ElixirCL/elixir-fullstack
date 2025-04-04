@@ -1,2 +1,10 @@
 $ cat .gitattributes
 * text=auto eol=lf
+*.dbml linguist-language=JavaScript
+*.dbml linguist-vendored
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary

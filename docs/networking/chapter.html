@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Redes e Internet :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/networking/chapter.html">
+    <link rel="prev" href="../hosting/chapter.html">
+    <link rel="next" href="../http/chapter.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Patrones de Diseño</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/chapter.html">Patrones y Arquitecturas de Software</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">chapter.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Networking</li>
+    <li><a href="chapter.html">Redes e Internet</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/networking/pages/chapter.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Redes e Internet</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>SUBTEL (Subsecretaría de Telecomunicaciones): es un organismo dependiente del Ministerio
+de Transportes y Telecomunicaciones. Su trabajo está orientado a coordinar, promover,
+fomentar y desarrollar las telecomunicaciones en Chile, transformando a este sector en motor
+para el desarrollo económico y social del país.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.subtel.gob.cl" class="bare">https://www.subtel.gob.cl</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="isp-internet-service-provider"><a class="anchor" href="#isp-internet-service-provider"></a>ISP: Internet Service Provider</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Existen diversas formas de clasificar a los ISP, sin embargo, la tipificación comúnmente utilizada es
+&#8220;TIER&#8221;, la cual se relaciona directamente con la cobertura geográfica que abarca. El número de TIER
+que se le asigna a cada operador depende de la importancia en cobertura que presente en la red,
+comenzando con los operadores TIER 1 (aquellos de mayor cobertura) y descendiendo a medida que
+pierden relevancia en el ecosistema IP. Una tipificación alternativa clasifica a los ISP de acuerdo a la
+cantidad de redes IP que transporta. Independientemente de la clasificación, los operadores que
+ofrecen servicio de conectividad a otros ISP, típicamente se les denomina como Carriers, Mayoristas
+o Wholesale. A continuación, se detalla la clasificación considerando cada tipificación posible.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/isp.png" alt="isp">
+</div>
+</div>
+<div class="sect2">
+<h3 id="tier-1"><a class="anchor" href="#tier-1"></a>Tier 1</h3>
+<div class="paragraph">
+<p>Son las redes de los grandes operadores globales (Global Carriers) que tienen
+tendidos de fibra óptica que abarcan al menos dos continentes. Desde una red TIER 1 se puede
+acceder a cualquier punto de Internet gracias a que es una condición necesaria para su clasificación
+que todos los operadores TIER 1 deben estar conectados entre sí. Se puede decir que las redes TIER
+1 forman el actual &#8220;Backbone&#8221; o troncal de Internet. Algunos ejemplos de compañías que poseen
+redes TIER 1 son: AT&amp;T (Estados Unidos), Orange (Francia), PCCW Global (Hong Kong), Tata
+Communications (India) y Verizon (Estados Unidos). Los operadores TIER 1 en general despliegan
+cables submarinos para interconectar continente, además de cables terrestres para cubrir el área
+intra-continental.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tier-2"><a class="anchor" href="#tier-2"></a>Tier 2</h3>
+<div class="paragraph">
+<p>Son operadores de ámbito regional que no pueden alcanzar todos los puntos de
+Internet, por lo tanto, necesitan conectarse a una red TIER 1. Su principal función es ofrecer servicios
+de conectividad a los operadores TIER 3. Algunos ejemplos de operadores TIER 2 en LATAM son:
+Columbus Networks, GlobeNet, Internexa, Ufinet, Silica Networks e IFX Corporation. Los operadores
+TIER 2 en general despliegan cables terrestres para lograr conectividad entre ciudades además de
+cables submarinos en caso de buscar cubrir grandes distancias.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tier-3"><a class="anchor" href="#tier-3"></a>Tier 3</h3>
+<div class="paragraph">
+<p>Pertenecen a los operadores que dan servicio de conexión a Internet a los usuarios
+finales, tales como: residenciales, empresas, universidades, entidades gubernamentales, etc. A estos
+se les denomina típicamente como ISP (Internet Service Provider) o proveedores de acceso a
+Internet. Algunos ejemplos en Latinoamérica son: Telecom Argentina, Comteco, Nuevatel, Telefónica
+Celular de Bolivia, Telefónica Brasil, Claro Brasil, Telefónica Chile, Claro Chile, Entel Chile, Claro
+Colombia, EPM Telecomunicaciones, Tigo Colombia, CNT, Conecel, Otecel, Claro Perú, Media Networks (Telefónica), Entel Perú, CO.PA.CO, Giganet, Tigo Paraguay, ANTEL, Movistar Uruguay,
+Telstar. En general las redes TIER 3 despliegan principalmente tendidos de fibra óptica o redes
+inalámbricas de larga distancia para lograr conectividad entre ciudades de un mismo país. Además,
+cuentan con redes de acceso orientadas tanto a cobertura masiva como a nichos específicos a través
+de tecnología satelital, FTTH, WiFi, Ethernet, 4G, 5G, entre otras, dependiendo del tipo de servicio
+que busque ofrecer.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dirección-ip"><a class="anchor" href="#dirección-ip"></a>Dirección IP</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="ipv4"><a class="anchor" href="#ipv4"></a>IPv4</h3>
+<div class="paragraph">
+<p>IPv4 (Internet Protocol versión 4) es el formato de dirección estándar que permite que todas las máquinas en Internet se comuniquen entre sí. IPv4 se escribe como una cadena de dígitos de 32 bits y una dirección IPv4 se compone de cuatro números entre 0 y 255, separados por puntos.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ipv6"><a class="anchor" href="#ipv6"></a>IPv6</h3>
+<div class="paragraph">
+<p>IPv6 (Internet Protocol versión 6) es un estándar actualizado para identificar ordenadores en Internet. Al igual que IPv4, proporciona un identificador único a cada dispositivo, pero uno que se ha ajustado para adaptarse al creciente número de ordenadores conectados a Internet en la actualidad.</p>
+</div>
+<div class="paragraph">
+<p>IPv6 aumenta el número de direcciones IP posibles desde los 4 mil millones de IPv4 hasta los 340 billones de billones de billones. IPv6 se escribe como una cadena hexadecimal de dígitos de 128 bits, y una dirección IPv6 típica es algo así:</p>
+</div>
+<div class="paragraph">
+<p><code>2001:0ab8:85a2:0000:0000:8a3e:0370:7334</code></p>
+</div>
+<div class="paragraph">
+<p>IPv6 se ha optimizado para estar al día con el Internet modernizado de la actualidad. Esto significa deshacerse de ciertos componentes del sistema IPv4 que ya no son necesarios.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.avg.com/es/signal/ipv4-vs-ipv6" class="bare">https://www.avg.com/es/signal/ipv4-vs-ipv6</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="intranet"><a class="anchor" href="#intranet"></a>Intranet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Las empresas usan las Intranets para que los empleados de los diferentes departamentos accedan la información necesaria para el desarrollo de su actividad.</p>
+</div>
+<div class="paragraph">
+<p>La información compartida puede variar según la empresa, son muy habituales las redes para compartir documentos y bases de datos de gestión. Muchas aplicaciones corporativas pueden considerarse dentro de esta definición.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://blog.dataprius.com/index.php/2019/11/22/una-intranet-que-es-y-para-que-sirve-en-la-empresa/" class="bare">https://blog.dataprius.com/index.php/2019/11/22/una-intranet-que-es-y-para-que-sirve-en-la-empresa/</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="vpn"><a class="anchor" href="#vpn"></a>VPN</h3>
+<div class="paragraph">
+<p>VPN son las siglas de Virtual Private Network. Una conexión VPN lo que te permite es crear una red local sin necesidad que sus integrantes estén físicamente conectados entre sí, sino a través de Internet.
+Obtienes las ventajas de la red local (y alguna extra), con una mayor flexibilidad, pues la conexión es a través de Internet y puede por ejemplo ser de una punta del mundo a la otra.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.xataka.com/basics/que-es-una-conexion-vpn-para-que-sirve-y-que-ventajas-tiene" class="bare">https://www.xataka.com/basics/que-es-una-conexion-vpn-para-que-sirve-y-que-ventajas-tiene</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lan"><a class="anchor" href="#lan"></a>LAN</h3>
+<div class="paragraph">
+<p>Una red de área local (LAN) es un grupo de computadoras y dispositivos periféricos que comparten una línea de comunicaciones común o un enlace inalámbrico a un servidor dentro de un área geográfica específica. Una red de área local puede servir a tan solo dos o tres usuarios en una oficina en casa o miles de usuarios en la oficina central de una corporación.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.computerweekly.com/es/definicion/Red-de-area-local-o-LAN" class="bare">https://www.computerweekly.com/es/definicion/Red-de-area-local-o-LAN</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wan"><a class="anchor" href="#wan"></a>WAN</h3>
+<div class="paragraph">
+<p>Una red de área amplia (WAN) es la tecnología que conecta entre sí a las oficinas, los centros de datos, las aplicaciones en la nube y el almacenamiento en la nube. Se denomina red de área amplia porque se extiende más allá de un solo edificio o un gran recinto para incluir múltiples ubicaciones repartidas a lo largo de una zona geográfica concreta, o incluso del mundo. Por ejemplo, las empresas con muchas sucursales internacionales utilizan una WAN para conectar las redes de las oficinas entre sí. La WAN más grande del mundo es Internet puesto que se trata de un conjunto de muchas redes internacionales que se conectan entre sí.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://aws.amazon.com/es/what-is/wan/" class="bare">https://aws.amazon.com/es/what-is/wan/</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dmz"><a class="anchor" href="#dmz"></a>DMZ</h3>
+<div class="paragraph">
+<p>Una zona desmilitarizada (demilitarized zone, DMZ) es una red perimetral que protege la red de área local (local-area network, LAN) interna contra el tráfico no confiable.</p>
+</div>
+<div class="paragraph">
+<p>Un significado común para una DMZ es una subred que se encuentra entre la Internet pública y las redes privadas. Expone los servicios externos a redes no confiables y agrega una capa adicional de seguridad para proteger los datos confidenciales almacenados en redes internas, utilizando firewalls para filtrar el tráfico.</p>
+</div>
+<div class="paragraph">
+<p>El objetivo final de una DMZ es permitir que una organización acceda a redes no confiables, como Internet, a la vez que garantiza que su red privada o LAN permanecen seguras.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.fortinet.com/lat/resources/cyberglossary/what-is-dmz" class="bare">https://www.fortinet.com/lat/resources/cyberglossary/what-is-dmz</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paquetes"><a class="anchor" href="#paquetes"></a>Paquetes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="tcp-transmission-control-protocol"><a class="anchor" href="#tcp-transmission-control-protocol"></a>TCP (Transmission Control Protocol)</h3>
+<div class="paragraph">
+<p>El Protocolo TCP/IP o Transfer Control Protocol consiste en un acuerdo estandarizado sobre el que se realiza la transmisión de datos entre los participantes de una red informática.</p>
+</div>
+<div class="paragraph">
+<p>La importancia de TCP es que asegura que los mensajes son recibidos en el mismo orden en que son enviados.
+Por lo que es ideal para el envío de documentos como HTML y aplicaciones de Chat.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://ayudaleyprotecciondatos.es/2021/07/29/protocolo-tcp/" class="bare">https://ayudaleyprotecciondatos.es/2021/07/29/protocolo-tcp/</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="udp-user-datagram-protocol"><a class="anchor" href="#udp-user-datagram-protocol"></a>UDP (User Datagram Protocol)</h3>
+<div class="paragraph">
+<p>Debido a que el protocolo TCP, aunque proporciona seguridad, también retrasa la transmisión, David Patrick Reed publicó en 1980 su idea del protocolo de datagramas de usuario (User datagram protocol o UDP) como una alternativa más simple y rápida al protocolo estándar.</p>
+</div>
+<div class="paragraph">
+<p>El protocolo UDP es una alternativa directa al protocolo más utilizado, el TCP, aunque ambos se diferencian sobre todo en un punto: mientras que la transmisión en el protocolo TCP tiene lugar una vez se ha producido el enlace obligatorio de 3 vías (con acuse de recibo mutuo entre el emisor y el receptor, incluida la sesión de comunicación), el protocolo UDP no utiliza este procedimiento con el fin de mantener el tiempo de transmisión lo más bajo posible.</p>
+</div>
+<div class="paragraph">
+<p>Un ejemplo común es la transmición de video en vivo (VideoLlamadas, Streaming).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.ionos.es/digitalguide/servidores/know-how/udp-user-datagram-protocol/" class="bare">https://www.ionos.es/digitalguide/servidores/know-how/udp-user-datagram-protocol/</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="icmp-internet-control-message-protocol"><a class="anchor" href="#icmp-internet-control-message-protocol"></a>ICMP (Internet Control Message Protocol)</h3>
+<div class="paragraph">
+<p>El Protocolo de control de mensajes de Internet (ICMP) se utiliza para diagnosticar problemas de red en Internet.
+El ICMP se utiliza principalmente para determinar si los datos llegan o no a su destino a su debido tiempo.
+El ICMP es crucial para informar de errores y realizar pruebas, pero también se puede utilizar en ataques de denegación de servicio distribuido (DDoS) (Ping de la Muerte).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.cloudflare.com/es-es/learning/ddos/glossary/internet-control-message-protocol-icmp/" class="bare">https://www.cloudflare.com/es-es/learning/ddos/glossary/internet-control-message-protocol-icmp/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="herramientas"><a class="anchor" href="#herramientas"></a>Herramientas</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="whois"><a class="anchor" href="#whois"></a>whois</h3>
+<div class="paragraph">
+<p>Nos permite revisar si un dominio ya se encuentra registrado.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ whois ninjas.cl
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+refer:        whois.nic.cl
+
+domain:       CL
+[...]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ping"><a class="anchor" href="#ping"></a>ping</h3>
+<div class="paragraph">
+<p>Nos permite ver si un servidor está respondiendo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ ping ninjas.cl
+PING ninjas.cl (190.107.177.35): 56 data bytes
+64 bytes from 190.107.177.35: icmp_seq=0 ttl=58 time=23.956 ms
+64 bytes from 190.107.177.35: icmp_seq=1 ttl=58 time=18.623 ms
+64 bytes from 190.107.177.35: icmp_seq=2 ttl=58 time=18.846 ms
+64 bytes from 190.107.177.35: icmp_seq=3 ttl=58 time=18.614 ms
+^C
+--- ninjas.cl ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 18.614/20.010/23.956/2.280 ms</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="traceroute"><a class="anchor" href="#traceroute"></a>traceroute</h3>
+<div class="paragraph">
+<p>Nos permite tener trazabilidad sobre donde viajan los paquetes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ traceroute ninjas.cl
+traceroute to ninjas.cl (190.107.177.35), 64 hops max, 52 byte packets
+ 1  192.168.0.1 (192.168.0.1)  4.532 ms  2.967 ms  3.716 ms
+ 2  * * *
+ 3  192.168.182.186 (192.168.182.186)  14.507 ms  13.943 ms  12.952 ms
+ 4  * * *
+ 5  192.168.99.29 (192.168.99.29)  19.805 ms  16.914 ms  19.183 ms
+ 6  wirenet-265831.scl.pitchile.cl (45.68.16.159)  19.812 ms  17.184 ms  18.760 ms
+ 7  * * *
+ 8  * * *</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="netstat"><a class="anchor" href="#netstat"></a>netstat</h3>
+<div class="paragraph">
+<p>Nos permite ver las conexiones abiertas.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-netstat hljs" data-lang="netstat">$ netstat
+Active Internet connections
+Proto Recv-Q Send-Q  Local Address          Foreign Address        (state)
+tcp4       0      0  192.168.0.9.50417      ec2-35-163-144-2.https ESTABLISHED
+tcp4       0      0  localhost.63342        localhost.50416        ESTABLISHED
+tcp4       0      0  localhost.50416        localhost.63342        ESTABLISHED
+tcp6       0      0  2800:150:14a:174.50411 whatsapp-cdn6-sh.https ESTABLISHED
+tcp6       0      0  2800:150:14a:174.50320 2800:3f0:4003:c0.https ESTABLISHED
+tcp6       0      0  2800:150:14a:174.50319 2800:3f0:4003:c0.https ESTABLISHED
+tcp6       0      0  2800:150:14a:174.50299 2800:3f0:4003:c0.https ESTABLISHED
+tcp6       0      0  2800:150:14a:174.50296 2800:3f0:4003:c0.https ESTABLISHED
+tcp4       0      0  192.168.0.9.50294      149.154.175.54.https   ESTABLISHED
+tcp4       0      0  192.168.0.9.50139      192.168.0.8.52148      ESTABLISHED
+tcp4       0      0  192.168.0.9.50159      55.65.117.34.bc..https ESTABLISHED
+tcp4       0      0  192.168.0.9.50157      ec2-54-71-185-24.https ESTABLISHED
+tcp6       0      0  2800:150:14a:174.50155 2800:3f0:4003:c0.https ESTABLISHED
+tcp4       0      0  192.168.0.9.50153      ec2-54-173-95-25.https ESTABLISHED
+tcp4       0      0  192.168.0.9.50151      ec2-3-232-128-21.https ESTABLISHED
+tcp6       0      0  2800:150:14a:174.50145 whatsapp-cdn6-sh.https ESTABLISHED
+tcp4       0      0  192.168.0.9.50141      149.154.175.50.https   ESTABLISHED
+tcp4       0      0  localhost.63342        localhost.49772        ESTABLISHED
+tcp4       0      0  localhost.49772        localhost.63342        ESTABLISHED
+tcp4       0      0  192.168.0.9.50968      249.195.120.34.b.443   ESTABLISHED
+tcp4       0      0  192.168.0.9.50933      17.57.144.40.5223      ESTABLISHED
+udp4       0      0  *.59915                *.*
+udp4       0      0  *.xserveraid           *.*
+udp4       0      0  *.*                    *.*
+[....]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="nslookup"><a class="anchor" href="#nslookup"></a>nslookup</h3>
+<div class="paragraph">
+<p>Permite ver los datos de un dominio.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ nslookup
+&gt; www.ninjas.cl
+Server:		2800:150:e:4::4
+Address:	2800:150:e:4::4#53
+
+Non-authoritative answer:
+www.ninjas.cl	canonical name = ninjas.cl.
+Name:	ninjas.cl
+Address: 190.107.177.35</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ifconfig-ip"><a class="anchor" href="#ifconfig-ip"></a>ifconfig / ip</h3>
+<div class="paragraph">
+<p>Nos permite ver nuestra dirección IP local.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ ifconfig
+lo0: flags=8049&lt;UP,LOOPBACK,RUNNING,MULTICAST&gt; mtu 16384
+	options=1203&lt;RXCSUM,TXCSUM,TXSTATUS,SW_TIMESTAMP&gt;
+	inet 127.0.0.1 netmask 0xff000000
+	inet6 ::1 prefixlen 128
+	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1
+	nd6 options=201&lt;PERFORMNUD,DAD&gt;
+gif0: flags=8010&lt;POINTOPOINT,MULTICAST&gt; mtu 1280
+stf0: flags=0&lt;&gt; mtu 1280
+en0: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500
+	options=400&lt;CHANNEL_IO&gt;
+	ether d4:61:9d:1d:89:90
+	inet6 fe80::469:56de:4f74:fe68%en0 prefixlen 64 secured scopeid 0x4
+	inet 192.168.0.9 netmask 0xffffff00 broadcast 192.168.0.255
+	inet6 2800:150:14a:174f:18f5:d82e:f403:2091 prefixlen 64 autoconf secured
+	inet6 2800:150:14a:174f:8994:3b2d:4707:3179 prefixlen 64 autoconf temporary
+	nd6 options=201&lt;PERFORMNUD,DAD&gt;
+	media: autoselect
+	status: active
+[...]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wireshark"><a class="anchor" href="#wireshark"></a>Wireshark</h3>
+<div class="paragraph">
+<p>Wireshark nos permite analizar los paquetes enviados y recibidos.
+Útil para realizar ingeniería inversa sobre servidores propietarios,
+analizando la comunicación cliente-servidor.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.wireshark.org/" class="bare">https://www.wireshark.org/</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="myip"><a class="anchor" href="#myip"></a>Myip</h3>
+<div class="paragraph">
+<p>Permiten verificar la dirección IP que tenemos asignada. Útil para revisar si la conexión a VPN es exitosa.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.myip.com/" class="bare">https://www.myip.com/</a></p>
+</li>
+<li>
+<p><a href="https://cmyip.co/" class="bare">https://cmyip.co/</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="otros-servicios"><a class="anchor" href="#otros-servicios"></a>Otros Servicios</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://downforeveryoneorjustme.com/" class="bare">https://downforeveryoneorjustme.com/</a>: Permite verificar si el servicio está disponible.</p>
+</li>
+<li>
+<p><a href="https://builtwith.com/" class="bare">https://builtwith.com/</a>: Permite saber qué tecnologías utilizan los sistemas web.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ejercicio-1-demostración-de-envío-de-paquetes-tcp"><a class="anchor" href="#ejercicio-1-demostración-de-envío-de-paquetes-tcp"></a>Ejercicio 1: Demostración de envío de Paquetes TCP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Utilizando el comando <code>nc (netcat)</code> podemos crear un cliente y servidor
+que nos permita demostrar el envío de un paquete utiizando TCP.</p>
+</div>
+<div class="paragraph">
+<p><strong>Paso 1</strong>: Creamos nuestro servidor</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ nc -l 3000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Paso 2</strong>: Creamos nuestro cliente en la ip local (en otra terminal)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ nc 127.0.0.1 3000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Paso 3</strong>: Si utilizamos el comando <code>netstat</code> podremos ver las conexiones abiertas.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ netstat -an | grep 3000</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ netstat -an | grep 3000
+tcp4       0      0  127.0.0.1.3000         127.0.0.1.49557        ESTABLISHED
+tcp4       0      0  127.0.0.1.49557        127.0.0.1.3000         ESTABLISHED
+tcp4       0      0  *.3000                 *.*                    LISTEN</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Paso 4</strong>: En la terminal del cliente escribimos un mensaje para ser enviado.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ nc 127.0.0.1 3000
+hola</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Paso 5</strong>: Verificamos que el servidor lo recibió.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ nc -l 3000
+hola</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Paso 6</strong>: Al abrir Wireshark podremos analizar los paquetes TCP enviados.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/wireshark.png" alt="wireshark">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="registros-dns-zona"><a class="anchor" href="#registros-dns-zona"></a>Registros DNS (Zona)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cuando registra un dominio,
+se crea un archivo de zona (conjunto de registros DNS) para ese dominio.
+La configuración contenida en el archivo de zona solo funciona si los servidores de nombres de su dominio apuntan al hosting,
+si los servidores de nombres apuntan a otra empresa, entonces el dominio estaría utilizando la configuración de DNS de la otra empresa.</p>
+</div>
+<div class="sect2">
+<h3 id="cname"><a class="anchor" href="#cname"></a>CNAME</h3>
+<div class="paragraph">
+<p>CNAME (Canonical Name)
+es un nombre de host que apunta a otro
+nombre de host (info.mi-dominio.net a info.mi-dominio.com). Los propietarios de dominios
+generalmente lo usan para apuntar un dominio o subdominio a
+otro nombre de dominio (los subdominios normales solo pueden apuntar a un directorio
+dentro de su cuenta de alojamiento).</p>
+</div>
+<div class="paragraph">
+<p>Utilizado normalmente para <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">Github Pages</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="a-record"><a class="anchor" href="#a-record"></a>A Record</h3>
+<div class="paragraph">
+<p>Asigna una dirección para tu dominio a una IP específica (www a 12.345.678.90).
+Los símbolos @ y www se utilizan para indicar el propio dominio raíz.
+Por ejemplo, un registro @ A para dominio.com es lo mismo que dominio.com apuntando a una determinada IP, y cuando agrega www a un registro A es lo mismo que www.dominio.com para apuntar a una determinada IP.
+Normalmente usado Para controlar qué servidores específicos alojan una función particular asociada con su presencia en línea (sitio web, correo electrónico, etc.). Muchos otros registros DNS requieren un registro A asociado para funcionar correctamente.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aaaa-record"><a class="anchor" href="#aaaa-record"></a>AAAA Record</h3>
+<div class="paragraph">
+<p>El registro AAAA especifica la dirección IP (IPv6) para un host dado. Por lo general, resuelve un nombre de dominio (o apunta el nombre de dominio) a la ubicación correcta por medio de la dirección IPv6.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mx-record"><a class="anchor" href="#mx-record"></a>MX Record</h3>
+<div class="paragraph">
+<p>Un nombre de host que define los servidores de recepción de correo y la prioridad en la que se usa cada servidor en caso de que un servidor no pueda recibir correo. Para utilizar un servicio de correo electrónico diferente al de su proveedor de alojamiento o para designar servidores personales como respaldos de correo en caso de que las opciones de correo predeterminadas fallen.
+Utilizado normalmente para servidores de correo externos.
+Ejemplo <a href="https://workspace.google.com/products/gmail/">Google Workspace</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="txtspf-record"><a class="anchor" href="#txtspf-record"></a>TXT/SPF Record</h3>
+<div class="paragraph">
+<p>Un Sender Policy Framework (marco de políticas de remitente), ayuda a reducir el spam y la suplantación de dominio. Para verificar la seguridad del dominio, utilícelo con servicios externos, como Google Analytics.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="name-server-record"><a class="anchor" href="#name-server-record"></a>Name Server Record</h3>
+<div class="paragraph">
+<p>Un nombre de host que apunta a un servidor de nombres específico
+(shop.tu-dominio.com a ns1.example.com).
+Para administrar todos los demás registros.
+Los cambios en los registros A, registros MX y otros registros DNS deben realizarse donde se encuentran sus servidores de nombres.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="private-name-server"><a class="anchor" href="#private-name-server"></a>Private Name Server</h3>
+<div class="paragraph">
+<p>Le permite definir sus propios servidores de
+nombres en lugar de utilizar los genéricos
+proporcionados por nosotros (ns1.tu-dominio.com en lugar de ns1.empresa-hosting.com).
+Para mantener el anonimato entre su negocio en línea y su proveedor de alojamiento,
+o para utilizar alojamiento en su VPS o servidor dedicado.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="srv-record"><a class="anchor" href="#srv-record"></a>SRV Record</h3>
+<div class="paragraph">
+<p>Los registros SRV (servicio) son registros
+DNS personalizados que se utilizan para
+establecer conexiones entre un servicio y
+un nombre de host. Cuando una aplicación
+necesita encontrar una ubicación de servicio
+específica, buscará un registro SRV relacionado.
+No todas las empresas de hosting soportan esta configuración.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ttl-time-to-live"><a class="anchor" href="#ttl-time-to-live"></a>TTL (Time To Live)</h3>
+<div class="paragraph">
+<p>El valor de tiempo de vida (TTL) determina cuánto tiempo un servidor DNS,
+como el ISP, almacena en caché el registro. Lo recomendable es dejar el TTL en su configuración predeterminada.
+Los cambios en los registros DNS, como los registros A, MX y CNAME, suelen tardar de 4 a 8 horas en aplicarse por completo.</p>
+</div>
+<div class="paragraph">
+<p><strong>Enlaces</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.ipage.com/help/article/dns-management-dns-records-explained" class="bare">https://www.ipage.com/help/article/dns-management-dns-records-explained</a></p>
+</li>
+<li>
+<p><a href="https://bind9.readthedocs.io/en/v9.18.18/" class="bare">https://bind9.readthedocs.io/en/v9.18.18/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="protocolos"><a class="anchor" href="#protocolos"></a>Protocolos</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="http"><a class="anchor" href="#http"></a>HTTP</h3>
+<div class="paragraph">
+<p>HTTP, de sus siglas en inglés: "Hypertext Transfer Protocol", es el nombre de un protocolo el cual nos permite realizar una petición de datos y
+recursos, como pueden ser documentos HTML.
+Es la base de cualquier intercambio de datos en la Web,
+y un protocolo de estructura cliente-servidor, esto quiere decir que una petición
+de datos es iniciada por el elemento que
+recibirá los datos (el cliente), normalmente un navegador Web.
+Así, una página web completa resulta de la unión de distintos
+sub-documentos recibidos, como, por ejemplo: un documento que especifique el
+estilo de maquetación de la página web (CSS), el texto, las imágenes, vídeos, scripts, etc.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/http.jpg" alt="http">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Overview" class="bare">https://developer.mozilla.org/es/docs/Web/HTTP/Overview</a></p>
+</li>
+<li>
+<p><a href="https://bytebytego.ck.page/subscribe" class="bare">https://bytebytego.ck.page/subscribe</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="http-1-0"><a class="anchor" href="#http-1-0"></a>HTTP 1.0</h4>
+<div class="paragraph">
+<p>Se finalizó y se documentó completamente en 1996. Cada solicitud al mismo servidor requiere una conexión TCP separada.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="http-1-1"><a class="anchor" href="#http-1-1"></a>HTTP 1.1</h4>
+<div class="paragraph">
+<p>Se publicó en 1997. Una conexión TCP se puede dejar abierta para su reutilización (conexión persistente), pero no resuelve el problema de bloqueo HOL (head-of-line).
+El Bloqueo HOL es cuando se agota la cantidad de solicitudes paralelas permitidas en el navegador, las solicitudes posteriores deben esperar a que se completen las anteriores.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="http-2-0"><a class="anchor" href="#http-2-0"></a>HTTP 2.0</h4>
+<div class="paragraph">
+<p>Se publicó en 2015. Aborda el problema de HOL a través de la multiplexación de solicitudes, lo que elimina el bloqueo de HOL en la capa de aplicación, pero HOL todavía existe en la capa de transporte (TCP).
+HTTP 2.0 introdujo el concepto de "flujos" HTTP: una abstracción que permite multiplexar diferentes intercambios HTTP en la misma conexión TCP.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="http-3-0"><a class="anchor" href="#http-3-0"></a>HTTP 3.0</h4>
+<div class="paragraph">
+<p>El primer borrador de HTTP 3.0 se publicó en 2020. Es el sucesor propuesto de HTTP 2.0. Utiliza QUIC en lugar de TCP para el protocolo de transporte subyacente, eliminando así el bloqueo HOL en la capa de transporte.</p>
+</div>
+<div class="paragraph">
+<p>QUIC se basa en UDP. Presenta flujos como ciudadanos de primera clase en la capa de transporte. Los flujos QUIC comparten la misma conexión QUIC, por lo que no se requieren protocolos de enlace adicionales ni inicios lentos para crear otros nuevos, pero los flujos QUIC se entregan de forma independiente, de modo que en la mayoría de los casos, la pérdida de paquetes que afecta a un flujo no afecta a los demás.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ftp-file-transfer-protocol"><a class="anchor" href="#ftp-file-transfer-protocol"></a>FTP (File Transfer Protocol)</h3>
+<div class="paragraph">
+<p>Protocolo utilizado para transferencia de archivos.</p>
+</div>
+<div class="paragraph">
+<p><strong>Programas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://filezilla-project.org/" class="bare">https://filezilla-project.org/</a></p>
+</li>
+<li>
+<p><a href="https://cyberduck.io/" class="bare">https://cyberduck.io/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="modelo-tcpip"><a class="anchor" href="#modelo-tcpip"></a>Modelo TCP/IP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El modelo de interconexión de sistemas abiertos (OSI) describe siete capas que los sistemas informáticos utilizan para comunicarse a través de una red. Fue el primer modelo estándar para comunicaciones en red, adoptado por todas las principales empresas de informática y telecomunicaciones a principios de la década de 1980.</p>
+</div>
+<div class="paragraph">
+<p>La Internet moderna no se basa en OSI, sino en el modelo TCP/IP más simple. Sin embargo, el modelo OSI de 7 capas todavía se usa ampliamente, ya que ayuda a visualizar y comunicar cómo funcionan las redes, y ayuda a aislar y solucionar problemas de red.</p>
+</div>
+<div class="paragraph">
+<p>OSI fue presentado en 1983 por representantes de las principales empresas de informática y telecomunicaciones, y fue adoptado por ISO como estándar internacional en 1984.</p>
+</div>
+<div class="paragraph">
+<p>El protocolo más popular en uso en la actualidad es el
+Protocolo de control de transmisión/Protocolo de Internet (TCP/IP). Actualmente, Internet y la mayoría de las intranets empresariales utilizan TCP/IP debido a su popularidad, flexibilidad, compatibilidad y capacidad de implementación en redes grandes y pequeñas.</p>
+</div>
+<div class="paragraph">
+<p>El modelo TCP/IP consta de cuatro capas en lugar de las siete del modelo OSI. Las cuatro capas del modelo TCP/IP se correlacionan con las siete capas del modelo OSI, pero las capas del modelo TCP/IP combinan varias capas del modelo OSI.</p>
+</div>
+<div class="paragraph">
+<p>Cuando se analizan los diferentes protocolos en la pila de IP, las capas de los modelos OSI y TCP/IP son intercambiables. En otras palabras, la capa de Internet y la capa de red describen lo mismo, al igual que las capas de transporte, las otras dos capas del modelo TCP/IP están compuestas por múltiples capas del modelo OSI.</p>
+</div>
+<div class="paragraph">
+<p>TCP/IP es de código abierto; sus estándares y protocolos se definen en un foro público a través del IETF (Grupo de trabajo de ingeniería de Internet (IETF)) y se publican mediante RFC (Solicitudes de comentarios).</p>
+</div>
+<div class="paragraph">
+<p>El envío de un mensaje a través de las capas varía según su dirección, es decir, el mensaje de origen tiene que empezar desde la capa superior a la inferior, y cuando llega a su destino, empieza desde la capa inferior a la superior.
+<span class="image"><img src="_images/tcpip-model.jpg" alt="tcpip model"></span></p>
+</div>
+<div class="sect2">
+<h3 id="capa-4-capa-de-aplicación"><a class="anchor" href="#capa-4-capa-de-aplicación"></a>Capa 4. Capa de aplicación</h3>
+<div class="paragraph">
+<p>La capa de aplicación es la capa superior del modelo TCP/IP; la capa de aplicación define los protocolos de aplicación TCP/IP y cómo los programas host interactúan con los servicios de la capa de transporte para usar la red.</p>
+</div>
+<div class="paragraph">
+<p>La capa de aplicación incluye todos los protocolos de nivel superior, como DNS, HTTP, Telnet, SSH, FTP, TFTP, SMTP, DHCP, X Window, RDP, etc.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="capa-3-capa-de-transporte"><a class="anchor" href="#capa-3-capa-de-transporte"></a>Capa 3. Capa de transporte</h3>
+<div class="paragraph">
+<p>La capa de transporte es la tercera capa del modelo TCP/IP, el propósito de la capa de transporte es permitir que los dispositivos host de origen y destino mantengan una conversación. La capa de transporte define el nivel de servicio y el estado de la conexión utilizada para transportar los datos.</p>
+</div>
+<div class="paragraph">
+<p>Los principales protocolos incluidos en la capa de transporte son TCP (Transmission Control Protocol) y UDP (User Datagram Protocol).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="capa-2-capa-de-internet"><a class="anchor" href="#capa-2-capa-de-internet"></a>Capa 2. Capa de Internet</h3>
+<div class="paragraph">
+<p>La capa de Internet es la segunda capa del modelo TCP/IP de cuatro capas. La capa de Internet proporciona la información de la dirección de origen y destino (dirección lógica o dirección IP) para reenviar datos entre hosts a través de la red; la capa de Internet también es responsable de enrutar datagramas IP.</p>
+</div>
+<div class="paragraph">
+<p>Los principales protocolos incluidos en la capa de Internet son IP (Protocolo de Internet), ICMP (Protocolo de mensajes de control de Internet), ARP (Protocolo de resolución de direcciones), RARP (Protocolo de resolución de direcciones inversa) e IGMP (Protocolo de gestión de grupos de Internet).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="capa-1-capa-de-acceso-a-la-red"><a class="anchor" href="#capa-1-capa-de-acceso-a-la-red"></a>Capa 1. Capa de acceso a la red</h3>
+<div class="paragraph">
+<p>La capa de acceso a la red, también conocida como capa de acceso al medio, es la primera capa del modelo TCP/IP. La capa de acceso a la red define cómo se envían físicamente los datos a través de la red, incluido cómo los dispositivos físicos (hardware) señalan y envían los bits que interactúan directamente con un medio de red, por ejemplo, un cable coaxial, fibra óptica, cable de cobre de par trenzado, de forma inalámbrica, etc</p>
+</div>
+<div class="paragraph">
+<p>Los protocolos incluidos en la capa de acceso a la red son Ethernet, Token Ring, FDDI, X.25, Frame Relay, entre otros, siendo el más popular Ethernet.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ejemplo-página-web"><a class="anchor" href="#ejemplo-página-web"></a>Ejemplo: Página Web</h3>
+<div class="paragraph">
+<p>Ejemplificamos la comunicación por TCP/IP mediante un caso de una página web hospedada
+en un servidor web, la cual es transmitida hacia un cliente (navegador).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tcpip.png" alt="tcpip">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Capa</th>
+<th class="tableblock halign-left valign-top">PDU (Protocol Data Unit) Mensajes Encapsulados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aplicación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Datos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transporte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Segmentos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Paquetes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enlace de Datos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tramas</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Física</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bits</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="servidor"><a class="anchor" href="#servidor"></a>Servidor</h4>
+<div class="paragraph">
+<p>El servidor transforma la información a un formato transportable por el medio físico y se envía al cliente.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Capa</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+<th class="tableblock halign-left valign-top"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aplicación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toma el contenido de la página web creado por un framework o un archivo html. Opcionalmente las encripta (SSL/TLS). Transforma los datos a binario. Se agregan los encabezados del protocolo <strong>HTTP</strong> (Ej. 200 OK)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transporte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Si la página tiene un tamaño mayor a 1500 bytes, el contenido es fragmentado en paquetes más pequeños. Enviado utilizando los protocolos <strong>TCP</strong> que agregan (encapsulan) sus propios encabezados (por ejemplo puertos de origen y destino).</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Los contenidos ya no serán alterados. Entra en acción el protocolo <strong>IP</strong> y encapsula agregando sus encabezados (Ej. IP de origen e IP destino), esto se conoce como información de direccionamiento lógico.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enlace de Datos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Encapsula y agrega un encabezado header (dirección MAC origen {servidor} y dirección MAC destino {cliente}) y un encabezado trailer (Detección de Errores)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Física</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Luego de ser encapsulada por todas las capas anteriores. No se agregan más encabezados y es transformada a un medio físico como señales eléctricas, ondas electromagnéticas o señales de luz y es enviada hacia el cliente web.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="cliente"><a class="anchor" href="#cliente"></a>Cliente</h4>
+<div class="paragraph">
+<p>El cliente aplica el proceso inverso y finalmente muestra el resultado en el navegador web.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Capa</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Física</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decodifica el mensaje transformando las señales eléctricas, electromagnéticas o de luz a código binario.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enlace de Datos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Desencapsula, quitando los encabezados de header y trailer respectivos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Desencapsula, quitando los encabezados de IP respectivos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transporte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Desencapsula, quitando los encabezados de TCP respectivos. Agrupa todos los segmentos (o fragmentos) para formar un solo archivo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aplicación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Desencapsula, quitando los encabezados de HTTP. Transformando la información binaria a caracteres legibles por el ser humano y finalmente construir el sitio web en el navegador.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lectura-complementaria"><a class="anchor" href="#lectura-complementaria"></a>Lectura Complementaria</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://ccnadesdecero.es/" class="bare">https://ccnadesdecero.es/</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/@MasteringIT" class="bare">https://www.youtube.com/@MasteringIT</a></p>
+</li>
+<li>
+<p><a href="https://jmcristobal.com/2017/04/26/tcpip-model/" class="bare">https://jmcristobal.com/2017/04/26/tcpip-model/</a></p>
+</li>
+<li>
+<p><a href="https://www.imperva.com/learn/application-security/osi-model/" class="bare">https://www.imperva.com/learn/application-security/osi-model/</a></p>
+</li>
+<li>
+<p><a href="https://www.ietf.org/" class="bare">https://www.ietf.org/</a></p>
+</li>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc1180" class="bare">https://datatracker.ietf.org/doc/html/rfc1180</a></p>
+</li>
+<li>
+<p><a href="https://www.ionos.com/digitalguide/server/know-how/introduction-to-tcpip/" class="bare">https://www.ionos.com/digitalguide/server/know-how/introduction-to-tcpip/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a></span>
+  <span class="next"><a href="../http/chapter.html">HTTP, JSON y APIS</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hosting, Dominios y Cpanel :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/hosting/chapter.html">
+    <link rel="prev" href="../github/chapter.html">
+    <link rel="next" href="../networking/chapter.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Patrones de Diseño</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/chapter.html">Patrones y Arquitecturas de Software</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">chapter.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Hostings</li>
+    <li><a href="chapter.html">Hosting, Dominios y Cpanel</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/hosting/pages/chapter.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Hosting, Dominios y Cpanel</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Registrar un dominio en Internet es el primer paso para tener presencia en la web. Sin embargo, con solo un dominio no podrás publicar tu sitio web, ya que también necesitarás un web hosting.</p>
+</div>
+<div class="paragraph">
+<p>Es importante recalcar que con la elección y registro de tu dominio en Internet podrás crear cuentas de correos personalizados que te permitirán proyectar profesionalismo y ganarte la confianza de los clientes potenciales.</p>
+</div>
+<div class="paragraph">
+<p>Otro de los puntos importantes de los dominios en Internet es que son términos memorizables y fáciles de recordar por los internautas, porque ¿no te parece que es más sencillo recordar <em>google.com</em> que su dirección IP <a href="http://172.217.10.110/">172.217.10.110</a>?. Recuerda que será mucho más sencillo encontrarte si eliges un dominio que va acorde a lo que ofreces o quién eres.</p>
+</div>
+<div class="paragraph">
+<p>Elegir la extensión de dominio va a depender de tus objetivos, ya que si tienes planificado un mercado global lo mejor para ti es elegir un dominio genérico.</p>
+</div>
+<div class="paragraph">
+<p>Ahora bien, si tu mercado es nacional, lo más conveniente que uses un dominio geográfico porque ¡sí! tu página web se posicionará mucho mejor en ese país, debido a que Google&#8201;&#8212;&#8201;u otro buscador&#8201;&#8212;&#8201;lo considerará como un dominio casi exclusivo para esa región.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://rockcontent.com/es/blog/que-es-un-dominio/">¿Qué es un Dominio?</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="qué-es-una-uri"><a class="anchor" href="#qué-es-una-uri"></a>¿Qué es una URI?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Una URI o identificador uniforme de recursos es una cadena de caracteres que generalmente identifica cualquier recurso web mediante un nombre, una ubicación o ambos. Un localizador uniforme de recursos (URL) y un nombre uniforme de recursos (URN) son los dos tipos de URI.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>esquema:[//autoridad]ruta[?query][#fragmento]</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ejemplos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ftp://ftp.is.co.za/rfc/rfc1808.txt</code></p>
+</li>
+<li>
+<p><code>http://www.ietf.org/rfc/rfc2396.txt</code></p>
+</li>
+<li>
+<p><code>ldap://[2001:db8::7]/c=GB?objectClass?one</code></p>
+</li>
+<li>
+<p><code>mailto:John.Doe@example.com</code></p>
+</li>
+<li>
+<p><code>news:comp.infosystems.www.servers.unix</code></p>
+</li>
+<li>
+<p><code>tel:+1-816-555-1212</code></p>
+</li>
+<li>
+<p><code>telnet://192.0.2.16:80/</code></p>
+</li>
+<li>
+<p><code>urn:oasis:names:specification:docbook:dtd:xml:4.1.2</code></p>
+</li>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc2141">RFC2141</a></p>
+</li>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc3986">RFC3986</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Glossary/URI">Mozilla: URI</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a></p>
+</li>
+<li>
+<p><a href="https://www.hostinger.es/tutoriales/uri-vs-url">URI vs URL</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="qué-es-una-url"><a class="anchor" href="#qué-es-una-url"></a>¿Qué es una URL?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Una URL o localizador universal de recursos, por su siglas en inglés, es una dirección completa de un sitio web que lleva a los usuarios a una página específica dentro de ese website.</p>
+</div>
+<div class="paragraph">
+<p>En síntesis, se trata de la dirección web que tiene cada uno de los recursos en Internet que les permite ser encontrados por los navegadores e identificados por diferentes herramientas.</p>
+</div>
+<div class="paragraph">
+<p>Cada elemento que hace parte del WWW, sin importar su formato o propósito, debe tener una dirección URL específica donde está guardada.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/url.png" alt="url">
+</div>
+</div>
+<div class="paragraph">
+<p>En cuanto al puerto, es el número específico que identifica qué servicio web estás solicitando en un servidor web. Por ejemplo, el número de puerto predeterminado para la URL HTTP es 80 y para la URL HTTPS es 443. Sin embargo, si el servidor web utiliza un protocolo estándar como HTTP o HTTPS, el puerto suele omitirse en la URL.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="por-qué-no-es-lo-mismo-que-un-dominio"><a class="anchor" href="#por-qué-no-es-lo-mismo-que-un-dominio"></a>¿Por qué no es lo mismo que un dominio?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Básicamente, una URL está compuesta de un protocolo, el dominio y la ruta. Donde el protocolo garantiza la certificación de seguridad SSL, el dominio es la dirección y la ruta es la dirección de la página específica dentro del sitio web.</p>
+</div>
+<div class="paragraph">
+<p>Entonces, es válido afirmar que los dominios para páginas web solo es una parte de los caracteres con los que está hecha un URL.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="url-absolutas-vs-url-relativas"><a class="anchor" href="#url-absolutas-vs-url-relativas"></a>URL absolutas vs URL relativas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Las partes requeridas de una URL dependen en gran medida del contexto en el que se utiliza la URL. En la barra de direcciones de su navegador, una URL no tiene ningún contexto, por lo que debe proporcionar una URL completa (o absoluta), como las que vimos anteriormente. No necesita incluir el protocolo (el navegador usa HTTP de manera predeterminada) o el puerto (que solo se requiere cuando el servidor web de destino está utilizando algún puerto inusual), pero todas las otras partes de la URL son necesarias.</p>
+</div>
+<div class="paragraph">
+<p>Cuando se usa una URL dentro de un documento, como en una página HTML, las cosas son un poco diferentes. Debido a que el navegador ya tiene la propia URL del documento, puede usar esta información para completar las partes faltantes de cualquier URL disponible dentro de ese documento. Podemos diferenciar entre una URL absoluta y una URL relativa mirando solo la parte de ruta de la URL. Si la parte de ruta de la URL comienza con el carácter "/", el navegador buscará ese recurso desde la raíz superior del servidor, sin referencia al contexto dado por el documento actual.</p>
+</div>
+<div class="paragraph">
+<p>El uso de URLs relativas puede ser un riesgo para el robo de contenido ya que la gente no tiene que reescribir ningún enlace interno. Pueden copiar fácilmente tu página y ponerla en un nuevo dominio utilizando un raspador web (web scrapper).</p>
+</div>
+<div class="paragraph">
+<p>|=
+| URL | Descripción</p>
+</div>
+<div class="paragraph">
+<p>| <code>https://developer.mozilla.org/es/docs/Learn</code>
+| URL Completa (absoluta)</p>
+</div>
+<div class="paragraph">
+<p>| <code>//developer.mozilla.org/es/docs/Learn</code>
+| URL relativa con protocolo implícito (Reutiliza el protocolo inicial)</p>
+</div>
+<div class="paragraph">
+<p>| <code>/es/docs/Learn</code>
+| URL relativa con dominio implícito</p>
+</div>
+<div class="paragraph">
+<p>| <code>Skills/Infrastructure/Understanding_URLs</code>
+| URL relativa que utiliza el directorio actual.</p>
+</div>
+<div class="paragraph">
+<p>| <code>../CSS/display</code>
+| URL relativa que utiliza el directorio anterior.
+|=</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/URL">URL</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL">Mozilla. ¿Qué es una URL?</a></p>
+</li>
+<li>
+<p><a href="https://mailchimp.com/es/resources/parts-of-a-url/">Mailchimp: 10 partes de una URL</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Clean_URL">URL Semánticas</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="url-vs-uri-vs-urn"><a class="anchor" href="#url-vs-uri-vs-urn"></a>URL vs URI vs URN</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Aunque en algunos casos un identificador uniforme de recursos (URI) y un localizador de recursos uniforme (URL) pueden utilizarse indistintamente, no son lo mismo.</p>
+</div>
+<div class="paragraph">
+<p>URI significa identificador de recursos uniforme, una cadena de caracteres que generalmente identifica un recurso por un nombre, una ubicación o ambos en Internet. Además, un URI puede diferenciar tipos de archivos y otros recursos.</p>
+</div>
+<div class="paragraph">
+<p>Por otro lado, una URL o localizador de recursos uniforme es una cadena de caracteres que muestra la dirección del recurso y cómo acceder a él en la página web. Como la URL es una parte de la URI, siguen una estructura similar.</p>
+</div>
+<div class="paragraph">
+<p>En resumen, la principal diferencia entre una URI y una URL es que la primera puede ser un nombre, una ubicación o ambos, mientras que la segunda sólo proporciona la ubicación de un recurso.</p>
+</div>
+<div class="paragraph">
+<p>A diferencia de una URL, una URN no proporciona ninguna información sobre la ubicación del recurso, sino que simplemente lo identifica, al igual que una URI pura. En particular, una URN es una URI cuyo esquema es urn y tiene la siguiente estructura, tal como lo describe el RFC 2141:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">urn:&lt;IDENTIFICADOR DEL ESPACIO DE NOMBRES&gt;:&lt;CADENA ESPECÍFICA DEL ESPACIO DE NOMBRES&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El marcador de posición <code>IDENTIFICADOR DE ESPACIO DE NOMBRES&gt;</code> representa una cadena que representa la categoría de recursos que desea identificar. <code>&lt;NAMESPACE-SPECIFIC-STRING&gt;</code> es el identificador específico del recurso y su formato depende del identificador del espacio de nombres.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">urn:isbn:1234567890
+urn:ISSN:0167-6423
+urn:ietf:rfc:2648</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Esos URN identifican objetos de diferentes tipos. Por ejemplo, <code>urn:isbn:1234567890</code> identifica una publicación a través del sistema ISBN; <code>urn:ISSN:0167-6423</code> identifica una publicación a través del sistema ISSN; <code>urn:ietf:rfc:2648</code> es un RFC emitido por el <a href="https://en.wikipedia.org/wiki/Internet_Engineering_Task_Force">IETF</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc2141">RFC 2141</a></p>
+</li>
+<li>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc3986#section-3">RFC 3986</a></p>
+</li>
+<li>
+<p><a href="https://auth0.com/blog/url-uri-urn-differences/">URL, URI, URN</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="qué-tipos-de-dominios-existen"><a class="anchor" href="#qué-tipos-de-dominios-existen"></a>¿Qué tipos de Dominios Existen?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hay tres tipos --o extensiones&#8201;&#8212;&#8201;de dominios que puedes utilizar para tu empresa y dependerá de lo que más adecuado para tu organización.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dominios-geográficos"><a class="anchor" href="#dominios-geográficos"></a>Dominios Geográficos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>También llamados territoriales o ccTLD (Country code Top-Level Domain).</p>
+</div>
+<div class="paragraph">
+<p>Este dominio es conformado por dos letras que van asociadas con el país de origen del sitio web. Estos se usan para señalar la ubicación de la empresa. Algunos ejemplos de dominios geográficos son:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>.cl</code>, para Chile</p>
+</li>
+<li>
+<p><code>.ar</code>, para Argentina;</p>
+</li>
+<li>
+<p><code>.br</code>, para Brasil;</p>
+</li>
+<li>
+<p><code>.co</code>, para Colombia;</p>
+</li>
+<li>
+<p><code>.mx</code>, para México;</p>
+</li>
+<li>
+<p>entre otros.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dominio-de-nivel-superior-genéricos"><a class="anchor" href="#dominio-de-nivel-superior-genéricos"></a>Dominio de Nivel Superior Genéricos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>También conocido como gTLD (Generic Top-Level Domain)</p>
+</div>
+<div class="paragraph">
+<p>Son los más utilizados y comunes a nivel mundial. Estos no se ajustan a un país determinado y definen cuál es el fin del sitio web. Ejemplo:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>.com</code>, es un sitio web de uso comercial;</p>
+</li>
+<li>
+<p><code>.net</code>, su significado es red y se relaciona con empresas de servicios de Internet o también para asociar un dominio que ya existe con la terminación .com;</p>
+</li>
+<li>
+<p><code>.org</code>, organización sin fines de lucro, ONG o instituciones;</p>
+</li>
+<li>
+<p><code>.edu</code>, se usa para instituciones de educación;</p>
+</li>
+<li>
+<p><code>.info</code>, sitio informativo;</p>
+</li>
+<li>
+<p><code>.biz</code>, página de negocios;</p>
+</li>
+<li>
+<p><code>.gob</code>, reservados exclusivamente para departamentos y entidades gubernamentales;</p>
+</li>
+<li>
+<p><code>.mil</code>, su uso es únicamente para entidades que pertenecen a las Fuerzas Armadas de un país;</p>
+</li>
+<li>
+<p>entre otros.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dominios-mixtos-o-de-tercer-nivel"><a class="anchor" href="#dominios-mixtos-o-de-tercer-nivel"></a>Dominios mixtos o de tercer nivel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Los dominios de tercer nivel son aquellos que resultan tras combinar un dominio gTLD y uno ccTLD.</p>
+</div>
+<div class="paragraph">
+<p>En otras palabras, tienen la misma finalidad que los dominios genéricos, pero se limitan territoralmente. Entonces, sería:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>.com.mx</code>, para entidades comerciales mexicanas;</p>
+</li>
+<li>
+<p><code>.org.mx</code>, referente a organizaciones no lucrativas mexicanas;</p>
+</li>
+<li>
+<p><code>.edu.mx</code>, consta de instituciones educativas mexicanas;</p>
+</li>
+<li>
+<p><code>.gob.mx</code>, entidades del Gobierno de México.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="estructura-de-un-dominio"><a class="anchor" href="#estructura-de-un-dominio"></a>Estructura de un Dominio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Su estructura consta de dos niveles. Sin embargo, en el inicio existe un dominio raíz, que es solo un nombre vacío del que salen los demás dominios de Internet. Ahora bien, ¿en qué consisten?</p>
+</div>
+<div class="sect2">
+<h3 id="primer-nivel"><a class="anchor" href="#primer-nivel"></a>Primer nivel</h3>
+<div class="paragraph">
+<p>Del dominio raíz sale este primer nivel. Estos pueden ser: <code>.cl</code>, <code>.com</code>, <code>.mx</code>, <code>.org</code>, entre otros.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="segundo-nivel"><a class="anchor" href="#segundo-nivel"></a>Segundo nivel</h3>
+<div class="paragraph">
+<p>Es el nombre que se eligió para el dominio. En nuestro caso es: <code>ninjascl</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="subdominio"><a class="anchor" href="#subdominio"></a>Subdominio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Es un derivado del dominio de segundo nivel, que se crea añadiendo una o varias palabras separada(s) por un punto. El <code>www</code>. es el subdominio más común.</p>
+</div>
+<div class="paragraph">
+<p>Sin embargo, también se puede agregar otros para permitir el acceso directo a una determinada sección de la página web.</p>
+</div>
+<div class="paragraph">
+<p>Te recomendamos que para crear subdominios uses nombres cortos y palabras claves que tengan relación con el contenido que quieras mostrar.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dónde-compro-un-dominio"><a class="anchor" href="#dónde-compro-un-dominio"></a>¿Dónde Compro un Dominio?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>|=
+| URL | Descripción</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://nic.cl" class="bare">https://nic.cl</a>
+| Compra de dominios en Chile. Valor promedio $10.000 CLP por año.</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://dynadot.com" class="bare">https://dynadot.com</a>
+| Compra de dominios Internacional. Valor depende del TLD. Aceptan Paypal o tarjetas de crédito internacional como <a href="https://www.tenpo.cl/" class="bare">https://www.tenpo.cl/</a> o <a href="https://dalecoopeuch.cl/" class="bare">https://dalecoopeuch.cl/</a></p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://dynv6.com/" class="bare">https://dynv6.com/</a>
+| Subdominios gratuitos. Ideal para tener servidores hogareños sin recurrir a un dominio principal.</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://www.noip.com" class="bare">https://www.noip.com</a>
+| Subdominios gratuitos. Ideal para tener servidores hogareños sin recurrir a un dominio principal.
+|=</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="qué-es-un-domain-name-server"><a class="anchor" href="#qué-es-un-domain-name-server"></a>¿Qué es un Domain Name Server?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El sistema DNS (Domain Name Server) es el sistema más importante para el funcionamiento de internet. Sin DNS&#8217;s no funcionarían los nombres de dominios que utilizamos comúnmente.</p>
+</div>
+<div class="paragraph">
+<p>Cada computadora conectada a internet tiene una dirección &#8220;lógica&#8221; única, algo así como un número telefónico, a la que llamamos dirección IP. Las direcciones IP que se utilizan actualmente (versión 4) constan de cuatro secciones numéricas separadas por un punto. Una dirección IP típica luciría así: 151.120.134.89 (esto es solo un ejemplo).</p>
+</div>
+<div class="paragraph">
+<p>En términos prácticos, el sistema DNS es el que nos permite traducir &#8220;www.google.com&#8221; o cualquier otro dominio textual, a su equivalente numérico.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ruta-de-un-dns"><a class="anchor" href="#ruta-de-un-dns"></a>Ruta de un DNS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cuando una persona escribe una dirección web en la barra de direcciones de su navegador, la computadora irá a buscar jerárquicamente por la traducción de dicha dirección en una dirección IP. Se dice jerárquicamente, ya que normalmente se comienza la búsqueda primero en los DNS&#8217;s raíz de internet (que son unos servidores que mantienen largas tablas de enrutamiento que hacen funcionar el corazón de este sistema) y una vez que haya encontrado el mapeo correcto la máquina irá a buscar la dirección concreta del equipo o &#8220;host&#8221; a los servidores DNS ligados al dominio en particular que estamos buscando.</p>
+</div>
+<div class="paragraph">
+<p>Es por esta razón que cuando una persona va a &#8220;dirigir&#8221; su dominio a un servidor nuevo, se le pide que ingrese los servidores DNS que harán la función de direccionadores. Un ejemplo de esto es el siguiente:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Contratamos el dominio &#8220;ejemplo.com&#8221; con un proveedor de registro de dominios</p>
+</li>
+<li>
+<p>Deseamos que &#8220;ejemplo.com&#8221; lleve directamente a nuestra página web que está localizada en la dirección IP 192.185.124.130</p>
+</li>
+<li>
+<p>Nuestro proveedor del servicio de Hospedaje Web dará de alta el dominio en el servidor.</p>
+</li>
+<li>
+<p>Nuestro proveedor del servicio de Hospedaje Web dará de alta el dominio en los servidores DNS que sean necesarios y nos proporcionará la dirección URL de estos servidores (al menos del servidor DNS primario y secundario, por ejemplo: ns1.ejemplo.com y ns2.ejempo.com)</p>
+</li>
+<li>
+<p>Agregamos los servidores DNS primario y secundario a nuestro dominio directamente con nuestro proveedor de registro de dominios (ya sea por medio de algún panel de control o solicitándolo de otra forma)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En este ejemplo, hicimos lo siguiente:</p>
+</div>
+<div class="paragraph">
+<p>1.- Registramos un nombre de dominio</p>
+</div>
+<div class="paragraph">
+<p>2.- Dimos de alta el dominio en un servidor</p>
+</div>
+<div class="paragraph">
+<p>3.- Dirigimos el dominio al servidor por medio de los servidores DNS primario y secundario.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="por-qué-tardan-los-cambios-de-servidores-dns-en-propagar"><a class="anchor" href="#por-qué-tardan-los-cambios-de-servidores-dns-en-propagar"></a>¿Por qué tardan los cambios de servidores DNS en propagar?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Otra situación sumamente común es que cuando cambiamos el direccionamiento de un dominio de unos servidores DNS a otros, nuestro proveedor nos indica que la &#8220;propagación&#8221; puede tardar 24 a 72 horas (normalmente es mucho menos). ¿Esto qué significa?</p>
+</div>
+<div class="paragraph">
+<p>Lo que sucede es que para no sobrecargar los servidores raíz de internet y disminuir el tráfico por consultas de &#8220;traducciones&#8221; DNS de nombres de dominio a direcciones IP, el sistema de DNS funciona de tal forma que se guardan registros temporales de ciertas traducciones populares, por ejemplo: si uno hace una consulta para buscar <code>ninjas.cl</code>, el sistema DNS de nuestro proveedor de acceso a internet nos devolverá la IP resultante de dicha consulta. Para hacer esa traducción muy probablemente tuvimos que consultar directamente a un servidor raíz de internet, sin embargo, si nosotros mismos volvemos a buscar esa dirección (o alguien que esté en la misma red o &#8220;vecindario&#8221; la busca) muy probablemente la traducción ya se encuentre guardada temporalmente en un servidor DNS de nuestro proveedor de acceso a internet, con lo que éste se ahorra el tener que ir a buscar dicha traducción directamente a los servidores raíz de internet.</p>
+</div>
+<div class="paragraph">
+<p>El aspecto negativo de esto (por así llamarlo), es que si cambiamos en este momento el mapeo dominio/IP de <code>ninjas.cl</code>, mucha gente en el mundo que esté accediendo a nuestra página web tendrá un periodo de tiempo de algunas horas en las que probablemente accederá aún a la dirección IP anterior que estará guardada en los servidores DNS de su proveedor de acceso a internet (el término correcto es que tiene el mapeo guardado en &#8220;caché&#8221;). Este mapeo, ahora incorrecto, se corregirá automáticamente cuando el cambio se &#8220;propague&#8221; hasta los servidores DNS de dicho proveedor de acceso a internet, lo cual por el tamaño de internet puede tardar varias horas.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://servidoresseguros.com/clientes/index.php/knowledgebase/2/iQue-es-un-DNS-nameserver-o-servidor-de-nombre.html">DNS</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="servidores-y-hostings"><a class="anchor" href="#servidores-y-hostings"></a>Servidores y Hostings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Entre los hosting web existen principalmente las siguientes opciones:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Shared Hosting: Hosting Compartido. Un servidor con Cpanel (o Plesk) en el cual los recursos de la máquina (IP, RAM, CPU, Disco, etc) son compartidos por múltiples usuarios. Ideal para opciones económicas y menos exigencia.</p>
+</li>
+<li>
+<p>Dedicated Hosting: (Hosting Dedicado). Un servidor con Cpanel en el cual los recursos de la máquina (IP, RAM, CPU, Disco, etc) son asignados a un solo usuario. Ideal para opciones que requieran mayor velocidad y recursos.</p>
+</li>
+<li>
+<p>VPS (Virtual Private Server): Servidor Privado Virtual . Un servidor dedicado en el cual se debe instalar todo de forma manual (no tiene Cpanel u otros similares). Ideal para aplicaciones personalizadas (Como Backend) en lenguajes de programación distintos a PHP o que requieran recursos personalizados, más flexibles y que puedan adaptarse a las necesidades de crecimiento de la aplicación.</p>
+</li>
+<li>
+<p>Hosting HTML Estático: Hosting especializado en páginas web estáticas. Solamente permite archivos con lógica en el cliente como HTML, CSS, JS y archivos (imágenes, documentos). No permite lenguajes como PHP, Elixir o Python. Se pueden mencionar <em>neocities</em> y <em>github pages</em> entre los más conocidos.</p>
+</li>
+<li>
+<p>Servidor de Aplicaciones en la Nube: Servidor especializado en tener un ambiente preparado para algunos frameworks de backend, a diferencia de los VPS ya viene con algunas configuraciones y herramientas de apoyo. Alguno de los más conocidos son <em>Heroku.com</em> o <em>Fly.io</em>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dónde-consigo-un-hosting"><a class="anchor" href="#dónde-consigo-un-hosting"></a>¿Dónde Consigo un Hosting?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>|=
+| URL | Descripción</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://cpanelhost.cl" class="bare">https://cpanelhost.cl</a>
+| Hosting económico gama baja/media para servidores en Chile. Valor promedio $10.000 CLP por año. Ideal para tener un servidor de correos propio de forma económica. Páginas webs simples o de poco tráfico.</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://silverhost.cl" class="bare">https://silverhost.cl</a>
+| Hosting de gama media en Chile. Valor promedio $30.000 CLP por año. Ideal para páginas web más exigentes o múltiples dominios.</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://gohosting.cl" class="bare">https://gohosting.cl</a>
+| Hosting de gama baja/media en servidores internacionales.</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://hostgator.com" class="bare">https://hostgator.com</a>
+| Hosting gama baja/media internacional. Muchos resellers compran a Hostgator y revenden en Chile. Revisar siempre que las ips y nameservers sean de chile antes de seleccionar un hosting chileno.</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://www.hostinger.com/" class="bare">https://www.hostinger.com/</a>
+| Hosting de gama baja/media internacional</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://www.digitalocean.com/" class="bare">https://www.digitalocean.com/</a>
+| VPS</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://www.linode.com/" class="bare">https://www.linode.com/</a>
+| VPS</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://www.vultr.com/" class="bare">https://www.vultr.com/</a>
+| VPS</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://neocities.org/" class="bare">https://neocities.org/</a>
+| Hosting gratuito de páginas web estáticas</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://www.cloudflare.com/" class="bare">https://www.cloudflare.com/</a>
+| Entre sus servicios gratuitos hospeda páginas web estáticas</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://pages.github.com/" class="bare">https://pages.github.com/</a>
+| Si se tiene un proyecto en Github se puede utilizar su hosting gratuito para web estáticas. Ideal para documentación de proyectos o experimentos</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://www.heroku.com/" class="bare">https://www.heroku.com/</a>
+| Servidor de Aplicaciones en la Nube</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://fly.io/" class="bare">https://fly.io/</a>
+| Servidor de Aplicaciones en la Nube. Recomendado para Elixir.</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://vercel.com/" class="bare">https://vercel.com/</a>
+| Servidor de Aplicaciones en la Nube. Especializado en Frontend.</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://aws.amazon.com/es/" class="bare">https://aws.amazon.com/es/</a>
+| Plataforma de Servicios en la Nube de Amazon.</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://azure.microsoft.com/en-us" class="bare">https://azure.microsoft.com/en-us</a>
+| Plataforma de Servicios en la Nube de Microsoft.</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://cloud.google.com/" class="bare">https://cloud.google.com/</a>
+| Plataforma de Servicios en la Nube de Google.
+|=</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="herramienta-whois"><a class="anchor" href="#herramienta-whois"></a>Herramienta Whois</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Al momento de querer adquirir un dominio se debe verificar que no esté previamente registrado. Podemos utilizar las búsquedas de un proveedor de dominios, pero nos arriesgamos a que nuestra búsqueda quede registrada y posiblemente alguien desee comprar nuestro dominio dejándonos en una posición difícil. La recomendación es siempre comprar un dominión lo más pronto posible, ya que se arriesga a perderlo y verse obligado a pagar copiosas sumas de dinero por adquirirlo.</p>
+</div>
+<div class="paragraph">
+<p>Para asegurárnos que nuestra búsqueda de dominio sea protegida de posibles oportunistas, utilizamos la herramienta <code>whois</code>.</p>
+</div>
+<div class="paragraph">
+<p>Cuando accedemos a los detalles con whois, tendremos acceso a la información de contacto asociada con la persona o empresa que registró el nombre de dominio en la red, es por ello que al usar whois accedemos a detalles como:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>El nombre y la información de contacto del registrante</p>
+</li>
+<li>
+<p>La fecha de registro</p>
+</li>
+<li>
+<p>El nombre y la información de contacto del registrador</p>
+</li>
+<li>
+<p>Última actualización del registro</p>
+</li>
+<li>
+<p>Fecha de expiración del registro</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Es por esto que se debe elegir un proveedor de dominios que permita el ocultar información privada, para evitar ser víctima de spam por medio de la obtención de datos usando <code>whois</code>.</p>
+</div>
+<div class="paragraph">
+<p>Al usar el comando whois debemos tener en cuenta los siguientes términos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Registry: hace referencia a la empresa que administra la lista donde se aloja un conjunto de nombres de dominio</p>
+</li>
+<li>
+<p>Registrant: es el propietario legal del dominio</p>
+</li>
+<li>
+<p>Registrar: hace uso de un registrador para realizar el registro</p>
+</li>
+<li>
+<p><a href="https://www.solvetic.com/tutoriales/article/8799-como-utilizar-comando-whois-linux-para-que-sirve-usar-e-instalar/">Whois</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resultado-de-dominio-existente"><a class="anchor" href="#resultado-de-dominio-existente"></a>Resultado de Dominio Existente</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ whois ninjas.cl
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+refer:        whois.nic.cl
+
+domain:       CL
+
+organisation: NIC Chile (University of Chile)
+address:      Miraflores 222, Piso 14
+address:      Santiago RM 832-0198
+address:      Chile
+
+contact:      administrative
+name:         TLD Admin Contact
+organisation: NIC Chile
+organisation: University of Chile
+address:      Miraflores 222, Piso 14
+address:      Santiago RM 832-0198
+address:      Chile
+phone:        +56 22 940 7700
+e-mail:       admincl@nic.cl
+
+contact:      technical
+name:         TLD Technical Contact
+organisation: NIC Chile
+organisation: University of Chile
+address:      Miraflores 222, Piso 14
+address:      Santiago RM 832-0198
+address:      Chile
+phone:        +56 22 940 7700
+e-mail:       techcl@nic.cl
+
+nserver:      A.NIC.CL 190.124.27.10 2001:1398:121:0:190:124:27:10
+nserver:      B.NIC.CL 200.7.4.7 2001:1398:274:0:200:7:4:7
+nserver:      C.NIC.CL 200.16.112.16 2001:1398:275:0:200:16:112:16
+nserver:      CL-NS.ANYCAST.PCH.NET 2001:500:14:6030:ad:0:0:1 204.61.216.30
+nserver:      CL1-TLD.D-ZONE.CA 185.159.197.56 2620:10a:80aa:0:0:0:0:56
+nserver:      CL1.DNSNODE.NET 194.146.106.34 2001:67c:1010:8:0:0:0:53
+nserver:      CL2-TLD.D-ZONE.CA 185.159.198.56 2620:10a:80ab:0:0:0:0:56
+ds-rdata:     21199 8 2 7d756dffab6d3cd9c786ff5c659954c22944faef9433eee26f1d84eb5370b394
+
+whois:        whois.nic.cl
+
+status:       ACTIVE
+remarks:      Registration information: http://www.nic.cl/
+
+created:      1987-12-15
+changed:      2021-05-28
+source:       IANA
+
+# whois.nic.cl
+
+%%
+%% This is the NIC Chile Whois server (whois.nic.cl).
+%%
+%% Rights restricted by copyright.
+%% See https://www.nic.cl/normativa/politica-publicacion-de-datos-cl.pdf
+%%
+
+Domain name: ninjas.cl
+Registrant name: Camilo
+Registrant organisation:
+Registrar name: NIC Chile
+Registrar URL: https://www.nic.cl
+Creation date: 2023-07-26 16:12:11 CLST
+Expiration date: 2024-07-26 16:12:11 CLST
+Name server: ns1.cpanelhost.cl
+Name server: ns2.cpanelhost.cl
+
+%%
+%% For communication with domain contacts please use website.
+%% See https://www.nic.cl/registry/Whois.do?d=ninjas.cl
+%%</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resultado-de-dominio-inexistente"><a class="anchor" href="#resultado-de-dominio-inexistente"></a>Resultado de Dominio Inexistente</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ whois ninjas-fake.cl
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+refer:        whois.nic.cl
+
+domain:       CL
+
+organisation: NIC Chile (University of Chile)
+address:      Miraflores 222, Piso 14
+address:      Santiago RM 832-0198
+address:      Chile
+
+contact:      administrative
+name:         TLD Admin Contact
+organisation: NIC Chile
+organisation: University of Chile
+address:      Miraflores 222, Piso 14
+address:      Santiago RM 832-0198
+address:      Chile
+phone:        +56 22 940 7700
+e-mail:       admincl@nic.cl
+
+contact:      technical
+name:         TLD Technical Contact
+organisation: NIC Chile
+organisation: University of Chile
+address:      Miraflores 222, Piso 14
+address:      Santiago RM 832-0198
+address:      Chile
+phone:        +56 22 940 7700
+e-mail:       techcl@nic.cl
+
+nserver:      A.NIC.CL 190.124.27.10 2001:1398:121:0:190:124:27:10
+nserver:      B.NIC.CL 200.7.4.7 2001:1398:274:0:200:7:4:7
+nserver:      C.NIC.CL 200.16.112.16 2001:1398:275:0:200:16:112:16
+nserver:      CL-NS.ANYCAST.PCH.NET 2001:500:14:6030:ad:0:0:1 204.61.216.30
+nserver:      CL1-TLD.D-ZONE.CA 185.159.197.56 2620:10a:80aa:0:0:0:0:56
+nserver:      CL1.DNSNODE.NET 194.146.106.34 2001:67c:1010:8:0:0:0:53
+nserver:      CL2-TLD.D-ZONE.CA 185.159.198.56 2620:10a:80ab:0:0:0:0:56
+ds-rdata:     21199 8 2 7d756dffab6d3cd9c786ff5c659954c22944faef9433eee26f1d84eb5370b394
+
+whois:        whois.nic.cl
+
+status:       ACTIVE
+remarks:      Registration information: http://www.nic.cl/
+
+created:      1987-12-15
+changed:      2021-05-28
+source:       IANA
+
+# whois.nic.cl
+
+%%
+%% This is the NIC Chile Whois server (whois.nic.cl).
+%%
+%% Rights restricted by copyright.
+%% See https://www.nic.cl/normativa/politica-publicacion-de-datos-cl.pdf
+%%
+
+ninjas-fake.cl: no entries found.</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="herramienta-ping"><a class="anchor" href="#herramienta-ping"></a>Herramienta Ping</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ping nos ayuda a verificar que un servidor este operativo y escuchando peticiones.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)">Ping</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Respuesta Exitosa</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ ping ninjas.cl
+PING ninjas.cl (190.107.177.35): 56 data bytes
+Request timeout for icmp_seq 0
+64 bytes from 190.107.177.35: icmp_seq=1 ttl=58 time=23.394 ms
+64 bytes from 190.107.177.35: icmp_seq=2 ttl=58 time=28.447 ms
+64 bytes from 190.107.177.35: icmp_seq=3 ttl=58 time=15.794 ms
+64 bytes from 190.107.177.35: icmp_seq=4 ttl=58 time=22.296 ms
+64 bytes from 190.107.177.35: icmp_seq=5 ttl=58 time=16.409 ms
+64 bytes from 190.107.177.35: icmp_seq=6 ttl=58 time=14.523 ms
+64 bytes from 190.107.177.35: icmp_seq=7 ttl=58 time=14.737 ms
+64 bytes from 190.107.177.35: icmp_seq=8 ttl=58 time=20.764 ms
+--- ninjas.cl ping statistics ---
+9 packets transmitted, 8 packets received, 11.1% packet loss
+round-trip min/avg/max/stddev = 14.523/19.545/28.447/4.682 ms</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Respuesta de Servidor No Encontrado</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ ping ninjas-fake.cl
+ping: cannot resolve ninjas-fake.cl: Unknown host</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Respuesta de Servidor que No Responde</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ ping 127.0.0.2
+PING 127.0.0.2 (127.0.0.2): 56 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+Request timeout for icmp_seq 2
+Request timeout for icmp_seq 3
+Request timeout for icmp_seq 4
+Request timeout for icmp_seq 5
+Request timeout for icmp_seq 6
+--- 127.0.0.2 ping statistics ---
+8 packets transmitted, 0 packets received, 100.0% packet loss</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cpanel"><a class="anchor" href="#cpanel"></a>Cpanel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>cPanel (acrónimo de control Panel o &#8216;Panel de control&#8217;) es un panel de control para administrar servidores de alojamiento web que proveen herramientas de automatización y una interfaz gráfica basada en páginas web. Es software de tipo propietario y se ha desarrollado para ser compatible con la mayoría de las distribuciones de Linux que usen RPM como gestor de paquetes.</p>
+</div>
+<div class="paragraph">
+<p>Hoy en día, cPanel se ha convertido prácticamente un estándar en servicios de hosting web.</p>
+</div>
+<div class="paragraph">
+<p>Tanto es así que se considera por muchos un criterio fundamental a la hora de elegir un hosting.</p>
+</div>
+<div class="paragraph">
+<p>Su principal ventaja es que el usuario de un hosting web, muchas veces personas sin perfil técnico, dispone de una interfaz web sencilla que le permite administrar los servicios más importantes de su hosting, principalmente:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Administración de ficheros: principalmente para la instalación de aplicaciones PHP como ProcessWire, WordPress, Joomla o Prestashop.</p>
+</li>
+<li>
+<p>Configuración de los dominios: necesaria para vincular el sitio web el correo electrónico al (los) dominio(s) que se quiere(n) utilizar.</p>
+</li>
+<li>
+<p>Gestión de cuentas de correo: creación y mantenimiento de cuentas de correo electrónico con dominio propio.</p>
+</li>
+<li>
+<p>Gestión de bases de datos MySQL: creación y mantenimiento de bases de bases de datos, principalmente porque las aplicaciones típicas usadas en un hosting como las arriba mencionadas suelen requerir una base de datos MySQL.</p>
+</li>
+<li>
+<p>Gestión de los recursos: espacio en disco, consumo de ancho de banda mensual, etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>cPanel entrega un gran nivel de control al usuario individual, mientras se mantiene la seguridad. Aunque el administrador de sistema puede desactivar cualquier característica para cada cliente en cualquier momento, el usuario puede usar cualquier elemento que se encuentre disponible.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SSH Access: tiene integrado un applet Java que permite una conexión directa con el servidor vía SSH. Se encuentra desactivado en la mayoría de los sitios debido a que es un riesgo para la seguridad del servidor.</p>
+</li>
+<li>
+<p>Crontab: provee una interfaz para el manejo de las listas de tareas.</p>
+</li>
+<li>
+<p>OpenPGP: soporte técnico.</p>
+</li>
+<li>
+<p>CGI Scripts: autoinstala varios scripts para cualquier sitio web.</p>
+</li>
+<li>
+<p>Permite evitar el acceso a direcciones IP específicas.</p>
+</li>
+<li>
+<p>Se distingue, respecto a otros control Panel, por su facilidad para realizar respaldos completos o parciales (algunos proveedores de hospedaje no dan derechos para restaurar respaldos).</p>
+</li>
+<li>
+<p>Tiene una apariencia flexible y fácil de entender, llamada Paper Lantern, también hay otra llamada Jupiter.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whm"><a class="anchor" href="#whm"></a>WHM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WHM, abreviatura de WebHost Manager, es una herramienta basada en la web que se utiliza para la administración del servidor. Hay al menos dos niveles de WHM, a menudo denominados "WHM raíz" y WHM no raíz (o WHM de revendedor). Root WHM es utilizado por administradores de servidores y WHM no root (con menos privilegios) es utilizado por otros, como departamentos de entidades y revendedores para administrar cuentas de alojamiento a menudo denominadas cuentas cPanel en un servidor web. WHM también se usa para administrar certificados SSL (tanto certificados SSL autogenerados por el servidor como proporcionados por CA), usuarios de cPanel, paquetes de alojamiento, zonas DNS, temas y métodos de autenticación. El SSL automático predeterminado (AutoSSL) proporcionado por cPanel es impulsado por Sectigo (anteriormente Comodo CA). Además, WHM también se puede usar para administrar servicios de FTP, correo (POP, IMAP y SMTP) y SSH en el servidor.</p>
+</div>
+<div class="paragraph">
+<p>Además de ser accesible para el administrador raíz, WHM también es accesible para los usuarios con privilegios de revendedor. Los usuarios revendedores de cPanel tienen un conjunto de funciones más pequeño que el usuario raíz, generalmente limitado por el administrador del servidor, a funciones que determinan que afectarán las cuentas de sus clientes en lugar del servidor en su conjunto. Desde la raíz WHM, el administrador del servidor puede realizar operaciones de mantenimiento, como actualizar y volver a compilar Apache y PHP, instalar módulos Perl y actualizar los RPM instalados en el sistema.</p>
+</div>
+<div class="paragraph">
+<p><strong>Enlaces</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://es.wikipedia.org/wiki/CPanel">Wikipedia: Cpanel</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/CPanel#WHM">Wikipedia: WHM</a></p>
+</li>
+<li>
+<p><a href="https://cpanel.net/">Página Oficial de Cpanel</a></p>
+</li>
+<li>
+<p><a href="https://cpanel.net/products/cpanel-whm-features/">WHM</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="alternativas"><a class="anchor" href="#alternativas"></a>Alternativas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Muchas veces Cpanel puede no ser la mejor opción, debido a su precio o sus restricciones tecnológicas. Para esto existen algunas alternativas a considerar:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.directadmin.com/">Direct Admin</a> (Pago)</p>
+</li>
+<li>
+<p><a href="https://www.plesk.com/">Plesk</a> (Pago)</p>
+</li>
+<li>
+<p><a href="https://webmin.com/">Webmin</a> (Gratis)</p>
+</li>
+<li>
+<p><a href="https://froxlor.org/">Froxlor</a> (Gratis)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="certificados-ssl"><a class="anchor" href="#certificados-ssl"></a>Certificados SSL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Son certificados que permiten a las aplicaciones comunicarse de forma segura. Por ejemplo al momento de enviar un formulario, si la página es solamente <code>http</code>, toda la información enviada podría ser obtenida por un tercero no autorizado. Por esto siempre es importante utilizar certificados SSL (<code>https</code>) al momento de crear sistemas web.</p>
+</div>
+<div class="paragraph">
+<p>En los paneles <em>Cpanel</em> existe una opción llamada <em>AutoSSL</em> que genera certificados. Puede también ser utilizado <a href="https://letsencrypt.org/" class="bare">https://letsencrypt.org/</a>, una opción gratuita que no está ligada a Cpanel.</p>
+</div>
+<div class="paragraph">
+<p><strong>Enlaces</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">SSL</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lectura-complementaria"><a class="anchor" href="#lectura-complementaria"></a>Lectura Complementaria</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Siempre tener en cuenta que estos solo son paneles de administración en servidores (usualmente Linux), por lo que todas las operaciones que realizan estos paneles se pueden realizar mediante la terminal del sistema operativo.</p>
+</div>
+<div class="paragraph">
+<p>Se recomienda mucho aprender Linux/FreeBSD y tomar la certificación respectiva para aprender administrar servidores.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://training.linuxfoundation.org/training/linux-system-administration-essentials-lfs207/" class="bare">https://training.linuxfoundation.org/training/linux-system-administration-essentials-lfs207/</a></p>
+</li>
+<li>
+<p><a href="https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/" class="bare">https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/</a></p>
+</li>
+<li>
+<p><a href="https://es.wikipedia.org/wiki/GNU/Linux">Linux</a></p>
+</li>
+<li>
+<p><a href="https://es.wikipedia.org/wiki/FreeBSD">FreeBSD</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../github/chapter.html">chapter.adoc</a></span>
+  <span class="next"><a href="../networking/chapter.html">Redes e Internet</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

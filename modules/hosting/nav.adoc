@@ -1,0 +1,2 @@
+.Hostings
+* xref:chapter.adoc[]

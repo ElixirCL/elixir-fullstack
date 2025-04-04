@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/systemd/chapter.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Patrones de Diseño</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/chapter.html">Patrones y Arquitecturas de Software</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">chapter.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/systemd/pages/chapter.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="sect1">
+<h2 id="diseño-de-sistemas-system-design"><a class="anchor" href="#diseño-de-sistemas-system-design"></a>Diseño de Sistemas (System Design)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El diseño del sistema es el proceso de diseñar la
+arquitectura, los componentes y las interfaces de un sistema
+para que cumpla con los requisitos del usuario final. Se refiere al proceso de definir la arquitectura, los módulos, las interfaces y los datos para que un sistema satisfaga requisitos específicos. Es un campo multidisciplinario que implica análisis de compensaciones, equilibrio de requisitos conflictivos y toma de decisiones sobre opciones de
+diseño que impactar el sistema en general.</p>
+</div>
+<div class="paragraph">
+<p>En las últimas dos décadas, ha habido muchos avances en aplicaciones web a gran escala.
+Estos avances han redefinido la forma en que pensamos sobre el desarrollo de software.
+Todas las aplicaciones y servicios que usamos a diario, como Facebook, Instagram y Twitter. ,
+son sistemas escalables. Miles de millones de personas en todo el mundo acceden a estos sistemas simultáneamente,
+por lo que deben diseñarse para manejar grandes cantidades de tráfico y datos. Aquí es donde entra en juego el diseño del sistema.</p>
+</div>
+<div class="paragraph">
+<p>Como desarrollador de software, se espera cada vez más que comprenda los conceptos de diseño de
+sistemas y cómo aplicarlos. En las primeras etapas de su carrera, aprender diseño de sistemas le permitirá abordar
+problemas de diseño de software con más confianza y aplicar principios de diseño a sus proyectos.</p>
+</div>
+<div class="paragraph">
+<p>El diseño de sistemas es un tema enorme. Cada uno tiene un enfoque diferente ya que no existen pautas paso a paso.</p>
+</div>
+<div class="sect2">
+<h3 id="estimación-de-costos"><a class="anchor" href="#estimación-de-costos"></a>Estimación de Costos</h3>
+<div class="paragraph">
+<p>Una estimación es un ejercicio de calcular los costos y requerimientos de un sistema de forma que se pueda tener una idea y referencia sobre el funcionamiento y costos futuros del mismo.</p>
+</div>
+<div class="paragraph">
+<p>Estimar nos permite validar si la solución está dentro de los parámetros aceptables y analizar su factibilidad técnica y económica. La estimación es suficiente con que sea cercana al valor real, debido a que muchas variables pueden afectar los costos en el futuro.</p>
+</div>
+<div class="paragraph">
+<p>Para poder estimar se necesitan algunas nociones y métricas básicas que pueden ser aplicadas a cualquier sistema.</p>
+</div>
+<div class="sect3">
+<h4 id="unidad-de-volumen-de-datos"><a class="anchor" href="#unidad-de-volumen-de-datos"></a>Unidad de Volumen de Datos</h4>
+<div class="paragraph">
+<p>El almacenamiento y transferencia de datos comunmente se mide en <em>Bytes</em> y potencias de 2, debido a que un caracter <em>ASCII</em> es 1 byte (8 bits).</p>
+</div>
+<div class="paragraph">
+<p>La siguiente tabla muestra la unidad de volumen de datos.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Potencia</th>
+<th class="tableblock halign-left valign-top">Valor Aproximado</th>
+<th class="tableblock halign-left valign-top">Nombre</th>
+<th class="tableblock halign-left valign-top">Abreviación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Uno (bit)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">b</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 Ocho (bits)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Byte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Mil (bits)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilobyte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 KB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Millón (bits)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Megabyte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 MB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Mil Millón (bits)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gigabyte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 GB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Billón (bits)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Terabyte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 TB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 Cuatrillón (bits)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Petabyte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 PB</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="tipos-de-datos"><a class="anchor" href="#tipos-de-datos"></a>Tipos de Datos</h4>
+<div class="paragraph">
+<p>Los tipos de datos que pueden ser usados en una base de datos tienen una cantidad
+de almacenamiento definido. Va a cambiar dependiendo del motor de base de datos usado. La siguiente tabla muestra un aproximado de los tipos de datos más comunes.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Tipo de Dato</th>
+<th class="tableblock halign-left valign-top">Tamaño de Almacenamiento</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean (booleano)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 byte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">verdadero o falso.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smallint (entero pequeño)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un entero con valores acotados.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">integer (entero)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un número entero tradicional.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bigint (entero grande)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un número entero con mayor capacidad. Para números aún más grandes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float (decimal)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un número decimal con 6 decimales de precisión.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">double (decimal con doble precisión)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8 bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un número decimal con 15 decimales de precisión.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">varchar (caracteres variable)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(4 + n) byte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se suma la cantidad de caracteres más 4 para obtener el total de espacio requerido.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blob (binario)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">variable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un archivo binario almacenado. El tamaño dependerá de cada archivo.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="números-de-latencia"><a class="anchor" href="#números-de-latencia"></a>Números de Latencia</h4>
+<div class="paragraph">
+<p>La latencia nos indica cuánto se demora un proceso desde que se hace la petición hasta recibir una respuesta. A mayor cantidad de latencia, mayor será el tiempo que necesitemos esperar para obtener una respuesta. El tiempo de retraso de las latencias puede crear ineficiencias, especialmente en las operaciones en tiempo real.</p>
+</div>
+<div class="paragraph">
+<p>Los siguientes gráficos contienen números aproximados, ya que según el avance tecnológico pueden variar con los años.</p>
+</div>
+<div class="paragraph">
+<p>Basado en los números de Jeff Dean y Peter Norvig (<a href="http://norvig.com/21-days.html#answers" class="bare">http://norvig.com/21-days.html#answers</a>).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/latenciagrafico.png" alt="Latencia Gráfico">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">ns</th>
+<th class="tableblock halign-left valign-top">µs</th>
+<th class="tableblock halign-left valign-top">ms</th>
+<th class="tableblock halign-left valign-top">note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L1 cache reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5 ns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Branch mispredict</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5 ns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L2 cache reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7 ns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14x L1 cache</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mutex lock/unlock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25 ns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Main memory reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100 ns</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20x L2 cache, 200x L1 cache</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compress 1K bytes with Zippy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 µs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Send 1K bytes over 1 Gbps network</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 µs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read 4K randomly from SSD*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150 µs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">~1GB/sec SSD</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read 1 MB sequentially from memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">250,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">250 µs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Round trip within same datacenter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">500,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">500 µs</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read 1 MB sequentially from SSD*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1,000,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1,000 µs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 ms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">~1GB/sec SSD, 4X memory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disk seek</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10,000,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10,000 µs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 ms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20x datacenter roundtrip</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read 1 MB sequentially from disk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20,000,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20,000 µs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 ms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80x
+memory, 20X SSD</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Send packet CA &#8594; Netherlands &#8594; CA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150,000,000 ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150,000 µs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">150 ms</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>1 ns = 10^-9 segundos</p>
+</li>
+<li>
+<p>1 us = 10^-6 segundos = 1,000 ns</p>
+</li>
+<li>
+<p>1 ms = 10^-3 segundos = 1,000 us = 1,000,000 ns</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/latencia.jpg" alt="Latencia">
+</div>
+</div>
+<div class="sect4">
+<h5 id="cachés-l1-y-l2-1-ns-10-ns"><a class="anchor" href="#cachés-l1-y-l2-1-ns-10-ns"></a>Cachés L1 y L2: 1 ns, 10 ns</h5>
+<div class="paragraph">
+<p>Normalmente están integrados en el chip del microprocesador. A menos que trabaje directamente con hardware, probablemente no necesite preocuparse por ellos.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="acceso-a-ram-100-ns"><a class="anchor" href="#acceso-a-ram-100-ns"></a>Acceso a RAM: 100 ns</h5>
+<div class="paragraph">
+<p>Se necesitan alrededor de 100 ns para leer datos de la memoria. Redis es un almacén de datos en memoria, por lo que se necesitan unos 100 ns para leer datos de Redis.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="envía-1k-bytes-a-través-de-una-red-de-1-gbps-10-us"><a class="anchor" href="#envía-1k-bytes-a-través-de-una-red-de-1-gbps-10-us"></a>Envía 1K bytes a través de una red de 1 Gbps: 10 us</h5>
+<div class="paragraph">
+<p>Se necesitan alrededor de 10 usuarios para enviar 1 KB de datos desde Memcached a través de la red.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="leer-desde-ssd-100-us"><a class="anchor" href="#leer-desde-ssd-100-us"></a>Leer desde SSD: 100 us</h5>
+<div class="paragraph">
+<p>RocksDB es un almacén K/V basado en disco, por lo que la latencia de lectura es de alrededor de 100 us en SSD.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="operación-de-inserción-de-base-de-datos-1-ms"><a class="anchor" href="#operación-de-inserción-de-base-de-datos-1-ms"></a>Operación de inserción de base de datos: 1 ms.</h5>
+<div class="paragraph">
+<p>La confirmación de Postgresql puede tardar 1 ms. La base de datos necesita almacenar los datos, crear el índice y vaciar los registros. Todas estas acciones toman tiempo.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="enviar-paquete-capaíses-bajosca-100-ms"><a class="anchor" href="#enviar-paquete-capaíses-bajosca-100-ms"></a>Enviar paquete CA&#8594;Países Bajos&#8594;CA: 100 ms</h5>
+<div class="paragraph">
+<p>Si tenemos una llamada de larga distancia por Zoom, la latencia podría rondar los 100 ms.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="reintentaractualizar-interno-1-10s"><a class="anchor" href="#reintentaractualizar-interno-1-10s"></a>Reintentar/actualizar interno: 1-10s</h5>
+<div class="paragraph">
+<p>En un sistema de monitoreo, el intervalo de actualización generalmente se establece en 5 a 10 segundos (valor predeterminado en Grafana).</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="resumen"><a class="anchor" href="#resumen"></a>Resumen</h5>
+<div class="paragraph">
+<p>Al leer los datos se puede concluir las siguientes cosas:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Leer de la memoria es más rápido que leer de un disco duro.</p>
+</li>
+<li>
+<p>Leer del disco duro solo cuando sea obligatorio.</p>
+</li>
+<li>
+<p>Los algoritmos de compresión son rápidos y se recomienda su utilización al enviar los datos por la red.</p>
+</li>
+<li>
+<p>Los centros de datos de diferentes regiones requerirán más tiempo para transferir datos entre ellos.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="estimación-general"><a class="anchor" href="#estimación-general"></a>Estimación General</h4>
+<div class="paragraph">
+<p>El primer paso en el proceso de estimación es definir los objetivos.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Nivel mínimo: Objetivo que no tiene grandes exigencias. ¿Cuánto es lo mínimo que el sistema necesitaría para funcionar correctamente?.</p>
+</li>
+<li>
+<p>Nivel promedio: Objetivo que busca definir el comportamiento normal de un sistema. ¿Cuánto es lo que necesitaría el sistema en un día normal?.</p>
+</li>
+<li>
+<p>Nivel crítico: Objetivo que busca definir el comportamiento exigente de un sistema. ¿Cuánto es lo que necesitaría el sistema en un día de alta exigencia?.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Una vez definido el objetivo y los supuestos a cumplir, se debe transformar a datos como
+tamaño de almacenamiento o tamaño de transferencia. Ya que normalmente son los
+necesarios para comparar con la tabla de precios de un proveedor de servicios. Al tener el tamaño de almacenamiento o transferencia, se puede estimar los costos monetarios necesarios para lograr los objetivos planteados.</p>
+</div>
+<div class="sect4">
+<h5 id="cantidad-de-usuarios-diarios-cud"><a class="anchor" href="#cantidad-de-usuarios-diarios-cud"></a>Cantidad de Usuarios Diarios (CUD)</h5>
+<div class="paragraph">
+<p>La cantidad de usuarios diarios nos ayudará a definir cuán grande es el volumen de consultas por segundo de un sistema, teniendo en consideración las operaciones que los usuarios realicen.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="consultas-por-segundo-qps-queries-per-second"><a class="anchor" href="#consultas-por-segundo-qps-queries-per-second"></a>Consultas por Segundo (QPS: Queries per Second)</h5>
+<div class="paragraph">
+<p>Una métrica común es ¿Cúantas consultas tendrá por segundo la aplicación?.
+Esto nos permite determinar la cantidad de almacenamiento y datos necesarios
+en los casos hipotéticos acordados.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="ejemplo-red-microblogging"><a class="anchor" href="#ejemplo-red-microblogging"></a>Ejemplo: Red Microblogging</h5>
+<div class="paragraph">
+<p>Una red microblogging similar a sistemas como Mastodon o X (Twitter).</p>
+</div>
+<div class="sect5">
+<h6 id="objetivos-y-supuestos"><a class="anchor" href="#objetivos-y-supuestos"></a>Objetivos y Supuestos</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>300 millones de usuarios activos mensuales.</p>
+</li>
+<li>
+<p>50% utiliza el sistema diariamente.</p>
+</li>
+<li>
+<p>Se realizan 2 posts por día en promedio.</p>
+</li>
+<li>
+<p>10% de los posts contienen imagenes (media).</p>
+</li>
+<li>
+<p>Los datos se almacenan por 5 años.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect5">
+<h6 id="obtención-de-las-qps-querys-per-second"><a class="anchor" href="#obtención-de-las-qps-querys-per-second"></a>Obtención de las QPS (Querys per Second)</h6>
+<div class="paragraph">
+<p>El primer paso es obtener la cantidad de usuarios diarios (CUD), para esto
+obtenemos el 50% de 300 millones.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>300 millones (Usuarios Mensuales) * 50% (Uso diario) = 150 millones (Usuarios Diarios)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Sabemos que con 150 millones de usuarios diarios, cada usuario realiza 2 posts por día. Esto lo debemos transformar a segundos.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">posts_por_dia = 150 millones usuarios * 2 posts
+horas_por_dia = 24
+segundos_por_dia = 3600
+
+QPS = posts_por_dia / horas_por_dia / segundos_por_dia
+QPS = ~3500 Queries por Segundo.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ahora si tomamos la cantidad total de usuarios y asumiendo que todos
+los usuarios realizan dos posts en un mismo día</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">QPS_MAX = 2 * QPS = ~7000 Queries por Segundo.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="almacenamiento-estimado"><a class="anchor" href="#almacenamiento-estimado"></a>Almacenamiento Estimado</h6>
+<div class="paragraph">
+<p>Ahora si definimos que cada post contiene la siguiente información:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">id  varchar(64) -- cadena de caracteres de 64 bytes
+text varchar(140) -- cadena de caracteres de 140 bytes
+media blob(1MB) -- imagen de 1 MegaByte</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Utilizando la <code>QPS</code> podemos calcular cuánto espacio de almacenamiento necesitamos.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">peso_imagen = 10% * 1 MB
+posts_por_dia * peso_imagen
+terabytes_por_dia = 30
+terabytes_en_5_anios = terabytes_por_dia * 365 * 5 // 55 PetaBytes</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="enlaces"><a class="anchor" href="#enlaces"></a>Enlaces</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7126968760971714560-aZ7T?trk=public_profile_like_view" class="bare">https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7126968760971714560-aZ7T?trk=public_profile_like_view</a></p>
+</li>
+<li>
+<p><a href="https://gist.github.com/jboner/2841832" class="bare">https://gist.github.com/jboner/2841832</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tipos-de-configuración-de-servidores"><a class="anchor" href="#tipos-de-configuración-de-servidores"></a>Tipos de Configuración de Servidores</h3>
+<div class="paragraph">
+<p>Los servidores pueden estar configurados de distinta forma
+dependiendo de las necesidades de la aplicación y las capacidades
+técnicas requeridas. En el ciclo de vida de la aplicación se puede
+dar situaciones en las que se deba aumentar los recursos disponibles
+y de que forma son distribuidos.</p>
+</div>
+<div class="sect3">
+<h4 id="servidor-único"><a class="anchor" href="#servidor-único"></a>Servidor Único</h4>
+<div class="paragraph">
+<p>Este es una configuración inicial. Todos los servicios de la aplicación (servidor web, base de datos, almacenamiento de archivos, etc). Están dentro de
+una sola máquina y comparten recursos de red, procesador, memoria y almacenamiento.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Es fácil de configurar.</p>
+</li>
+<li>
+<p>Es relativamente barato.</p>
+</li>
+<li>
+<p>Ideal para aplicaciones pequeñas y de poco alcance.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Desventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Propenso a errores por agotamiento de memoria o disco.</p>
+</li>
+<li>
+<p>Solamente un servidor, si este es atacado o comprometido en seguridad, puede significar una brecha total o caida total del servicio.</p>
+</li>
+<li>
+<p>Puede tener mayor latencia para usuarios lejos de la región donde está ubicado el servidor.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="servidor-de-base-de-datos-separado"><a class="anchor" href="#servidor-de-base-de-datos-separado"></a>Servidor de Base de Datos Separado</h4>
+<div class="paragraph">
+<p>El siguiente nivel en la configuración es separar el servidor de la base de datos, dandole una instancia propia del servidor de aplicaciones.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La base de datos tiene sus recursos separados del servidor de aplicaciones.</p>
+</li>
+<li>
+<p>Permite escalar individualmente cada servidor según necesidades.</p>
+</li>
+<li>
+<p>La seguridad es mayor al no compartir la misma máquina.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Desventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Aumenta los costos de mantenimiento al tener más máquinas funcionando.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="una-máquina-por-servicio"><a class="anchor" href="#una-máquina-por-servicio"></a>Una Máquina por Servicio</h4>
+<div class="paragraph">
+<p>Una vez que las necesidades de la aplicación lo requieran, se puede buscar la configuración a través de la separación de una máquina por servicio. Por ejemplo si la aplicación tiene: servidor web, base de datos, almacenamiento de archivos y procesamiento de datos. Se podría tener una máquina por cada elemento del sistema, una máquina para el servidor web, otra máquina para la base de datos, otra para el sistema de almacenamiento y otra para el procesamiento de datos.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cada componente es separado y puede escalar individualmente.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Desventajas</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Los costos aumentan considerablemente.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="escalado-horizontal-y-vertical"><a class="anchor" href="#escalado-horizontal-y-vertical"></a>Escalado horizontal y vertical</h3>
+<div class="paragraph">
+<p>La escalabilidad se refiere a la capacidad de una aplicación para manejar y soportar una mayor carga de trabajo sin sacrificar la latencia. Una aplicación necesita una potencia informática sólida para escalar bien. Los servidores deben ser lo suficientemente potentes para manejar mayores cargas de tráfico. Hay dos formas principales de escalar una aplicación: horizontalmente y verticalmente.</p>
+</div>
+<div class="sect3">
+<h4 id="escalado-horizontal"><a class="anchor" href="#escalado-horizontal"></a>Escalado Horizontal</h4>
+<div class="paragraph">
+<p>El escalamiento horizontal, o ampliación, significa agregar más
+hardware al conjunto de recursos de hardware existente.
+Aumenta la potencia computacional del sistema en su conjunto.</p>
+</div>
+<div class="paragraph">
+<p>En el escalado horizontal, agrega más máquinas en paralelo para hacer frente a los requisitos crecientes. Necesitará equilibrio de carga para distribuir la carga en todo el sistema. Si alguna máquina falla, las solicitudes se redirigen a las otras máquinas y se escala bien cuando su Los usuarios aumentan y la inconsistencia de los datos es un inconveniente.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="escalado-vertical"><a class="anchor" href="#escalado-vertical"></a>Escalado Vertical</h4>
+<div class="paragraph">
+<p>El escalamiento vertical, o ampliación, significa agregar más potencia a su servidor. Aumenta la potencia de el hardware que ejecuta la aplicación.
+El escalado vertical utiliza una máquina enorme que maneja todas sus solicitudes y mejora el tiempo de respuesta y el rendimiento. Aunque ofrece llamadas de red más rápidas, coherencia de datos y sin equilibrio de carga, tiene un único punto de falla y limitaciones de hardware.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="balanceo-de-carga-load-balancer"><a class="anchor" href="#balanceo-de-carga-load-balancer"></a>Balanceo de Carga (Load Balancer)</h3>
+<div class="paragraph">
+<p>El balanceador de carga nos permite distribuir el tráfico de red entrante entre múltiples recursos,
+lo que garantiza una alta disponibilidad y confiabilidad al enviar solicitudes solo a los recursos que están en línea, lo que brinda la flexibilidad de agregar o restar recursos según lo requiera la demanda.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/load-balancer.png" alt="load balancer">
+</div>
+</div>
+<div class="paragraph">
+<p>Los sitios web modernos con mucho tráfico deben atender cientos de miles, si no millones, de solicitudes simultáneas de usuarios o clientes. Para escalar de manera rentable y satisfacer estos grandes volúmenes, las mejores prácticas informáticas modernas generalmente requieren agregar más servidores.</p>
+</div>
+<div class="paragraph">
+<p>Un balanceador de carga puede ubicarse frente a los servidores y enrutar las solicitudes de los clientes a través de todos los servidores capaces de satisfacer esas solicitudes de una manera que maximice la velocidad y la utilización de la capacidad. Esto garantiza que ningún servidor tenga exceso de trabajo, lo que podría degradar el rendimiento. se cae, el balanceador de carga redirige el tráfico a los servidores en línea restantes. Cuando se agrega un nuevo servidor al grupo de servidores, el balanceador de carga comienza automáticamente a enviarle solicitudes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="redundancia-y-replicación"><a class="anchor" href="#redundancia-y-replicación"></a>Redundancia y Replicación</h3>
+<div class="paragraph">
+<p>La replicación es el proceso de compartir información para garantizar la coherencia entre recursos redundantes. Puede replicar componentes de software o hardware para mejorar la confiabilidad, la tolerancia a fallas o la accesibilidad. La replicación se utiliza en muchos sistemas de administración de bases de datos (DBMS), generalmente con una réplica primaria. La relación entre el original y sus copias. El servidor primario recibe todas las actualizaciones, y esas actualizaciones pasan a través de los servidores de réplica. Cada servidor de réplica genera un mensaje cuando recibe correctamente la actualización.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/replicas.png" alt="replicas">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="base-de-datos-fragmentada-database-sharding"><a class="anchor" href="#base-de-datos-fragmentada-database-sharding"></a>Base de datos Fragmentada (Database Sharding)</h3>
+<div class="paragraph">
+<p>La fragmentación de bases de datos es una técnica para el escalado
+horizontal de bases de datos, donde los datos se
+dividen en múltiples instancias de bases de datos, o fragmentos, para mejorar el rendimiento y reducir el impacto de grandes cantidades de datos en una sola base de datos.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="colas-de-mensajes"><a class="anchor" href="#colas-de-mensajes"></a>Colas de mensajes</h3>
+<div class="paragraph">
+<p>Una cola de mensajes es una cola que enruta mensajes desde un origen a un destino, o desde el remitente al
+receptor. Sigue la política FIFO (primero en entrar, primero en salir). El mensaje que se envía primero se entrega primero. Las colas de mensajes facilitan la asincronía. Comportamiento, que permite que los módulos se comuniquen entre sí en segundo plano sin obstaculizar las tareas primarias. También facilitan la comunicación entre módulos y proporcionan almacenamiento temporal para los mensajes hasta que sean procesados y consumidos por el consumidor.
+Las más conocidas son <em>Kafka</em> o <em>RabbitMQ</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="caché"><a class="anchor" href="#caché"></a>Caché</h3>
+<div class="paragraph">
+<p>El almacenamiento en caché es un concepto de diseño de sistema que implica almacenar datos a los que se accede con frecuencia en una ubicación a la que se puede acceder fácil y rápidamente. El propósito del almacenamiento en caché es mejorar el rendimiento y la eficiencia de un sistema al reducir la cantidad de tiempo que lleva acceder a los datos a los que se accede con frecuencia.</p>
+</div>
+<div class="paragraph">
+<p>El almacenamiento en caché se puede utilizar en una variedad de sistemas diferentes, incluidas aplicaciones web, bases de datos y sistemas operativos. En cada caso, el almacenamiento en caché funciona almacenando datos a los que se accede con frecuencia en una ubicación más cercana al usuario o la aplicación. Esto puede incluir el almacenamiento datos en la memoria o en un disco duro local.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cache.png" alt="cache">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lectura-complementaria"><a class="anchor" href="#lectura-complementaria"></a>Lectura Complementaria</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.geeksforgeeks.org/caching-system-design-concept-for-beginners/" class="bare">https://www.geeksforgeeks.org/caching-system-design-concept-for-beginners/</a></p>
+</li>
+<li>
+<p><a href="https://www.geeksforgeeks.org/system-design-tutorial/" class="bare">https://www.geeksforgeeks.org/system-design-tutorial/</a></p>
+</li>
+<li>
+<p><a href="https://www.educative.io/blog/complete-guide-to-system-design" class="bare">https://www.educative.io/blog/complete-guide-to-system-design</a></p>
+</li>
+<li>
+<p><a href="https://github.com/karanpratapsingh/system-design" class="bare">https://github.com/karanpratapsingh/system-design</a></p>
+</li>
+<li>
+<p><a href="https://www.educative.io/blog/system-design-primer" class="bare">https://www.educative.io/blog/system-design-primer</a></p>
+</li>
+<li>
+<p><a href="https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers" class="bare">https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers</a></p>
+</li>
+<li>
+<p><a href="https://www.educative.io/courses/web-application-software-architecture-101" class="bare">https://www.educative.io/courses/web-application-software-architecture-101</a></p>
+</li>
+<li>
+<p><a href="https://www.geeksforgeeks.org/database-sharding-a-system-design-concept/" class="bare">https://www.geeksforgeeks.org/database-sharding-a-system-design-concept/</a></p>
+</li>
+<li>
+<p><a href="https://www.educative.io/path/scalability-system-design" class="bare">https://www.educative.io/path/scalability-system-design</a></p>
+</li>
+<li>
+<p><a href="https://aws.amazon.com/es/what-is/latency/" class="bare">https://aws.amazon.com/es/what-is/latency/</a></p>
+</li>
+<li>
+<p>Libro System Design Interview <a href="#systemdesign">[systemdesign]</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

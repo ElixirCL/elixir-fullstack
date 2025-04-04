@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Patrones y Arquitecturas de Software :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/patterns/chapter.html">
+    <link rel="prev" href="../jobs/chapter.html">
+    <link rel="next" href="../github/chapter.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Patrones de Diseño</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="chapter.html">Patrones y Arquitecturas de Software</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">chapter.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Patrones de Diseño</li>
+    <li><a href="chapter.html">Patrones y Arquitecturas de Software</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/patterns/pages/chapter.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Patrones y Arquitecturas de Software</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Un estilo arquitectónico establece un marco de referencia a partir del cual es posible construir aplicaciones que comparten un conjunto de atributos y características mediante el cual es posible identificarlos y clasificarlos.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="arquitectura-en-capas"><a class="anchor" href="#arquitectura-en-capas"></a>Arquitectura en Capas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La arquitectura en capas es una de las más utilizadas, no solo por su simplicidad, sino porque también es utilizada por defecto cuando no estamos seguros que arquitectura debemos de utilizar para nuestra aplicación.</p>
+</div>
+<div class="paragraph">
+<p>La arquitectura en capas consta en dividir la aplicación en capas, con la intención de que cada capa tenga un rol muy definido, como podría ser, una capa de presentación (UI), una capa de reglas de negocio (servicios) y una capa de acceso a datos (DAO), sin embargo, este estilo arquitectónico no define cuantas capas debe de tener la aplicación, sino más bien, se centra en la separación de la aplicación en capas (Aplica el principio Separación de preocupaciones (SoC)).</p>
+</div>
+<div class="paragraph">
+<p>En la práctica, la mayoría de las veces este estilo arquitectónico es implementado en 4 capas, presentación, negocio, persistencia y base de datos, sin embargo, es habitual ver que la capa de negocio y persistencia se combinan en una solo capa, sobre todo cuando la lógica de persistencia está incrustada dentro de la capa de negocio.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/capas.png" alt="capas">
+</div>
+</div>
+<div class="paragraph">
+<p>Un detalle a tener en cuenta en esta arquitectura, es que cada capa debe de ser un componente independiente, de tal forma que se puedan desplegar por separado, incluso, es habitual que estos componentes residan en servidores separados pero que se comunican entre sí.</p>
+</div>
+<div class="paragraph">
+<p><strong>Referencias</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/capas" class="bare">https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/capas</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="monolito"><a class="anchor" href="#monolito"></a>Monolito</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El estilo arquitectónico monolítico consiste en crear una aplicación autosuficiente que contenga absolutamente toda la funcionalidad necesaria para realizar la tarea para la cual fue diseñada, sin contar con dependencias externas que complementen su funcionalidad. En este sentido, sus componentes trabajan juntos, compartiendo los mismos recursos y memoria. En pocas palabras, una aplicación monolítica es una unidad cohesiva de código.</p>
+</div>
+<div class="paragraph">
+<p>Una falsa creencia es que, una aplicación monolítica es un caos por dentro, donde todo el código está amontonado, no hay una estructura clara y que por lo general tiene miles de clases u objetos, sin embargo, esto es solo una mala fama que se le ha dado, si bien es verdad que se podía dar el caso, recordemos que eso también se podría dar en cualquier estilo de arquitectura, pues eso dependen más bien del programador y no del estilo arquitectónico.</p>
+</div>
+<div class="paragraph">
+<p>Otra falsa creencia es creer que las aplicaciones Monolíticas son solo las aplicaciones grandísimas que hacen un montón de cosas, pero lo cierto es que un monolítico puede ser de una sola clase, o de miles, lo que define un estilo monolítico no es el número de clases, archivos o líneas de código, lo que lo define es que es autosuficiente, es decir, que tiene toda la funcionalidad para operar por sí mismo y sin depender de nadie más.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/monolitic-lg.png" alt="monolitic lg">
+</div>
+</div>
+<div class="paragraph">
+<p>En la imagen podemos apreciar cómo funciona el proceso de compilación de una aplicación Monolítica, el cual todos los paquetes junto con sus dependencias son compilados y da como resultado un solo artefacto, el cual incluye todo el código junto con las dependencias. En este ejemplo decimos que hemos creado un EXE, pero se pudo haber creado un Jar en el caso de Java o un JS en el caso de JavaScript, dependiendo la tecnología utilizada tendremos un artefacto diferente, pero al final, todos contendrán todo el código con sus dependencias.</p>
+</div>
+<div class="paragraph">
+<p><strong>Referencias</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/monolitico" class="bare">https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/monolitico</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="microservicio"><a class="anchor" href="#microservicio"></a>Microservicio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El estilo de Microservicios consiste en crear pequeños componentes de software que solo hacen una tarea, la hace bien y son totalmente autosuficientes, lo que les permite evolucionar de forma totalmente independiente del resto de componentes.</p>
+</div>
+<div class="paragraph">
+<p>Un Microservicios es un pequeño programa que se especializa en realizar una pequeña tarea y se enfoca únicamente en eso, por ello, decimos que los Microservicios son Altamente Cohesivos, pues toda las operaciones o funcionalidad que tiene dentro está extremadamente relacionadas para resolver un único problema.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/microservicios.png" alt="microservicios">
+</div>
+</div>
+<div class="paragraph">
+<p>En este sentido, podemos decir que los Microservicios son todo lo contrario a las aplicaciones Monolíticas, pues en una arquitectura de Microservicios se busca desmenuzar una gran aplicación en muchos y pequeños componentes que realizar de forma independiente una pequeña tarea de la problemática general.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="otros-tipos-de-arquitectura"><a class="anchor" href="#otros-tipos-de-arquitectura"></a>Otros tipos de Arquitectura</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/rest">REST</a></p>
+</li>
+<li>
+<p><a href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/cliente-servidor">Cliente Servidor</a></p>
+</li>
+<li>
+<p><a href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/soa">Service Oriented</a></p>
+</li>
+<li>
+<p><a href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/p2p">Peer 2 Peer</a></p>
+</li>
+<li>
+<p><a href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/eda">Event Driven</a></p>
+</li>
+<li>
+<p><a href="https://reactiveprogramming.io/blog/es/estilos-arquitectonicos/microkernel">MicroKernel</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="patrón-modelo-vista-controlador"><a class="anchor" href="#patrón-modelo-vista-controlador"></a>Patrón Modelo Vista Controlador</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MVC (Modelo-Vista-Controlador) es un patrón en el diseño de software comúnmente utilizado para implementar interfaces de usuario, datos y lógica de control. Enfatiza una separación entre la lógica de negocios y su visualización. Esta "separación de preocupaciones" proporciona una mejor división del trabajo y una mejora de mantenimiento. Algunos otros patrones de diseño se basan en MVC, como MVVM (Modelo-Vista-VistaModelo), MVP (Modelo-Vista-Presentador) y MVW (Modelo-Vista-Whatever).</p>
+</div>
+<div class="paragraph">
+<p>El patrón Modelo-Vista-Controlador (MVC), es uno de los primeros que se debería aprender. Es tan fundamental que ha sobrevivido décadas en la industria y sus ideas se han esparcido por muchas plataformas. Es el padre de muchos otros patrones derivados como MVVM (Modelo-Vista-VistaModelo), entre otros.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/mvc1.png" alt="MVC">
+</div>
+</div>
+<div class="paragraph">
+<p>Este patrón es esencial debido a que ayuda a responder una de las preguntas más comunes: <em>¿Dónde debería poner esta pieza de código?</em>.</p>
+</div>
+<div class="paragraph">
+<p>El patrón <em>MVC</em> es uno de arquitectura. Entrega un mapa de la estructura de la aplicación y como su nombre dice, consiste en tres capas: modelo, vista y controlador.</p>
+</div>
+<div class="paragraph">
+<p>El siguiente diagrama de Apple muestra un poco la relación de las vistas y controladores.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/applemvc.png" alt="Apple MVC"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/index.html" class="bare">https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/index.html</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>El principal problema de MVC y por qué razón nacieron otros patrones derivados es debido a la tendencia de que los controladores crecían de forma exponencial. Incluso llegando a ser llamado Massive View Controllers, por la cantidad de responsabilidades que tenían que cumplir.</p>
+</div>
+<div class="sect2">
+<h3 id="modelo"><a class="anchor" href="#modelo"></a>Modelo</h3>
+<div class="paragraph">
+<p>La capa modelo (<em>model</em>), es la capa que maneja los datos y la lógica de negocios, independiente de su representación visual. Define qué datos debe contener la aplicación. Si el estado de estos datos cambia, el modelo generalmente notificará a la vista (para que la pantalla pueda cambiar según sea necesario) y, a veces, el controlador (si se necesita una lógica diferente para controlar la vista actualizada).</p>
+</div>
+<div class="paragraph">
+<p>Volviendo a nuestra aplicación de lista de compras, el modelo especificará qué datos deben contener los artículos de la lista (artículo, precio, etc.) y qué artículos de la lista ya están presentes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vista"><a class="anchor" href="#vista"></a>Vista</h3>
+<div class="paragraph">
+<p>La capa vista (<em>view</em>) es la que muestra la información al usuario y permite interacciones, independiente de la capa de datos. La vista define cómo se deben mostrar los datos de la aplicación. En nuestra aplicación de lista de compras, la vista definiría cómo se presenta la lista al usuario y recibiría los datos para mostrar desde el modelo.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="controlador"><a class="anchor" href="#controlador"></a>Controlador</h3>
+<div class="paragraph">
+<p>La capa controlador (<em>controller</em>) es la que actúa como puente entre modelo y vista. Almacena y manipula el estado de la aplicación y proporciona datos a las vista, interpreta las acciones del usuario según las reglas de negocio. El controlador contiene una lógica que actualiza el modelo y/o vista en respuesta a las entradas de los usuarios de la aplicación.</p>
+</div>
+<div class="paragraph">
+<p>Entonces, por ejemplo, nuestra lista de compras podría tener formularios de entrada y botones que nos permitan agregar o eliminar artículos. Estas acciones requieren que se actualice el modelo, por lo que la entrada se envía al controlador, que luego manipula el modelo según corresponda, que luego envía datos actualizados a la vista.</p>
+</div>
+<div class="paragraph">
+<p>Sin embargo, es posible que también se desee actualizar la vista para mostrar los datos en un formato diferente, por ejemplo, cambiar el orden de los artículos de menor a mayor precio o en orden alfabético. En este caso, el controlador podría manejar esto directamente sin necesidad de actualizar el modelo.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/mvc.png" alt="MVC">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="patrón-modelo-vista-vista-modelo"><a class="anchor" href="#patrón-modelo-vista-vista-modelo"></a>Patrón Modelo Vista Vista-Modelo</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El patrón Modelo-Vista-VistaModelo (<em>MVVM</em>), es un patrón de arquitectura que facilita estructurar la aplicación dividiéndola en tres roles.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/mvvm.png" alt="MVVM">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>El modelo (<em>model</em>): representa los datos y lógica de negocio de la aplicación.</p>
+</li>
+<li>
+<p>La vista (<em>view</em>): Muestra la información al usuario y permite la interacción.</p>
+</li>
+<li>
+<p>La vista-modelo (<em>view-model</em>): Actúa como puente entre las capas de vista y modelo. Contiene el estado de la vista y maneja la lógica de interacciones.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="diferencias-entre-mvc-y-mvvm"><a class="anchor" href="#diferencias-entre-mvc-y-mvvm"></a>¿Diferencias entre MVC y MVVM?</h3>
+<div class="paragraph">
+<p>Al comparar los patrones de <em>MVC</em> y <em>MVVM</em> es notable la similitud y son casi idénticos.</p>
+</div>
+<div class="paragraph">
+<p>La principal diferencia radica en que <em>MVC</em> hace énfasis en los controladores. Encargados de manejar las interacciones para varias vistas. En cambio en <em>MVVM</em> la vista-modelo es un único componente que controla el comportamiento y estado de una única vista. Comúnmente representado como un componente.</p>
+</div>
+<div class="paragraph">
+<p>Otra diferencia es la forma de comunicación entre la vista y su controlador. En <em>MVC</em> la vista y el controlador tienen funciones definidas que son llamadas de forma imperativa para informar sobre una acción o requerir actualizar la información en la vista. Por otra parte en <em>MVVM</em> la vista y la vista-modelo están unidas por un mecanismo de enlazado (binding) que automáticamente informa sobre interacciones realizadas en la vista y cambios ocurridos en la vista-modelo. Estos mecanismos de enlazado varían según la plataforma.</p>
+</div>
+<div class="paragraph">
+<p>Las capas de <em>MVC</em> interactúan y son interpretadas dependiendo de algunos factores como:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La plataforma donde se implementa.</p>
+</li>
+<li>
+<p>La experiencia del profesional y su interpretación del patrón.</p>
+</li>
+<li>
+<p>La moda del día (Los devs igual pueden seguir modas).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>El patrón Modelo-Vista-VistaModelo (<em>MVVM</em>) es principalmente una versión de <em>MVC</em> bajo un nombre diferente.</p>
+</div>
+<div class="paragraph">
+<p>Si bien hay ligeras diferencias, perfectamente se pueden utilizar los conceptos de <em>MVC</em> y <em>MVVM</em> de forma unificada sin problemas.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="la-importancia-de-mvc-y-mvvm"><a class="anchor" href="#la-importancia-de-mvc-y-mvvm"></a>La Importancia de MVC y MVVM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El utilizar un patrón de arquitectura como <em>MVVM</em> con roles claramente definidos nos ayudan cumplir principios de diseño como la separación de conceptos. Lo que es una piedra angular para mantener código bien organizado, fácilmente entendible y que sus pruebas unitarias son viables de implementar.</p>
+</div>
+<div class="paragraph">
+<p>Utilizar patrones de arquitectura como <em>MVVM</em> es sumamente importante. A pesar de que los frameworks otorgen herramientas innovadoras para elaborar aplicaciones, si no utilizamos patrones de arquitectura el código se irá acumulando, aumentando de complejidad, para finalmente crear monolitos masivos que son difíciles de mantener y probar.</p>
+</div>
+<div class="paragraph">
+<p>El hecho de que algunos frameworks manejen automáticamente la actualización de las vistas no justifica abandonar las buenas prácticas en el desarrollo de software que han existido por décadas en múltiples plataformas.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="más-allá-de-mvc"><a class="anchor" href="#más-allá-de-mvc"></a>Más allá de MVC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Los patrones de arquitectura como <em>MVC</em> y <em>MVVM</em> tienen su foco en aplicaciones donde principalmente tenemos interacciones de usuario (UX), pero muchas veces las aplicaciones deben comunicar con servicios externos y otros elementos que necesitan otras formas de gestionar la arquitectura de código.</p>
+</div>
+<div class="paragraph">
+<p>Para esto se recomienda utilizar patrones como los definidos en el Diseño Orientado a Dominio (Domain Driven Design) y arquitectura Hexagonal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lectura-complementaria"><a class="anchor" href="#lectura-complementaria"></a>Lectura Complementaria</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Glossary/MVC" class="bare">https://developer.mozilla.org/es/docs/Glossary/MVC</a></p>
+</li>
+<li>
+<p><a href="https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador" class="bare">https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador</a></p>
+</li>
+<li>
+<p><a href="https://matteomanferdini.com/mvvm-swiftui/" class="bare">https://matteomanferdini.com/mvvm-swiftui/</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Separation_of_concerns" class="bare">https://en.wikipedia.org/wiki/Separation_of_concerns</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Coupling_(computer_programming" class="bare">https://en.wikipedia.org/wiki/Coupling_(computer_programming</a>)</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Hexagonal_architecture_(software" class="bare">https://en.wikipedia.org/wiki/Hexagonal_architecture_(software</a>)</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Domain-driven_design" class="bare">https://en.wikipedia.org/wiki/Domain-driven_design</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a></span>
+  <span class="next"><a href="../github/chapter.html">chapter.adoc</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

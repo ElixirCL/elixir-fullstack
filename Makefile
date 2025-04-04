@@ -1,40 +1,16 @@
-.PHONY: html docbook pdf epub build clean server
+.PHONY: install build server
+BUILD=podman
+CONTAINER_LABEL=local/antora:elixir-fullstack
 
-# Consider Docker https://github.com/asciidoctor/docker-asciidoctor
+install i:
+	${BUILD} build -t ${CONTAINER_LABEL} .
 
 build b:
-	@make clean
-	@make html
-	@make docbook
-	@make pdf
+	@rm -rf docs/
+	${BUILD} run -u $(id -u):$(id -g) -v .:/antora:z --rm -t ${CONTAINER_LABEL} antora-playbook.yml
+	@touch docs/.nojekyll
 
 server s:
-	@make html
-	@echo "http://localhost:8000"
+	@make build
 	@cd docs && python3 -m http.server
-
-html h:
-	@mkdir -p docs/book/
-	@rm -rf docs/index.html
-	@cp -R assets/highlight docs/
-	@cp -R book/images docs/book/images
-	asciidoctor book.adoc -o docs/index.html
-
-docbook d:
-	@mkdir -p docs
-	@rm -rf docs/book.xml
-	asciidoctor -b docbook book.adoc -o docs/book.xml
-
-pdf p:
-	@mkdir -p docs
-	@rm -rf docs/book.pdf
-	asciidoctor-pdf -a allow-uri-read=true -a source-highlighter=rouge -a rouge-style=monokai_sublime book.adoc -o docs/book.pdf
-
-# Epub is in beta. Maybe try using docbook for best resuts.
-epub e:
-	@mkdir -p docs
-	@rm -rf docs/book.epub
-	asciidoctor-epub3 -D docs/book.epub -a allow-uri-read -a ebook-validate -a source-highlighter=rouge -a rouge-style=monokai_sublime book.adoc
-
-clean c:
-	@rm -rf docs
+	

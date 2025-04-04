@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>HTTP, JSON y APIS :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/http/chapter.html">
+    <link rel="prev" href="../networking/chapter.html">
+    <link rel="next" href="../html/chapter.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Patrones de Diseño</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/chapter.html">Patrones y Arquitecturas de Software</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">chapter.adoc</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>HTTP</li>
+    <li><a href="chapter.html">HTTP, JSON y APIS</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/http/pages/chapter.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">HTTP, JSON y APIS</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>HTTP es el protocolo en el que se basa la Web.
+Fue inventado por Tim Berners-Lee entre los años 1989-1991, HTTP ha visto muchos cambios, manteniendo la mayor parte de su simplicidad y desarrollando su flexibilidad. HTTP ha evolucionado, desde un protocolo destinado al intercambio de archivos en un entorno de un laboratorio semi-seguro, al actual laberinto de Internet, sirviendo ahora para el intercambio de imágenes, vídeos en alta resolución y en 3D.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP" class="bare">https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cabeceras-headers"><a class="anchor" href="#cabeceras-headers"></a>Cabeceras (Headers)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El concepto de cabeceras de HTTP, se presentó tanto para las peticiones (<strong>requests</strong>) como para las respuestas (<strong>responses</strong>),
+permitiendo la trasmisión de meta-data y conformando un protocolo muy versátil y ampliable.
+Con el uso de las cabeceras de HTTP, se pudieron transmitir otros documentos además de HTML, mediante la cabecera <em>Content-Type</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">GET /mypage.html HTTP/1.0
+User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
+
+200 OK
+Date: Tue, 15 Nov 1994 08:12:31 GMT
+Server: CERN/3.0 libwww/2.17
+Content-Type: text/html
+&lt;HTML&gt;
+Una pagina web con una imagen
+    &lt;IMG SRC="/miImagen.gif"&gt;
+&lt;/HTML&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://es.wikipedia.org/wiki/Anexo:Cabeceras_HTTP" class="bare">https://es.wikipedia.org/wiki/Anexo:Cabeceras_HTTP</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="métodos"><a class="anchor" href="#métodos"></a>Métodos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>HTTP define una serie predefinida de métodos de petición (algunas veces referido como "verbos") que pueden utilizarse. El protocolo tiene flexibilidad para ir añadiendo nuevos métodos y para así añadir nuevas funcionalidades.
+Cada método indica la acción que desea que se efectúe sobre el recurso identificado. Lo que este recurso representa depende de la aplicación del servidor. Por ejemplo, el recurso puede corresponderse con un archivo que reside en el servidor.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="_images/http-methods.png" alt="http methods"></span>
+<a href="https://en.wikipedia.org/wiki/HTTP#Request_methods" class="bare">https://en.wikipedia.org/wiki/HTTP#Request_methods</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="códigos-de-respuesta"><a class="anchor" href="#códigos-de-respuesta"></a>Códigos de Respuesta</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El código de respuesta, estado o retorno es un número que indica que ha pasado con la petición. El resto del contenido de la respuesta dependerá del valor de este código. El sistema es flexible y de hecho la lista de códigos ha ido aumentando para así adaptarse a los cambios e identificar nuevas situaciones. Cada código tiene un significado concreto. Sin embargo el número de los códigos están elegidos de tal forma que según si pertenece a una centena u otra se pueda identificar el tipo de respuesta que ha dado el servidor:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Códigos con formato 1xx: Respuestas informativas. Indica que la petición ha sido recibida y se está procesando.</p>
+</li>
+<li>
+<p>Códigos con formato 2xx: Respuestas correctas. Indica que la petición ha sido procesada correctamente.</p>
+</li>
+<li>
+<p>Códigos con formato 3xx: Respuestas de redirección. Indica que el cliente necesita realizar más acciones para finalizar la petición.</p>
+</li>
+<li>
+<p>Códigos con formato 4xx: Errores causados por el cliente. Indica que ha habido un error en el procesado de la petición a causa de que el cliente ha hecho algo mal.</p>
+</li>
+<li>
+<p>Códigos con formato 5xx: Errores causados por el servidor. Indica que ha habido un error en el procesado de la petición a causa de un fallo en el servidor.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Enlaces</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP" class="bare">https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP</a></p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes" class="bare">https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rest"><a class="anchor" href="#rest"></a>REST</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En el año 2000, un nuevo formato para usar HTTP fue diseñado: REST (del inglés: 'Representational State Transfer'). Las acciones de la nueva API, no estaban supeditadas a nuevos métodos HTTP, unicamente al acceso a URIs especificas con métodos HTTP/1.1). Esto permitió que cualquier aplicación Web dispusiera de una API, para permitir la recuperación y modificación de datos, sin tener que actualizar servidores o navegadores; todo lo que se necesitaba era incluido en los archivos servidos por los sitios Web. La contrapartida del modelo REST está en que cada sitio Web define su propia versión no estándar de API RESTful y tiene un control total sobre ella; al contrario del formato *DAV donde clientes y servidores eran interoperables. La arquitectura REST empezó a ser muy común a partir del año 2010.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cabeceras-más-usadas"><a class="anchor" href="#cabeceras-más-usadas"></a>Cabeceras Más Usadas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>|==
+| Cabecera                                                                            | Descripción      | Ejemplo</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type">Content-Type</a> | Define el tipo de contenido que se envía en la petición | application/json
+| <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Accept">Accept</a>             |  Define el tipo de contenido que se aceptará en la respuesta | application/json
+|https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Authorization[Authorization]|Permite enviar tokens de autorización.| Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l
+|==</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="métodos-más-usados"><a class="anchor" href="#métodos-más-usados"></a>Métodos Más Usados</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>|==
+| Método | Uso recomendado | Códigos de Estado Comunes</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods/GET">GET</a>
+| Obtener información
+| 200, 404, 403</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods/POST">POST</a>
+| Permite crear recursos
+| 201, 202, 404, 403</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods/Put">PUT</a>
+| Permite actualizar recursos en su totalidad
+| 200, 404, 403</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods/Patch">PATCH</a>
+| Permite actualizar un campo dentro de un recurso
+| 200, 404, 403</p>
+</div>
+<div class="paragraph">
+<p>| <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods/delete">DELETE</a>
+| Permite eliminar un recurso
+| 200, 404, 403
+|==</p>
+</div>
+<div class="paragraph">
+<p><strong>Nota</strong>: No se recomienda el código de estado 204 (No content) debido a que
+no entrega ninguna respuesta (body) al cliente. Es mejor siempre devolver un cuerpo
+con información relacionada a la operación.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP" class="bare">https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP</a></p>
+</li>
+<li>
+<p><a href="https://apisyouwonthate.com/books/" class="bare">https://apisyouwonthate.com/books/</a></p>
+</li>
+<li>
+<p><a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3" class="bare">https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="json-api"><a class="anchor" href="#json-api"></a>JSON API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JSON API es una convención (no un estándar) para expresar datos de
+APIs en formato JSON o json api. Es decir, es un JavaScript Object Notation en una Interfaz de Programación en Aplicaciones. También puedes pensar en JSON API como un formato que trabaja con HTTP.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://jsonapi.org/" class="bare">https://jsonapi.org/</a></p>
+</li>
+<li>
+<p><a href="https://keepcoding.io/blog/json-api-que-es-para-que-sirve/" class="bare">https://keepcoding.io/blog/json-api-que-es-para-que-sirve/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="open-api"><a class="anchor" href="#open-api"></a>Open API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La especificación OpenAPI es un lenguaje de especificación para
+API HTTP que proporciona un medio estandarizado para definir su API ante otros. Puede descubrir rápidamente cómo funciona una API, configurar la infraestructura, generar código de cliente y crear casos de prueba para sus API. Obtenga más información sobre cómo puede obtener el control de sus API ahora, comprender el ciclo de vida completo de las API y comunicarse con las comunidades de
+desarrolladores dentro y fuera de su organización.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.openapis.org/" class="bare">https://www.openapis.org/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="otros-tipos-de-apis"><a class="anchor" href="#otros-tipos-de-apis"></a>Otros Tipos de APIS</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="soap"><a class="anchor" href="#soap"></a>SOAP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SOAP es una tecnología antigua que requiere un contrato de comunicación estricto entre sistemas. Con el tiempo, se han agregado nuevos estándares de servicios web para adaptarse a los cambios tecnológicos, pero generan gastos generales adicionales. REST se desarrolló después de SOAP y soluciona de forma inherente muchas de sus deficiencias. Los servicios web REST también se denominan servicios web RESTful.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://aws.amazon.com/es/compare/the-difference-between-soap-rest/" class="bare">https://aws.amazon.com/es/compare/the-difference-between-soap-rest/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="graphql"><a class="anchor" href="#graphql"></a>GraphQL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GraphQL es un lenguaje de consulta para API y un tiempo de ejecución para completar esas consultas con sus datos existentes. GraphQL proporciona una descripción completa y comprensible de los datos de su API, brinda a los clientes el poder de solicitar exactamente lo que necesitan y nada más, facilita la evolución de las API con el tiempo y habilita potentes herramientas para desarrolladores.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-graphql hljs" data-lang="graphql">{
+  hero {
+    name
+    friends {
+      name
+      homeWorld {
+        name
+        climate
+      }
+      species {
+        name
+        lifespan
+        origin {
+          name
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://graphql.org/" class="bare">https://graphql.org/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="grpc"><a class="anchor" href="#grpc"></a>gRPC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>gRPC es un marco moderno de llamada a procedimiento remoto (RPC) de código abierto y alto rendimiento que puede ejecutarse en cualquier entorno. Puede conectar de manera eficiente servicios dentro y entre centros de datos con soporte conectable para equilibrio de carga, rastreo, verificación de estado y autenticación. También es aplicable en la última milla de la informática distribuida para conectar dispositivos, aplicaciones móviles y navegadores a servicios backend.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://grpc.io/" class="bare">https://grpc.io/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="formatos-de-archivos"><a class="anchor" href="#formatos-de-archivos"></a>Formatos de Archivos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Existen diversos formatos y estándares para compartir datos y configurar los productos de software. Normalmente son formatos de texto plano (pueden ser leidos por un humano) y también hay en formato binario (pueden ser leidos solo por un computador), entre los más populares están <em>JSON</em>, <em>XML</em>, <em>YAML</em> y <em>TOML</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="formatos-de-serialización"><a class="anchor" href="#formatos-de-serialización"></a>Formatos de Serialización</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Siempre que desee enviar alguna estructura de datos o un objeto a través de redes informáticas, digamos Internet, debe convertirlo en un formato especial para leerlo y almacenarlo. El proceso se conoce comúnmente como serialización y es de enorme importancia en la web. Un ejemplo de uso común de serialización es al leer datos de bases de datos y transferirlos a través de la web.</p>
+</div>
+<div class="paragraph">
+<p>Algunas formaciones de serialización incluyen <em>JSON</em> y <em>XML</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="json"><a class="anchor" href="#json"></a>JSON</h3>
+<div class="paragraph">
+<p>JSON (JavaScript Object Notation - Notación de Objetos de JavaScript) es un formato ligero de intercambio de datos. Leerlo y escribirlo es simple para humanos, mientras que para las máquinas es simple interpretarlo y generarlo. Está basado en un subconjunto del Lenguaje de Programación JavaScript, Standard ECMA-262 3rd Edition - Diciembre 1999. JSON es un formato de texto que es completamente independiente del lenguaje pero utiliza convenciones que son ampliamente conocidos por los programadores de la familia de lenguajes C, incluyendo C, C&#43;&#43;, C#, Java, JavaScript, Perl, Python, y muchos otros. Estas propiedades hacen que JSON sea un lenguaje ideal para el intercambio de datos.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ejemplo</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "squadName": "Super hero squad",
+  "homeTown": "Metro City",
+  "formed": 2016,
+  "secretBase": "Super tower",
+  "active": true,
+  "members": [
+    {
+      "name": "Molecule Man",
+      "age": 29,
+      "secretIdentity": "Dan Jukes",
+      "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
+    },
+    {
+      "name": "Madame Uppercut",
+      "age": 39,
+      "secretIdentity": "Jane Wilson",
+      "powers": [
+        "Million tonne punch",
+        "Damage resistance",
+        "Superhuman reflexes"
+      ]
+    },
+    {
+      "name": "Eternal Flame",
+      "age": 1000000,
+      "secretIdentity": "Unknown",
+      "powers": [
+        "Immortality",
+        "Heat Immunity",
+        "Inferno",
+        "Teleportation",
+        "Interdimensional travel"
+      ]
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Learn/JavaScript/Objects/JSON" class="bare">https://developer.mozilla.org/es/docs/Learn/JavaScript/Objects/JSON</a></p>
+</li>
+<li>
+<p><a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-404/" class="bare">https://www.ecma-international.org/publications-and-standards/standards/ecma-404/</a></p>
+</li>
+<li>
+<p><a href="https://www.json.org/json-es.html" class="bare">https://www.json.org/json-es.html</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="xml"><a class="anchor" href="#xml"></a>XML</h3>
+<div class="paragraph">
+<p>El lenguaje de marcado extensible (XML) permite definir y almacenar datos de forma compartible. XML admite el intercambio de información entre sistemas de computación, como sitios web, bases de datos y aplicaciones de terceros. Las reglas predefinidas facilitan la transmisión de datos como archivos XML a través de cualquier red, ya que el destinatario puede usar esas reglas para leer los datos de forma precisa y eficiente.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ejemplo</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;libro&gt;
+
+&lt;título&gt;Introducción a Amazon Web Services&lt;/título&gt;
+
+&lt;autor&gt;Mark Wilkins&lt;/autor&gt;
+
+&lt;/libro&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://aws.amazon.com/es/what-is/xml/" class="bare">https://aws.amazon.com/es/what-is/xml/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="formatos-de-configuración"><a class="anchor" href="#formatos-de-configuración"></a>Formatos de Configuración</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Los formatos de configuración son más adecuados para establecer parámetros en los programas, más que enviar información por las vías de comunicación. Algunos formatos son <em>YAML</em> y <em>TOML</em>. <em>JSON</em> también es comunmente usado como un formato de configuración, aunque algunos prefieren utilizar variantes como <em>JSONC</em> que incluye comentarios.</p>
+</div>
+<div class="sect2">
+<h3 id="yaml"><a class="anchor" href="#yaml"></a>YAML</h3>
+<div class="paragraph">
+<p>YAML es un lenguaje sencillo que las personas pueden comprender y suele utilizarse en el diseño de archivos de configuración. Para algunas personas, YAML significa otro lenguaje de marcado más; para otras, es un acrónimo recursivo que quiere decir "YAML no es un lenguaje de marcado", lo que enfatiza la idea de que se utiliza para los datos, no para los documentos.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ejemplo</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name:John
+
+age:18
+
+Hobbies:
+
+ Hobby1:Football
+
+ Hobby2:BasketBall
+
+ Hobby3:Hockey
+
+Job:
+
+-System administrator
+
+-Programmer</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.redhat.com/es/topics/automation/what-is-yaml" class="bare">https://www.redhat.com/es/topics/automation/what-is-yaml</a></p>
+</li>
+<li>
+<p><a href="https://yaml.org/" class="bare">https://yaml.org/</a></p>
+</li>
+<li>
+<p><a href="https://geekflare.com/es/yaml-introduction/" class="bare">https://geekflare.com/es/yaml-introduction/</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="toml"><a class="anchor" href="#toml"></a>TOML</h3>
+<div class="paragraph">
+<p>TOML se abrevia como Tom&#8217;s Obvious Markup Language.
+TOML pretende ser un formato de archivo de configuración mínimo que sea fácil de leer debido a una semántica obvia. TOML está diseñado para asignarse sin ambigüedades a una tabla hash. TOML debería ser fácil de analizar en estructuras de datos en una amplia variedad de lenguajes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ejemplo</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="toml"># This is a TOML document
+
+title = "TOML Example"
+
+[owner]
+name = "Tom Preston-Werner"
+dob = 1979-05-27T07:32:00-08:00
+
+[database]
+enabled = true
+ports = [ 8000, 8001, 8002 ]
+data = [ ["delta", "phi"], [3.14] ]
+temp_targets = { cpu = 79.5, case = 72.0 }
+
+[servers]
+
+[servers.alpha]
+ip = "10.0.0.1"
+role = "frontend"
+
+[servers.beta]
+ip = "10.0.0.2"
+role = "backend"</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://toml.io/en/" class="bare">https://toml.io/en/</a></p>
+</li>
+<li>
+<p><a href="https://www.w3schools.io/file/toml-introduction/" class="bare">https://www.w3schools.io/file/toml-introduction/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="clientes-apis"><a class="anchor" href="#clientes-apis"></a>Clientes APIs</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="postman"><a class="anchor" href="#postman"></a>Postman</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Postman es una plataforma API para crear y utilizar API. Postman simplifica cada paso del ciclo de vida de la API y agiliza la colaboración para que puedas crear mejores API, más rápido.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.postman.com/" class="bare">https://www.postman.com/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="insomnia"><a class="anchor" href="#insomnia"></a>Insomnia</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kong Insomnia es una plataforma colaborativa de desarrollo de API de código abierto que facilita la creación de API de alta calidad, sin la sobrecarga y el desorden de otras herramientas.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://insomnia.rest/" class="bare">https://insomnia.rest/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hoppscotch"><a class="anchor" href="#hoppscotch"></a>Hoppscotch</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hoppscotch es una suite de desarrollo de API liviana basada en web. Fue creada desde cero teniendo en cuenta la facilidad de uso y la accesibilidad, brindando toda la funcionalidad necesaria para los desarrolladores de API con una interfaz de usuario minimalista y discreta.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://hoppscotch.io/" class="bare">https://hoppscotch.io/</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../networking/chapter.html">Redes e Internet</a></span>
+  <span class="next"><a href="../html/chapter.html">HTML, CSS y GIT</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>
