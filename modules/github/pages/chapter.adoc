@@ -1,4 +1,4 @@
-== Github, Static Site Generators, Markdown, Linux y Vim
+= Github, Static Site Generators, Markdown, Linux y Vim
 
 GitHub es un servicio basado en la nube que aloja un sistema de control de versiones (VCS) llamado Git. Éste permite a los desarrolladores colaborar y realizar cambios en proyectos compartidos, a la vez que mantienen un seguimiento detallado de su progreso.
 
@@ -9,7 +9,7 @@ Git es un proyecto de código abierto que se inició en 2005 y creció hasta con
 * https://www.hostinger.es/tutoriales/que-es-github
 * https://insights.stackoverflow.com/survey/2018/#work-version-control
 
-=== ¿Qué nos permite realizar?
+== ¿Qué nos permite realizar?
 
 * Gestionar los proyectos con https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects[Github Projects].
 * Tener un acerbo documental con https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis[Github Wiki].
@@ -19,7 +19,7 @@ Git es un proyecto de código abierto que se inició en 2005 y creció hasta con
 * Tener trazabilidad de las tareas con https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues[Github Issues].
 * Realizar acciones y flujos automatizados con https://docs.github.com/en/actions/quickstart[Github Actions].
 
-=== ¿Qué es un Fork (Bifurcación)?
+== ¿Qué es un Fork (Bifurcación)?
 
 Cuando nos gusta el repositorio de alguien y nos gustaría tenerlo en nuestra cuenta de GitHub, hacemos un fork o bifurcación para poder trabajar con él en forma separada.
 
@@ -27,7 +27,7 @@ Cuando hacemos un fork de un repositorio, obtenemos una instancia de todo el rep
 
 * https://docs.github.com/es/get-started/quickstart/fork-a-repo
 
-=== ¿Qué es un Pull Request?
+== ¿Qué es un Pull Request?
 
 Los pull requests son la forma de contribuir a un proyecto grupal o de código abierto.
 
@@ -37,16 +37,16 @@ Es como decir: "Luis, ¿podrías por favor extraer (pull) mis cambios?".
 
 En otros sistemas como Gitlab esta acción se le conoce como _Merge Request_.
 
-==== Merge commits
+=== Merge commits
 
 Todos los commits de la rama se incorporarán al tronco principal.
 
-==== Squash and merge
+=== Squash and merge
 
 Todos los commits de la rama se fusionarán, solamente un commit con un mensaje nuevo será incorporado al tronco principal.
 Es la opción recomendada.
 
-==== Rebase and merge
+=== Rebase and merge
 
 Reescribe el histórico de commits para incorporar los cambios de la rama.
 Usar con precaución.
@@ -55,7 +55,7 @@ Usar con precaución.
 * https://docs.gitlab.com/ee/user/project/merge_requests/
 * https://www.atlassian.com/git/tutorials/merging-vs-rebasing
 
-=== Alternativas
+== Alternativas
 
 * https://about.gitlab.com/
 * https://bitbucket.org/
@@ -64,7 +64,7 @@ Usar con precaución.
 * https://savannah.gnu.org/
 * https://github.com/martinvonz/jj
 
-=== Static Site Generators
+== Static Site Generators
 
 Los static website generators son estructuras predefinidas de código sobre las que se pueden crear páginas web estáticas. A diferencia de los sistemas de gestión de contenidos, que recuperan el contenido de las bases de datos, los generadores de páginas estáticas (static site generators) crean los archivos HTML de una página a partir de un script basado en datos de entrada, que están almacenados en un sistema de archivos. Este proceso ya se lleva a cabo durante su desarrollo, mientras se realizan los cambios no solo en el código, sino también en el contenido. En otras palabras, este proceso no se efectúa cuando el usuario accede a la página web a través de su navegador.
 
@@ -90,13 +90,13 @@ image::static-site-gen.png[]
 
 * https://www.ionos.es/digitalguide/paginas-web/creacion-de-paginas-web/que-es-un-static-site-generator/
 
-=== Jekyll
+== Jekyll
 
 Jekill es un generador de sitio estático con soporte incorporado para GitHub Pages. Jekyll toma los archivos Markdown y HTML y crea un sitio web estático completo en función de la opción de diseño.
 
 * https://docs.github.com/es/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll
 
-==== Listado de Static Site Generators
+=== Listado de Static Site Generators
 
 Algunos de los más populares según el lenguaje de programación.
 
@@ -134,7 +134,7 @@ Algunos de los más populares según el lenguaje de programación.
 | https://orchid.run/[Orquid]
 |====
 
-=== Markdown y Asciidoc
+== Markdown y Asciidoc
 
 Markdown es texto sin formato para escribir documentos estructurados, basado en convenciones para indicar el formato en correos electrónicos y publicaciones de Usenet. Fue desarrollado por John Gruber (con la ayuda de Aaron Swartz) y lanzado en 2004 en forma de una descripción de sintaxis y un script Perl (Markdown.pl) para convertir Markdown a HTML. En la próxima década, se desarrollaron docenas de implementaciones en muchos idiomas. Algunos ampliaron la sintaxis original de Markdown con convenciones para notas al pie, tablas y otros elementos del documento. Algunos permitieron que los documentos de Markdown se representaran en formatos distintos de HTML. Sitios web como Reddit, StackOverflow y GitHub tenían millones de personas que usaban Markdown. Y Markdown comenzó a usarse más allá de la web, para escribir libros, artículos, presentaciones de diapositivas, cartas y notas de conferencias.
 
@@ -189,12 +189,12 @@ Código
 * https://github.github.com/gfm/
 * https://rust-lang.github.io/mdBook/
 
-==== Complementos
+=== Complementos
 
 * https://mermaid.live/
 * https://dbml.dbdiagram.io/home/
 
-==== Asciidoc
+=== Asciidoc
 
 AsciiDoc es un lenguaje de marcado ligero y semántico diseñado principalmente para escribir documentación técnica. El lenguaje se puede usar para producir una variedad de formatos de salida ricos en presentaciones, todos a partir de contenido codificado en un formato de texto sin formato, conciso y legible por humanos.
 
@@ -209,8 +209,8 @@ AsciiDoc cierra la brecha entre la facilidad de escritura y los rigurosos requis
 Encabezados
 
 = H1
-== H2
-==== H3
+= H2
+=== H3
 
 Listas
 
@@ -247,7 +247,7 @@ IO.inspect "Hola Mundo"
 
 * https://docs.asciidoctor.org/asciidoc/latest/
 
-==== Mermaid
+=== Mermaid
 
 Mermaid te permite crear diagramas y visualizaciones usando texto y código.
 
@@ -270,7 +270,7 @@ flowchart TD
 
 * https://mermaid.js.org/intro/
 
-==== DBML
+=== DBML
 
 DBML (Lenguaje de marcado de bases de datos) es un lenguaje DSL de código abierto diseñado para definir y documentar esquemas y estructuras de bases de datos.
 
@@ -299,7 +299,7 @@ Table posts {
 
 * https://dbml.dbdiagram.io/home/#intro
 
-=== GNU/Linux
+== GNU/Linux
 
 GNU/Linux es hoy por hoy el Sistema Operativo preferido por el mundo de la informática y en general por el mundo corporativo en cuanto a servidores se refiere, y es preferido de manera muy especial en la nube. La confianza depositada en él se refuerza día a día gracias a los casos de éxito y millones de aplicaciones, presencia en servidores de todo tipo en infraestructuras locales, en la nube y dispositivos que corren Linux.
 
@@ -310,7 +310,7 @@ He aquí algunos números impresionantes que confirman que Linux es el amo y se�
 * El 96% de los servidores más poderosos del mundo corren Linux, la mayoría de estos están hospedados en la nube.
 * El 90% de los servidores en los mayores proveedores de servicios de nube son Linux.
 
-==== LPIC-1
+=== LPIC-1
 
 Dado su extenso uso, recomendamos aprender a utilizarlo y certificar los conocimientos con LPIC-1.
 La certificación Linux más grande y reconocida del mundo. LPIC-1 es la primera certificación en el programa de certificación profesional Linux multinivel del Linux Professional Institute (LPI). El LPIC-1 validará la capacidad del candidato para realizar tareas de mantenimiento en la línea de comando, instalar y configurar una computadora con Linux y configurar redes básicas.
@@ -320,7 +320,7 @@ La certificación Linux más grande y reconocida del mundo. LPIC-1 es la primera
 * https://openwebinars.net/blog/el-poder-de-linux-en-el-cloud-computing/
 * https://www.lpi.org/es/our-certifications/lpic-1-overview/
 
-==== RedHat, CentOS, Rocky y Alma Linux
+=== RedHat, CentOS, Rocky y Alma Linux
 
 Distribuido por Red Hat y ahora parte de IBM, Red Hat o Red Hat Enterprise Linux (RHEL por sus siglas en inglés), como es oficialmente conocido, es una distro sumamente estable, la preferida por la mayoría de las empresas que se dedican a distribuir bases de datos, plataformas de
 software complejas y demandantes. Las distribuciones basadas en RedHat son las recomendables para entornos con *Cpanel*. Una excelente alternativa gratuita es *Rocky Linux*.
@@ -331,7 +331,7 @@ software complejas y demandantes. Las distribuciones basadas en RedHat son las r
 * https://www.centos.org/
 * https://almalinux.org/
 
-==== Debian
+=== Debian
 
 El proyecto Debian fue fundado en 1993 por Ian Murdock.
 Él escribió el manifiesto de Debian, que utilizó como base para la creación de la distribución Linux Debian. Dentro de este texto, los puntos destacables son: mantener la distribución de manera abierta, coherente al espíritu del núcleo Linux y de GNU.
@@ -341,13 +341,13 @@ Es la distribución recomendada para uso tanto en servidores como escritorio per
 * https://servidordebian.org/es/start
 * https://es.wikipedia.org/wiki/Debian_GNU/Linux
 
-==== Asahi
+=== Asahi
 
 La distribución de GNU/Linux para equipos Mac ARM.
 
 * https://asahilinux.org/
 
-==== FreeBSD/OpenBSD
+=== FreeBSD/OpenBSD
 
 FreeBSD y OpenBSD son dos distribuciones y alternativas
 muy buenas para Linux. La especialidad son servidores, firewalls y otros equipos de red.
@@ -355,18 +355,18 @@ muy buenas para Linux. La especialidad son servidores, firewalls y otros equipos
 * https://www.freebsd.org/
 * https://www.openbsd.org/
 
-==== Distrowatch
+=== Distrowatch
 
 Noticias sobre las distintas distribuciones de Linux pueden ser encontradas en el sitio
 https://distrowatch.com/
 
-==== FLISoL
+=== FLISoL
 
 El FLISoL es el evento de difusión de Software Libre más grande en Latinoamérica y está dirigido a todo tipo de público: estudiantes, académicos, empresarios, trabajadores, funcionarios públicos, entusiastas y aun personas que no poseen mucho conocimiento informático.
 
 * https://flisol.info/
 
-==== Servidores Virtualizados
+=== Servidores Virtualizados
 
 Lo mejor es experimentar en un entorno que no cause problemas antes de comenzar en serio en un entorno real. Por tanto lo mejor es hacer una instalación virtual.
 
@@ -376,9 +376,9 @@ Ahora existen programas excelentes de virtualización. Se recomienda los que van
 * https://customerconnect.vmware.com/en/downloads/info/slug/desktop_end_user_computing/vmware_workstation_player/17_0[VMWare]: dispone de programas gratuitos de virtualización como VMWare Server y VMWare Player, que pueden ser utilizados de forma libre y gratuita.
 * https://www.docker.com/[Docker]: Docker proporciona un conjunto de herramientas de desarrollo, servicios, contenido de confianza y automatizaciones, que se utilizan individualmente o en conjunto, para acelerar la entrega de aplicaciones seguras.
 
-==== Comandos Básicos
+=== Comandos Básicos
 
-===== pwd
+==== pwd
 
 Muestra la ruta del directorio actual.
 
@@ -388,7 +388,7 @@ $ pwd
 /Users/ninjas
 ----
 
-===== ls
+==== ls
 
 Muestra los archivos y directorios de la ruta especificada. Predeterminado la ruta actual.
 
@@ -407,7 +407,7 @@ drwxr-xr-x+ 140 ninjas  staff  4480 Aug 22 21:05 ..
 * `ls -la directorio`: Muestra los contenidos del directorio
 * `ls -R`: Muestra los contenidos de forma recursiva.
 
-===== mkdir
+==== mkdir
 
 Crea un directorio.
 
@@ -418,7 +418,7 @@ $ mkdir mi_directorio
 
 * `mkdir -p primer/segundo`: Crea tanto el directorio `primer` como el directorio `segundo`.
 
-===== touch
+==== touch
 
 Crea un archivo en blanco.
 
@@ -431,7 +431,7 @@ ____
 $ touch archivo
 ----
 
-===== rm
+==== rm
 
 Elimina un archivo o directorio.
 
@@ -443,7 +443,7 @@ Elimina un archivo o directorio.
 $ rm -rf mi_directorio
 ----
 
-===== mv
+==== mv
 
 Mueve un directorio o archivo.
 Utilizado también para renombrar archivos o directorios.
@@ -455,7 +455,7 @@ El siguiente ejemplo renombra el directorio1 a directorio2.
 $ mv directorio1 directorio2
 ----
 
-===== cp
+==== cp
 
 Copia un archivo o directorio.
 
@@ -465,7 +465,7 @@ $ cp archivo1 archivo2
 $ cp -R directorio1 directorio2
 ----
 
-===== cat
+==== cat
 
 Muestra los contenidos de un archivo.
 
@@ -474,7 +474,7 @@ Muestra los contenidos de un archivo.
 $ cat archivo
 ----
 
-===== cd
+==== cd
 
 Cambiar el directorio actual.
 
@@ -502,7 +502,7 @@ Ir al directorio sub anterior.
 $ cd ../../
 ----
 
-===== pipe (`|`)
+==== pipe (`|`)
 
 El pipe es una herramienta especial que nos permite concatenar
 la salida del comando anterior con la entrada del siguiente comando.
@@ -523,7 +523,7 @@ $ cat contents.txt | grep file
 
 * https://www.ionos.es/digitalguide/servidores/configuracion/pipes-linux/
 
-===== Permisos
+==== Permisos
 
 Los permisos nos indican quien tiene autorización de ejecución, lectura y escritura de archivos y carpetas.
 Es un tema extenso pero en general se recomienda tener los siguientes permisos:
@@ -538,15 +538,15 @@ Es un tema extenso pero en general se recomienda tener los siguientes permisos:
 * https://help.wnpower.com/hc/es/articles/360020443892-Cambiar-permisos-chmod-en-Hosting-cPanel
 * https://www.rolige.com/es/blog/consejos-prestashop/como-asignar-los-permisos-correctos-a-mis-ficheros-y-carpetas-de-prestashop
 
-==== Tutoriales
+=== Tutoriales
 
 * https://killercoda.com/pawelpiwosz/course/linuxFundamentals
 
-=== Editor Vim
+== Editor Vim
 
 Vi ha sido el primer editor de texto a pantalla completa para sistemas Unix . Además fue creado con la intención de que fuese sencillo en su uso y ligero para no cargar sobremanera el sistema. Para aquellos acostumbrados a usar editores de texto mediante en entornos gráficos, puede resultar un poco abrupto y complejo su aprendizaje, pero si bien porque estamos al cargo de un servidor Linux o porque nuestro entorno gráfico está dando problemas y no carga, deberíamos ser capaces de editar ficheros desde un editor como Vi / Vim.
 
-==== Modo Comando
+=== Modo Comando
 
 El *Modo Comando* permite al usuario navegar por el documento así como introducir comandos a ejecutar dentro del propio archivo (buscar, reemplazar, guardar...), ya que en este modo el programa no interpreta las teclas del teclado por los caracteres que representan, si no por las funciones preestablecidas o comandos asignados a cada tecla.
 
@@ -574,7 +574,7 @@ Para entrar al modo comando únicamente deberemos pulsar `Esc` en nuestro teclad
 * `yy`: Copiar la línea actual.
 * `p`: Pegar el contenido del portapapeles.
 
-==== Modo ex
+=== Modo ex
 
 En el `Modo ex`
 manipularemos los archivos.
@@ -591,7 +591,7 @@ seguido directamente por el nombre del comando '`ex`' que queramos usar. Tras es
 * `:x`: Guardar cambios y salir.
 * `:<número de línea>`: Ejemplo `:2`. Ir al número de línea específico.
 
-==== Modo Inserción
+=== Modo Inserción
 
 En el Modo inserción simplemente añadiremos texto al fichero. Mientras estemos en este modo, podremos
 salir al modo comando directamente pulsando `Esc`.
@@ -603,13 +603,13 @@ Pero Comando, Ex e Inserción son los más comunes.
 
 * https://openwebinars.net/blog/vim-manual-de-uso-basico/
 
-==== Configuraciones
+=== Configuraciones
 
 * https://nvchad.com/
 * https://www.lunarvim.org/
 * https://spacevim.org/
 * https://www.spacemacs.org/
 
-==== Tutoriales
+=== Tutoriales
 
 * https://killercoda.com/vim
