@@ -23,5 +23,26 @@ Una lista de recursos complementarios y referenciales.
 - [[[systemdesign]]] Alex Xu. 'System Design Interview: An Insider’s Guide'. ISBN 979-8664653403.
 
 
-//.Sitios Web
-//- [[[googlepython]]] Google. 'Python Class' http://code.google.com/edu/languages/google-python-class/
+- [[[forsgren-2018]]] Forsgren, N., Humble, J., & Kim, G. (2018). __Accelerate: The Science Behind DevOps : Building and Scaling High Performing Technology Organizations__. It Revolution Press.
+
+- [[[google-sre-2016]]] Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (2016). __Site Reliability Engineering: How Google Runs Production Systems__. O’Reilly Media.
+
+- [[[baker-2013]]] Baker, M. (2013). __Every page is page one: Topic-Based Writing for Technical Communication and the Web__.
+
+- [[[armstrong-2003]]] Armstrong, J. (2003). __Making reliable distributed systems in the presence of software errors__ (PhD dissertation, Mikroelektronik och informationsteknik). Retrieved from https://urn.kb.se/resolve?urn=urn:nbn:se:kth:diva-3658
+
+
+.Web
+
+- [[[ortega-2024]]] Ortega, C. (2024, June 6). Desviación estándar: Qué es, usos y cómo obtenerla. QuestionPro. https://www.questionpro.com/blog/es/desviacion-estandar/
+
+- [[[github-blog-2024]]] New terminology for GitHub previews - the GitHub blog. (2024, October 18). The GitHub Blog. https://github.blog/changelog/2024-10-18-new-terminology-for-github-previews/
+
+- [[[hexdocs-elixir-deprecations-2024]]] Compatibility and deprecations — Elixir v1.17.3. (2024, October 19). https://hexdocs.pm/elixir/compatibility-and-deprecations.html
+
+- [[[amazon-sdlc]]] ¿Qué es el SDLC? - Explicación del ciclo de vida del desarrollo de software - AWS. (2024, October 22). Amazon Web Services, Inc. https://aws.amazon.com/es/what-is/sdlc/
+
+- [[[cognitect-2011]]] Documenting architecture decisions. (2011, November 15). Cognitect.com. https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions
+
+- [[[atlassian-incidents-metrics-2024]]] Atlassian. (2024, October 23). Common Incident Management Metrics | Atlassian. https://www.atlassian.com/incident-management/kpis/common-metrics
+

@@ -88,25 +88,25 @@
     <span class="nav-text">Ingeniería en Software</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+    <a class="nav-link" href="../swe/stages.html">Etapas del Desarrollo de un Producto de Software</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/patterns.html">Patrones y Arquitecturas de Software</a>
+    <a class="nav-link" href="../swe/patterns.html">Patrones y Arquitecturas de Software</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/adr.html">Arquitecture Decision Records</a>
+    <a class="nav-link" href="../swe/adr.html">Arquitecture Decision Records</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+    <a class="nav-link" href="../swe/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/wow.html">Way of Work</a>
+    <a class="nav-link" href="../swe/wow.html">Way of Work</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+    <a class="nav-link" href="../swe/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+    <a class="nav-link" href="../swe/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
   </li>
 </ul>
   </li>
@@ -187,7 +187,7 @@
     <span class="nav-text">DevOps</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#devevns.adoc">devevns.adoc</a>
+    <a class="nav-link" href="devenvs.html">Ambientes de Desarrollo</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="observability.html">Observabilidad e Instrumentación</a>
@@ -393,17 +393,17 @@
 </li>
 </ul>
 </div>
-<div class="listingblock kroki-error">
-<div class="title">Histograma de Development Cycle Time (Tech Lead)</div>
+<div class="imageblock kroki">
 <div class="content">
-<pre>Unresolved include directive in modules/devops/pages/dora.adoc - include::example:$././dev-cycle-tl.json[]</pre>
+<img src="_images/diag-513c05d3d188e70777c53f1e7251005509ded0d1.png" alt="Histograma de Development Cycle Time (Tech Lead)">
 </div>
+<div class="title">Figure 1. Histograma de Development Cycle Time (Tech Lead)</div>
 </div>
-<div class="listingblock kroki-error">
-<div class="title">Histograma de Development Cycle Time (Engineer Manager)</div>
+<div class="imageblock kroki">
 <div class="content">
-<pre>Unresolved include directive in modules/devops/pages/dora.adoc - include::example:$././dev-cycle.json[]</pre>
+<img src="_images/diag-513c05d3d188e70777c53f1e7251005509ded0d1.png" alt="Histograma de Development Cycle Time (Engineer Manager)">
 </div>
+<div class="title">Figure 2. Histograma de Development Cycle Time (Engineer Manager)</div>
 </div>
 </div>
 </div>
@@ -485,11 +485,11 @@ cada deployment.</p>
 </li>
 </ul>
 </div>
-<div class="listingblock kroki-error">
-<div class="title">Histograma de Deploy Frequency</div>
+<div class="imageblock kroki">
 <div class="content">
-<pre>Unresolved include directive in modules/devops/pages/dora.adoc - include::example:$./deploy-frecuency.json[]</pre>
+<img src="_images/diag-8804eee413f3a408b4cf7288be92748215497d2c.png" alt="Histograma de Deploy Frequency">
 </div>
+<div class="title">Figure 3. Histograma de Deploy Frequency</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -500,23 +500,16 @@ cada deployment.</p>
 <td class="content">
 <div class="paragraph">
 <p>Para los datos del gráfico anterior podemos notar que el promedio de despliegues a producción para este repositorio
-es <strong>0.87</strong> por semana.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>\$Promedio = (Semana 1 + Semana 2 + .... + Semana 15) / 15\$</p>
-</li>
-<li>
-<p>\$Promedio = (0 + 0 + 0 + 0 + 0 + 2 + 4 + 3 + 0 + 0 + 0 + 0 + 0 + 0 + 4) / 15\$</p>
-</li>
-<li>
-<p>\$Promedio = 13/15\$</p>
-</li>
-<li>
-<p>\$Promedio = 0.866667\$</p>
-</li>
-</ul>
+es <strong>0.87</strong> por semana.
+:$
+:$
+:$
+:$
+:$
+- \$Promedio = (Semana 1 + Semana 2 + .... + Semana 15) / 15\$
+- \$Promedio = (0 + 0 + 0 + 0 + 0 + 2 + 4 + 3 + 0 + 0 + 0 + 0 + 0 + 0 + 4) / 15\$
+- \$Promedio = 13/15\$
+- \$Promedio = 0.866667\$</p>
 </div>
 </td>
 </tr>
@@ -590,11 +583,11 @@ es <strong>0.87</strong> por semana.</p>
 </li>
 </ul>
 </div>
-<div class="listingblock kroki-error">
-<div class="title">Histograma de MTTR</div>
+<div class="imageblock kroki">
 <div class="content">
-<pre>Unresolved include directive in modules/devops/pages/dora.adoc - include::example:$./mttr.json[]</pre>
+<img src="_images/diag-55e0cdcb3df70fbaa23cdf871169b9641ea9f0d0.png" alt="Histograma de MTTR">
 </div>
+<div class="title">Figure 4. Histograma de MTTR</div>
 </div>
 </div>
 </div>
@@ -658,11 +651,11 @@ es <strong>0.87</strong> por semana.</p>
 </li>
 </ul>
 </div>
-<div class="listingblock kroki-error">
-<div class="title">Histograma de Change Failure Rate</div>
+<div class="imageblock kroki">
 <div class="content">
-<pre>Unresolved include directive in modules/devops/pages/dora.adoc - include::example:$./change-failure.json[]</pre>
+<img src="_images/diag-58fe2b22ba390ac340127f1812c68e21f09d7519.png" alt="Histograma de Change Failure Rate">
 </div>
+<div class="title">Figure 5. Histograma de Change Failure Rate</div>
 </div>
 </div>
 </div>

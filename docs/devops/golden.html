@@ -87,25 +87,25 @@
     <span class="nav-text">Ingeniería en Software</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+    <a class="nav-link" href="../swe/stages.html">Etapas del Desarrollo de un Producto de Software</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/patterns.html">Patrones y Arquitecturas de Software</a>
+    <a class="nav-link" href="../swe/patterns.html">Patrones y Arquitecturas de Software</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/adr.html">Arquitecture Decision Records</a>
+    <a class="nav-link" href="../swe/adr.html">Arquitecture Decision Records</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+    <a class="nav-link" href="../swe/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/wow.html">Way of Work</a>
+    <a class="nav-link" href="../swe/wow.html">Way of Work</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+    <a class="nav-link" href="../swe/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../patterns/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+    <a class="nav-link" href="../swe/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
   </li>
 </ul>
   </li>
@@ -186,7 +186,7 @@
     <span class="nav-text">DevOps</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#devevns.adoc">devevns.adoc</a>
+    <a class="nav-link" href="devenvs.html">Ambientes de Desarrollo</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="observability.html">Observabilidad e Instrumentación</a>
@@ -244,80 +244,29 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Los <em>Golden Signals</em> son una colección de métricas para aplicaciones y servicios
-que permiten establecer un <em>framework</em> mínimo para monitorear las operaciones de un sitio.</p>
+que permiten establecer un <em>framework</em> mínimo para monitorear las operaciones de un sitio. El concepto se originó en el libro <a href="https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals">"Site Reliability Engineering"</a> de Google.</p>
 </div>
 <div class="paragraph">
-<p>Golden Signals are a collection of metrics across applications and services
-To establish a minimum monitoring framework for site operations.
-The origin of the concept and term is the Google book Site Reliability Engineering.
-A major focus for application service calls is traffic, errors and latency, often
-Referred to via the equivalent terms rate, error, duration (RED).
-Additional signals such as utilization (CPU, memory) are also in scope.</p>
+<p>El enfoque principal es monitorear el tráfico, errores, latencias, normalmente en términos de tasas, cantidad de errores y duración (RED - Rate Error Duration). Adicionalmente señales como la utilización de recursos (CPU, memoria) están consideradas.</p>
 </div>
 <div class="paragraph">
-<p>The purpose of the Golden Signals is to enable observability of applications and
-Services, customer flows, and operations within a triplet of standardized signals.
-Benefits of instrumentations with Golden Signals includes the following benefits:</p>
+<p>El propósito de las <em>Golden Signals</em> es habilitar la observabilidad de las aplicaciones y servicios, flujos de clientes y las operaciones dentro de un marco estandarizado de señales. Los principales beneficios de usarlas son los siguientes:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>A consistent monitoring and alerting model and system across services</p>
+<p>Monitoreo consistente y alerta temprana en todos los servicios. 24/7 de señales como la Disponibilidad, Tráfico, Latencia, Errores y Despliegues.</p>
 </li>
 <li>
-<p>Proactive detection of site or application performance dgradation before an incident occurs</p>
+<p>Detección proactiva del desempeño del sitio o aplicación, detectando problemas antes de que un incidente ocurra.</p>
 </li>
 <li>
-<p>Standardization of instrumentation, metrics, alerts and dashboards</p>
+<p>Estandarización de la instrumentación, métricas, alertas y dashboards.</p>
 </li>
 <li>
-<p>Dependency mapping used aggregating the client-server relationships in the golden signal reporting.</p>
+<p>Mapeo de dependencias usadas en las relaciones de cliente servidor en los reportes de <em>Golden Signals</em>.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>24/7 Monitoring.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Availability</p>
-</li>
-<li>
-<p>Traffic</p>
-</li>
-<li>
-<p>Latency</p>
-</li>
-<li>
-<p>Errors</p>
-</li>
-<li>
-<p>Deployments</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><a href="https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals" class="bare">https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals</a></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Per minute request count (<code>processTime_seconds_count:rate2m</code>)</p>
-</li>
-<li>
-<p>Per minute average request processing time (<code>processTime_seconds_sum:rate2m</code>)</p>
-</li>
-<li>
-<p>Per minute request processing time 95 percentile 50 percentile (<code>processTime_seconds:avg{quantile="0.95"}</code>)</p>
-</li>
-<li>
-<p>Per minute 4xx request count (<code>c4xx_total:rate2m</code>)</p>
-</li>
-<li>
-<p>Per minute 5xx request count (<code>c5xx_total:rate2m</code>)</p>
-</li>
-</ol>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>

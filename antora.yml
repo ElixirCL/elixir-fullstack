@@ -9,7 +9,7 @@ nav:
   - modules/ROOT/nav.adoc
   - modules/history/nav.adoc
   - modules/jobs/nav.adoc
-  - modules/patterns/nav.adoc
+  - modules/swe/nav.adoc
   - modules/systemd/nav.adoc
   - modules/github/nav.adoc
   - modules/hosting/nav.adoc

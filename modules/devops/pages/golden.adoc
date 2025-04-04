@@ -1,43 +1,16 @@
 = Golden Signals
 
 Los _Golden Signals_ son una colección de métricas para aplicaciones y servicios
-que permiten establecer un _framework_ mínimo para monitorear las operaciones de un sitio.
+que permiten establecer un _framework_ mínimo para monitorear las operaciones de un sitio. El concepto se originó en el libro https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals["Site Reliability Engineering"] de Google. 
 
+El enfoque principal es monitorear el tráfico, errores, latencias, normalmente en términos de tasas, cantidad de errores y duración (RED - Rate Error Duration). Adicionalmente señales como la utilización de recursos (CPU, memoria) están consideradas.
 
-Golden Signals are a collection of metrics across applications and services
-To establish a minimum monitoring framework for site operations.
-The origin of the concept and term is the Google book Site Reliability Engineering.
-A major focus for application service calls is traffic, errors and latency, often
-Referred to via the equivalent terms rate, error, duration (RED).
-Additional signals such as utilization (CPU, memory) are also in scope.
+El propósito de las _Golden Signals_ es habilitar la observabilidad de las aplicaciones y servicios, flujos de clientes y las operaciones dentro de un marco estandarizado de señales. Los principales beneficios de usarlas son los siguientes:
 
-The purpose of the Golden Signals is to enable observability of applications and 
-Services, customer flows, and operations within a triplet of standardized signals.
-Benefits of instrumentations with Golden Signals includes the following benefits:
-
-- A consistent monitoring and alerting model and system across services
-- Proactive detection of site or application performance dgradation before an incident occurs
-- Standardization of instrumentation, metrics, alerts and dashboards
-- Dependency mapping used aggregating the client-server relationships in the golden signal reporting.
-
-
-24/7 Monitoring.
-
-- Availability
-- Traffic
-- Latency
-- Errors
-- Deployments
-
-https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals
-
-1. Per minute request count (`processTime_seconds_count:rate2m`)
-2. Per minute average request processing time (`processTime_seconds_sum:rate2m`)
-3. Per minute request processing time 95 percentile 50 percentile (`processTime_seconds:avg{quantile="0.95"}`)
-4. Per minute 4xx request count (`c4xx_total:rate2m`)
-5. Per minute 5xx request count (`c5xx_total:rate2m`)
-
-
+- Monitoreo consistente y alerta temprana en todos los servicios. 24/7 de señales como la Disponibilidad, Tráfico, Latencia, Errores y Despliegues.
+- Detección proactiva del desempeño del sitio o aplicación, detectando problemas antes de que un incidente ocurra.
+- Estandarización de la instrumentación, métricas, alertas y dashboards.
+- Mapeo de dependencias usadas en las relaciones de cliente servidor en los reportes de _Golden Signals_.
 
 |===
 |Señal (Signal)| ¿Qué analiza?| ¿Cómo se granulariza?| Métrica
