@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ambientes de Desarrollo :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/devops/devenvs.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#devevns.adoc">devevns.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li><a href="devenvs.html">Ambientes de Desarrollo</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/devops/pages/devenvs.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Ambientes de Desarrollo</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para el desarrollo de software se necesitan distintos ambientes. Los principales ambientes son: <em>Local</em>, <em>Dev</em>, <em>Staging</em> y <em>Production</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ambiente-local"><a class="anchor" href="#ambiente-local"></a>Ambiente Local</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El ambiente local está configurado en la computadora personal del desarrollador. Está pensado para permitir
+el desarrollo del sistema utilizando un ambiente que permita total control. Lo que permite fluidez de movimiento
+para los desarrolladores, aumentando la agilidad y eficiencia al crear las soluciones. Normalmente está definido
+por uno o más archivos <strong>Dockerfile</strong> con los componentes como servidores y bases de datos
+similares a los usados en producción.</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-ea1c7c27bf34145f91f9e04227c599c6b09db91e.svg" alt="Actividades en ambiente local">
+</div>
+<div class="title">Figure 1. Actividades en ambiente local</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ambiente-dev"><a class="anchor" href="#ambiente-dev"></a>Ambiente Dev</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El ambiente de desarrollo es un servidor disponible públicamente que es configurado con los últimos cambios
+disponibles en la rama asociada al <em>Pull Request</em>. Los servicios están configurados con la base de datos del ambiente de pruebas (staging), es una versión del ambiente de pruebas la cual tiene menor cantidad de recursos ya que está enfocada en pruebas específicas para uno o un conjunto muy limitado de desarrolladores o interesados.</p>
+</div>
+<div class="paragraph">
+<p>Un servidor dev único es creado automáticamente en cada nuevo <em>PR</em> y tiene una duración máxima de 8 horas. Luego es eliminado automáticamente.</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-54029d3ab172e3e7b974486a1bdb620318b08731.svg" alt="Actividades en ambiente de desarrollo">
+</div>
+<div class="title">Figure 2. Actividades en ambiente de desarrollo</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ambiente-pruebas-staging"><a class="anchor" href="#ambiente-pruebas-staging"></a>Ambiente Pruebas (Staging)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El ambiente staging es un ambiente para realizar pruebas por múltiples equipos. Es el que tiene más recursos que el ambiente dev, pero menos que producción. Tiene una réplica de los datos de producción periódicamente lo que permite realizar pruebas
+con datos lo más cercanos a producción. Se recomienda un periodo de función de 24/5. El despliegue es automático en cada commit en la rama <code>main</code> del repositorio principal del proyecto.</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-0cd9c47b98bcb7b263865989dcc11612b0c0bdd3.svg" alt="Actividades en ambiente de pruebas">
+</div>
+<div class="title">Figure 3. Actividades en ambiente de pruebas</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ambiente-producción"><a class="anchor" href="#ambiente-producción"></a>Ambiente Producción</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Es el ambiente donde se ejecuta el sistema y el más critico. Todo cambio enviado debe ser aprobado y documentado por personas autorizadas y correctamente informado en los canales de comunicación oficiales. El despliegue es automatizado, pero debe ser autorizado de forma manual. Para el proceso productivo se recomienda utilizar <strong>Canary Deployments</strong>, sobre todo si son sistemas <strong>Tier 0</strong>.</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-a95518798f2ceffadc8a055bec12b25248908a85.svg" alt="Actividades en ambiente de producción">
+</div>
+<div class="title">Figure 4. Actividades en ambiente de producción</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mejores-prácticas"><a class="anchor" href="#mejores-prácticas"></a>Mejores prácticas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Se recomienda que el ambiente <em>Dev</em> y ambiente <em>Staging</em> sean apagados los días donde no se trabaje, permitiendo ahorrar costos
+de servidores.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

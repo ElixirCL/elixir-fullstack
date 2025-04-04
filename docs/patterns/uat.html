@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT) :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/patterns/uat.html">
+    <link rel="prev" href="wow.html">
+    <link rel="next" href="deprecation.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#devevns.adoc">devevns.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Ingeniería en Software</li>
+    <li><a href="uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/patterns/pages/uat.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>El proceso de pruebas de aceptación de usuario (User Aceptance Testing - UAT) para las aplicaciones
+o herramientas aseguran una evaluación completa y un correcto seguimiento para la resolución de problemas.</p>
+</div>
+<div class="paragraph">
+<p>Es un tipo de prueba funcional o de contrato manual que asegura que los contratos establecidos se cumplen para los casos de uso acordados.</p>
+</div>
+<div class="paragraph">
+<p>El siguiente orden permite estandarizar el proceso y dar una plantilla recomendada.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="definir-objetivos-y-plazos"><a class="anchor" href="#definir-objetivos-y-plazos"></a>Definir objetivos y plazos</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Se debe entender las metas y el propósito de la herramienta, aplicación o característica de la misma y cuánto tiempo se tiene para completar la <em>UAT</em>. Esto incluye obtener información exacta y completa sobre lo que se quiere cumplir con la implementación de la característica, herramienta o aplicación.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="identificar-usuarios-e-interesados"><a class="anchor" href="#identificar-usuarios-e-interesados"></a>Identificar usuarios e interesados</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Determinar quiénes serán los usuarios finales de la solución. Esto incluye detallar los diferentes usuarios y roles entendiendo sus necesidades específicas.</p>
+</li>
+<li>
+<p>Comprender también los interesados (<code>stakeholders</code>) para asegurar que todas las partes involucradas son incluidas durante el proceso de <em>UAT</em>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="evaluar-los-requerimientos-de-usuario"><a class="anchor" href="#evaluar-los-requerimientos-de-usuario"></a>Evaluar los requerimientos de usuario</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Identificar los tipos de herramientas y funcionalidades que el usuario necesita.</p>
+</li>
+<li>
+<p>Asegurar que los usuarios tengan los accesos, permisos y herramientas en el ambiente de prueba para ejecutar la <em>UAT</em>. Deben estar correctamente configurados antes de iniciarla.</p>
+</li>
+<li>
+<p>Asegurar que todas las cuentas de prueba estén activas y puedan ser accedidas por los usuarios. Deben estar configuradas apropiadamente.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="verificar-las-cuentas-de-prueba"><a class="anchor" href="#verificar-las-cuentas-de-prueba"></a>Verificar las cuentas de prueba</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Se debe verificar que todas las cuentas de prueba están configuradas con los roles y permisos necesarios.</p>
+</li>
+<li>
+<p>Asegurar que todas las cuentas de prueba estén configuradas y tengan acceso a las herramientas y ambientes para evitar retrasos en el proceso de pruebas.</p>
+</li>
+<li>
+<p>Asegurar que todo el ambiente de pruebas esté bien configurado antes de iniciar el proceso de <em>UAT</em>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="proporcionar-instrucciones-de-uat"><a class="anchor" href="#proporcionar-instrucciones-de-uat"></a>Proporcionar instrucciones de UAT</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Asegurar que las instrucciones son claras para el proceso de <em>UAT</em>. Esto incluye pasos detallados que necesitan ser seguidos durante el proceso de pruebas.</p>
+</li>
+<li>
+<p>Proporcionar direcciones claras sobre los casos de uso que se deben probar.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="seguimiento-del-proceso-uat"><a class="anchor" href="#seguimiento-del-proceso-uat"></a>Seguimiento del proceso UAT</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Seguir el proceso <em>UAT</em> meticulosamente. Usar un sistema de colaboración y seguimiento o una herramienta para documentar el proceso, problemas y retroalimentación.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="administrar-retroalimentación"><a class="anchor" href="#administrar-retroalimentación"></a>Administrar retroalimentación</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Obtener y compilar todos los comentarios y retroalimentación recibidos durante el proceso de <em>UAT</em>.</p>
+</li>
+<li>
+<p>Determinar los involucrados que se beneficiarán con esta información. Normalmente sería los equipos de ingeniería, producto y proyectos.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="manejar-bloqueos-o-problemas"><a class="anchor" href="#manejar-bloqueos-o-problemas"></a>Manejar bloqueos o problemas</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Identificar cualquier bloqueo o problema que pueda impedir el proceso de <em>UAT</em>.</p>
+</li>
+<li>
+<p>Entender la causa raíz del bloqueo o problema.</p>
+</li>
+<li>
+<p>Determinar posibles soluciones para eliminar los bloqueos.</p>
+</li>
+<li>
+<p>Identificar los equipos que necesitan ser involucrados para resolver los bloqueos.</p>
+</li>
+<li>
+<p>Mantener seguimiento de todo el proceso de resolución. Usar un sistema designado para monitorear el progreso.</p>
+</li>
+<li>
+<p>Definir los acuerdos de servicio (<em>SLA</em>) para las soluciones.</p>
+</li>
+<li>
+<p>Asegurar que el seguimiento y comunicación continua del progreso relacionado a resolver los bloqueos y cualquier retraso que hayan causado.</p>
+</li>
+<li>
+<p>Incorporar el aprendizaje de los bloqueos en futuros lanzamientos (releases) para prevenir incidentes similares.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="agendar-reuniones"><a class="anchor" href="#agendar-reuniones"></a>Agendar reuniones</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Establecer reuniones con los equipos de ingeniería, producto y negocio para definir el proceso de <em>UAT</em>.</p>
+</li>
+<li>
+<p>Fijar fechas y tiempos para completar el <em>UAT</em> y asegurar que los <code>stakeholders</code> están informados y alineados.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="documentación"><a class="anchor" href="#documentación"></a>Documentación</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Documentar todos los procesos, comentarios y resoluciones obtenidas durante el proceso de <em>UAT</em>.</p>
+</li>
+<li>
+<p>Mantener registros en una ubicación centralizada que este disponible para todos los interesados relevantes.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="comunicación"><a class="anchor" href="#comunicación"></a>Comunicación</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Asegurar la comunicación continua, clara y efectiva en todo el proceso de <em>UAT</em>.</p>
+</li>
+<li>
+<p>Proporcionar actualizaciones constantes a todos los equipos involucrados en el proceso, los problemas encontrados y sus soluciones.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="obtener-la-aprobación-de-los-stakeholders"><a class="anchor" href="#obtener-la-aprobación-de-los-stakeholders"></a>Obtener la aprobación de los Stakeholders</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Los <code>stakeholders</code> pueden dar un rechazo o una aprobación completa o condicional.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Rechazo</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Si existen detalles mayores que impactan de forma crítica la funcionalidad o usabilidad.</p>
+</li>
+<li>
+<p>Documentar todos los problemas especificados por los <code>stakeholders</code> y definir un plan con plazos para abordar estos incidentes.</p>
+</li>
+<li>
+<p>Asegurar actualizaciones constantes a los <code>stakeholders</code> en el progreso de resolver estos problemas obstaculizadores.</p>
+</li>
+<li>
+<p>Obtener una <strong>aprobación completa</strong> una vez que todas los incidentes han sido corregidas satisfactoriamente.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Aprobación condicional</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Si existen detalles menores que no impactan de forma crítica la funcionalidad o usabilidad.</p>
+</li>
+<li>
+<p>Documentar todas las condiciones especificadas por los <code>stakeholders</code> y definir un plan con plazos para abordar estas condiciones.</p>
+</li>
+<li>
+<p>Asegurar actualizaciones constantes a los <code>stakeholders</code> en el progreso de resolver estas condiciones definidas en la aprobación condicional.</p>
+</li>
+<li>
+<p>Obtener una <strong>aprobación completa</strong> una vez que todas las condiciones han sido corregidas satisfactoriamente.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Aprobación completa</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Todos los problemas identificados se han solucionado al aplicar los cambios necesarios. Se prepara un reporte del proceso de  <em>UAT</em> incluyendo los comentarios recibidos y cualquier tema pendiente.</p>
+</li>
+<li>
+<p>Presentar un resumen a los <code>stakeholders</code> mostrando los resultados obtenidos y los aprendizajes.</p>
+</li>
+<li>
+<p>Solicitar a los <code>stakeholders</code> la aprobación final confirmando que la herramienta/aplicación/característica cumple con los estándares requeridos y está lista para ser lanzada a producción.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="roles-y-responsabilidades"><a class="anchor" href="#roles-y-responsabilidades"></a>Roles y Responsabilidades</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La siguiente tabla muestra un ejemplo de los roles en un proceso de <em>UAT</em>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Roles y responsabilidades en un proceso de UAT</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Rol</th>
+<th class="tableblock halign-left valign-top">Responsabilidades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Project Manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Asegurar que el <em>UAT</em> tiene objetivos claros y han sido comunicados a los involucrados.</p>
+<p class="tableblock">- Monitorear el proceso de <em>UAT</em> y asegurar que esté dentro de los plazos.</p>
+<p class="tableblock">- Coordinar a todos los equipos involucrados.</p>
+<p class="tableblock">- Preparar y presentar un reporte y resumen para la aprobación de los <code>stakeholders</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usuarios</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Participar activamente en el proceso de <em>UAT</em>.</p>
+<p class="tableblock">- Proporcionar comentarios y retroalimentación detallada de problemas encontrados y dificultades de usabilidad.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equipo de Producto</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Proporcionar instrucciones claras y dar soporte al proceso de <em>UAT</em>.</p>
+<p class="tableblock">- Analizar los comentarios recibidos y priorizar las tareas para resolver problemas encontrados.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equipo de Ingeniería</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Resolver cualquier bloqueo técnico y problemas técnicos encontrados durante el proceso <em>UAT</em>.</p>
+<p class="tableblock">- Resolver los problemas dentro de los acuerdos de servicio comprometidos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equipo de Negocio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Asegurar que el proceso de <em>UAT</em> esté alineado con los objetivos del negocio y sus requerimientos.</p>
+<p class="tableblock">- Proporcionar información para ayudar a priorizar tareas y resolver problemas críticos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stakeholders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Revisar los reportes sumarios del proceso de <em>UAT</em>.</p>
+<p class="tableblock">- Proporcionar una aprobación condicional o completa basado en las resoluciones y aprendizajes obtenidos en el proceso de <em>UAT</em>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="plantillas"><a class="anchor" href="#plantillas"></a>Plantillas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Las siguientes plantillas pueden ser de utilidad al momento de realizar un proceso de <em>UAT</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="tabla-de-involucrados"><a class="anchor" href="#tabla-de-involucrados"></a>Tabla de involucrados</h3>
+<div class="paragraph">
+<p>La siguiente tabla muestra las personas involucradas en el proceso de <em>UAT</em>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Tabla de involucrados</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Identificador</th>
+<th class="tableblock halign-left valign-top">Nombre</th>
+<th class="tableblock halign-left valign-top">Email</th>
+<th class="tableblock halign-left valign-top">Equipo y Rol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El identificador interno para ser mencionado en los documentos. Normalmente usando un arroba @Persona1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre de la persona</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Email de contacto</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equipo al cual pertenece y su rol dentro del mismo.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="tabla-de-credenciales"><a class="anchor" href="#tabla-de-credenciales"></a>Tabla de credenciales</h3>
+<div class="paragraph">
+<p>Se debe tener usuarios que puedan interactuar con todos los flujos necesarios según su rol. De preferencia que su correo pueda recibir emails, si es parte del proceso requerido.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Tabla de credenciales</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Rol</th>
+<th class="tableblock halign-left valign-top">Email</th>
+<th class="tableblock halign-left valign-top">Contraseña</th>
+<th class="tableblock halign-left valign-top">Contexto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usuario</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="mailto:test1@ejemplo.com">test1@ejemplo.com</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1234</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Detallar el contexto en el cual debe ser usada la cuenta. ¿En qué canales se debe probar?, ¿Tiene alguna configuración especial (falta de datos, casos borde)?. ¿Qué versión de la aplicación debe tener?, ¿Qué condiciones de sistema operativo debe tener?. ¿Alguna otra limitante o situación especial?.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="tabla-de-pruebas-críticas"><a class="anchor" href="#tabla-de-pruebas-críticas"></a>Tabla de pruebas críticas</h3>
+<div class="paragraph">
+<p>La siguiente tabla de pruebas nos da una lista de funcionalidades críticas a probar. Los usuarios no están limitados
+a esta lista, ya que deben probar de forma más exhaustiva, pero como mínimo se debe asegurar el buen funcionamiento
+y cumplimiento de los contratos críticos acordados.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Tabla de pruebas críticas</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Identificador</th>
+<th class="tableblock halign-left valign-top">Características críticas a probar</th>
+<th class="tableblock halign-left valign-top">Responsables</th>
+<th class="tableblock halign-left valign-top">Canales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un número identificador único de la prueba</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Detalle sobre lo que se debe probar. Una característica específica o casos borde. Adjuntar enlaces a la documentación necesaria.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Persona o grupo de personas encargados de supervisar el proceso de <em>UAT</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lista de canales a los que se debe aplicar la prueba (Ejemplo: Android Mobile, Android Tablet, iOS Mobile, iOS Tablet (iPad), Web Mobile, Web PC).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="tabla-de-estados-de-pruebas-críticas-por-canal"><a class="anchor" href="#tabla-de-estados-de-pruebas-críticas-por-canal"></a>Tabla de estados de pruebas críticas por canal</h3>
+<div class="paragraph">
+<p>La siguiente tabla muestra el estado de las pruebas críticas según canal. Una vez ejecutado el proceso <em>UAT</em>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Tabla de pruebas críticas por canal</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Identificador</th>
+<th class="tableblock halign-left valign-top">Responsable</th>
+<th class="tableblock halign-left valign-top">Estado</th>
+<th class="tableblock halign-left valign-top">Comentarios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El identificador de la prueba crítica original</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Responsable de supervisar ésta prueba crítica.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Estados</strong>:</p>
+<p class="tableblock">- Fallido: La prueba no cumple con los requisitos mínimos de aceptación.</p>
+<p class="tableblock">- Éxito: La prueba pasa todos los criterios de aceptación.</p>
+<p class="tableblock">- Condicional: La prueba pasa los criterios críticos de aceptación, pero se han encontrado detalles menores a corregir.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Una lista de comentarios u observaciones realizadas por el supervisor o los involucrados para tener en consideración.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="tabla-de-pruebas-funcionales"><a class="anchor" href="#tabla-de-pruebas-funcionales"></a>Tabla de pruebas funcionales</h3>
+<div class="paragraph">
+<p>La siguiente es una tabla donde se puede establecer pruebas funcionales para tener evidencias
+y validar que los contratos se cumplen. Normalmente destinados para servicios de nivel T0 o T1.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Acción</th>
+<th class="tableblock halign-left valign-top">Datos Entrada</th>
+<th class="tableblock halign-left valign-top">Salida Esperada</th>
+<th class="tableblock halign-left valign-top">Resultado</th>
+<th class="tableblock halign-left valign-top">Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aceptado / Condicional / Rechazado</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="tablas-de-observaciones"><a class="anchor" href="#tablas-de-observaciones"></a>Tablas de observaciones</h3>
+<div class="paragraph">
+<p>Se recomienda tener una tabla por cada canal (Web, Android, iOS, etc) donde la aplicación será ejecutada.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Tabla de observaciones por canal</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Responsable</th>
+<th class="tableblock halign-left valign-top">Observación</th>
+<th class="tableblock halign-left valign-top">Comentarios</th>
+<th class="tableblock halign-left valign-top">Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">¿Quién hizo la observación? @Persona1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Detalle de lo que se ha encontrado. También screenshots demostrando el problema encontrado o pasos a seguir para reproducirlo.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preguntas y personas asociadas que pueden ser relevantes para encontrar o seguir adelante en el proceso. Posibles Medidas de mitigación y contigencia. Recomendaciones para continuar.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pendiente / En revisión / Cerrado</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="tabla-de-mejoras-y-correcciones"><a class="anchor" href="#tabla-de-mejoras-y-correcciones"></a>Tabla de mejoras y correcciones</h3>
+<div class="paragraph">
+<p>Se listan las correcciones y mejoras encontradas asociándolos al sistema de gestión de tareas (Github issues, Jira, otro).</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Tabla de mejoras y correcciones</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Canal</th>
+<th class="tableblock halign-left valign-top">Detalle</th>
+<th class="tableblock halign-left valign-top">Ticket</th>
+<th class="tableblock halign-left valign-top">Prioridad</th>
+<th class="tableblock halign-left valign-top">Comentario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Canal asociado (Android, iOS, Web, etc)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Breve descripción de la corrección o mejora</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enlace al ticket en el sistema de gestión de tareas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nivel de prioridad (1 alta, 2 normal, 3 baja).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Un breve comentario por ejemplo: Periodo de implementación, si fue validado y aprobado, etc.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="tabla-de-aprobaciones"><a class="anchor" href="#tabla-de-aprobaciones"></a>Tabla de aprobaciones</h3>
+<div class="paragraph">
+<p>Una tabla de aprobaciones de los <code>stakeholders</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Tabla de aprobaciones</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Stakeholder</th>
+<th class="tableblock halign-left valign-top">Estado de Aprobación</th>
+<th class="tableblock halign-left valign-top">Comentarios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre del Stakeholder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Estado de su aprobación (aceptado, condicional, rechazado)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comentarios y observaciones asociadas por el stakeholder para definir su estado.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="wow.html">Way of Work</a></span>
+  <span class="next"><a href="deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

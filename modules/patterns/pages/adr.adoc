@@ -1,0 +1,56 @@
+= Arquitecture Decision Records
+
+Las elecciones de tecnología y soluciones propuestas para completar un projecto están influenciadas por diversas decisiones tomadas por los miembros del equipo involucrados en el proyecto durante la fase de desarrollo. Las _ADR_ ayudan a nuevos integrantes del equipo a comenzar más rápido y a documentar los factores que jugaron un rol importante para llegar a una decisión, dando contexto y respondiendo las preguntas ¿Qué?, ¿Por qué?, ¿Cómo?, ¿Cuándo? y ¿Dónde? de cada decisión (<<cognitect-2011>>). En la comunicación técnica no se habla mucho sobre cómo se apoya las decisiones. En muchos casos se habla sobre apoyo a las tareas. La información que las personas necesitan para completar las tareas no es unicamente la relativa a sobre cómo operar las máquinas o procesos, mas bien se necesita información que apoye la toma de decisiones. Documentar los procesos no es suficiente, ya que es necesario documentar el contexto, permitiendo a los usuarios conocer las decisiones que deben tomar, sus consecuencias como también recursos y referencias que ayudarán a determinar la decisión a tomar (<<baker-2013>>).
+
+Entre alguna de las ventajas de usar _ADR_ se puede mencionar:
+
+- Ayudan a reducir el número de reuniones.
+- Permiten tener un acervo documental para tomar decisiones más complejas.
+- Dan contexto y permiten analizar distintas opciones para encausar el proyecto al mejor camino de forma más certera.
+- Permiten una conversación abierta a los integrantes del equipo y reducen el tiempo de explicación sobre las deciciones tomadas en un área.
+
+*Recomendaciones*
+
+- Todas las decisiones importantes deben ser documentadas con _ADR_.
+- Los miembros del equipo deben aprender el formato para crear y leer _ADR_.
+- Las discuciones sobre los _ADR_ deben ser realizadas en herramientas de colaboración que reduzcan los tiempos de reuniones al permitir que cada miembro pueda comentar asíncronamente.
+- Los miembros del equipo deben mantener actualizados los _ADR_ cambiando su estado, datos y metadatos según la evolución histórica de las decisiones.
+- Los _ADR_ son escenciales para ver la evolución histórica de un proyecto, como una central de todas las decisiones. Por lo que son vitales para planificar nuevas características y evolución futura del proyecto.
+- Almacenarlos en un directorio llamado `decisions` (decisiones) dentro del código del proyecto con archivos en formato de texto plano como _Asciidoc_ o dentro de un repositorio documental público y común (antora, wiki, confluence).
+
+.Tabla de Estados de un ADR
+|====
+|Estado|Descripción
+
+|Borrador (Draft)| El _ADR_ todavía está en preparación.
+|Propuesta (Proposed)| El _ADR_ se ha creado y está siendo discutido por los involucrados.
+|Aceptado (Accepted)| El _ADR_ fue aceptado para su implementación.
+|Completado (Ready)| El _ADR_ fue aceptado e implementado correctamente.
+|Obsoleto Suave (Soft Deprecated)| Un _ADR_ completado será obsoleto. Aún no existe un _ADR_ completado alternativo.
+|Obsoleto Fuerte (Hard Deprecated)| Un _ADR_ completado está obsoleto y existe un _ADR_ completado que lo reemplaza.
+|Cerrado (Declined)| El _ADR_ no llegó a una conclusión definitiva en un tiempo determinado o no se completo lo suficiente para ser relevante en el contexto actual.
+|====
+
+== Plantilla
+
+- *Estado*: Borrador
+- *Fecha Creación*: 2024-03-22 (ISO 8601)
+- *Fecha Última Modificación*: 2024-03-22 (ISO 8601)
+- *Participantes*: (Quienes pueden opinar)
+** @Persona1
+** @Persona2
+** @Persona3
+- *Decisores*: (Quienes toman la decisión)
+** @Persona4
+** @Persona5
+** @Persona6
+- *Contexto*
+** El contexto permite a los decidores realizar su análisis y aplicar su juicio. Se recomienda dar la mayor cantidad de información posible. Entre algunas cosas que puede llevar el contexto se encuentra: Breve descripción de la situación actual, Diagramas de arquitectura, flujo, estado, secuencias, componentes, entre otros. ¿Cuál es el problema a resolver?, ¿Qué factores claves pueden motivar la decisión? (complejidad, riesgos, optimización, calendarios y otras prioridades). 
+- **Lista de opciones y alternativas** 
+** Se presenta una lista de opciones y alternativas con sus respectivos análisis (descripción, diagramas, ventajas, desventajas, posibles consecuencias de su elección) que permitan elegir una decisión final.
+- **Decisión**
+** Se da una decisión final por los involucrados considerando todos los factores y opciones presentados en el contexto y alternativas.
+- **Observaciones y Notas**
+** Se da apreciaciones sobre posibles problemas o consideración que podrían tener con la decisión y los pasos a seguir para continuar con su implementación. Normalmente realizadas en el proceso de discución, se deben documentar en este segmento.
+- **Preguntas Abiertas**
+** Se da una lista de preguntas a tener en consideración y sus respuestas. Normalmente realizadas en el proceso de discución, se deben documentar en este segmento.

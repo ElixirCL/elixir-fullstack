@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Observabilidad e Instrumentación :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/devops/observability.html">
+    <link rel="prev" href="#devevns.adoc">
+    <link rel="next" href="dora.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#devevns.adoc">devevns.adoc</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>DevOps</li>
+    <li><a href="observability.html">Observabilidad e Instrumentación</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/devops/pages/observability.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Observabilidad e Instrumentación</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>La observabilidad e instrumentación se refiere al proceso de añadir código o herramientas a un sistema para adquirir y analizar datos acerca de su comportamiento y desempeño. Estos datos pueden ser usados para obtener conocimientos sobre el funcionamiento interno del sistema, permitir resolver problemas y mejorar su desempeño en general.</p>
+</div>
+<div class="paragraph">
+<p>La observabilidad e instrumentación consiste en añadir capacidades de monitoreo y generación de registros (logs) a un sistema. Esto es añadir código para registrar métricas como los tiempos de respuesta, tasa de error y utilización de recursos. También añade registrar eventos y capturar trazas de error (stack traces) para proporcionar información detallada sobre la ejecución de un sistema.</p>
+</div>
+<div class="paragraph">
+<p>También puede incluir herramientas de traza distribuidas para tener un seguimiento de un <em>request</em> cuando viaja por múltiples componentes de un sistema. Esto puede ayudar a descubrir cuellos de botella y problemas de desempeño (perfomance).</p>
+</div>
+<div class="paragraph">
+<p>Al instrumentar un sistema para observabilidad, los desarrolladores y operadores pueden obtener una comprehensión más profunda de cómo el sistema se comporta en tiempo real. Esto permite a ellos identificar y resolver rápidamente los problemas, mejorar el desempeño del sistema y tomar decisiones informadas sobre escalamiento y planificación de capacidad.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="por-qué-usar-observabilidad-e-instrumentación"><a class="anchor" href="#por-qué-usar-observabilidad-e-instrumentación"></a>¿Por qué usar Observabilidad e Instrumentación?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La observabilidad e instrumentación es usada para obtener información sobre el comportamiento y desempeño de un sistema. Algunas razones para implementar son:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Resolver problemas e incidentes</strong>: Al instrumentar un sistema los desarrolladores y operadores pueden obtener datos sobre el comportamiento y desempeño. Estos datos pueden ser usados para identificar e solucionar incidentes, como tiempos de respuesta lentos, errores o cuellos de botella de recursos. Ayudan a identificar rápidamente la causa raíz de un prolema y resolverlo eficientemente.</p>
+</li>
+<li>
+<p><strong>Mejora de desempeño</strong>: Proporciona visibilidad en el desempeño de un sistema. Al obtener métricas como tiempos de respuesta, tasas de error y utilización de recursos, los desarrolladores pueden identificar áreas que necesiten optimización. Se puede tomar decisiones informadas para afinación del desempeño, escalamiento y optimización de la asignación de recursos.</p>
+</li>
+<li>
+<p><strong>Planificación de capacidad y escalamiento</strong>: Al monitorear y analizar los datos obtenidos a través de la observabilidad e instrumentación, los desarrolladores pueden entender las exigencias y los patrones de uso de recursos de un sistema. Ésta información es valiosa para la planificación de recursos y decisiones de escalamiento. Ayuda a determinar cuando añadir más recursos o escalar horizontalmente para manejar el tráfico o exigencias de la tarea.</p>
+</li>
+<li>
+<p><strong>Monitoreo y alertas proactivas</strong>: La observabilidad e instrumentación permiten el monitoreo proactivo de un sistema. Al establecer alertas basadas en límites o anomalías los desarrolladores pueden ser notificados de potenciales incidentes antes de que los usuarios finales sean impactados. Esto permite una mitigación proactiva y previene potenciales cortes de servicio o degradación del desempeño.</p>
+</li>
+<li>
+<p><strong>Comprender el comportamiento del sistema</strong>: Proporciona conocimiento profundo de cómo un sistema se comporta en tiempo real, ayudando a entender el flujo de de peticiones (<em>requests</em>), dependencias entre componentes y el impacto de los cambios. Este conocimiento es crucial para depurar incidentes complejos, optimizar desempeño y realizar decisiones de arquitectura informadas.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="beneficios"><a class="anchor" href="#beneficios"></a>Beneficios</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La observabilidad e instrumentación puede ser usada por una gran variedad de <em>stakeholders</em> involucrados en el desarrollo y operaciones de un sistema. Ayuda a la colaboración, resolución de problemas, optimización de desempeño y toma de decisiones informada.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="por-qué-usar-un-sdk"><a class="anchor" href="#por-qué-usar-un-sdk"></a>¿Por qué usar un SDK?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El uso de bibliotecas de observabilidad da varios beneficios importantes como los siguientes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Estandarización de la instrumentación</strong>: Las bibliotecas de observabilidad proporcionan una forma estandarizada de instrumentar código para propósitos de observabilidad. Ofrecen integraciones listas para usar y una <em>API</em> que facilita obtener y exponer puntos de datos relevantes, métricas, logs y trazas. Esto permite una consistencia y uniformidad de cómo la instrumentación es implementada a través de distintos componentes de un sistema.</p>
+</li>
+<li>
+<p><strong>Implementación simplificada</strong>: Las bibliotecas de observabilidad crean una capa de abstracción a las complejidades de instrumentar código para observabilidad. Esto proporciona interfaces de fácil uso y <em>frameworks</em> que simplifican el procesos de añadir monitoreo, logging y capacidades de trazabilidad a un sistema. Esto ahorra tiempo de desarrollo y esfuerzo, permitiendo a equipos enfocarse en construir y mejorar sus aplicaciones.</p>
+</li>
+<li>
+<p><strong>Obtención de datos consistente</strong>: Un SDK de observabilidad permite obtener datos de forma confiable y consistente de diferentes partes del sistema. Pueden manejar los detalles de obteneción de datos, agrupación y formateo, lo que permite obtener datos de forma estandarizada y precisa. La consistencia es de vital importancia para un análisis efectivo y resolución de problemas.</p>
+</li>
+<li>
+<p><strong>Optimización del desempeño</strong>: Los SDK tienen capacidades de optimizar el desempeño. Proporcionan información sobre cuellos de botella del sistema, utilización de recursos y tiempos de respuesta, permitiendo a los desarrolladores identificar las áreas que necesitan optimización. Al utilizar los datos obtenidos desde la observabilidad e instrumentación, los equipos pueden mejorar iterativamente mejorando el desempeño de las aplicaciones.</p>
+</li>
+<li>
+<p><strong>Resolución y depuración de problemas mejorada</strong>: Los SDK dan mejores herramientas para resolver problemas y depuración de errores ya que proporcionan información detallada acerca del comportamiento del sistema. Ayudan a capturar y registrar eventos, capturar stacks de error y permitir una trazabilidad distribuida. Esto logra facilitar comprender el flujo de las <em>requests</em> e identificar problemas. Permitiendo acelerar el proceso de identificar y resolver problemas, reduciendo los tiempos muertos y mejorando la robustez del sistema.</p>
+</li>
+<li>
+<p><strong>Colaboración y visibilidad funcional cruzada</strong>: Utilizar SDK también proporciona y promueve la colaboración y visibilidad funcional cruzada (cross-functional). Equipos diversos como desarrolladores, operarios y <em>QA</em> pueden obtener el mismo conjunto de herramientas de observabilidad y datos para obtener información sobre el comportamiento del sistema. Ésta visibilidad compartida promueve mejor comunicación, facilita el análisis de causa raíz y permite a los equipos trabajar juntos para mejorar la robustez y desempeño de los sistemas.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="componentes-de-la-instrumentación"><a class="anchor" href="#componentes-de-la-instrumentación"></a>Componentes de la Instrumentación</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Un sistema correctamente instrumentado debe emitir tazas, métricas y registros que permiten tener una observabilidad del sistema y su entorno.</p>
+</div>
+<div class="sect2">
+<h3 id="trazas-traces"><a class="anchor" href="#trazas-traces"></a>Trazas (traces)</h3>
+<div class="paragraph">
+<p>Las trazas proporcionan una vista de águila de lo que pasa cuando una solicitud (<em>request</em>) es realizada al sistema. Independiente si una aplicación es un monolito con una base de datos única o un sofisticado sistema de servicios interconectado, las trazas son escenciales para comprender todo el recorrido que una solicitud tiene en la aplicación.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="métricas-metrics"><a class="anchor" href="#métricas-metrics"></a>Métricas (metrics)</h3>
+<div class="paragraph">
+<p>Las métricas son una medición de un servicio capturada en el tiempo de ejecución. El capturar una medición se conoce como <code>evento métrico</code> (metric event), el cual consiste no solo en la medición como tal, si no también el tiempo en el que fue capturada y la metada asociada.</p>
+</div>
+<div class="paragraph">
+<p>Las métricas de aplicación y <em>request</em> son indicadores importantes de la disponibilidad y desempeño de un sistema. Métricas personalizadas proporcionan conocimiento sobre los indicadores que impactan la experiencia de usuario o negocio. Los datos obtenidos pueden ser usados para alertar de un corte de servicios o gatillar decisiones programadas para escalar o desplegar una aplicación automáticamente dependiendo de la alta demanda.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="registros-logs"><a class="anchor" href="#registros-logs"></a>Registros (logs)</h3>
+<div class="paragraph">
+<p>Un registro (<em>log</em>) es un texto con marca de tiempo (<em>timestamp</em>), el cual esta estructurado (recomendado) o no estructurado con <em>metadata</em> opcional. De todas las señales de telemetría, los registros (<em>logs</em>) son los más usados y venerables. La mayoría de lenguajes de programación tienen capacidades de generar registros o bibliotecas estandarizadas y robustas de registros (<em>logging</em>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="open-telemetry"><a class="anchor" href="#open-telemetry"></a>Open Telemetry</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://opentelemetry.io/">Open Telemetry</a> facilita la instrumentación de los sistemas. Para que un sistema sea observable debe ser instrumentado, esto significa que los componentes del sistema deben emitir <code>traces</code> (trazas), <code>metrics</code> (métricas) y <code>logs</code> (registros). Al usar <em>Open Telemetry</em> se puede instrumentar de dos formas:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilizar soluciones basadas en código a través del uso de <em>SDK</em> oficiales disponibles para gran cantidad de tecnologías.</p>
+</li>
+<li>
+<p>Utilizar soluciones basadas en "Zero Code".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ambas opciones son complementarias y pueden ser usadas al mismo tiempo.</p>
+</div>
+<div class="sect2">
+<h3 id="sdk"><a class="anchor" href="#sdk"></a>SDK</h3>
+<div class="paragraph">
+<p>La solución utilizando el <em>SDK</em> permite obtener una telemetría rica y profunda de la aplicación. Permite usar el <em>API</em> de <em>Open Telemetry</em> para generar telemetría del sistema, lo que es un gran complemento de la telemetría generada por la opción de "Zero Code".</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="zero-code"><a class="anchor" href="#zero-code"></a>Zero Code</h3>
+<div class="paragraph">
+<p>Es una gran opción para comenzar o cuando no se puede modificar la aplicación que necesite ser instrumentada. Proporcionan telemetría abundante de las bibliotecas usadas o del ambiente donde el sistema se ejecuta. Una forma de verlo es que dan información sobre qué es lo que está pasando en la periferia del sistema.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="uso"><a class="anchor" href="#uso"></a>Uso</h3>
+<div class="paragraph">
+<p>Siempre es recomendable utilizar el <em>SDK</em> de <em>Open Telemetry</em>, sin embargo en el caso de no estar disponible para el sistema o las tecnologías usadas, se debe recurrir a la instrumentación manual, tratando de crear una capa de abstracción compatible con <em>Open Telemetry</em>.</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-488c1568d63e553cdc9cde64970cdea6ff6d00de.svg" alt="Uso de OpenTelemetry">
+</div>
+<div class="title">Figure 1. Uso de OpenTelemetry</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="#devevns.adoc">devevns.adoc</a></span>
+  <span class="next"><a href="dora.html">Métricas DORA</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

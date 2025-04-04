@@ -1,0 +1,5 @@
+.DevOps
+* xref:devevns.adoc[]
+* xref:observability.adoc[]
+* xref:dora.adoc[]
+* xref:golden.adoc[]

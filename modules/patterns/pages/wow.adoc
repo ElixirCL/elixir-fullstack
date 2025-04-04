@@ -1,0 +1,98 @@
+= Way of Work
+
+Es importante definir la forma de trabajar de un equipo y organización. En específico se recomienda fundamentarse en el flujo continuo para mejorar el desempeño de los equipos, permitiendo una entrega de valor constante. 
+
+En la siguiente carta gantt se puede apreciar la organización de los distintos hitos en un mes.
+
+[plantuml]
+----
+@startgantt
+Project starts 2024-11-01
+
+saturday are closed
+sunday are closed
+friday is colored in lightsalmon
+
+[Daily] starts 2024-11-01
+[Daily] requires 21 days
+
+[Epic Grooming] as [E1] happens 2024-11-04
+[E1] is colored in gray
+
+[News] as [A1] happens 2024-11-08
+[News] as [A2] happens 2024-11-15
+[News] as [A3] happens 2024-11-22
+[News] as [A4] happens 2024-11-29
+
+[Refinement] as [R1] happens 2024-11-05
+[R1] is colored in blue
+[Refinement] as [R2] happens 2024-11-12
+[R2] is colored in blue
+[Refinement] as [R3] happens 2024-11-19
+[R3] is colored in blue
+[Refinement] as [R4] happens 2024-11-26
+[R4] is colored in blue
+
+[Refinement] as [R1] happens 2024-11-04
+[R1] is colored in blue
+[Refinement] as [R2] happens 2024-11-11
+[R2] is colored in blue
+[Refinement] as [R3] happens 2024-11-18
+[R3] is colored in blue
+[Refinement] as [R4] happens 2024-11-25
+[R4] is colored in blue
+
+
+[Team Alignment] as [T1] happens 2024-11-04
+[T1] is colored in lightgreen
+[Team Alignment] as [T2] happens 2024-11-11
+[T2] is colored in lightgreen
+[Team Alignment] as [T3] happens 2024-11-18
+[T3] is colored in lightgreen
+[Team Alignment] as [T4] happens 2024-11-25
+[T4] is colored in lightgreen
+
+[Metrics Review] as [M1] happens 2024-11-13
+[M1] is colored in orange
+[Metrics Review] as [M2] happens 2024-11-27
+[M2] is colored in orange
+
+[Retrospective] as [RT1] happens 2024-11-28
+[RT1] is colored in purple
+
+@endgantt
+----
+
+== Horarios laborales
+
+Las labores se deben realizar en los siguientes horarios:
+
+- Lunes a Jueves: 9:30 AM - 18:00 PM,
+- Viernes: 9:30 AM - 13:00 PM.
+
+Consideraciones:
+
+- Los *Viernes* no está permitido enviar cambios a producción (salvo excepciones autorizadas).
+- Existe un rol de *Sherpa* que se encarga de monitorear los sistemas y resolver problemas en horarios extraordinarios.
+
+== Flujo Continuo
+
+== Pasos a producción
+
+Los pasos a producción son importantes. Considerar ventanas de "freeze" donde no se puede enviar a producción. Normalmente cuando se espera un evento importante como fechas claves.
+
+== Hitos
+
+=== News
+
+=== Daily
+
+=== Epic Grooming
+
+=== Refinement
+
+=== Team Alignment
+
+=== Metrics Review
+
+=== Retrospective

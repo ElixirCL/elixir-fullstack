@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Métricas DORA :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/devops/dora.html">
+    <link rel="prev" href="observability.html">
+    <link rel="next" href="golden.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#devevns.adoc">devevns.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>DevOps</li>
+    <li><a href="dora.html">Métricas DORA</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/devops/pages/dora.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Métricas DORA</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>DORA</em> es un acrónimo para "DevOps Research and Assesment". Usado con el objetivo de mejorar las prácticas, procesos y capacidades que permiten a los equipos alcanzar una alta perfomance en software y su entrega de valor.</p>
+</div>
+<div class="paragraph">
+<p>En el año 2018 se publicó un libro llamado "Accelerate" <a href="#forsgren-2018">[forsgren-2018]</a> donde los investigadores identificaron un conjunto de métricas que indican el perfomance de un equipo de software en relación al desarrollo y las capacidades de entrega de valor.</p>
+</div>
+<div class="paragraph">
+<p>Las métricas recomendadas son: "Development Cycle Time" (Delivery Leadtime), "Deploy Frequency", "Mean Time to Restore" (MTTR) y "Change Failure Rate". Éstas métricas ayudan a los equipos a mejorar continuamente en sus procesos y capacidades y son conocidas como las métricas <em>DORA</em>.</p>
+</div>
+<div class="paragraph">
+<p>El propósito de las métricas <em>DORA</em> es medir el estado de salud del esfuerzo de mejora continua, ¿Lo que hacemos nos ayuda a mejorar?. No se trata de medir la velocidad, más bien de descubrir problemas a resolver que permitan mejorar el valor de las soluciones que son entregadas al cliente final.</p>
+</div>
+<div class="paragraph">
+<p>Las métricas son obtenidas desde la unidad más pequeña, el repositorio de código donde se desarrolla el proyecto. Además pueden ser agrupadas en distintos niveles según sea la necesidad. En la siguiente tabla se muestra una agrupación sugerida.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Contexto</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Repositorio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Son las métricas asociadas a un único repositorio.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equipo (Tech Lead)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Las métricas son la conjunción de todos los repositorios dentro del Equipo, vista asociada a un Tech Lead.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Grupo (Engineer Manager)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Las métricas son asociadas a todos los equipos que el <em>Engineer Manager</em> maneja.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Global (Empresa)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Las métricas son asociadas a todos los grupos de equipos dentro de la empresa, vista asociada a altos cargos.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Para las métricas se toma en consideración una semana de 6 días y las últimas 15 semanas para generar el promedio.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Los datos se pueden graficar on un histograma o gráfico de líneas.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="development-cycle-time"><a class="anchor" href="#development-cycle-time"></a>Development Cycle Time</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El <em>Development Cycle Time</em>, también conocido como <em>Development Leadtime Delivery</em> (Plazo de entrega del desarrollo), es una medición del tiempo total entre cuando un cambio fue iniciado hasta que dicho cambio entró al ambiente de producción. Esto ayuda a los equipos entender el tiempo que toma entregar las tareas a producción. El objetivo es reducir el tamaño de las tareas, ya que pequeños cambios permiten mitigar los problemas más fácilmente, como por ejemplo mitigar los efectos de cambio de prioridades. Además ayuda a obtener retroalimentación más rápidamente sobre la calidad del entregable.</p>
+</div>
+<div class="paragraph">
+<p>El <em>Development Cycle Time</em> es el promedio del tiempo entre el primer commit de un <em>Pull Request</em> y cuando dicho cambio es enviado a producción. Está subdividido en cuatro etapas: <em>In Progress</em>, <em>Review</em>, <em>Merge</em> y <em>Deploy</em>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>In Progress</strong>: In Progress (En progreso) se considera el tiempo entre el primer commit y el tiempo de la primera solicitud de <em>Review</em> (revisión).</p>
+</li>
+<li>
+<p><strong>Review</strong>: <em>Review</em> (Revisión) Considera el tiempo desde la primera solicitud de <em>Review</em> hasta la última aprobación.</p>
+</li>
+<li>
+<p><strong>Merge</strong>: <em>Merge</em> (Unir) Considera el tiempo desde la última aprobación hasta el <em>Merge</em> a la rama <code>main</code>.</p>
+</li>
+<li>
+<p><strong>Deploy</strong>: <em>Deploy</em> (Despliegue) Considera el tiempo desde el <em>Merge</em> del <em>Pull Request</em> hasta ser enviado a producción. Se recomienda lograr un tiempo de despliegue de 15 minutos o menos.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="meta-a-cumplir"><a class="anchor" href="#meta-a-cumplir"></a>Meta a Cumplir</h3>
+<div class="paragraph">
+<p>Se debe apuntar a un tiempo de 24 horas o menos.</p>
+</div>
+<div class="sect3">
+<h4 id="cómo-cumplirla"><a class="anchor" href="#cómo-cumplirla"></a>¿Cómo cumplirla?</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Identificar las áreas del proceso de <em>deployment</em> y <em>build</em> que pueden ejecutar de forma concurrente y paralela.</p>
+</li>
+<li>
+<p>Reemplazar pruebas <code>end to end</code> (punto a punto) en el <em>pipeline</em> de despliegue con servicios virtuales y mover las pruebas <code>end to end</code> a un proceso asíncrono.</p>
+</li>
+<li>
+<p>Atomizar servicios grandes en componentes y dominios más pequeños que permitan construir, probar y hacer despliegues más rápidos.</p>
+</li>
+<li>
+<p>Añadir alertas al <em>pipeline</em> si la duración máxima de despliegue ha sido excedida para mejorar y refactorizar las prioridades de las pruebas.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fuentes-de-datos"><a class="anchor" href="#fuentes-de-datos"></a>Fuentes de Datos</h3>
+<div class="paragraph">
+<p>Para ésta métrica las fuentes de datos puede ser cualquier plataforma utilizada para gestionar cambios en el códígo y obtener información sobre los mismos. Por ejemplo un <em>Github Action</em> que envíe métricas al realizar
+<em>Pull Request</em> y los distintos eventos del ciclo de vida de un cambio.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gráfico"><a class="anchor" href="#gráfico"></a>Gráfico</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Días por semana: 6</p>
+</li>
+<li>
+<p>Semanas: 15</p>
+</li>
+<li>
+<p>Development Cycle Time: 38 días 12 horas 24 min (Tech Lead)</p>
+</li>
+<li>
+<p>Development Cycle Time: 12 dias 4 horas 43 min (Engineer Manager)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock kroki-error">
+<div class="title">Histograma de Development Cycle Time (Tech Lead)</div>
+<div class="content">
+<pre>Unresolved include directive in modules/devops/pages/dora.adoc - include::example:$././dev-cycle-tl.json[]</pre>
+</div>
+</div>
+<div class="listingblock kroki-error">
+<div class="title">Histograma de Development Cycle Time (Engineer Manager)</div>
+<div class="content">
+<pre>Unresolved include directive in modules/devops/pages/dora.adoc - include::example:$././dev-cycle.json[]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deploy-frecuency"><a class="anchor" href="#deploy-frecuency"></a>Deploy Frecuency</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El <em>Deploy Frecuency</em> o <em>Deployment Frecuency</em> (Frecuencia de Despliegue) mide cuán frecuente un equipo envía cambios a producción. <em>DORA</em> recomienda que para alcanzar equipos de alto desempeño, se debe desplegar cambios a producción más pequeños y más frecuentes. Esto permite mejorar el tiempo de entrega de valor al cliente final y reducir el riesgo. Cambios más pequeños permiten una identificación más sencilla de los problemas y poder remediarlos más rápidamente. La combinación del tamaño del trabajo y cuan frecuente se entrega dicha tarea es una gran herramienta para ayudar descubrir problemas en el flujo de entrega de valor.</p>
+</div>
+<div class="paragraph">
+<p>El <em>Deploy Frecuency</em> es el número de "deployments" (despliegues) únicos a producción de un artefacto. Esta métrica ignora cualquier deploy a producción usando la misma versión del artefacto. Es decir, al enviar la versión <code>1.0.0</code> solamente considerará ese deployment, reenviar la misma versión más veces no será contado. Para contar un nuevo deployment se debe aumentar la versión, por ejemplo a <code>1.0.1</code>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Se recomienda utilizar <code>SemVer</code> y herramientas de automatización que permitan que para cada nuevo cambio en la rama <code>main</code> se realice una nueva versión.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="meta-a-cumplir-2"><a class="anchor" href="#meta-a-cumplir-2"></a>Meta a Cumplir</h3>
+<div class="paragraph">
+<p>Lo ideal es tener 5 deploys a producción por semana (1 por día) como mínimo e idealmente más de 6 a la semana.</p>
+</div>
+<div class="sect3">
+<h4 id="cómo-cumplirla-2"><a class="anchor" href="#cómo-cumplirla-2"></a>¿Cómo Cumplirla?</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Eliminar la delegación de responsabilidades a otros equipos.</p>
+</li>
+<li>
+<p>Eliminar los procesos manuales.</p>
+</li>
+<li>
+<p>Mejorar las pruebas y trasladar la responsabilidad de la calidad al equipo.</p>
+</li>
+<li>
+<p>Trasladar las dependencias rígidas a dependencias flexibles con "feature flags" (indicadores de características) y virtualización de servicios.</p>
+</li>
+<li>
+<p>Centrarse en la integración continua con pequeños cambios integrados a la rama <code>main</code> (tronco) de forma continua.</p>
+</li>
+<li>
+<p>Utilizar "Trunk Based Development" para reducir el riesgo de pérdida de cambios y la sobrecarga del proceso.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fuentes-de-datos-2"><a class="anchor" href="#fuentes-de-datos-2"></a>Fuentes de Datos</h3>
+<div class="paragraph">
+<p>Para ésta métrica las fuentes de datos puede ser cualquier plataforma utilizada para realizar despliegues
+y obtener información sobre los mismos. Por ejemplo un <em>Github Action</em> que envíe métricas al realizar
+cada deployment.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gráfico-2"><a class="anchor" href="#gráfico-2"></a>Gráfico</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Días por semana: 6</p>
+</li>
+<li>
+<p>Semanas: 15</p>
+</li>
+<li>
+<p>Developer Frecuency: 0.87 deploys por semana</p>
+</li>
+</ul>
+</div>
+<div class="listingblock kroki-error">
+<div class="title">Histograma de Deploy Frequency</div>
+<div class="content">
+<pre>Unresolved include directive in modules/devops/pages/dora.adoc - include::example:$./deploy-frecuency.json[]</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Para los datos del gráfico anterior podemos notar que el promedio de despliegues a producción para este repositorio
+es <strong>0.87</strong> por semana.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\$Promedio = (Semana 1 + Semana 2 + .... + Semana 15) / 15\$</p>
+</li>
+<li>
+<p>\$Promedio = (0 + 0 + 0 + 0 + 0 + 2 + 4 + 3 + 0 + 0 + 0 + 0 + 0 + 0 + 4) / 15\$</p>
+</li>
+<li>
+<p>\$Promedio = 13/15\$</p>
+</li>
+<li>
+<p>\$Promedio = 0.866667\$</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mean-time-to-restore-mttr"><a class="anchor" href="#mean-time-to-restore-mttr"></a>Mean Time To Restore (MTTR)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El <em>Mean Time to Restore</em> (Tiempo promedio de restauración) mide cuánto se tarda en restaurar el servicio de la aplicación principal o la relativa al proyecto cuando un incidente ocurre, por ejemplo un apagón de luz o problemas de conexión a los servicios. El objetivo de mejorar las métricas <em>MTTR</em> es minimizar el impacto de las incidencias y eventualmente construir sistemas de apoyo que detecten, diagnostiquen y resuelvan problemas de forma rápida y eficiente cuando estos ocurran.</p>
+</div>
+<div class="paragraph">
+<p>Para calcular el <em>MTTR</em> se debe obtener el tiempo promedio que se demora en restaurar el servicio o la aplicación cuando un incidente (corte de luz, caida de servicio, etc.) ocurre.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\$MTTR = Promedio(Tiempo de Resolución de Incidente - Tiempo de Creación de Incidente)\$</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="meta-a-cumplir-3"><a class="anchor" href="#meta-a-cumplir-3"></a>Meta a Cumplir</h3>
+<div class="paragraph">
+<p>El objetivo es lograr la restauración del servicio en 1 hora o menos.</p>
+</div>
+<div class="sect3">
+<h4 id="cómo-cumplirla-3"><a class="anchor" href="#cómo-cumplirla-3"></a>¿Cómo cumplirla?</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Asegurar que el <em>pipeline</em> siempre este operativo y pueda desplegar.</p>
+</li>
+<li>
+<p>Mantener la métrica de <em>Deploy Leadtime</em> baja para permitir despliegues a producción rápidos. Se recomienda una aplicación que sea desplegada e iniciada en 15 minutos o menos.</p>
+</li>
+<li>
+<p>Implementar <em>feature flags</em> para cambios grandes que permitan desactivarlos sin necesidad de realizar nuevos despliegues.</p>
+</li>
+<li>
+<p>Identificar problemas de estabilidad y priorizarlas al momento de crear el <code>backlog</code>.</p>
+</li>
+<li>
+<p>Utilizar <code>Canary Deployments</code> al enviar cambios a producción, lo que permite automatizar <em>rollbacks</em> al encontrar fallas en el funcionamiento productivo.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fuentes-de-datos-3"><a class="anchor" href="#fuentes-de-datos-3"></a>Fuentes de Datos</h3>
+<div class="paragraph">
+<p>La fuente de datos es un servicio de manejo de incidentes que pueda entregar los valores necesarios para el cálculo. Por ejemplo puede ser un issue en Github que sea catalogado como <code>incidente</code> y se obtenga su tiempo desde creación hasta cierre o resolución.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gráfico-3"><a class="anchor" href="#gráfico-3"></a>Gráfico</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Días por semana: 6</p>
+</li>
+<li>
+<p>Semanas: 15</p>
+</li>
+<li>
+<p>Mean Time To Restore: 3 días 4 horas 38 min</p>
+</li>
+</ul>
+</div>
+<div class="listingblock kroki-error">
+<div class="title">Histograma de MTTR</div>
+<div class="content">
+<pre>Unresolved include directive in modules/devops/pages/dora.adoc - include::example:$./mttr.json[]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="change-failure-rate"><a class="anchor" href="#change-failure-rate"></a>Change Failure Rate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El <em>Change Failure Rate</em> (Tasa de fallas en cambios) es la tasa que mide cuántos cambios realizados en producción han producido incidentes, rollbacks o fallas. Esto es un indicador de la calidad del código enviado a producción. Mientras más baja es la tasa, mejor es la calidad del artefacto. El equipo debe reducir este número lo más posible con el tiempo, ya que se espera que mejoren sus habilidades, herramientas, prácticas y procesos.</p>
+</div>
+<div class="paragraph">
+<p>Se puede calcular como el porcentaje de cambios que resultan en un impacto negativo hacia los clientes finales con cualquier nivel de tráfico.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\$Change Failure Rate = (Despliegues con Change Failure / Total de Deployments) * 100\$</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Al realizar un <em>deployment</em> y este provoca un fallo, se debe marcar la versión como <em>Change Failure</em> automáticamente, para ayudar a obtener las métricas.</p>
+</div>
+<div class="sect2">
+<h3 id="meta-a-cumplir-4"><a class="anchor" href="#meta-a-cumplir-4"></a>Meta a Cumplir</h3>
+<div class="paragraph">
+<p>Se recomienda lograr un 15% o menos de porcentaje de fallos al cambio.</p>
+</div>
+<div class="sect3">
+<h4 id="cómo-cumplirla-4"><a class="anchor" href="#cómo-cumplirla-4"></a>¿Cómo cumplirla?</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Realizar cambios pequeños de forma más frecuente para hacer los pasos de calidad más efectivos y reducir el impacto de los fallos.</p>
+</li>
+<li>
+<p>Identificar las causas raíz (root cause) de cada fallo y mejorar los análisis de calidad automatizados.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fuentes-de-datos-4"><a class="anchor" href="#fuentes-de-datos-4"></a>Fuentes de Datos</h3>
+<div class="paragraph">
+<p>La fuente de datos es un servicio de manejo de incidentes que pueda entregar los valores necesarios para el cálculo y cualquier plataforma utilizada para realizar despliegues y obtener información sobre los mismos.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gráfico-4"><a class="anchor" href="#gráfico-4"></a>Gráfico</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Días por semana: 6</p>
+</li>
+<li>
+<p>Semanas: 15</p>
+</li>
+<li>
+<p>Change Failure Rate: 1.94%</p>
+</li>
+</ul>
+</div>
+<div class="listingblock kroki-error">
+<div class="title">Histograma de Change Failure Rate</div>
+<div class="content">
+<pre>Unresolved include directive in modules/devops/pages/dora.adoc - include::example:$./change-failure.json[]</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="observability.html">Observabilidad e Instrumentación</a></span>
+  <span class="next"><a href="golden.html">Golden Signals</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

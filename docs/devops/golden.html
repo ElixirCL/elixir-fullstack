@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Golden Signals :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/devops/golden.html">
+    <link rel="prev" href="dora.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../patterns/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#devevns.adoc">devevns.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>DevOps</li>
+    <li><a href="golden.html">Golden Signals</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/devops/pages/golden.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Golden Signals</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Los <em>Golden Signals</em> son una colección de métricas para aplicaciones y servicios
+que permiten establecer un <em>framework</em> mínimo para monitorear las operaciones de un sitio.</p>
+</div>
+<div class="paragraph">
+<p>Golden Signals are a collection of metrics across applications and services
+To establish a minimum monitoring framework for site operations.
+The origin of the concept and term is the Google book Site Reliability Engineering.
+A major focus for application service calls is traffic, errors and latency, often
+Referred to via the equivalent terms rate, error, duration (RED).
+Additional signals such as utilization (CPU, memory) are also in scope.</p>
+</div>
+<div class="paragraph">
+<p>The purpose of the Golden Signals is to enable observability of applications and
+Services, customer flows, and operations within a triplet of standardized signals.
+Benefits of instrumentations with Golden Signals includes the following benefits:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A consistent monitoring and alerting model and system across services</p>
+</li>
+<li>
+<p>Proactive detection of site or application performance dgradation before an incident occurs</p>
+</li>
+<li>
+<p>Standardization of instrumentation, metrics, alerts and dashboards</p>
+</li>
+<li>
+<p>Dependency mapping used aggregating the client-server relationships in the golden signal reporting.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>24/7 Monitoring.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Availability</p>
+</li>
+<li>
+<p>Traffic</p>
+</li>
+<li>
+<p>Latency</p>
+</li>
+<li>
+<p>Errors</p>
+</li>
+<li>
+<p>Deployments</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals" class="bare">https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals</a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Per minute request count (<code>processTime_seconds_count:rate2m</code>)</p>
+</li>
+<li>
+<p>Per minute average request processing time (<code>processTime_seconds_sum:rate2m</code>)</p>
+</li>
+<li>
+<p>Per minute request processing time 95 percentile 50 percentile (<code>processTime_seconds:avg{quantile="0.95"}</code>)</p>
+</li>
+<li>
+<p>Per minute 4xx request count (<code>c4xx_total:rate2m</code>)</p>
+</li>
+<li>
+<p>Per minute 5xx request count (<code>c5xx_total:rate2m</code>)</p>
+</li>
+</ol>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Señal (Signal)</th>
+<th class="tableblock halign-left valign-top">¿Qué analiza?</th>
+<th class="tableblock halign-left valign-top">¿Cómo se granulariza?</th>
+<th class="tableblock halign-left valign-top">Métrica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Availability (Disponibilidad)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Analiza la disponibilidad de los servidores</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se puede analizar por regiones de data center</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Porcentaje de Servidores Saludables (%).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Traffic (Tráfico)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Analiza las respuestas con estado 2xx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se puede analizar por regiones de data center</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cantidad de Peticiones (Throughput, Rendimiento) por Segundo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latency (Latencia)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Analiza el tiempo de respuesta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se puede analizar por regiones de data center</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tiempo de respuesta en milisegundos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Errors (Errores)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Analiza las respuestas con estado distinto a 2xx (4xx, 5xx)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se puede analizar por regiones de data center, además de códigos de estado</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tasa de Respuestas Erróneas vs Respuestas Correctas</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deployments (Despliegues)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Analiza el estado y salud de los despliegues</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se puede analizar por servicio y/o aplicación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timestamps (Anotaciones de tiempo)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Saturation (Saturación)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Analiza el estado de la CPU, RAM y Disco de los servidores</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Se puede analizar por servicio y/o aplicación y elemento (CPU, RAM, Uso de Disco)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Porcentaje % De Uso</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="alertas"><a class="anchor" href="#alertas"></a>Alertas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Al monitorear utilizando las <em>Golden Signals</em> nos permite definir alertas para ser gatilladas
+en distintas cirscuntancias. Principalmente hay dos tipos de alertas, de límite fijo y las basadas en tendencias.</p>
+</div>
+<div class="paragraph">
+<p>Las alertas deberían ser habilitadas cuando un artefacto está listo para operar en producción. Todos los miembros del equipo asociados al artefacto deberían ser receptores de las alertas, en por lo menos canales de Email y mensajería instantánea como <em>Slack</em> o similares. Además de las alertas de <em>Golden Signals</em> cada equipo puede definir alertas personalizadas que sean relevantes para su contexto.</p>
+</div>
+<div class="sect2">
+<h3 id="alertas-de-límite-fijo"><a class="anchor" href="#alertas-de-límite-fijo"></a>Alertas de Límite Fijo</h3>
+<div class="paragraph">
+<p>Las alertas de límite fijo (Fixed threshold alerts) son creadas con un número definido y fijo que la métrica debe ser evaluada de forma instantánea o tasada por un período de tiempo. Este valor puede variar dependiendo de la aplicación y contexto.</p>
+</div>
+<div class="paragraph">
+<div class="title">Ejemplo</div>
+<p>Un servicio cuya cantidad de servidores debe ser mayor a 5. Si baja de ese número de servidores activos se lanzará una alerta.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="alertas-basadas-en-tendencias"><a class="anchor" href="#alertas-basadas-en-tendencias"></a>Alertas Basadas en Tendencias</h3>
+<div class="paragraph">
+<p>Las alertas basadas en tendencias (Trend based alerts) son las que realizan una comparación de las métricas actuales con datos en distintos puntos de tiempo. Normalmente con los datos de hace 24 horas y con los datos hace 1 semana para el mismo periodo de tiempo. Este tipo de alertas utiliza la desviación estándar entre las métricas. La desviación estándar se utiliza para calcular la variación o dispersión en la que los puntos de datos individuales difieren de la media. Una desviación baja indica que los puntos de datos están muy cerca de la media, mientras que una desviación alta muestra que los datos están dispersos en un rango mayor de valores. <a href="#ortega-2024">[ortega-2024]</a>. En el caso de una alerta, obtener la desviación estándar de la métrica nos permite contemplar si la desviación de la tendencia normal es orgánica o debido algún problema.</p>
+</div>
+<div class="paragraph">
+<p>En el caso de las alertas de <em>Golden Signal</em> son mayoritariamente basadas en tendencias, con muy pocas basadas en límites fijos para evitar falsos positivos.</p>
+</div>
+<div class="paragraph">
+<div class="title">Ejemplo</div>
+<p>Un servicio cuya data es evaluada todos los días entre las 2:00 PM y las 2:15 PM. Esta data se compara con la medición de ayer entre las 2:00 PM y las 2:15 PM, como también con la medición de 1 semana atrás entre las 2:00 PM y las 2:15 PM. Si la desviación estándar es más de 2, se debe lanzar una alerta. (Esto significa que la métrica se ha desviado 2 veces).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="automatización-y-estandarización-de-alertas"><a class="anchor" href="#automatización-y-estandarización-de-alertas"></a>Automatización y Estandarización de Alertas</h3>
+<div class="paragraph">
+<p>Cuando existen diferentes equipos dentro de una organización existe la tendencia de que cada uno utilice sus propias herramientas y formas de crear dashboards. Lo que dificulta la implementación de las <em>Golden Signals</em> debido a la fragmentación. Además si el proceso de implementación de alertas es manual se puede volver tedioso y lento con mayor probabilidad de fallos (consultas incorrectas, omisión de alertas clave) por error humano al crearlos. Es por esto que es altamente recomendado estandarizar los dashboard y generar plantillas que permiten automatizar la generación de las consultas y las alertas. Al automaizar la generación se permite reducir a minutos la creación de alertas y tener mayor exactitud.</p>
+</div>
+<div class="paragraph">
+<p>Para esto se dan las siguientes recomendaciones:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilizar <strong>Grafana</strong> como sistema de dashboard estándar.</p>
+</li>
+<li>
+<p>Utilizar scripts estandarizados con plantillas para generar las alertas y consultas.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>El siguiente código es un pequeño ejemplo en el lenguaje <strong>Elixir</strong> que permite generar un texto a partir de una plantilla.
+Para ésto se utiliza la herramienta de plantillas <a href="https://hexdocs.pm/eex/EEx.html">EEx</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Ejemplo de Plantilla y Elixir</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">iex&gt; EEx.eval_string "Hola, &lt;%= @name %&gt;", assigns: [name: "Camilo"]
+"Hola, Camilo"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La relación entre los datos, plantillas, script y alertas se puede diagramar de la siguiente manera.</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-13316cc615e93f43883d8239ac851850a0225cdf.svg" alt="Diagrama de Relación Datos, Script, Plantillas y Alertas">
+</div>
+<div class="title">Figure 1. Diagrama de Relación Datos, Script, Plantillas y Alertas</div>
+</div>
+<div class="paragraph">
+<p>Además de estandarizar y automatizar la generación de alertas, se recomienda automatizar el proceso de deployment de las mismas, utilizando algún workflow de Github actions por ejemplo.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="dora.html">Métricas DORA</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Etapas del Desarrollo de un Producto de Software :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/patterns/stages.html">
+    <link rel="prev" href="../jobs/chapter.html">
+    <link rel="next" href="patterns.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#devevns.adoc">devevns.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Ingeniería en Software</li>
+    <li><a href="stages.html">Etapas del Desarrollo de un Producto de Software</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/patterns/pages/stages.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Etapas del Desarrollo de un Producto de Software</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>El desarrollo de software puede ser difícil de administrar debido a los requisitos cambiantes,
+los avances de la tecnología y la colaboración interfuncional. La metodología del ciclo de vida del desarrollo de
+software ofrece un marco de administración sistemático con entregas específicas en cada etapa del proceso de desarrollo
+de software. Como resultado, todas las partes interesadas establecen por adelantado los objetivos y requisitos de
+desarrollo del software y también cuentan con una planificación para conseguirlo (<a href="#amazon-sdlc">[amazon-sdlc]</a>).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="flujo-superior-upstream"><a class="anchor" href="#flujo-superior-upstream"></a>Flujo superior (Upstream)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Los flujos superiores (<em>Upstream</em>) son todo el contexto anterior que ocurre en la organización para llegar a la conclusión
+de que el proyecto de software debe ser realizado. Ayuda a definir las preguntas: ¿Qué es el proyecto?, ¿Qué no es el proyecto?,
+¿Qué hace el proyecto?, ¿Qué no hace el proyecto?. Identificar a los principales <code>stakeholders</code> e interesados, presupuestos, limitaciones previas, como también
+los encargados de gestionar los procesos de preparación y levantamiento de requerimientos. La utilización de la herramienta "personas" (positivas y negativas)
+puede ayudar identificar el público objetivo de la solución y ayudar a definir características como también evaluar las prioridades. Normalmente está definido en un "Documento de Requerimiento de Producto" ver anexo sobre <em>PRD</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="preparación"><a class="anchor" href="#preparación"></a>Preparación</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En la etapa de preparación se debe asegurar que los involucrados estén capacitados con las habilidades
+y certificaciones necesarias para desarrollar código y artefactos de alta calidad de forma eficiente, reduciendo
+la probabilidad de un incidente en producción.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Proporcionar correcto entrenamiento y capacitaciones respectivas en las prácticas internas de la empresa, como también las buenas prácticas del desarrollo de software.</p>
+</li>
+<li>
+<p>Proporcionar un claro mapa de crecimiento dentro de la organización para los asociados.</p>
+</li>
+<li>
+<p>Velar siempre por mejorar la calidad del producto.</p>
+</li>
+<li>
+<p>Velar por reducir las probabilidades de un incidente en producción.</p>
+</li>
+<li>
+<p>Configurar correctamente los equipos de trabajo, así como dar de alta en los servicios asociados y credenciales de acceso en los canales de comunicación internos.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="definición-de-los-requerimientos-no-funcionales"><a class="anchor" href="#definición-de-los-requerimientos-no-funcionales"></a>Definición de los requerimientos no funcionales</h3>
+<div class="paragraph">
+<p>Los requerimientos no funcionales para una aplicación de negocio o servicio técnico incluyen algunos como robustez, escalabilidad, desempeño, operabilidad y otras características que la arquitectura debe soportar.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ayudan a la organización encontrar requisitos legales u otros relacionados.</p>
+</li>
+<li>
+<p>Mejoran la eficiencia en el desarrollo a través de requerimientos claros y estables.</p>
+</li>
+<li>
+<p>Reducen el costo de la arquitectura y el retrabajo de implementación, por medio de reducir las ocurrencias de diseñar y construir requerimientos erróneos.</p>
+</li>
+<li>
+<p>Ayudan a crear software confiable, robuzto y eficiente que satisface a los usuarios finales.</p>
+</li>
+<li>
+<p>Ayuda a reducir los riesgos de incidentes en producción.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="definición-de-las-prácticas-de-seguridad-y-cómo-cumplirlas"><a class="anchor" href="#definición-de-las-prácticas-de-seguridad-y-cómo-cumplirlas"></a>Definición de las prácticas de seguridad y cómo cumplirlas</h3>
+<div class="paragraph">
+<p>En el ciclo de desarrollo se debe resolver tempranamente los requerimientos de seguridad, regulaciones, cumplimiento y riesgos asociados.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reducir la probabilidad de una falla de seguridad y sus consecuencias, como pérdida de reputación comercial o multas.</p>
+</li>
+<li>
+<p>Evitar fisuras que permitan liberar información delicada que pueden costar millones de dólares por incidente.</p>
+</li>
+<li>
+<p>Seguir las recomendaciones de seguridad de la última versión del <a href="https://owasp.org/Top10/">Owasp Top 10</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="registrar-los-metadatos-del-desarrollo"><a class="anchor" href="#registrar-los-metadatos-del-desarrollo"></a>Registrar los metadatos del desarrollo</h3>
+<div class="paragraph">
+<p>En esta etapa se debe configurar los servicios y datos necesarios para la iteración actual del ciclo de vida del desarrollo de software.
+Esto significa registrar o actualizar los permisos y asignar los recursos técnicos necesarios para la operación (servidores, bases de datos, procesos de deployment, repositorios git, canales de comunicación, entre otros).
+También incluye la asignación de roles y datos de contacto actualizados del equipo, al igual que los datos de gestión del proyecto (creación de backlogs con herramientas de priorización de tareas y gestión de proyectos).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tener un panel de control que permita administrar el desarrollo para alcanzar una calidad de producto consistente.</p>
+</li>
+<li>
+<p>Preferir procesos automatizados que permitan un desarrollo más eficiente y de baja fricción.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="revisar-los-requerimientos-funcionales-y-los-criterios-de-aceptación"><a class="anchor" href="#revisar-los-requerimientos-funcionales-y-los-criterios-de-aceptación"></a>Revisar los requerimientos funcionales y los criterios de aceptación</h3>
+<div class="paragraph">
+<p>Validación que los requerimientos funcionales y los criterios de aceptación son los suficientemente comprehensivos, claros
+y estables para tomar decisiones de diseño y la creación de los planes de desarrollo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Evitar retrabajo costoso por requerimientos inestables y cambiantes.</p>
+</li>
+<li>
+<p>Asegurar que el desarrollo esté alienado con las necesidades del negocio y sus clientes.</p>
+</li>
+<li>
+<p>Empoderar a los desarrolladores y arquitectos a determinar si el requerimiento esta listo para ser llevado al diseño e implementación.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="diseño"><a class="anchor" href="#diseño"></a>Diseño</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La etapa de diseño consiste en elaborar los contratos, diagramas y documentación necesaria para cumplir
+los criterios de aceptación de los requerimientos funcionales y ser usados para la etapa de desarrollo.</p>
+</div>
+<div class="paragraph">
+<p>Se recomiendan las herramientas de <em>Asciidoc</em> (Antora Docs), <em>PlantUML</em> (UML), <em>Diagrama C4</em> (Arquitectura) y <em>Vega</em> (Histogramas y gráficos)
+para poder documentar apropiadamente con documentación viva y de fácil actualización.</p>
+</div>
+<div class="sect2">
+<h3 id="diseño-de-los-contratos-de-api"><a class="anchor" href="#diseño-de-los-contratos-de-api"></a>Diseño de los contratos de API</h3>
+<div class="paragraph">
+<p>Crear contratos de <em>API</em> de alta calidad que aseguren que las abstracciones que proporcionan ayuden a la evolución y mantención (alta cohesión, bajo acoplamiento),
+sean simples de usar (fácil adopción) y permitan que los desarrolladores las usen eficientemente.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Asegurar que se cumplen los requerimientos funcionales y no funcionales.</p>
+</li>
+<li>
+<p>Priorizar contratos preparados para el futuro, que reducen lo más posible cambios en el lado del cliente cuando las APIs evolucionen.</p>
+</li>
+<li>
+<p>Se recomienda establecer una política de <strong>Compatibilidad y Obsolescencia</strong> programada. Ver el anexo adjunto sobre <em>Versionado y Política de Compatibilidad y Obsolescencia</em>.</p>
+</li>
+<li>
+<p>Crear APIs amigables con los desarrolladores para impulsar su adopción eficiente.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="diseño-de-arquitectura-para-la-versión-actual"><a class="anchor" href="#diseño-de-arquitectura-para-la-versión-actual"></a>Diseño de arquitectura para la versión actual</h3>
+<div class="paragraph">
+<p>Definir la arquitectura que guíe el desarrollo de la versión actual. De esta forma el desarrollo es coordinado y eficiente y los interesados (<em>stakeholders</em>) estén alineados con las decisiones técnicas tomadas por el equipo. Permitiendo que la organización cree planes de desarrollo y despliegue realistas y apropiados.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Asegurar que los productos cumplan los requerimientos no funcionales.</p>
+</li>
+<li>
+<p>Mejorar la velocidad del desarollo al disminuir el tiempo enfocado en diseño.</p>
+</li>
+<li>
+<p>Reducir el riesgo de incidentes en producción al resolver requerimientos no funcionales críticos como disponbilidad, resiliencia, desempeño, seguridad y cumplimiento de licencias requeridas.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="revisión-de-los-contratos-de-api"><a class="anchor" href="#revisión-de-los-contratos-de-api"></a>Revisión de los contratos de API</h3>
+<div class="paragraph">
+<p>Los contratos de API son revisados y auditados para detectar posibles mejoras o problemas que no se tomaron en consideración.
+Normalmente son revisados por personas externas que no elaboraron los contratos inicialmente. Un grupo de interesados clave de múltiples ámbitos que permite validar la definición a implementar para que esté alineada con el alcance y estratégica técnica y la calidad esperada.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Permite reducir los tiempos de revisión posterior e implementación.</p>
+</li>
+<li>
+<p>Se pueden generar casos de prueba a tener en consideración.</p>
+</li>
+<li>
+<p>Revisados por los miembros de equipos de implementación, consumidores y otros interesados.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="revisión-de-arquitectura-para-la-versión-actual"><a class="anchor" href="#revisión-de-arquitectura-para-la-versión-actual"></a>Revisión de arquitectura para la versión actual</h3>
+<div class="paragraph">
+<p>La definición de arquitectura es revisada y auditada para detectar posibles mejoras o problemas que no se tomaron en consideración.
+Normalmente es revisada por personas externas que no elaboraron los contratos inicialmente. Un grupo de interesados clave de múltiples ámbitos que permite validar la definición a implementar para que esté alineada con el alcance y estratégica técnica y la calidad esperada.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Permite reducir los tiempos de revisión posterior e implementación.</p>
+</li>
+<li>
+<p>Se pueden generar casos de prueba a tener en consideración.</p>
+</li>
+<li>
+<p>Revisados por los miembros de equipos de implementación, consumidores y otros interesados.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="utilizar-adr-para-conducir-las-decisiones-de-arquitectura"><a class="anchor" href="#utilizar-adr-para-conducir-las-decisiones-de-arquitectura"></a>Utilizar ADR para conducir las decisiones de arquitectura</h3>
+<div class="paragraph">
+<p>Las elecciones de tecnología y soluciones propuestas para completar un proyecto están influenciadas por diversas decisiones tomadas por los miembros del equipo involucrados en el proyecto durante la fase de desarrollo. Las <em>ADR</em> ayudan a nuevos integrantes del equipo a comenzar más rápido y a documentar los factores que jugaron un rol importante para llegar a una decisión, dando contexto y respondiendo las preguntas ¿Qué?, ¿Por qué?, ¿Cómo?, ¿Cuándo? y ¿Dónde? de cada decisión. Ver anexo <em>Arquitecture Decision Records</em>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ayudan a reducir el número de reuniones.</p>
+</li>
+<li>
+<p>Permiten tener un acervo documental para tomar decisiones más complejas.</p>
+</li>
+<li>
+<p>Dan contexto y permiten analizar distintas opciones para encausar el proyecto al mejor camino de forma más certera.</p>
+</li>
+<li>
+<p>Permiten una conversación abierta a los integrantes del equipo y reducen el tiempo de explicación sobre las deciciones tomadas en un área.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="desarrollo"><a class="anchor" href="#desarrollo"></a>Desarrollo</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En la fase de desarrollo e implementación, el equipo de desarrollo codifica el producto. Se analizan los requisitos para identificar tareas de codificación más pequeñas que puedan hacerse diariamente para conseguir el resultado final (<a href="#amazon-sdlc">[amazon-sdlc]</a>).</p>
+</div>
+<div class="paragraph">
+<p>Las siguientes subsecciones están ordenadas para seguir los pasos necesarios para crear y validar una funcionalidad.</p>
+</div>
+<div class="sect2">
+<h3 id="construcción-build"><a class="anchor" href="#construcción-build"></a>Construcción (Build)</h3>
+<div class="paragraph">
+<p>Se construye el artefacto con las herramientas adecuadas y autorizadas, sus repositorios y dependencias. Además de seguir un plan de  versionamiento y obsolescencia acordado. Ver anexo <em>Versionado y Política de Compatibilidad y Obsolescencia</em>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Uso de pipelines estandarizados y oficiales para construir el producto mejora la calidad del mismo con validación de artefactos consistente y profunda.</p>
+</li>
+<li>
+<p>Reduce el riesgo de incidentes en producción usando la administración adecuada del versionado de los artefactos construidos.</p>
+</li>
+<li>
+<p>Reuce el tiempo requerido para reparación de defectos usando un versionado y nomenclatura consistente.</p>
+</li>
+<li>
+<p>Los artefactos construidos estan almacenados de forma segura y accesibles.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="administración-de-artefactos-de-código"><a class="anchor" href="#administración-de-artefactos-de-código"></a>Administración de artefactos de código</h3>
+<div class="paragraph">
+<p>Los artefactos de código están almacenados y respaldados en un repositorio central, el cual tiene normas de higiene establecidas para asegurar la calidad del código que almacena. Siguiendo las buenas prácticas de <em>Trunk Based Development</em>. Ver anexo sobre <em>Trunk Based Development</em>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>El desarrollo es rápido y eficiente.</p>
+</li>
+<li>
+<p>Los cambios están administrados correctamente.</p>
+</li>
+<li>
+<p>El código esta respaldado y tiene medidas de seguridad para prevenir filtraciones a terceros no deseados.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pruebas-unitarias"><a class="anchor" href="#pruebas-unitarias"></a>Pruebas unitarias</h3>
+<div class="paragraph">
+<p>Las pruebas unitarias son pruebas deterministas que prueban la ejecución de una unidad específica y discreta de la aplicación como una funcion, un método o componente de <em>UI</em> en total aislamiento del resto de componentes para determinar si se comporta como se espera.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Verifica la funcionalidad de una unidad (método, clase, función, módulo, etc) en aislamiento.</p>
+</li>
+<li>
+<p>Detecta errores tempranos en el ciclo de desarrollo.</p>
+</li>
+<li>
+<p>Son automatizadas y rápidas de ejecutar.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pruebas-funcionales-de-contrato"><a class="anchor" href="#pruebas-funcionales-de-contrato"></a>Pruebas funcionales (de contrato)</h3>
+<div class="paragraph">
+<p>Una prueba funcional o de contrato es una prueba determinista que verifica que los módulos de un sub sistema estén funcionado correctamente. Las pruebas funcionales deben evitar integrar con otros sub sistemas ya que esto reduce el determinismo. Ejemplos son probar el comportamiendo de una interfaz de usuario en la <em>UI</em> o probar la lógica de negocio de un servicio individual por medio de su <em>API</em>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Valida la funcionalidad antes de integrarla con otros sub sistemas.</p>
+</li>
+<li>
+<p>Asegura que los contratos de API estén bien implementados y sean adecuados.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pruebas-de-integración"><a class="anchor" href="#pruebas-de-integración"></a>Pruebas de integración</h3>
+<div class="paragraph">
+<p>Las pruebas de integración es una unidad "sociable" de prueba que es determinista y usada para verificar como una unidad interactúa con otras unidades sin acceder directamente a los sub sistemas externos.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Valida como una unidad funcionará al ser integrada.</p>
+</li>
+<li>
+<p>Es la mejor forma de validar los contratos entre unidades.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="escritura-y-refactorización-de-código"><a class="anchor" href="#escritura-y-refactorización-de-código"></a>Escritura y refactorización de código</h3>
+<div class="paragraph">
+<p>Se debe escribir el código usando los lenguajes y <em>frameworks</em> autorizados, siguiendo los estándares y la definición de arquitectura y cumpliendo los criterios de aceptación de los requisitos funcionales y no funcionales. Refactorizando el código para mejorar su calidad, reducir la deuda técnicas y asegurar que el código fuente es mantenible, es decir, que sea simple de modificar en el tiempo siguiendo los principios de alta cohesión y bajo acoplamiento.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>El código es consistente.</p>
+</li>
+<li>
+<p>El código es eficaz, efectivo, confiable, fácil de ejecutar y seguro.</p>
+</li>
+<li>
+<p>El código es simple de mantener y probar.</p>
+</li>
+<li>
+<p>El código es creado con herramientas complementarias robustas y adecuadas.</p>
+</li>
+<li>
+<p>El código tiene un formato estandarizado. Ejemplo: En <em>Elixir</em> se debe usar el comando <code>mix format</code>.</p>
+</li>
+<li>
+<p>La solución utiliza buenas prácticas como <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/hexagonal-architecture.html">Arquitectura Hexagonal</a>, <a href="https://martinfowler.com/bliki/DomainDrivenDesign.html">Domain Driven Design</a>, <a href="https://www.thoughtworks.com/en-cl/insights/blog/agile-engineering-practices/solid-principles-how-to-create-a-code-that-is-easy-to-extend-and-maintain-part-1">SOLID</a> y <a href="https://en.wikipedia.org/wiki/Software_design_pattern">Patrones de Diseño</a>, y otras buenas prácticas relativas a la tecnología usada, según aplique al contexto de la solución.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pruebas-estáticas"><a class="anchor" href="#pruebas-estáticas"></a>Pruebas estáticas</h3>
+<div class="paragraph">
+<p>La prueba estática evalúa el código sin compilar o ejecutarlo. Esta pensada para validar las buenas prácticas y verificar la seguridad, estructura y otras posibles causas de fallas.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identifica vulnerabilidades.</p>
+</li>
+<li>
+<p>Verifica el uso de buenas prácticas y estándares.</p>
+</li>
+<li>
+<p>Identifica errores y posibles mejoras.</p>
+</li>
+<li>
+<p>Para <em>Elixir</em> se utiliza <a href="https://github.com/rrrene/credo">Credo</a>. Otras tecnologías pueden usar <a href="https://www.sonarsource.com/products/sonarqube/">SonarQube</a>. Para encontrar malas prácticas y corregirlas.</p>
+</li>
+<li>
+<p>Se recomiendan herramientas como <a href="https://owasp.org/www-community/Source_Code_Analysis_Tools">OWASP SCAT</a> para encontrar vulnerabilidades.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="revisión-de-código"><a class="anchor" href="#revisión-de-código"></a>Revisión de código</h3>
+<div class="paragraph">
+<p>Un miembro del equipo revisa e inspecciona el código para identificar posibles mejoras o defectos a corregir, además de verificar la adherencia a los estándares de calidad de código acordados.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Identificar posibles problemas tempranamente para reducir los costos de desarrollo e incrementar la velocidad del mismo.</p>
+</li>
+<li>
+<p>Mejorar la calidad del código y su facilidad de mantención.</p>
+</li>
+<li>
+<p>Reducir la frecuencia y severidad de incidentes en producción.</p>
+</li>
+<li>
+<p>Reducir el tiempo necesario en resolver problemas directamente.</p>
+</li>
+<li>
+<p>Detectar defectos que son difíciles de detectar con pruebas automatizadas.</p>
+</li>
+<li>
+<p>Facilitar compartir información y el aprendizaje de buenas prácticas.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="validación-de-arquitectura"><a class="anchor" href="#validación-de-arquitectura"></a>Validación de arquitectura</h3>
+<div class="paragraph">
+<p>El sistema que se ha construido para la versión actual se compara con lo planificado y diseñado. Cualquier discrepancia es resuelta ya sea corrigiendo el artefacto o actualizando los diseños y planes iniciales.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Asegura que los requerimientos no funcionales han sido cumplidos.</p>
+</li>
+<li>
+<p>Hace que dar soporte y mantención sea más efectivo.</p>
+</li>
+<li>
+<p>Previene la acumulación de deuda técnica.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="despliegue-deploy"><a class="anchor" href="#despliegue-deploy"></a>Despliegue (Deploy)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El despliegue (deploy) es el proceso de pasos necesarios para que el artefacto pueda ejecutarse en su entorno productivo (o de pruebas) y permita ser operado por los involucrados. Este puede ser manual o automatizado.</p>
+</div>
+<div class="sect2">
+<h3 id="configurar-la-infraestructura-de-despliegue-y-operaciones"><a class="anchor" href="#configurar-la-infraestructura-de-despliegue-y-operaciones"></a>Configurar la infraestructura de despliegue y operaciones</h3>
+<div class="paragraph">
+<p>Los sistemas utilizados por los equipos de operaciones para ejecutar todas las actividades operativas
+deben ser configurados y activados para el artefacto que será liberado. Esto incluye sistemas
+para monitoreo, alertas automáticas y administración de notificaciones para incidentes productivos.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Asegura que el monitoreo esté bien configurado y funcional.</p>
+</li>
+<li>
+<p>Asegura que las alertas estén bien configuradas y funcionales.</p>
+</li>
+<li>
+<p>Asegura que los equipos de operaciones puedan notificar apropiadamente cuando un incidente es detectado.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="crear-documentación-y-ejemplos-sobre-operación-del-sistema"><a class="anchor" href="#crear-documentación-y-ejemplos-sobre-operación-del-sistema"></a>Crear documentación y ejemplos sobre operación del sistema</h3>
+<div class="paragraph">
+<p>Escribir documentación y desarrollar ejemplos para operar el artefacto liberado, en una forma consistente y metódica, incluyendo como manejar las tareas esperadas, realizar escalamiento horizontal/vertical, estrategias de mitigación de fallos y pasos para lograr alcanzar los objetivos operativos y de control de incidentes (Mean time to deploy, Mean time to escalate, Mean time to recover, entre otras métricas asociadas <a href="#atlassian-incidents-metrics-2024">[atlassian-incidents-metrics-2024]</a>).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Permite a los equipos conocer como realizar las tareas más comunes del sistema.</p>
+</li>
+<li>
+<p>Permite a los equipos conocer como responder a incidentes e identificar problemas.</p>
+</li>
+<li>
+<p>Permite a los equipos conocer como restaurar la aplicación en el caso de un desastre o caidas de servicio.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="despliegue-a-producción"><a class="anchor" href="#despliegue-a-producción"></a>Despliegue a producción</h3>
+<div class="paragraph">
+<p>Se deben completar todas las tareas relacionadas al despliegue (<code>deploy</code>) tales como:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Crear un documento de registro de cambios,</p>
+</li>
+<li>
+<p>Versionar apropiadamente el artefacto.</p>
+</li>
+<li>
+<p>Desplegar el artefacto al ambiente productivo y realizar pruebas de humo.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="validación-y-monitoreo-del-despliegue-a-producción"><a class="anchor" href="#validación-y-monitoreo-del-despliegue-a-producción"></a>Validación y monitoreo del despliegue a producción</h3>
+<div class="paragraph">
+<p>Esta es la validación final de que todas las actividades obligatorias han sido completadas.
+Los procedimientos de liberación (release) y retrocesos (rollbacks) están en su lugar y habilitados,
+los procesos y auditorias necesarias para cumplir las normas legales y licencias están listos y funcionales. Finalmente
+todas los procesos de gestión del cambio están correctamente seguidos y auditados.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Disminuye el riesgo durante un despliegue y que los retrocesos (rollbacks) son rápidos y eficientes si son requeridos.</p>
+</li>
+<li>
+<p>Reduce los riesgos legales y de licencias para la organización.</p>
+</li>
+<li>
+<p>Mejora la calidad en la liberación de los artefactos.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pruebas-de-humo-smoke-test"><a class="anchor" href="#pruebas-de-humo-smoke-test"></a>Pruebas de humo (Smoke Test)</h3>
+<div class="paragraph">
+<p>Las pruebas de humo (smoke test), o también conocidas como verificación de la construcción (build verification testing) o pruebas de confianza (confidence testing),
+es un tipo de estrategia para asegurar la calidad, el cual consiste en un conjunto no exhaustivo de pruebas enfocadas en asegurar que que las funciones más importantes del artefacto funcionan. El término "prueba de humo" viene de la industria del <code>hardware</code> donde al probar un artefacto por primera vez, si este no se prendía fuego y salía humo, se puede considerar como que su construcción fue un éxito. En la industria del <code>software</code> las pruebas de humo es una estrategia liviana y amplia donde todas las áreas de una aplicación (sin profundizar mucho) son probadas.</p>
+</div>
+<div class="paragraph">
+<p>Una suite de pruebas de humo pueden ser automatizadas o en combinación con un proceso manual de pruebas. Pueden ser usadas para descubrir errores de alto nivel. Si una prueba de humo falla se espera que el artefacto construido se considere inestable para mayores pruebas, hasta que la prueba de humo sea exitosa.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Si una prueba de humo falla el despliegue debe fallar.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ejemplos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Prueba de conexión a la base de datos.</p>
+</li>
+<li>
+<p>Prueba de conexión al almacenamiento en la nube.</p>
+</li>
+<li>
+<p>Prueba de conexión a <em>Kafka</em>.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-052519130a9e2b6d71271834eb3c3d64e74fdd8b.svg" alt="Flujo de una prueba de humo">
+</div>
+<div class="title">Figure 1. Flujo de una prueba de humo</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pruebas-punto-a-punto-end-to-end-e2e"><a class="anchor" href="#pruebas-punto-a-punto-end-to-end-e2e"></a>Pruebas punto a punto (end to end, E2E)</h3>
+<div class="paragraph">
+<p>Las pruebas punto a punto (<em>E2E</em>) prueban y validan que los componentes individuales y las dependencias externas del sistema funcionan adecuadamente para los casos productivos.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Validan como todas las dependencias del sistema funcionan en conjunto.</p>
+</li>
+<li>
+<p>Simulan un escenario de producción.</p>
+</li>
+<li>
+<p>Se deben ejecutar de forma paralela a las demás pruebas ya que podrían tomar un tiempo mayor y retardar el proceso de construcción y despliegue.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pruebas-de-desempeño-perfomance"><a class="anchor" href="#pruebas-de-desempeño-perfomance"></a>Pruebas de desempeño (perfomance)</h3>
+<div class="paragraph">
+<p>Las pruebas de desempeño son realizadas en un ambiente lo más similar a producción posible y se prueban varios tipos de interacciones con el sistema, los cuales permiten determinar cómo el sistema se comporta durante varias condiciones de carga y estrés. Son pensadas para validar que el sistema cumple con los requerimientos de desempeño a nivel de servicio.</p>
+</div>
+<div class="paragraph">
+<p>Se recomienda realizar un análisis de mapa de calor en los periodos de uso del sistema productivo. Y realizar las pruebas en el ambiente productivo oficial, dentro de una hora de baja o nula utilización con datos apropiadamente marcados que permitan ser eliminados automáticamente una vez terminadas las pruebas.</p>
+</div>
+<div class="paragraph">
+<p>Debido a sus características de servidor, no es obligatorio realizar pruebas de desempeño constantemente. Solo es recomendable hacerlas antes de cambios mayores en los sistemas o cuando se avecina una fecha especial que requiera mayores exigencias en los servidores (navidad, año nuevo, feriados nacionales). La periodicidad de estas pruebas dependerá de las necesidades de cada negocio.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Prueba como se comporta el sistema en contextos progresivos de aumento de carga.</p>
+</li>
+<li>
+<p>Prueba como el sistema reacciona a casos de carga abruptos y masivos.</p>
+</li>
+<li>
+<p>Valida como el sistema escala arriba o abajo con cambios de carga.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="pruebas-alfaaceptación"><a class="anchor" href="#pruebas-alfaaceptación"></a>Pruebas alfa/aceptación</h4>
+<div class="paragraph">
+<p>Los <code>stakeholders</code> validan que el sistema cumple los requerimientos y aceptan el artefacto entregado.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Existe todo el registro de las pruebas realizadas, como también de los criterios que se han aceptado como cumplidos.</p>
+</li>
+<li>
+<p>El código y el artefacto se considerán "terminados" permitiendo a los desarrolladores comenzar a planificar la siguiente iteración.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a></span>
+  <span class="next"><a href="patterns.html">Patrones y Arquitecturas de Software</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

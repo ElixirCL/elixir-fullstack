@@ -1,0 +1,102 @@
+= Observabilidad e Instrumentación
+
+La observabilidad e instrumentación se refiere al proceso de añadir código o herramientas a un sistema para adquirir y analizar datos acerca de su comportamiento y desempeño. Estos datos pueden ser usados para obtener conocimientos sobre el funcionamiento interno del sistema, permitir resolver problemas y mejorar su desempeño en general.
+
+La observabilidad e instrumentación consiste en añadir capacidades de monitoreo y generación de registros (logs) a un sistema. Esto es añadir código para registrar métricas como los tiempos de respuesta, tasa de error y utilización de recursos. También añade registrar eventos y capturar trazas de error (stack traces) para proporcionar información detallada sobre la ejecución de un sistema. 
+
+También puede incluir herramientas de traza distribuidas para tener un seguimiento de un _request_ cuando viaja por múltiples componentes de un sistema. Esto puede ayudar a descubrir cuellos de botella y problemas de desempeño (perfomance).
+
+Al instrumentar un sistema para observabilidad, los desarrolladores y operadores pueden obtener una comprehensión más profunda de cómo el sistema se comporta en tiempo real. Esto permite a ellos identificar y resolver rápidamente los problemas, mejorar el desempeño del sistema y tomar decisiones informadas sobre escalamiento y planificación de capacidad.
+
+== ¿Por qué usar Observabilidad e Instrumentación?
+
+La observabilidad e instrumentación es usada para obtener información sobre el comportamiento y desempeño de un sistema. Algunas razones para implementar son:
+
+- *Resolver problemas e incidentes*: Al instrumentar un sistema los desarrolladores y operadores pueden obtener datos sobre el comportamiento y desempeño. Estos datos pueden ser usados para identificar e solucionar incidentes, como tiempos de respuesta lentos, errores o cuellos de botella de recursos. Ayudan a identificar rápidamente la causa raíz de un prolema y resolverlo eficientemente.
+
+- *Mejora de desempeño*: Proporciona visibilidad en el desempeño de un sistema. Al obtener métricas como tiempos de respuesta, tasas de error y utilización de recursos, los desarrolladores pueden identificar áreas que necesiten optimización. Se puede tomar decisiones informadas para afinación del desempeño, escalamiento y optimización de la asignación de recursos.
+
+- *Planificación de capacidad y escalamiento*: Al monitorear y analizar los datos obtenidos a través de la observabilidad e instrumentación, los desarrolladores pueden entender las exigencias y los patrones de uso de recursos de un sistema. Ésta información es valiosa para la planificación de recursos y decisiones de escalamiento. Ayuda a determinar cuando añadir más recursos o escalar horizontalmente para manejar el tráfico o exigencias de la tarea.
+
+- *Monitoreo y alertas proactivas*: La observabilidad e instrumentación permiten el monitoreo proactivo de un sistema. Al establecer alertas basadas en límites o anomalías los desarrolladores pueden ser notificados de potenciales incidentes antes de que los usuarios finales sean impactados. Esto permite una mitigación proactiva y previene potenciales cortes de servicio o degradación del desempeño.
+
+- *Comprender el comportamiento del sistema*: Proporciona conocimiento profundo de cómo un sistema se comporta en tiempo real, ayudando a entender el flujo de de peticiones (_requests_), dependencias entre componentes y el impacto de los cambios. Este conocimiento es crucial para depurar incidentes complejos, optimizar desempeño y realizar decisiones de arquitectura informadas.
+
+== Beneficios
+
+La observabilidad e instrumentación puede ser usada por una gran variedad de _stakeholders_ involucrados en el desarrollo y operaciones de un sistema. Ayuda a la colaboración, resolución de problemas, optimización de desempeño y toma de decisiones informada.
+
+== ¿Por qué usar un SDK?
+
+El uso de bibliotecas de observabilidad da varios beneficios importantes como los siguientes:
+
+- *Estandarización de la instrumentación*: Las bibliotecas de observabilidad proporcionan una forma estandarizada de instrumentar código para propósitos de observabilidad. Ofrecen integraciones listas para usar y una _API_ que facilita obtener y exponer puntos de datos relevantes, métricas, logs y trazas. Esto permite una consistencia y uniformidad de cómo la instrumentación es implementada a través de distintos componentes de un sistema.
+
+- *Implementación simplificada*: Las bibliotecas de observabilidad crean una capa de abstracción a las complejidades de instrumentar código para observabilidad. Esto proporciona interfaces de fácil uso y _frameworks_ que simplifican el procesos de añadir monitoreo, logging y capacidades de trazabilidad a un sistema. Esto ahorra tiempo de desarrollo y esfuerzo, permitiendo a equipos enfocarse en construir y mejorar sus aplicaciones.
+
+- *Obtención de datos consistente*: Un SDK de observabilidad permite obtener datos de forma confiable y consistente de diferentes partes del sistema. Pueden manejar los detalles de obteneción de datos, agrupación y formateo, lo que permite obtener datos de forma estandarizada y precisa. La consistencia es de vital importancia para un análisis efectivo y resolución de problemas.
+
+- *Optimización del desempeño*: Los SDK tienen capacidades de optimizar el desempeño. Proporcionan información sobre cuellos de botella del sistema, utilización de recursos y tiempos de respuesta, permitiendo a los desarrolladores identificar las áreas que necesitan optimización. Al utilizar los datos obtenidos desde la observabilidad e instrumentación, los equipos pueden mejorar iterativamente mejorando el desempeño de las aplicaciones.
+
+- *Resolución y depuración de problemas mejorada*: Los SDK dan mejores herramientas para resolver problemas y depuración de errores ya que proporcionan información detallada acerca del comportamiento del sistema. Ayudan a capturar y registrar eventos, capturar stacks de error y permitir una trazabilidad distribuida. Esto logra facilitar comprender el flujo de las _requests_ e identificar problemas. Permitiendo acelerar el proceso de identificar y resolver problemas, reduciendo los tiempos muertos y mejorando la robustez del sistema.
+
+- *Colaboración y visibilidad funcional cruzada*: Utilizar SDK también proporciona y promueve la colaboración y visibilidad funcional cruzada (cross-functional). Equipos diversos como desarrolladores, operarios y _QA_ pueden obtener el mismo conjunto de herramientas de observabilidad y datos para obtener información sobre el comportamiento del sistema. Ésta visibilidad compartida promueve mejor comunicación, facilita el análisis de causa raíz y permite a los equipos trabajar juntos para mejorar la robustez y desempeño de los sistemas.
+
+== Componentes de la Instrumentación
+
+Un sistema correctamente instrumentado debe emitir tazas, métricas y registros que permiten tener una observabilidad del sistema y su entorno.
+
+=== Trazas (traces)
+
+Las trazas proporcionan una vista de águila de lo que pasa cuando una solicitud (_request_) es realizada al sistema. Independiente si una aplicación es un monolito con una base de datos única o un sofisticado sistema de servicios interconectado, las trazas son escenciales para comprender todo el recorrido que una solicitud tiene en la aplicación.
+
+=== Métricas (metrics)
+
+Las métricas son una medición de un servicio capturada en el tiempo de ejecución. El capturar una medición se conoce como `evento métrico` (metric event), el cual consiste no solo en la medición como tal, si no también el tiempo en el que fue capturada y la metada asociada.
+
+Las métricas de aplicación y _request_ son indicadores importantes de la disponibilidad y desempeño de un sistema. Métricas personalizadas proporcionan conocimiento sobre los indicadores que impactan la experiencia de usuario o negocio. Los datos obtenidos pueden ser usados para alertar de un corte de servicios o gatillar decisiones programadas para escalar o desplegar una aplicación automáticamente dependiendo de la alta demanda.
+
+=== Registros (logs)
+
+Un registro (_log_) es un texto con marca de tiempo (_timestamp_), el cual esta estructurado (recomendado) o no estructurado con _metadata_ opcional. De todas las señales de telemetría, los registros (_logs_) son los más usados y venerables. La mayoría de lenguajes de programación tienen capacidades de generar registros o bibliotecas estandarizadas y robustas de registros (_logging_).
+
+== Open Telemetry
+
+https://opentelemetry.io/[Open Telemetry] facilita la instrumentación de los sistemas. Para que un sistema sea observable debe ser instrumentado, esto significa que los componentes del sistema deben emitir `traces` (trazas), `metrics` (métricas) y `logs` (registros). Al usar _Open Telemetry_ se puede instrumentar de dos formas:
+
+- Utilizar soluciones basadas en código a través del uso de _SDK_ oficiales disponibles para gran cantidad de tecnologías.
+- Utilizar soluciones basadas en "Zero Code".
+
+Ambas opciones son complementarias y pueden ser usadas al mismo tiempo.
+
+=== SDK
+
+La solución utilizando el _SDK_ permite obtener una telemetría rica y profunda de la aplicación. Permite usar el _API_ de _Open Telemetry_ para generar telemetría del sistema, lo que es un gran complemento de la telemetría generada por la opción de "Zero Code".
+
+=== Zero Code
+
+Es una gran opción para comenzar o cuando no se puede modificar la aplicación que necesite ser instrumentada. Proporcionan telemetría abundante de las bibliotecas usadas o del ambiente donde el sistema se ejecuta. Una forma de verlo es que dan información sobre qué es lo que está pasando en la periferia del sistema.
+
+=== Uso
+
+Siempre es recomendable utilizar el _SDK_ de _Open Telemetry_, sin embargo en el caso de no estar disponible para el sistema o las tecnologías usadas, se debe recurrir a la instrumentación manual, tratando de crear una capa de abstracción compatible con _Open Telemetry_.
+
+.Uso de OpenTelemetry
+[plantuml]
+----
+@startuml
+
+skin rose
+
+title Instrumentación
+ 
+start
+if(¿Hay OpenTelemetry SDK disponible?)
+  :Usar SDK;
+else
+  :Usar instrumentación manual;
+endif
+stop
+
+@enduml
+----

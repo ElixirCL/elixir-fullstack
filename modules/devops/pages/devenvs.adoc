@@ -1,0 +1,190 @@
+= Ambientes de Desarrollo
+
+Para el desarrollo de software se necesitan distintos ambientes. Los principales ambientes son: _Local_, _Dev_, _Staging_ y _Production_.
+
+== Ambiente Local
+
+El ambiente local está configurado en la computadora personal del desarrollador. Está pensado para permitir
+el desarrollo del sistema utilizando un ambiente que permita total control. Lo que permite fluidez de movimiento
+para los desarrolladores, aumentando la agilidad y eficiencia al crear las soluciones. Normalmente está definido
+por uno o más archivos *Dockerfile* con los componentes como servidores y bases de datos
+similares a los usados en producción.
+
+.Actividades en ambiente local
+[plantuml]
+----
+@startuml
+
+skin rose
+
+title Ambiente Local
+ 
+start
+:Historia y definición de la tarea a realizar;
+
+:Clonar o actualizar desde el repositorio principal;
+:Crear y utilizar rama para los cambios;
+while (¿Pasan las pruebas en ambiente local?)  is (No)
+:Crear o refactorizar pruebas unitarias;
+:Crear o refactorizar pruebas funcionales/de contrato;
+:Crear o refactorizar pruebas de integración;
+:Crear o refactorizar el código de aplicación;
+:Evaluar y cambiar código con pruebas estáticas;
+:Almacenar cambios en repositorio local;
+endwhile (Sí)
+
+:Enviar cambios al repositorio principal en rama separada;
+
+stop
+
+@enduml
+----
+
+== Ambiente Dev
+
+El ambiente de desarrollo es un servidor disponible públicamente que es configurado con los últimos cambios
+disponibles en la rama asociada al _Pull Request_. Los servicios están configurados con la base de datos del ambiente de pruebas (staging), es una versión del ambiente de pruebas la cual tiene menor cantidad de recursos ya que está enfocada en pruebas específicas para uno o un conjunto muy limitado de desarrolladores o interesados. 
+
+Un servidor dev único es creado automáticamente en cada nuevo _PR_ y tiene una duración máxima de 8 horas. Luego es eliminado automáticamente.
+
+.Actividades en ambiente de desarrollo
+[plantuml]
+----
+@startuml
+
+skin rose
+
+title Ambiente Desarrollo
+ 
+start
+
+:Crear Pull Request con los cambios hacia la rama principal;
+
+if (¿Pruebas estáticas exitosas?) then (Sí)
+
+  :Inicio de revisión de código (Code Review);
+
+  if (¿Revisión de código Exitoso?) then (Sí)
+    :Iniciar pruebas en servidor dev;
+    :Registrar metadatos y enviar notificaciones;
+    :Ejecutar pruebas unitarias, funcionales, integración;
+    :Ejecutar pruebas de aceptación;
+
+      if (¿Pruebas exitosas en servidor Dev?) then (Sí)
+        :Obtener última versión de main;
+        if(¿Hay conflictos de merge?) then (No)
+          :Aceptar PR;
+          :Realizar Squash Commits en rama main (usar conventional commits);
+          :Eliminar rama del PR;
+          :Iniciar pruebas en ambiente Staging;
+          stop
+      endif
+    endif
+
+  endif
+endif
+
+:Rechazar PR;
+:Volver al ambiente local;
+stop
+
+@enduml
+----
+
+== Ambiente Pruebas (Staging)
+
+El ambiente staging es un ambiente para realizar pruebas por múltiples equipos. Es el que tiene más recursos que el ambiente dev, pero menos que producción. Tiene una réplica de los datos de producción periódicamente lo que permite realizar pruebas
+con datos lo más cercanos a producción. Se recomienda un periodo de función de 24/5. El despliegue es automático en cada commit en la rama `main` del repositorio principal del proyecto.
+
+.Actividades en ambiente de pruebas
+[plantuml]
+----
+@startuml
+
+skin rose
+
+title Ambiente Pruebas (Staging)
+ 
+start
+
+:Commit en la rama main;
+:Crear nueva versión aumentando número PATCH (tag);
+:Iniciar pruebas estáticas;
+:Ejecutar pruebas unitarias, funcionales, integración;
+
+if (¿Pruebas exitosas?) then (Sí)
+
+    :Iniciar proceso de despliegue a Staging;
+    :Registrar metadatos y enviar notificaciones;
+    :Iniciar pruebas en servidor staging;
+    
+    :Ejecutar pruebas de aceptación;
+
+    if (¿Pruebas exitosas en servidor Staging?) then (Sí)
+      :Marcar versión como aprobada para Prod;
+      :Iniciar proceso de Despliegue a Prod;
+      stop
+    endif
+endif
+
+:Marcar versión como fallida;
+stop
+
+@enduml
+----
+
+== Ambiente Producción
+
+Es el ambiente donde se ejecuta el sistema y el más critico. Todo cambio enviado debe ser aprobado y documentado por personas autorizadas y correctamente informado en los canales de comunicación oficiales. El despliegue es automatizado, pero debe ser autorizado de forma manual. Para el proceso productivo se recomienda utilizar *Canary Deployments*, sobre todo si son sistemas *Tier 0*.
+
+.Actividades en ambiente de producción
+[plantuml]
+----
+@startuml
+
+skin rose
+
+title Ambiente Producción
+ 
+start
+
+:Versión aprobada en Staging;
+:Iniciar pruebas estáticas;
+:Ejecutar pruebas unitarias, funcionales, integración;
+
+if (¿Pruebas exitosas?) then (Sí)
+
+  :Iniciar proceso de despliegue a Producción;
+
+  if (¿Proceso de Aprobación Manual Iniciado?) 
+    :Iniciar pruebas en servidor producción;
+    :Registrar metadatos y enviar notificaciones;
+    :Ejecutar pruebas de humo;
+    :Ejecutar pruebas E2E;
+    :Ejecutar pruebas de aceptación;
+
+    if (¿Pruebas exitosas?) then (Sí)
+      :Despliegue a producción exitoso;
+      :Marcar versión como última disponible en producción;
+      :Ejecutar pruebas de desempeño (opcional, perfomance);
+      stop
+    else
+      :Marcar versión como fallida;
+      stop
+    endif
+  endif
+
+  :Esperar la aprobación manual;
+  stop
+endif
+
+:Marcar versión como fallida;
+stop
+
+@enduml
+----
+
+== Mejores prácticas
+
+Se recomienda que el ambiente _Dev_ y ambiente _Staging_ sean apagados los días donde no se trabaje, permitiendo ahorrar costos
+de servidores.

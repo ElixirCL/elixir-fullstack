@@ -1,0 +1,306 @@
+= Etapas del Desarrollo de un Producto de Software
+
+El desarrollo de software puede ser difícil de administrar debido a los requisitos cambiantes, 
+los avances de la tecnología y la colaboración interfuncional. La metodología del ciclo de vida del desarrollo de 
+software ofrece un marco de administración sistemático con entregas específicas en cada etapa del proceso de desarrollo 
+de software. Como resultado, todas las partes interesadas establecen por adelantado los objetivos y requisitos de 
+desarrollo del software y también cuentan con una planificación para conseguirlo (<<amazon-sdlc>>).
+
+== Flujo superior (Upstream)
+
+Los flujos superiores (_Upstream_) son todo el contexto anterior que ocurre en la organización para llegar a la conclusión
+de que el proyecto de software debe ser realizado. Ayuda a definir las preguntas: ¿Qué es el proyecto?, ¿Qué no es el proyecto?, 
+¿Qué hace el proyecto?, ¿Qué no hace el proyecto?. Identificar a los principales `stakeholders` e interesados, presupuestos, limitaciones previas, como también
+los encargados de gestionar los procesos de preparación y levantamiento de requerimientos. La utilización de la herramienta "personas" (positivas y negativas)
+puede ayudar identificar el público objetivo de la solución y ayudar a definir características como también evaluar las prioridades. Normalmente está definido en un "Documento de Requerimiento de Producto" ver anexo sobre _PRD_.
+
+== Preparación
+
+En la etapa de preparación se debe asegurar que los involucrados estén capacitados con las habilidades
+y certificaciones necesarias para desarrollar código y artefactos de alta calidad de forma eficiente, reduciendo
+la probabilidad de un incidente en producción.
+
+- Proporcionar correcto entrenamiento y capacitaciones respectivas en las prácticas internas de la empresa, como también las buenas prácticas del desarrollo de software.
+- Proporcionar un claro mapa de crecimiento dentro de la organización para los asociados.
+- Velar siempre por mejorar la calidad del producto.
+- Velar por reducir las probabilidades de un incidente en producción.
+- Configurar correctamente los equipos de trabajo, así como dar de alta en los servicios asociados y credenciales de acceso en los canales de comunicación internos.
+
+=== Definición de los requerimientos no funcionales
+
+Los requerimientos no funcionales para una aplicación de negocio o servicio técnico incluyen algunos como robustez, escalabilidad, desempeño, operabilidad y otras características que la arquitectura debe soportar.
+
+- Ayudan a la organización encontrar requisitos legales u otros relacionados.
+- Mejoran la eficiencia en el desarrollo a través de requerimientos claros y estables.
+- Reducen el costo de la arquitectura y el retrabajo de implementación, por medio de reducir las ocurrencias de diseñar y construir requerimientos erróneos.
+- Ayudan a crear software confiable, robuzto y eficiente que satisface a los usuarios finales.
+- Ayuda a reducir los riesgos de incidentes en producción.
+
+=== Definición de las prácticas de seguridad y cómo cumplirlas
+
+En el ciclo de desarrollo se debe resolver tempranamente los requerimientos de seguridad, regulaciones, cumplimiento y riesgos asociados.
+
+- Reducir la probabilidad de una falla de seguridad y sus consecuencias, como pérdida de reputación comercial o multas.
+- Evitar fisuras que permitan liberar información delicada que pueden costar millones de dólares por incidente.
+- Seguir las recomendaciones de seguridad de la última versión del https://owasp.org/Top10/[Owasp Top 10].
+
+=== Registrar los metadatos del desarrollo
+
+En esta etapa se debe configurar los servicios y datos necesarios para la iteración actual del ciclo de vida del desarrollo de software.
+Esto significa registrar o actualizar los permisos y asignar los recursos técnicos necesarios para la operación (servidores, bases de datos, procesos de deployment, repositorios git, canales de comunicación, entre otros).
+También incluye la asignación de roles y datos de contacto actualizados del equipo, al igual que los datos de gestión del proyecto (creación de backlogs con herramientas de priorización de tareas y gestión de proyectos).
+
+- Tener un panel de control que permita administrar el desarrollo para alcanzar una calidad de producto consistente.
+- Preferir procesos automatizados que permitan un desarrollo más eficiente y de baja fricción.
+
+=== Revisar los requerimientos funcionales y los criterios de aceptación
+
+Validación que los requerimientos funcionales y los criterios de aceptación son los suficientemente comprehensivos, claros
+y estables para tomar decisiones de diseño y la creación de los planes de desarrollo.
+
+- Evitar retrabajo costoso por requerimientos inestables y cambiantes.
+- Asegurar que el desarrollo esté alienado con las necesidades del negocio y sus clientes.
+- Empoderar a los desarrolladores y arquitectos a determinar si el requerimiento esta listo para ser llevado al diseño e implementación.
+
+== Diseño
+
+La etapa de diseño consiste en elaborar los contratos, diagramas y documentación necesaria para cumplir
+los criterios de aceptación de los requerimientos funcionales y ser usados para la etapa de desarrollo.
+
+Se recomiendan las herramientas de _Asciidoc_ (Antora Docs), _PlantUML_ (UML), _Diagrama C4_ (Arquitectura) y _Vega_ (Histogramas y gráficos)
+para poder documentar apropiadamente con documentación viva y de fácil actualización.
+
+=== Diseño de los contratos de API
+
+Crear contratos de _API_ de alta calidad que aseguren que las abstracciones que proporcionan ayuden a la evolución y mantención (alta cohesión, bajo acoplamiento), 
+sean simples de usar (fácil adopción) y permitan que los desarrolladores las usen eficientemente.
+
+- Asegurar que se cumplen los requerimientos funcionales y no funcionales.
+- Priorizar contratos preparados para el futuro, que reducen lo más posible cambios en el lado del cliente cuando las APIs evolucionen. 
+- Se recomienda establecer una política de *Compatibilidad y Obsolescencia* programada. Ver el anexo adjunto sobre _Versionado y Política de Compatibilidad y Obsolescencia_.
+- Crear APIs amigables con los desarrolladores para impulsar su adopción eficiente.
+
+=== Diseño de arquitectura para la versión actual
+
+Definir la arquitectura que guíe el desarrollo de la versión actual. De esta forma el desarrollo es coordinado y eficiente y los interesados (_stakeholders_) estén alineados con las decisiones técnicas tomadas por el equipo. Permitiendo que la organización cree planes de desarrollo y despliegue realistas y apropiados.
+
+- Asegurar que los productos cumplan los requerimientos no funcionales.
+- Mejorar la velocidad del desarollo al disminuir el tiempo enfocado en diseño.
+- Reducir el riesgo de incidentes en producción al resolver requerimientos no funcionales críticos como disponbilidad, resiliencia, desempeño, seguridad y cumplimiento de licencias requeridas.
+
+=== Revisión de los contratos de API
+
+Los contratos de API son revisados y auditados para detectar posibles mejoras o problemas que no se tomaron en consideración.
+Normalmente son revisados por personas externas que no elaboraron los contratos inicialmente. Un grupo de interesados clave de múltiples ámbitos que permite validar la definición a implementar para que esté alineada con el alcance y estratégica técnica y la calidad esperada.
+
+- Permite reducir los tiempos de revisión posterior e implementación.
+- Se pueden generar casos de prueba a tener en consideración.
+- Revisados por los miembros de equipos de implementación, consumidores y otros interesados.
+
+=== Revisión de arquitectura para la versión actual
+
+La definición de arquitectura es revisada y auditada para detectar posibles mejoras o problemas que no se tomaron en consideración.
+Normalmente es revisada por personas externas que no elaboraron los contratos inicialmente. Un grupo de interesados clave de múltiples ámbitos que permite validar la definición a implementar para que esté alineada con el alcance y estratégica técnica y la calidad esperada.
+
+- Permite reducir los tiempos de revisión posterior e implementación.
+- Se pueden generar casos de prueba a tener en consideración.
+- Revisados por los miembros de equipos de implementación, consumidores y otros interesados.
+
+=== Utilizar ADR para conducir las decisiones de arquitectura
+
+Las elecciones de tecnología y soluciones propuestas para completar un proyecto están influenciadas por diversas decisiones tomadas por los miembros del equipo involucrados en el proyecto durante la fase de desarrollo. Las _ADR_ ayudan a nuevos integrantes del equipo a comenzar más rápido y a documentar los factores que jugaron un rol importante para llegar a una decisión, dando contexto y respondiendo las preguntas ¿Qué?, ¿Por qué?, ¿Cómo?, ¿Cuándo? y ¿Dónde? de cada decisión. Ver anexo _Arquitecture Decision Records_.
+
+- Ayudan a reducir el número de reuniones.
+- Permiten tener un acervo documental para tomar decisiones más complejas.
+- Dan contexto y permiten analizar distintas opciones para encausar el proyecto al mejor camino de forma más certera.
+- Permiten una conversación abierta a los integrantes del equipo y reducen el tiempo de explicación sobre las deciciones tomadas en un área.
+
+== Desarrollo
+
+En la fase de desarrollo e implementación, el equipo de desarrollo codifica el producto. Se analizan los requisitos para identificar tareas de codificación más pequeñas que puedan hacerse diariamente para conseguir el resultado final (<<amazon-sdlc>>).
+
+Las siguientes subsecciones están ordenadas para seguir los pasos necesarios para crear y validar una funcionalidad.
+
+=== Construcción (Build)
+
+Se construye el artefacto con las herramientas adecuadas y autorizadas, sus repositorios y dependencias. Además de seguir un plan de  versionamiento y obsolescencia acordado. Ver anexo _Versionado y Política de Compatibilidad y Obsolescencia_.
+
+- Uso de pipelines estandarizados y oficiales para construir el producto mejora la calidad del mismo con validación de artefactos consistente y profunda.
+- Reduce el riesgo de incidentes en producción usando la administración adecuada del versionado de los artefactos construidos.
+- Reuce el tiempo requerido para reparación de defectos usando un versionado y nomenclatura consistente.
+- Los artefactos construidos estan almacenados de forma segura y accesibles.
+
+=== Administración de artefactos de código
+
+Los artefactos de código están almacenados y respaldados en un repositorio central, el cual tiene normas de higiene establecidas para asegurar la calidad del código que almacena. Siguiendo las buenas prácticas de _Trunk Based Development_. Ver anexo sobre _Trunk Based Development_.
+
+- El desarrollo es rápido y eficiente.
+- Los cambios están administrados correctamente.
+- El código esta respaldado y tiene medidas de seguridad para prevenir filtraciones a terceros no deseados.
+
+=== Pruebas unitarias
+
+Las pruebas unitarias son pruebas deterministas que prueban la ejecución de una unidad específica y discreta de la aplicación como una funcion, un método o componente de _UI_ en total aislamiento del resto de componentes para determinar si se comporta como se espera.
+
+- Verifica la funcionalidad de una unidad (método, clase, función, módulo, etc) en aislamiento.
+- Detecta errores tempranos en el ciclo de desarrollo.
+- Son automatizadas y rápidas de ejecutar.
+
+=== Pruebas funcionales (de contrato)
+
+Una prueba funcional o de contrato es una prueba determinista que verifica que los módulos de un sub sistema estén funcionado correctamente. Las pruebas funcionales deben evitar integrar con otros sub sistemas ya que esto reduce el determinismo. Ejemplos son probar el comportamiendo de una interfaz de usuario en la _UI_ o probar la lógica de negocio de un servicio individual por medio de su _API_.
+
+- Valida la funcionalidad antes de integrarla con otros sub sistemas.
+- Asegura que los contratos de API estén bien implementados y sean adecuados.
+
+=== Pruebas de integración
+
+Las pruebas de integración es una unidad "sociable" de prueba que es determinista y usada para verificar como una unidad interactúa con otras unidades sin acceder directamente a los sub sistemas externos.
+
+- Valida como una unidad funcionará al ser integrada.
+- Es la mejor forma de validar los contratos entre unidades.
+
+=== Escritura y refactorización de código
+
+Se debe escribir el código usando los lenguajes y _frameworks_ autorizados, siguiendo los estándares y la definición de arquitectura y cumpliendo los criterios de aceptación de los requisitos funcionales y no funcionales. Refactorizando el código para mejorar su calidad, reducir la deuda técnicas y asegurar que el código fuente es mantenible, es decir, que sea simple de modificar en el tiempo siguiendo los principios de alta cohesión y bajo acoplamiento.
+
+- El código es consistente.
+- El código es eficaz, efectivo, confiable, fácil de ejecutar y seguro.
+- El código es simple de mantener y probar.
+- El código es creado con herramientas complementarias robustas y adecuadas.
+- El código tiene un formato estandarizado. Ejemplo: En _Elixir_ se debe usar el comando `mix format`.
+- La solución utiliza buenas prácticas como https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/hexagonal-architecture.html[Arquitectura Hexagonal], https://martinfowler.com/bliki/DomainDrivenDesign.html[Domain Driven Design], https://www.thoughtworks.com/en-cl/insights/blog/agile-engineering-practices/solid-principles-how-to-create-a-code-that-is-easy-to-extend-and-maintain-part-1[SOLID] y https://en.wikipedia.org/wiki/Software_design_pattern[Patrones de Diseño], y otras buenas prácticas relativas a la tecnología usada, según aplique al contexto de la solución.
+
+=== Pruebas estáticas
+
+La prueba estática evalúa el código sin compilar o ejecutarlo. Esta pensada para validar las buenas prácticas y verificar la seguridad, estructura y otras posibles causas de fallas.
+
+- Identifica vulnerabilidades.
+- Verifica el uso de buenas prácticas y estándares.
+- Identifica errores y posibles mejoras.
+- Para _Elixir_ se utiliza https://github.com/rrrene/credo[Credo]. Otras tecnologías pueden usar https://www.sonarsource.com/products/sonarqube/[SonarQube]. Para encontrar malas prácticas y corregirlas.
+- Se recomiendan herramientas como https://owasp.org/www-community/Source_Code_Analysis_Tools[OWASP SCAT] para encontrar vulnerabilidades.
+
+=== Revisión de código
+
+Un miembro del equipo revisa e inspecciona el código para identificar posibles mejoras o defectos a corregir, además de verificar la adherencia a los estándares de calidad de código acordados.
+
+- Identificar posibles problemas tempranamente para reducir los costos de desarrollo e incrementar la velocidad del mismo.
+- Mejorar la calidad del código y su facilidad de mantención.
+- Reducir la frecuencia y severidad de incidentes en producción.
+- Reducir el tiempo necesario en resolver problemas directamente.
+- Detectar defectos que son difíciles de detectar con pruebas automatizadas.
+- Facilitar compartir información y el aprendizaje de buenas prácticas.
+
+=== Validación de arquitectura
+
+El sistema que se ha construido para la versión actual se compara con lo planificado y diseñado. Cualquier discrepancia es resuelta ya sea corrigiendo el artefacto o actualizando los diseños y planes iniciales.
+
+- Asegura que los requerimientos no funcionales han sido cumplidos.
+- Hace que dar soporte y mantención sea más efectivo.
+- Previene la acumulación de deuda técnica.
+
+== Despliegue (Deploy)
+
+El despliegue (deploy) es el proceso de pasos necesarios para que el artefacto pueda ejecutarse en su entorno productivo (o de pruebas) y permita ser operado por los involucrados. Este puede ser manual o automatizado.
+
+=== Configurar la infraestructura de despliegue y operaciones
+
+Los sistemas utilizados por los equipos de operaciones para ejecutar todas las actividades operativas
+deben ser configurados y activados para el artefacto que será liberado. Esto incluye sistemas 
+para monitoreo, alertas automáticas y administración de notificaciones para incidentes productivos.
+
+- Asegura que el monitoreo esté bien configurado y funcional.
+- Asegura que las alertas estén bien configuradas y funcionales.
+- Asegura que los equipos de operaciones puedan notificar apropiadamente cuando un incidente es detectado.
+
+=== Crear documentación y ejemplos sobre operación del sistema
+
+Escribir documentación y desarrollar ejemplos para operar el artefacto liberado, en una forma consistente y metódica, incluyendo como manejar las tareas esperadas, realizar escalamiento horizontal/vertical, estrategias de mitigación de fallos y pasos para lograr alcanzar los objetivos operativos y de control de incidentes (Mean time to deploy, Mean time to escalate, Mean time to recover, entre otras métricas asociadas <<atlassian-incidents-metrics-2024>>).
+
+- Permite a los equipos conocer como realizar las tareas más comunes del sistema.
+- Permite a los equipos conocer como responder a incidentes e identificar problemas.
+- Permite a los equipos conocer como restaurar la aplicación en el caso de un desastre o caidas de servicio.
+
+=== Despliegue a producción
+
+Se deben completar todas las tareas relacionadas al despliegue (`deploy`) tales como: 
+
+- Crear un documento de registro de cambios, 
+- Versionar apropiadamente el artefacto.
+- Desplegar el artefacto al ambiente productivo y realizar pruebas de humo.
+
+=== Validación y monitoreo del despliegue a producción
+
+Esta es la validación final de que todas las actividades obligatorias han sido completadas. 
+Los procedimientos de liberación (release) y retrocesos (rollbacks) están en su lugar y habilitados, 
+los procesos y auditorias necesarias para cumplir las normas legales y licencias están listos y funcionales. Finalmente
+todas los procesos de gestión del cambio están correctamente seguidos y auditados.
+
+- Disminuye el riesgo durante un despliegue y que los retrocesos (rollbacks) son rápidos y eficientes si son requeridos.
+- Reduce los riesgos legales y de licencias para la organización.
+- Mejora la calidad en la liberación de los artefactos.
+
+=== Pruebas de humo (Smoke Test)
+
+Las pruebas de humo (smoke test), o también conocidas como verificación de la construcción (build verification testing) o pruebas de confianza (confidence testing), 
+es un tipo de estrategia para asegurar la calidad, el cual consiste en un conjunto no exhaustivo de pruebas enfocadas en asegurar que que las funciones más importantes del artefacto funcionan. El término "prueba de humo" viene de la industria del `hardware` donde al probar un artefacto por primera vez, si este no se prendía fuego y salía humo, se puede considerar como que su construcción fue un éxito. En la industria del `software` las pruebas de humo es una estrategia liviana y amplia donde todas las áreas de una aplicación (sin profundizar mucho) son probadas.
+
+Una suite de pruebas de humo pueden ser automatizadas o en combinación con un proceso manual de pruebas. Pueden ser usadas para descubrir errores de alto nivel. Si una prueba de humo falla se espera que el artefacto construido se considere inestable para mayores pruebas, hasta que la prueba de humo sea exitosa.
+
+- Si una prueba de humo falla el despliegue debe fallar.
+
+Ejemplos:
+
+- Prueba de conexión a la base de datos.
+- Prueba de conexión al almacenamiento en la nube.
+- Prueba de conexión a _Kafka_.
+
+.Flujo de una prueba de humo
+[plantuml]
+----
+@startuml
+
+skin rose
+
+title Prueba de Humo
+
+start
+
+if (¿Se conecta a la base de datos?) then (sí)
+  :prueba de humo exitosa;
+else (no)
+  :prueba de humo fallida;
+endif
+
+stop
+
+@enduml
+----
+
+=== Pruebas punto a punto (end to end, E2E)
+
+Las pruebas punto a punto (_E2E_) prueban y validan que los componentes individuales y las dependencias externas del sistema funcionan adecuadamente para los casos productivos.
+
+- Validan como todas las dependencias del sistema funcionan en conjunto.
+- Simulan un escenario de producción.
+- Se deben ejecutar de forma paralela a las demás pruebas ya que podrían tomar un tiempo mayor y retardar el proceso de construcción y despliegue.
+
+=== Pruebas de desempeño (perfomance)
+
+Las pruebas de desempeño son realizadas en un ambiente lo más similar a producción posible y se prueban varios tipos de interacciones con el sistema, los cuales permiten determinar cómo el sistema se comporta durante varias condiciones de carga y estrés. Son pensadas para validar que el sistema cumple con los requerimientos de desempeño a nivel de servicio.
+
+Se recomienda realizar un análisis de mapa de calor en los periodos de uso del sistema productivo. Y realizar las pruebas en el ambiente productivo oficial, dentro de una hora de baja o nula utilización con datos apropiadamente marcados que permitan ser eliminados automáticamente una vez terminadas las pruebas.
+
+Debido a sus características de servidor, no es obligatorio realizar pruebas de desempeño constantemente. Solo es recomendable hacerlas antes de cambios mayores en los sistemas o cuando se avecina una fecha especial que requiera mayores exigencias en los servidores (navidad, año nuevo, feriados nacionales). La periodicidad de estas pruebas dependerá de las necesidades de cada negocio.
+
+- Prueba como se comporta el sistema en contextos progresivos de aumento de carga.
+- Prueba como el sistema reacciona a casos de carga abruptos y masivos.
+- Valida como el sistema escala arriba o abajo con cambios de carga.
+
+==== Pruebas alfa/aceptación
+
+Los `stakeholders` validan que el sistema cumple los requerimientos y aceptan el artefacto entregado.
+
+- Existe todo el registro de las pruebas realizadas, como también de los criterios que se han aceptado como cumplidos.
+- El código y el artefacto se considerán "terminados" permitiendo a los desarrolladores comenzar a planificar la siguiente iteración.

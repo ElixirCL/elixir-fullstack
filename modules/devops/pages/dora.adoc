@@ -1,0 +1,206 @@
+= Métricas DORA
+
+_DORA_ es un acrónimo para "DevOps Research and Assesment". Usado con el objetivo de mejorar las prácticas, procesos y capacidades que permiten a los equipos alcanzar una alta perfomance en software y su entrega de valor.
+
+En el año 2018 se publicó un libro llamado "Accelerate" <<forsgren-2018>> donde los investigadores identificaron un conjunto de métricas que indican el perfomance de un equipo de software en relación al desarrollo y las capacidades de entrega de valor.
+
+Las métricas recomendadas son: "Development Cycle Time" (Delivery Leadtime), "Deploy Frequency", "Mean Time to Restore" (MTTR) y "Change Failure Rate". Éstas métricas ayudan a los equipos a mejorar continuamente en sus procesos y capacidades y son conocidas como las métricas _DORA_.
+
+El propósito de las métricas _DORA_ es medir el estado de salud del esfuerzo de mejora continua, ¿Lo que hacemos nos ayuda a mejorar?. No se trata de medir la velocidad, más bien de descubrir problemas a resolver que permitan mejorar el valor de las soluciones que son entregadas al cliente final.
+
+Las métricas son obtenidas desde la unidad más pequeña, el repositorio de código donde se desarrolla el proyecto. Además pueden ser agrupadas en distintos niveles según sea la necesidad. En la siguiente tabla se muestra una agrupación sugerida.
+
+[cols="1,1"]
+|===
+|Contexto|Descripción
+
+|Repositorio|Son las métricas asociadas a un único repositorio.
+
+|Equipo (Tech Lead)|Las métricas son la conjunción de todos los repositorios dentro del Equipo, vista asociada a un Tech Lead.
+
+|Grupo (Engineer Manager)|Las métricas son asociadas a todos los equipos que el _Engineer Manager_ maneja.
+
+|Global (Empresa)|Las métricas son asociadas a todos los grupos de equipos dentro de la empresa, vista asociada a altos cargos.  
+|===
+
+[IMPORTANT]
+====
+Para las métricas se toma en consideración una semana de 6 días y las últimas 15 semanas para generar el promedio.
+====
+
+[TIP]
+====
+Los datos se pueden graficar on un histograma o gráfico de líneas.
+====
+
+== Development Cycle Time
+
+El _Development Cycle Time_, también conocido como _Development Leadtime Delivery_ (Plazo de entrega del desarrollo), es una medición del tiempo total entre cuando un cambio fue iniciado hasta que dicho cambio entró al ambiente de producción. Esto ayuda a los equipos entender el tiempo que toma entregar las tareas a producción. El objetivo es reducir el tamaño de las tareas, ya que pequeños cambios permiten mitigar los problemas más fácilmente, como por ejemplo mitigar los efectos de cambio de prioridades. Además ayuda a obtener retroalimentación más rápidamente sobre la calidad del entregable.
+
+El _Development Cycle Time_ es el promedio del tiempo entre el primer commit de un _Pull Request_ y cuando dicho cambio es enviado a producción. Está subdividido en cuatro etapas: _In Progress_, _Review_, _Merge_ y _Deploy_.
+
+- *In Progress*: In Progress (En progreso) se considera el tiempo entre el primer commit y el tiempo de la primera solicitud de _Review_ (revisión).
+
+- *Review*: _Review_ (Revisión) Considera el tiempo desde la primera solicitud de _Review_ hasta la última aprobación.
+
+- *Merge*: _Merge_ (Unir) Considera el tiempo desde la última aprobación hasta el _Merge_ a la rama `main`.
+
+- *Deploy*: _Deploy_ (Despliegue) Considera el tiempo desde el _Merge_ del _Pull Request_ hasta ser enviado a producción. Se recomienda lograr un tiempo de despliegue de 15 minutos o menos.
+
+=== Meta a Cumplir
+
+Se debe apuntar a un tiempo de 24 horas o menos.
+
+==== ¿Cómo cumplirla?
+
+- Identificar las áreas del proceso de _deployment_ y _build_ que pueden ejecutar de forma concurrente y paralela.
+- Reemplazar pruebas `end to end` (punto a punto) en el _pipeline_ de despliegue con servicios virtuales y mover las pruebas `end to end` a un proceso asíncrono.
+- Atomizar servicios grandes en componentes y dominios más pequeños que permitan construir, probar y hacer despliegues más rápidos.
+- Añadir alertas al _pipeline_ si la duración máxima de despliegue ha sido excedida para mejorar y refactorizar las prioridades de las pruebas.
+
+=== Fuentes de Datos
+
+Para ésta métrica las fuentes de datos puede ser cualquier plataforma utilizada para gestionar cambios en el códígo y obtener información sobre los mismos. Por ejemplo un _Github Action_ que envíe métricas al realizar
+_Pull Request_ y los distintos eventos del ciclo de vida de un cambio.
+
+=== Gráfico
+- Días por semana: 6
+- Semanas: 15
+- Development Cycle Time: 38 días 12 horas 24 min (Tech Lead)
+- Development Cycle Time: 12 dias 4 horas 43 min (Engineer Manager)
+
+.Histograma de Development Cycle Time (Tech Lead)
+[vega]
+----
+include::example:$././dev-cycle-tl.json[]
+----
+
+.Histograma de Development Cycle Time (Engineer Manager)
+[vega]
+----
+include::example:$././dev-cycle.json[]
+----
+
+== Deploy Frecuency
+
+El _Deploy Frecuency_ o _Deployment Frecuency_ (Frecuencia de Despliegue) mide cuán frecuente un equipo envía cambios a producción. _DORA_ recomienda que para alcanzar equipos de alto desempeño, se debe desplegar cambios a producción más pequeños y más frecuentes. Esto permite mejorar el tiempo de entrega de valor al cliente final y reducir el riesgo. Cambios más pequeños permiten una identificación más sencilla de los problemas y poder remediarlos más rápidamente. La combinación del tamaño del trabajo y cuan frecuente se entrega dicha tarea es una gran herramienta para ayudar descubrir problemas en el flujo de entrega de valor.
+
+El _Deploy Frecuency_ es el número de "deployments" (despliegues) únicos a producción de un artefacto. Esta métrica ignora cualquier deploy a producción usando la misma versión del artefacto. Es decir, al enviar la versión `1.0.0` solamente considerará ese deployment, reenviar la misma versión más veces no será contado. Para contar un nuevo deployment se debe aumentar la versión, por ejemplo a `1.0.1`.
+
+[IMPORTANT]
+====
+Se recomienda utilizar `SemVer` y herramientas de automatización que permitan que para cada nuevo cambio en la rama `main` se realice una nueva versión.
+====
+
+=== Meta a Cumplir
+
+Lo ideal es tener 5 deploys a producción por semana (1 por día) como mínimo e idealmente más de 6 a la semana.
+
+==== ¿Cómo Cumplirla?
+
+- Eliminar la delegación de responsabilidades a otros equipos.
+- Eliminar los procesos manuales.
+- Mejorar las pruebas y trasladar la responsabilidad de la calidad al equipo.
+- Trasladar las dependencias rígidas a dependencias flexibles con "feature flags" (indicadores de características) y virtualización de servicios.
+- Centrarse en la integración continua con pequeños cambios integrados a la rama `main` (tronco) de forma continua.
+- Utilizar "Trunk Based Development" para reducir el riesgo de pérdida de cambios y la sobrecarga del proceso.
+
+=== Fuentes de Datos
+
+Para ésta métrica las fuentes de datos puede ser cualquier plataforma utilizada para realizar despliegues
+y obtener información sobre los mismos. Por ejemplo un _Github Action_ que envíe métricas al realizar
+cada deployment.
+
+=== Gráfico
+
+- Días por semana: 6
+- Semanas: 15
+- Developer Frecuency: 0.87 deploys por semana
+
+.Histograma de Deploy Frequency
+[vega]
+----
+include::example:$./deploy-frecuency.json[]
+----
+
+[NOTE]
+====
+Para los datos del gráfico anterior podemos notar que el promedio de despliegues a producción para este repositorio
+es *0.87* por semana.
+
+- stem:[Promedio = (Semana 1 + Semana 2 + .... + Semana 15) / 15]
+- stem:[Promedio = (0 + 0 + 0 + 0 + 0 + 2 + 4 + 3 + 0 + 0 + 0 + 0 + 0 + 0 + 4) / 15]
+- stem:[Promedio = 13/15]
+- stem:[Promedio = 0.866667]
+====
+
+== Mean Time To Restore (MTTR)
+
+El _Mean Time to Restore_ (Tiempo promedio de restauración) mide cuánto se tarda en restaurar el servicio de la aplicación principal o la relativa al proyecto cuando un incidente ocurre, por ejemplo un apagón de luz o problemas de conexión a los servicios. El objetivo de mejorar las métricas _MTTR_ es minimizar el impacto de las incidencias y eventualmente construir sistemas de apoyo que detecten, diagnostiquen y resuelvan problemas de forma rápida y eficiente cuando estos ocurran.
+
+Para calcular el _MTTR_ se debe obtener el tiempo promedio que se demora en restaurar el servicio o la aplicación cuando un incidente (corte de luz, caida de servicio, etc.) ocurre.
+
+- stem:[MTTR = Promedio(Tiempo de Resolución de Incidente - Tiempo de Creación de Incidente)]
+
+=== Meta a Cumplir
+
+El objetivo es lograr la restauración del servicio en 1 hora o menos.
+
+==== ¿Cómo cumplirla?
+
+- Asegurar que el _pipeline_ siempre este operativo y pueda desplegar.
+- Mantener la métrica de _Deploy Leadtime_ baja para permitir despliegues a producción rápidos. Se recomienda una aplicación que sea desplegada e iniciada en 15 minutos o menos.
+- Implementar _feature flags_ para cambios grandes que permitan desactivarlos sin necesidad de realizar nuevos despliegues.
+- Identificar problemas de estabilidad y priorizarlas al momento de crear el `backlog`.
+- Utilizar `Canary Deployments` al enviar cambios a producción, lo que permite automatizar _rollbacks_ al encontrar fallas en el funcionamiento productivo.
+
+=== Fuentes de Datos
+
+La fuente de datos es un servicio de manejo de incidentes que pueda entregar los valores necesarios para el cálculo. Por ejemplo puede ser un issue en Github que sea catalogado como `incidente` y se obtenga su tiempo desde creación hasta cierre o resolución.
+
+=== Gráfico
+
+- Días por semana: 6
+- Semanas: 15
+- Mean Time To Restore: 3 días 4 horas 38 min
+
+.Histograma de MTTR
+[vega]
+----
+include::example:$./mttr.json[]
+----
+
+== Change Failure Rate
+
+El _Change Failure Rate_ (Tasa de fallas en cambios) es la tasa que mide cuántos cambios realizados en producción han producido incidentes, rollbacks o fallas. Esto es un indicador de la calidad del código enviado a producción. Mientras más baja es la tasa, mejor es la calidad del artefacto. El equipo debe reducir este número lo más posible con el tiempo, ya que se espera que mejoren sus habilidades, herramientas, prácticas y procesos.
+
+Se puede calcular como el porcentaje de cambios que resultan en un impacto negativo hacia los clientes finales con cualquier nivel de tráfico.
+
+- stem:[Change Failure Rate = (Despliegues con Change Failure / Total de Deployments) * 100]
+
+Al realizar un _deployment_ y este provoca un fallo, se debe marcar la versión como _Change Failure_ automáticamente, para ayudar a obtener las métricas.
+
+=== Meta a Cumplir
+
+Se recomienda lograr un 15% o menos de porcentaje de fallos al cambio.
+
+==== ¿Cómo cumplirla?
+
+- Realizar cambios pequeños de forma más frecuente para hacer los pasos de calidad más efectivos y reducir el impacto de los fallos.
+- Identificar las causas raíz (root cause) de cada fallo y mejorar los análisis de calidad automatizados.
+
+=== Fuentes de Datos
+
+La fuente de datos es un servicio de manejo de incidentes que pueda entregar los valores necesarios para el cálculo y cualquier plataforma utilizada para realizar despliegues y obtener información sobre los mismos.
+
+=== Gráfico
+
+- Días por semana: 6
+- Semanas: 15
+- Change Failure Rate: 1.94%
+
+.Histograma de Change Failure Rate
+[vega]
+----
+include::example:$./change-failure.json[]
+----

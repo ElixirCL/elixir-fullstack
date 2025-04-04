@@ -1,0 +1,45 @@
+= Documento de Requerimiento de Producto (Product Requirement Document - PRD)
+
+Es un documento que brinda contexto sobre las condiciones necesarias antes de elaborar un producto o solución.
+
+La siguiente es una plantilla que permite elaborar un _PRD_ (_Product Requirement Document_).
+
+== Contexto
+
+- *Problema*: ¿Qué problema o necesidad de cliente y negocio se debe resolver?.
+- *Hipótesis y supuestos*: ¿Qué se espera resolver?, ¿Cuáles son los supuestos en los que la solución se basa?. ¿Qué es el proyecto?, ¿Qué no es el proyecto?, ¿Qué hace el proyecto?, ¿Qué no hace el proyecto?.
+- *Objetivos*: ¿Qué se desea lograr?, ¿Cuáles son los beneficios obtenidos una vez implementada la solución?.
+
+== Métricas e impacto
+
+- *Metas y KPI*: ¿Cómo se mide el éxito?, ¿Cuál es el valor esperado que generará la funcionalidad cuando esté disponible a clientes y usuarios?, ¿De dónde se obtiene la información y cómo se hace disponible?.
+- *DND metrics*: ¿Qué indicadores no se debe afectar negativamente? (Do not disturb metrics).
+
+== Usuarios y clientes
+
+- *User personas y storybords*: ¿Quiénes son los usuarios?, ¿Quiénes no son los usuarios?, ¿Qué comportamiento tienen?. Usar las herramientas de "personas" e historias de usuario o _storyboards_ para detallar.
+- *Flujos de negocio y operacionales*: ¿Cuáles son los procesos involucrados o que son dependencia de la funcionalidad?, ¿Cuáles son las reglas de negocio y operacionales?.
+- *Info de investigación*: ¿Qué conocimiento (_insights_) se tiene de los clientes?.
+
+== Solución
+
+- *Resumen de la solución*: ¿Cómo se resuelve la necesidad de clientes y/o negocio?, ¿Cuál es el alcance de la solución?.
+- *Requisitos funcionales*: ¿Qué funcionalidades específicas debe tener la solución tecnológica para satisfacer las necesidades descritas en el contexto y objetivos?. Incluir comportamientos, operaciones y tareas que la solución debe poder realizar.
+- *Restricciones y dependencias*: Limitaciones bajo las cuales debe operar la solución, incluyendo tecnologías existentes, regulaciones y dependencias con otros sitemas o proyectos. ¿Qué restricciones presupuestarias, legales u anexas tiene la solución u organización?.
+- *Criterios de aceptación*: Listado de condiciones que la solución debe cumplir para ser considerada completa y lista para su paso a producción, desde la perspectiva del usuario final y del negocio. Estas pruebas son la base del proceso de aceptación (User Acceptance Testing - UAT).
+- *Diagramas de flujo, secuencia, estado y C4, entre otros*: Representación de procesos de usuario, operación y negocio implementados en la solución.
+- *Recursos (wireframes, diseño, interacciones, UI)*: Material de referencia de _UX_ que definen la apariencia y la interacción del usuario con la solución, como pantallas, _wireframes_, prototipos, guías de estilo y especificaciones de diseño.
+- *Casos borde*: ¿Existe escenarios poco comunes que deben ser considerados en el diseño y pruebas para asegurar una experiencia de usuario completa y sin errores?.
+- *Dependencias de negocio*: Decisiones, aprobaciones, coordinaciones, apoyo e iniciativas de otras áreas necesarias para el éxito de la solución.
+- *Dependencias técnicas*: Productos, plataformas, o servicios externos necesarios para el desarrollo, implementación y operación del producto.
+
+== Puesta en marcha y lanzamiento
+
+- *Estratégia de lanzamiento (release)*: Plan de cómo y cuándo se hará disponible la solución o funcionalidad a los usuarios, incluyendo fases de lanzamiento, comunicación y alineamiento, y manejo de versiones existentes o anteriores.
+- *Áreas impactadas para coodinación*: Listado de equipos, áreas, o procesos de negocio que necesitan ser involucrados o informados sobre el lanzamiento para asegurar una puesta en marcha correcta, asegurando la continuidad operacional.
+- *Fechas y estimados*: Planificación que detalla hitos clave, fechas de entrega esperada y estimaciones a grandes rasgos y generales del esfuerzo necesario para completar el desarrollo.
+
+== Preguntas y respuestas
+
+- *Preguntas abiertas*: Lista de interrogantes o definiciones pendientes para el avance del desarrollo.
+- *Preguntas frecuentes (FAQ)*: Preguntas frecuentes acerca de contexto de la iniciativa, reglas de negocio, detalles de la solución, entre otras.

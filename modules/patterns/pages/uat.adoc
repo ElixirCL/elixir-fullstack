@@ -1,0 +1,248 @@
+= Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)
+
+El proceso de pruebas de aceptación de usuario (User Aceptance Testing - UAT) para las aplicaciones
+o herramientas aseguran una evaluación completa y un correcto seguimiento para la resolución de problemas.
+
+Es un tipo de prueba funcional o de contrato manual que asegura que los contratos establecidos se cumplen para los casos de uso acordados.
+
+El siguiente orden permite estandarizar el proceso y dar una plantilla recomendada.
+
+== Definir objetivos y plazos
+
+- Se debe entender las metas y el propósito de la herramienta, aplicación o característica de la misma y cuánto tiempo se tiene para completar la _UAT_. Esto incluye obtener información exacta y completa sobre lo que se quiere cumplir con la implementación de la característica, herramienta o aplicación.
+
+== Identificar usuarios e interesados
+
+- Determinar quiénes serán los usuarios finales de la solución. Esto incluye detallar los diferentes usuarios y roles entendiendo sus necesidades específicas. 
+
+- Comprender también los interesados (`stakeholders`) para asegurar que todas las partes involucradas son incluidas durante el proceso de _UAT_.
+
+== Evaluar los requerimientos de usuario
+
+- Identificar los tipos de herramientas y funcionalidades que el usuario necesita.
+
+- Asegurar que los usuarios tengan los accesos, permisos y herramientas en el ambiente de prueba para ejecutar la _UAT_. Deben estar correctamente configurados antes de iniciarla.
+
+- Asegurar que todas las cuentas de prueba estén activas y puedan ser accedidas por los usuarios. Deben estar configuradas apropiadamente.
+
+== Verificar las cuentas de prueba
+
+- Se debe verificar que todas las cuentas de prueba están configuradas con los roles y permisos necesarios.
+- Asegurar que todas las cuentas de prueba estén configuradas y tengan acceso a las herramientas y ambientes para evitar retrasos en el proceso de pruebas.
+- Asegurar que todo el ambiente de pruebas esté bien configurado antes de iniciar el proceso de _UAT_.
+
+== Proporcionar instrucciones de UAT
+
+- Asegurar que las instrucciones son claras para el proceso de _UAT_. Esto incluye pasos detallados que necesitan ser seguidos durante el proceso de pruebas.
+- Proporcionar direcciones claras sobre los casos de uso que se deben probar.
+
+== Seguimiento del proceso UAT
+
+- Seguir el proceso _UAT_ meticulosamente. Usar un sistema de colaboración y seguimiento o una herramienta para documentar el proceso, problemas y retroalimentación.
+
+== Administrar retroalimentación
+
+- Obtener y compilar todos los comentarios y retroalimentación recibidos durante el proceso de _UAT_.
+- Determinar los involucrados que se beneficiarán con esta información. Normalmente sería los equipos de ingeniería, producto y proyectos.
+
+== Manejar bloqueos o problemas
+
+- Identificar cualquier bloqueo o problema que pueda impedir el proceso de _UAT_.
+- Entender la causa raíz del bloqueo o problema.
+- Determinar posibles soluciones para eliminar los bloqueos.
+- Identificar los equipos que necesitan ser involucrados para resolver los bloqueos.
+- Mantener seguimiento de todo el proceso de resolución. Usar un sistema designado para monitorear el progreso.
+- Definir los acuerdos de servicio (_SLA_) para las soluciones.
+- Asegurar que el seguimiento y comunicación continua del progreso relacionado a resolver los bloqueos y cualquier retraso que hayan causado.
+- Incorporar el aprendizaje de los bloqueos en futuros lanzamientos (releases) para prevenir incidentes similares.
+
+== Agendar reuniones
+
+- Establecer reuniones con los equipos de ingeniería, producto y negocio para definir el proceso de _UAT_.
+- Fijar fechas y tiempos para completar el _UAT_ y asegurar que los `stakeholders` están informados y alineados.
+
+== Documentación
+
+- Documentar todos los procesos, comentarios y resoluciones obtenidas durante el proceso de _UAT_.
+- Mantener registros en una ubicación centralizada que este disponible para todos los interesados relevantes.
+
+== Comunicación
+
+- Asegurar la comunicación continua, clara y efectiva en todo el proceso de _UAT_.
+- Proporcionar actualizaciones constantes a todos los equipos involucrados en el proceso, los problemas encontrados y sus soluciones.
+
+== Obtener la aprobación de los Stakeholders
+
+Los `stakeholders` pueden dar un rechazo o una aprobación completa o condicional.
+
+- *Rechazo*:
+** Si existen detalles mayores que impactan de forma crítica la funcionalidad o usabilidad.
+** Documentar todos los problemas especificados por los `stakeholders` y definir un plan con plazos para abordar estos incidentes.
+** Asegurar actualizaciones constantes a los `stakeholders` en el progreso de resolver estos problemas obstaculizadores.
+** Obtener una *aprobación completa* una vez que todas los incidentes han sido corregidas satisfactoriamente.
+
+- *Aprobación condicional*: 
+** Si existen detalles menores que no impactan de forma crítica la funcionalidad o usabilidad.
+** Documentar todas las condiciones especificadas por los `stakeholders` y definir un plan con plazos para abordar estas condiciones.
+** Asegurar actualizaciones constantes a los `stakeholders` en el progreso de resolver estas condiciones definidas en la aprobación condicional.
+** Obtener una *aprobación completa* una vez que todas las condiciones han sido corregidas satisfactoriamente.
+
+- *Aprobación completa*: 
+** Todos los problemas identificados se han solucionado al aplicar los cambios necesarios. Se prepara un reporte del proceso de  _UAT_ incluyendo los comentarios recibidos y cualquier tema pendiente.
+** Presentar un resumen a los `stakeholders` mostrando los resultados obtenidos y los aprendizajes.
+** Solicitar a los `stakeholders` la aprobación final confirmando que la herramienta/aplicación/característica cumple con los estándares requeridos y está lista para ser lanzada a producción.
+
+== Roles y Responsabilidades
+
+La siguiente tabla muestra un ejemplo de los roles en un proceso de _UAT_.
+
+.Roles y responsabilidades en un proceso de UAT
+|====
+|Rol|Responsabilidades
+
+|Project Manager| 
+
+- Asegurar que el _UAT_ tiene objetivos claros y han sido comunicados a los involucrados.
+
+- Monitorear el proceso de _UAT_ y asegurar que esté dentro de los plazos.
+
+- Coordinar a todos los equipos involucrados.
+
+- Preparar y presentar un reporte y resumen para la aprobación de los `stakeholders`.
+
+|Usuarios|
+
+- Participar activamente en el proceso de _UAT_.
+
+- Proporcionar comentarios y retroalimentación detallada de problemas encontrados y dificultades de usabilidad.
+
+|Equipo de Producto|
+
+- Proporcionar instrucciones claras y dar soporte al proceso de _UAT_.
+
+- Analizar los comentarios recibidos y priorizar las tareas para resolver problemas encontrados.
+
+|Equipo de Ingeniería|
+
+- Resolver cualquier bloqueo técnico y problemas técnicos encontrados durante el proceso _UAT_.
+
+- Resolver los problemas dentro de los acuerdos de servicio comprometidos.
+
+|Equipo de Negocio|
+
+- Asegurar que el proceso de _UAT_ esté alineado con los objetivos del negocio y sus requerimientos.
+
+- Proporcionar información para ayudar a priorizar tareas y resolver problemas críticos.
+
+|Stakeholders|
+
+- Revisar los reportes sumarios del proceso de _UAT_.
+
+- Proporcionar una aprobación condicional o completa basado en las resoluciones y aprendizajes obtenidos en el proceso de _UAT_.
+
+|====
+
+== Plantillas
+
+Las siguientes plantillas pueden ser de utilidad al momento de realizar un proceso de _UAT_.
+
+=== Tabla de involucrados
+
+La siguiente tabla muestra las personas involucradas en el proceso de _UAT_.
+
+.Tabla de involucrados
+|====
+|Identificador|Nombre|Email|Equipo y Rol
+
+|El identificador interno para ser mencionado en los documentos. Normalmente usando un arroba @Persona1 | Nombre de la persona | Email de contacto | Equipo al cual pertenece y su rol dentro del mismo.
+|====
+
+=== Tabla de credenciales
+
+Se debe tener usuarios que puedan interactuar con todos los flujos necesarios según su rol. De preferencia que su correo pueda recibir emails, si es parte del proceso requerido.
+
+.Tabla de credenciales
+|====
+|Rol|Email|Contraseña | Contexto
+
+|Usuario|test1@ejemplo.com|1234 | Detallar el contexto en el cual debe ser usada la cuenta. ¿En qué canales se debe probar?, ¿Tiene alguna configuración especial (falta de datos, casos borde)?. ¿Qué versión de la aplicación debe tener?, ¿Qué condiciones de sistema operativo debe tener?. ¿Alguna otra limitante o situación especial?.
+|====
+
+=== Tabla de pruebas críticas
+
+La siguiente tabla de pruebas nos da una lista de funcionalidades críticas a probar. Los usuarios no están limitados
+a esta lista, ya que deben probar de forma más exhaustiva, pero como mínimo se debe asegurar el buen funcionamiento
+y cumplimiento de los contratos críticos acordados.
+
+.Tabla de pruebas críticas
+|====
+|Identificador|Características críticas a probar|Responsables|Canales
+
+|Un número identificador único de la prueba| Detalle sobre lo que se debe probar. Una característica específica o casos borde. Adjuntar enlaces a la documentación necesaria. | Persona o grupo de personas encargados de supervisar el proceso de _UAT_ | Lista de canales a los que se debe aplicar la prueba (Ejemplo: Android Mobile, Android Tablet, iOS Mobile, iOS Tablet (iPad), Web Mobile, Web PC).
+|====
+
+=== Tabla de estados de pruebas críticas por canal
+
+La siguiente tabla muestra el estado de las pruebas críticas según canal. Una vez ejecutado el proceso _UAT_.
+
+.Tabla de pruebas críticas por canal
+|====
+|Identificador|Responsable|Estado|Comentarios
+
+|El identificador de la prueba crítica original|Responsable de supervisar ésta prueba crítica.| 
+
+*Estados*:
+
+- Fallido: La prueba no cumple con los requisitos mínimos de aceptación.
+
+- Éxito: La prueba pasa todos los criterios de aceptación.
+
+- Condicional: La prueba pasa los criterios críticos de aceptación, pero se han encontrado detalles menores a corregir.
+
+| Una lista de comentarios u observaciones realizadas por el supervisor o los involucrados para tener en consideración.
+
+|====
+
+=== Tabla de pruebas funcionales
+
+La siguiente es una tabla donde se puede establecer pruebas funcionales para tener evidencias 
+y validar que los contratos se cumplen. Normalmente destinados para servicios de nivel T0 o T1.
+
+|====
+|Acción|Datos Entrada|Salida Esperada|Resultado|Estado
+
+| - | - | - | - | Aceptado / Condicional / Rechazado
+|====
+
+=== Tablas de observaciones
+
+Se recomienda tener una tabla por cada canal (Web, Android, iOS, etc) donde la aplicación será ejecutada.
+
+.Tabla de observaciones por canal
+|====
+|Responsable| Observación|Comentarios|Estado
+
+|¿Quién hizo la observación? @Persona1 | Detalle de lo que se ha encontrado. También screenshots demostrando el problema encontrado o pasos a seguir para reproducirlo. | Preguntas y personas asociadas que pueden ser relevantes para encontrar o seguir adelante en el proceso. Posibles Medidas de mitigación y contigencia. Recomendaciones para continuar. | Pendiente / En revisión / Cerrado
+|====
+
+=== Tabla de mejoras y correcciones
+
+Se listan las correcciones y mejoras encontradas asociándolos al sistema de gestión de tareas (Github issues, Jira, otro).
+
+.Tabla de mejoras y correcciones
+|====
+|Canal|Detalle|Ticket|Prioridad| Comentario
+
+|Canal asociado (Android, iOS, Web, etc)| Breve descripción de la corrección o mejora| Enlace al ticket en el sistema de gestión de tareas| Nivel de prioridad (1 alta, 2 normal, 3 baja). | Un breve comentario por ejemplo: Periodo de implementación, si fue validado y aprobado, etc.
+|====
+
+=== Tabla de aprobaciones
+
+Una tabla de aprobaciones de los `stakeholders`.
+
+.Tabla de aprobaciones
+|====
+|Stakeholder| Estado de Aprobación | Comentarios
+
+| Nombre del Stakeholder| Estado de su aprobación (aceptado, condicional, rechazado) | Comentarios y observaciones asociadas por el stakeholder para definir su estado.
+|====

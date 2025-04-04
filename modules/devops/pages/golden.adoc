@@ -1,0 +1,114 @@
+= Golden Signals
+
+Los _Golden Signals_ son una colección de métricas para aplicaciones y servicios
+que permiten establecer un _framework_ mínimo para monitorear las operaciones de un sitio.
+
+
+Golden Signals are a collection of metrics across applications and services
+To establish a minimum monitoring framework for site operations.
+The origin of the concept and term is the Google book Site Reliability Engineering.
+A major focus for application service calls is traffic, errors and latency, often
+Referred to via the equivalent terms rate, error, duration (RED).
+Additional signals such as utilization (CPU, memory) are also in scope.
+
+The purpose of the Golden Signals is to enable observability of applications and 
+Services, customer flows, and operations within a triplet of standardized signals.
+Benefits of instrumentations with Golden Signals includes the following benefits:
+
+- A consistent monitoring and alerting model and system across services
+- Proactive detection of site or application performance dgradation before an incident occurs
+- Standardization of instrumentation, metrics, alerts and dashboards
+- Dependency mapping used aggregating the client-server relationships in the golden signal reporting.
+
+
+24/7 Monitoring.
+
+- Availability
+- Traffic
+- Latency
+- Errors
+- Deployments
+
+https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals
+
+1. Per minute request count (`processTime_seconds_count:rate2m`)
+2. Per minute average request processing time (`processTime_seconds_sum:rate2m`)
+3. Per minute request processing time 95 percentile 50 percentile (`processTime_seconds:avg{quantile="0.95"}`)
+4. Per minute 4xx request count (`c4xx_total:rate2m`)
+5. Per minute 5xx request count (`c5xx_total:rate2m`)
+
+
+
+|===
+|Señal (Signal)| ¿Qué analiza?| ¿Cómo se granulariza?| Métrica
+
+|Availability (Disponibilidad)|Analiza la disponibilidad de los servidores|Se puede analizar por regiones de data center|Porcentaje de Servidores Saludables (%).
+
+|Traffic (Tráfico)| Analiza las respuestas con estado 2xx|Se puede analizar por regiones de data center|Cantidad de Peticiones (Throughput, Rendimiento) por Segundo
+
+|Latency (Latencia)| Analiza el tiempo de respuesta|Se puede analizar por regiones de data center|Tiempo de respuesta en milisegundos
+
+|Errors (Errores)|Analiza las respuestas con estado distinto a 2xx (4xx, 5xx)|Se puede analizar por regiones de data center, además de códigos de estado | Tasa de Respuestas Erróneas vs Respuestas Correctas
+
+|Deployments (Despliegues) | Analiza el estado y salud de los despliegues | Se puede analizar por servicio y/o aplicación | Timestamps (Anotaciones de tiempo)
+
+|Saturation (Saturación) | Analiza el estado de la CPU, RAM y Disco de los servidores | Se puede analizar por servicio y/o aplicación y elemento (CPU, RAM, Uso de Disco) | Porcentaje % De Uso
+|===
+
+== Alertas
+
+Al monitorear utilizando las _Golden Signals_ nos permite definir alertas para ser gatilladas
+en distintas cirscuntancias. Principalmente hay dos tipos de alertas, de límite fijo y las basadas en tendencias.
+
+Las alertas deberían ser habilitadas cuando un artefacto está listo para operar en producción. Todos los miembros del equipo asociados al artefacto deberían ser receptores de las alertas, en por lo menos canales de Email y mensajería instantánea como _Slack_ o similares. Además de las alertas de _Golden Signals_ cada equipo puede definir alertas personalizadas que sean relevantes para su contexto.
+
+=== Alertas de Límite Fijo
+
+Las alertas de límite fijo (Fixed threshold alerts) son creadas con un número definido y fijo que la métrica debe ser evaluada de forma instantánea o tasada por un período de tiempo. Este valor puede variar dependiendo de la aplicación y contexto.
+
+.Ejemplo
+Un servicio cuya cantidad de servidores debe ser mayor a 5. Si baja de ese número de servidores activos se lanzará una alerta.
+
+=== Alertas Basadas en Tendencias
+
+Las alertas basadas en tendencias (Trend based alerts) son las que realizan una comparación de las métricas actuales con datos en distintos puntos de tiempo. Normalmente con los datos de hace 24 horas y con los datos hace 1 semana para el mismo periodo de tiempo. Este tipo de alertas utiliza la desviación estándar entre las métricas. La desviación estándar se utiliza para calcular la variación o dispersión en la que los puntos de datos individuales difieren de la media. Una desviación baja indica que los puntos de datos están muy cerca de la media, mientras que una desviación alta muestra que los datos están dispersos en un rango mayor de valores. <<ortega-2024>>. En el caso de una alerta, obtener la desviación estándar de la métrica nos permite contemplar si la desviación de la tendencia normal es orgánica o debido algún problema.
+
+En el caso de las alertas de _Golden Signal_ son mayoritariamente basadas en tendencias, con muy pocas basadas en límites fijos para evitar falsos positivos. 
+
+.Ejemplo
+Un servicio cuya data es evaluada todos los días entre las 2:00 PM y las 2:15 PM. Esta data se compara con la medición de ayer entre las 2:00 PM y las 2:15 PM, como también con la medición de 1 semana atrás entre las 2:00 PM y las 2:15 PM. Si la desviación estándar es más de 2, se debe lanzar una alerta. (Esto significa que la métrica se ha desviado 2 veces).
+
+=== Automatización y Estandarización de Alertas
+
+Cuando existen diferentes equipos dentro de una organización existe la tendencia de que cada uno utilice sus propias herramientas y formas de crear dashboards. Lo que dificulta la implementación de las _Golden Signals_ debido a la fragmentación. Además si el proceso de implementación de alertas es manual se puede volver tedioso y lento con mayor probabilidad de fallos (consultas incorrectas, omisión de alertas clave) por error humano al crearlos. Es por esto que es altamente recomendado estandarizar los dashboard y generar plantillas que permiten automatizar la generación de las consultas y las alertas. Al automaizar la generación se permite reducir a minutos la creación de alertas y tener mayor exactitud.
+
+Para esto se dan las siguientes recomendaciones:
+
+- Utilizar *Grafana* como sistema de dashboard estándar.
+- Utilizar scripts estandarizados con plantillas para generar las alertas y consultas.
+
+El siguiente código es un pequeño ejemplo en el lenguaje *Elixir* que permite generar un texto a partir de una plantilla.
+Para ésto se utiliza la herramienta de plantillas https://hexdocs.pm/eex/EEx.html[EEx].
+
+.Ejemplo de Plantilla y Elixir
+[source, elixir]
+----
+iex> EEx.eval_string "Hola, <%= @name %>", assigns: [name: "Camilo"]
+"Hola, Camilo"
+----
+
+La relación entre los datos, plantillas, script y alertas se puede diagramar de la siguiente manera.
+
+.Diagrama de Relación Datos, Script, Plantillas y Alertas
+[plantuml]
+----
+@startuml
+
+[MetaData] ..> [Script] : alimenta
+[Script] ..> [Plantillas] : usa
+[Alertas] <.. [Script]: genera
+
+@enduml
+----
+
+Además de estandarizar y automatizar la generación de alertas, se recomienda automatizar el proceso de deployment de las mismas, utilizando algún workflow de Github actions por ejemplo.

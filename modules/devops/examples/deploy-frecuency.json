@@ -1,0 +1,128 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Deploy Frequency: 0.87 /week",
+  "height": 400,
+  "width": 550,
+  "layer": [
+    {
+      "mark": {"type":"bar", "color":"skyblue"},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 0},
+          {"period": "15 Julio - 21 Julio", "count": 0},
+          {"period": "22 Julio - 28 Julio", "count": 0},
+          {"period": "5 Agosto - 11 Agosto", "count": 0},
+          {"period": "12 Agosto - 18 Agosto", "count": 0},
+          {"period": "19 Agosto - 25 Agosto", "count": 2},
+          {"period": "26 Agosto - 1 Septiembre", "count": 4},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 3},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 0},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 0},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 0},
+          {"period": "30 Septiembre - 6 Octubre", "count": 0},
+          {"period": "7 Octubre - 13 Octubre", "count": 4}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Cantidad",
+          "scale": {
+            "domain": [0,6]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color":"rebeccapurple",
+        "strokeDash": [8, 1],
+        "point": true,
+        "interpolate": "monotone"
+      },
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 0},
+          {"period": "15 Julio - 21 Julio", "count": 0},
+          {"period": "22 Julio - 28 Julio", "count": 0},
+          {"period": "5 Agosto - 11 Agosto", "count": 0},
+          {"period": "12 Agosto - 18 Agosto", "count": 0},
+          {"period": "19 Agosto - 25 Agosto", "count": 2},
+          {"period": "26 Agosto - 1 Septiembre", "count": 4},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 3},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 0},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 0},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 0},
+          {"period": "30 Septiembre - 6 Octubre", "count": 0},
+          {"period": "7 Octubre - 13 Octubre", "count": 4}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Cantidad",
+          "scale": {
+            "domain": [0,6]
+          }
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "strokeDash": [6, 3], "color":"violet"},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 5},
+          {"period": "15 Julio - 21 Julio", "count": 5},
+          {"period": "22 Julio - 28 Julio", "count": 5},
+          {"period": "5 Agosto - 11 Agosto", "count": 5},
+          {"period": "12 Agosto - 18 Agosto", "count": 5},
+          {"period": "19 Agosto - 25 Agosto", "count": 5},
+          {"period": "26 Agosto - 1 Septiembre", "count": 5},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 5},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 5},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 5},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 5},
+          {"period": "30 Septiembre - 6 Octubre", "count": 5},
+          {"period": "7 Octubre - 13 Octubre", "count": 5}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Cantidad",
+          "scale": {
+            "domain": [0,6]
+          }
+        }
+      }
+    }
+  ]
+}

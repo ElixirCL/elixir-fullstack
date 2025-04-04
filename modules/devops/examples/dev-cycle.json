@@ -1,0 +1,128 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Development Cycle Time: 12 dias 4 horas 43 min",
+  "height": 400,
+  "width": 550,
+  "layer": [
+    {
+      "mark": {"type":"bar", "color":"skyblue"},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 764.56},
+          {"period": "15 Julio - 21 Julio", "count": 1076.94},
+          {"period": "22 Julio - 28 Julio", "count": 438.68},
+          {"period": "5 Agosto - 11 Agosto", "count": 847.62},
+          {"period": "12 Agosto - 18 Agosto", "count": 36.62},
+          {"period": "19 Agosto - 25 Agosto", "count": 63.3},
+          {"period": "26 Agosto - 1 Septiembre", "count": 25.44},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 38.02},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 61.67},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 71.38},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 128.08},
+          {"period": "30 Septiembre - 6 Octubre", "count": 78.92},
+          {"period": "7 Octubre - 13 Octubre", "count": 25.44}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,1500]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color":"rebeccapurple",
+        "strokeDash": [8, 1],
+        "point": true,
+        "interpolate": "monotone"
+      },
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 764.56},
+          {"period": "15 Julio - 21 Julio", "count": 1076.94},
+          {"period": "22 Julio - 28 Julio", "count": 438.68},
+          {"period": "5 Agosto - 11 Agosto", "count": 847.62},
+          {"period": "12 Agosto - 18 Agosto", "count": 36.62},
+          {"period": "19 Agosto - 25 Agosto", "count": 63.3},
+          {"period": "26 Agosto - 1 Septiembre", "count": 25.44},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 38.02},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 61.67},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 71.38},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 128.08},
+          {"period": "30 Septiembre - 6 Octubre", "count": 78.92},
+          {"period": "7 Octubre - 13 Octubre", "count": 25.44}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,1500]
+          }
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "strokeDash": [6, 3]},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 24},
+          {"period": "15 Julio - 21 Julio", "count": 24},
+          {"period": "22 Julio - 28 Julio", "count": 24},
+          {"period": "5 Agosto - 11 Agosto", "count": 24},
+          {"period": "12 Agosto - 18 Agosto", "count": 24},
+          {"period": "19 Agosto - 25 Agosto", "count": 24},
+          {"period": "26 Agosto - 1 Septiembre", "count": 24},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 24},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 24},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 24},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 24},
+          {"period": "30 Septiembre - 6 Octubre", "count": 24},
+          {"period": "7 Octubre - 13 Octubre", "count": 24}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,1500]
+          }
+        }
+      }
+    }
+  ]
+}

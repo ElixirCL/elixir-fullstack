@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Versionado y Política de Compatibilidad y Obsolescencia :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/patterns/deprecation.html">
+    <link rel="prev" href="uat.html">
+    <link rel="next" href="../github/chapter.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Entorno Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../jobs/chapter.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/chapter.html">El Lenguaje Elixir</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#devevns.adoc">devevns.adoc</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Ingeniería en Software</li>
+    <li><a href="deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/patterns/pages/deprecation.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Versionado y Política de Compatibilidad y Obsolescencia</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Como una forma de priorizar contratos preparados para el futuro, que reducen lo más posible cambios en el lado del cliente cuando las <em>APIs</em> evolucionen. Se recomienda utilizar el formato de versiones <code>vMAJOR.MINOR.PATCH</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MAJOR</code>: Generado manualmente (número autoincremental) al momento de eliminar características marcadas como "obsoleta de forma fuerte". El incremento reinicia el número de <code>MINOR</code> y <code>PATCH</code>.</p>
+</li>
+<li>
+<p><code>MINOR</code>: Generado manualmente (número autoincremental) al momento de marcar características como "obsoleta de forma fuerte" o cuando se desee reiniciar el número de <code>PATCH</code>. Se recomienda realizar una nueva versión <code>MINOR</code> cada 6 meses.</p>
+</li>
+<li>
+<p><code>PATCH</code>: Generado automáticamente (número autoincremental) cuando se hace un nuevo commit a la rama <code>main</code>. No tiene un límite máximo definido.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Queda a jurisdicción del equipo fijar los criterios para aumentar la versión <code>MINOR</code> o <code>MAJOR</code>.</p>
+</div>
+<div class="paragraph">
+<p>Las versiones <code>MINOR</code> y <code>PATCH</code> son retrocompatibles, esto quiere decir que las <em>APIs</em> bien definidas y documentadas en una versión seguirán funcionado en futuras versiones. Si bien la gran mayoría de los consumidores seguirán siendo compatibles con el tiempo, es imposible garantizar que cambios futuros no rompan algún contrato. En algunas situaciones específicas y poco probables se debe recurrir a romper el contrato establecido:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Seguridad</strong>: Un incidente de seguridad en la implementación donde su solución requiera quebrar la retrocompatibilidad. En dicho caso se debe marcar en la documentación como <strong>seguridad</strong> y anunciar en los canales de comunicación para permitir a los consumidores actualizar raudamente sus clientes.</p>
+</li>
+<li>
+<p><strong>Fallos de Comportamiendo</strong>: Cuando una <em>API</em> tiene un comportamiento inadecuado (resultados erróneos o similar), un consumidor que la utilice puede verse afectado, por lo que la retrocompabilidad no está garantizada.</p>
+</li>
+<li>
+<p><strong>Corrección de ambigüedades o herramientas</strong>: Cuando herramientas asociadas o comportamientos no están los suficientemente claros o detallados y se deben mejorar para reducir la ambigüedad.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="características-experimentales"><a class="anchor" href="#características-experimentales"></a>Características experimentales</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Adicionalmente algunas características pueden ser marcadas como <strong>Experimentales</strong>, las cuales no ofrecen ninguna garantía evolutiva y pueden cambiar o ser eliminadas en su totalidad hasta que no se les considere como <strong>Estables</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="corrección-de-errores-y-parches-de-seguridad"><a class="anchor" href="#corrección-de-errores-y-parches-de-seguridad"></a>Corrección de Errores y Parches de Seguridad</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Se recomienda aplicar corrección de errores solamente a la versión <code>MINOR</code> actual. Los parches de seguridad deben ser aplicados para las últimas 5 versiones <code>MINOR</code> disponibles.</p>
+</div>
+<div class="paragraph">
+<p>En la siguiente tabla se muestra como el lenguaje de programación <em>Elixir</em> (<a href="#hexdocs-elixir-deprecations-2024">[hexdocs-elixir-deprecations-2024]</a>) da soporte a las distintas versiones.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Versiones soportadas en Elixir</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Versión de Elixir</th>
+<th class="tableblock halign-left valign-top">Tipo de soporte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Corrección de errores y parches de seguridad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solamente parches de seguridad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solamente parches de seguridad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solamente parches de seguridad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solamente parches de seguridad</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="política-de-obsolescencia"><a class="anchor" href="#política-de-obsolescencia"></a>Política de Obsolescencia</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cuando una característica se marca como obsoleta (<em>deprecated</em>) pasa por tres etapas:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>La característica tiene un estado "obsoleta de forma suave" (<em>soft-deprecation</em>). Esto significa mencionar en el archivo <em>CHANGELOG</em> y la documentación que la característica esta marcada como obsoleta, pero dentro del código no se mostrará ninguna alerta cuando se ejecute el código. Los desarrolladores no están obligados a realizar cambios en su código cuando una característica esta con estado "obsoleta de forma suave".</p>
+</li>
+<li>
+<p>La característica tiene un estado de "obsoleta de forma fuerte" (<em>hard-deprecation</em>).  Esto significa que el uso de la característica emitira alertas anunciado su estado, además de proporcionar la alternativa o documentación correspondiente. Para que una característica pase a "obsoleta de forma fuerte" su alternativa <strong>DEBE</strong> existir desde por al menos <em>TRES</em> versiones menores (<code>MINOR</code>). Se recomienda a los desarrolladores migrar a la alternativa.</p>
+</li>
+<li>
+<p>La característica marcada como "obsoleta de forma fuerte" es removida solo al paso de versiones mayores. Es decir si la versión actual es <code>v1.x</code> solamente serán removidas en <code>v2.x</code>.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="tabla-de-obsolescencia"><a class="anchor" href="#tabla-de-obsolescencia"></a>Tabla de Obsolescencia</h3>
+<div class="paragraph">
+<p>La siguiente es una tabla de ejemplo que contiene una lista de características marcadas como obsoletas. La primera columna indica la versión donde fue marcada como "obsoleta de forma fuerte". La segunda columna describe brevemente la característica obsoleta y la tercera columna explica su reemplazo y en qué versión estuvo disponible.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Tabla de Obsolescencia del Lenguaje Elixir</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Versión</th>
+<th class="tableblock halign-left valign-top">Característica Obsoleta</th>
+<th class="tableblock halign-left valign-top">Alternativa (disponible desde)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">v1.17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single-quoted charlists ('foo')</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">~c"foo" (v1.0)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">v1.17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">left..right in patterns and guards</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">left..right//step (v1.11)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">v1.17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ExUnit.Case.register_test/4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">register_test/6 (v1.10)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">v1.17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:all in IO.read/2 and IO.binread/2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:eof (v1.13)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="estados-de-un-sistema"><a class="anchor" href="#estados-de-un-sistema"></a>Estados de un Sistema</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dentro del desarrollo de software se conoce como <em>Alpha</em> o <em>Beta</em> las versiones de productos o servicios que aún no están en su versión final y se esperan cambios parciales o totales hasta llegar a su versión definitiva. Sin embargo dichos términos no son lo suficientemente claros o consistentes para ayudar a comprender a los clientes los estados de las nuevas funciones de un sistema y como encajan los cambios en sus flujos de trabajo.</p>
+</div>
+<div class="paragraph">
+<p>Para esto y utilizando la terminología de <em>Github</em> (<a href="#github-blog-2024">[github-blog-2024]</a>), se proporciona la siguiente tabla que permite categorizar correctamente el estado de madurez y disponibilidad de un producto, característica o servicio.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Terminología</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prevista Privada</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No anunciado. Disponibilidad privada. Pensado para un selecto grupo de colaboradores internos o consumidores específicos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prevista Técnica</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Anunciado privadamente. Disponibilidad privada. Pensado para un selecto grupo de colaboradores internos o consumidores específicos. Normalmente usado para afinar detalles y comprobar funcionalidad antes de la disponibilidad pública.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prevista Pública</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Anunciado públicamente. Disponibilidad pública. Puede estar abierto para todos o estar limitado a un grupo de consumidores detrás de una lista de espera. Algunos detalles pueden cambiar antes de la versión final.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disponibilidad General</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Versión final implementada en producción. Esta abierto a todos los consumidores que cumplan los criterios para acceder a la funcionalidad. Cambios drásticos en el producto o servicio no están permitidos ya que afectarían negativamente a los consumidores. Cualquier cambio al contrato inicial debe ser anunciado, gradual, incremental y retrocompatible dentro de las versiones <code>MINOR</code> y solo permitido cambios fuertes al pasar a una versión <code>MAJOR</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cerrando (<em>Closing Down)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Señala que un producto o servicio está siendo cerrado y dejará de estar disponible en un plazo establecido.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Atardecer (<em>Sunset</em>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El producto o característica ha llegado al fin de su ciclo de vida. No estará disponible, soportado o mantenido.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a></span>
+  <span class="next"><a href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

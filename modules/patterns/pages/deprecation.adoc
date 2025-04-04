@@ -1,0 +1,87 @@
+= Versionado y Política de Compatibilidad y Obsolescencia
+
+Como una forma de priorizar contratos preparados para el futuro, que reducen lo más posible cambios en el lado del cliente cuando las _APIs_ evolucionen. Se recomienda utilizar el formato de versiones `vMAJOR.MINOR.PATCH`.
+
+- `MAJOR`: Generado manualmente (número autoincremental) al momento de eliminar características marcadas como "obsoleta de forma fuerte". El incremento reinicia el número de `MINOR` y `PATCH`.
+
+- `MINOR`: Generado manualmente (número autoincremental) al momento de marcar características como "obsoleta de forma fuerte" o cuando se desee reiniciar el número de `PATCH`. Se recomienda realizar una nueva versión `MINOR` cada 6 meses.
+
+- `PATCH`: Generado automáticamente (número autoincremental) cuando se hace un nuevo commit a la rama `main`. No tiene un límite máximo definido. 
+
+Queda a jurisdicción del equipo fijar los criterios para aumentar la versión `MINOR` o `MAJOR`.
+
+Las versiones `MINOR` y `PATCH` son retrocompatibles, esto quiere decir que las _APIs_ bien definidas y documentadas en una versión seguirán funcionado en futuras versiones. Si bien la gran mayoría de los consumidores seguirán siendo compatibles con el tiempo, es imposible garantizar que cambios futuros no rompan algún contrato. En algunas situaciones específicas y poco probables se debe recurrir a romper el contrato establecido:
+
+- *Seguridad*: Un incidente de seguridad en la implementación donde su solución requiera quebrar la retrocompatibilidad. En dicho caso se debe marcar en la documentación como **seguridad** y anunciar en los canales de comunicación para permitir a los consumidores actualizar raudamente sus clientes.
+
+- *Fallos de Comportamiendo*: Cuando una _API_ tiene un comportamiento inadecuado (resultados erróneos o similar), un consumidor que la utilice puede verse afectado, por lo que la retrocompabilidad no está garantizada.
+
+- *Corrección de ambigüedades o herramientas*: Cuando herramientas asociadas o comportamientos no están los suficientemente claros o detallados y se deben mejorar para reducir la ambigüedad.
+
+== Características experimentales
+
+Adicionalmente algunas características pueden ser marcadas como *Experimentales*, las cuales no ofrecen ninguna garantía evolutiva y pueden cambiar o ser eliminadas en su totalidad hasta que no se les considere como *Estables*.
+
+== Corrección de Errores y Parches de Seguridad
+
+Se recomienda aplicar corrección de errores solamente a la versión `MINOR` actual. Los parches de seguridad deben ser aplicados para las últimas 5 versiones `MINOR` disponibles.
+
+En la siguiente tabla se muestra como el lenguaje de programación _Elixir_ (<<hexdocs-elixir-deprecations-2024>>) da soporte a las distintas versiones.
+
+.Versiones soportadas en Elixir
+|===
+|Versión de Elixir|	Tipo de soporte
+
+|1.17	| Corrección de errores y parches de seguridad
+|1.16	| Solamente parches de seguridad
+|1.15	| Solamente parches de seguridad
+|1.14	| Solamente parches de seguridad
+|1.13	| Solamente parches de seguridad
+|===
+
+
+== Política de Obsolescencia
+
+Cuando una característica se marca como obsoleta (_deprecated_) pasa por tres etapas:
+
+1. La característica tiene un estado "obsoleta de forma suave" (_soft-deprecation_). Esto significa mencionar en el archivo _CHANGELOG_ y la documentación que la característica esta marcada como obsoleta, pero dentro del código no se mostrará ninguna alerta cuando se ejecute el código. Los desarrolladores no están obligados a realizar cambios en su código cuando una característica esta con estado "obsoleta de forma suave".
+
+2. La característica tiene un estado de "obsoleta de forma fuerte" (_hard-deprecation_).  Esto significa que el uso de la característica emitira alertas anunciado su estado, además de proporcionar la alternativa o documentación correspondiente. Para que una característica pase a "obsoleta de forma fuerte" su alternativa *DEBE* existir desde por al menos _TRES_ versiones menores (`MINOR`). Se recomienda a los desarrolladores migrar a la alternativa.
+
+3. La característica marcada como "obsoleta de forma fuerte" es removida solo al paso de versiones mayores. Es decir si la versión actual es `v1.x` solamente serán removidas en `v2.x`.
+
+=== Tabla de Obsolescencia
+
+La siguiente es una tabla de ejemplo que contiene una lista de características marcadas como obsoletas. La primera columna indica la versión donde fue marcada como "obsoleta de forma fuerte". La segunda columna describe brevemente la característica obsoleta y la tercera columna explica su reemplazo y en qué versión estuvo disponible.
+
+.Tabla de Obsolescencia del Lenguaje Elixir
+|====
+| Versión|	Característica Obsoleta	| Alternativa (disponible desde)
+
+|v1.17|	Single-quoted charlists ('foo')|	~c"foo" (v1.0)
+|v1.17|	left..right in patterns and guards|	left..right//step (v1.11)
+|v1.17|	ExUnit.Case.register_test/4|	register_test/6 (v1.10)
+|v1.17|	:all in IO.read/2 and IO.binread/2|	:eof (v1.13)
+|====
+
+== Estados de un Sistema
+
+Dentro del desarrollo de software se conoce como _Alpha_ o _Beta_ las versiones de productos o servicios que aún no están en su versión final y se esperan cambios parciales o totales hasta llegar a su versión definitiva. Sin embargo dichos términos no son lo suficientemente claros o consistentes para ayudar a comprender a los clientes los estados de las nuevas funciones de un sistema y como encajan los cambios en sus flujos de trabajo.
+
+Para esto y utilizando la terminología de _Github_ (<<github-blog-2024>>), se proporciona la siguiente tabla que permite categorizar correctamente el estado de madurez y disponibilidad de un producto, característica o servicio.
+
+|===
+|Terminología|Descripción
+
+|Prevista Privada| No anunciado. Disponibilidad privada. Pensado para un selecto grupo de colaboradores internos o consumidores específicos.
+
+|Prevista Técnica| Anunciado privadamente. Disponibilidad privada. Pensado para un selecto grupo de colaboradores internos o consumidores específicos. Normalmente usado para afinar detalles y comprobar funcionalidad antes de la disponibilidad pública.
+
+|Prevista Pública| Anunciado públicamente. Disponibilidad pública. Puede estar abierto para todos o estar limitado a un grupo de consumidores detrás de una lista de espera. Algunos detalles pueden cambiar antes de la versión final.
+
+|Disponibilidad General| Versión final implementada en producción. Esta abierto a todos los consumidores que cumplan los criterios para acceder a la funcionalidad. Cambios drásticos en el producto o servicio no están permitidos ya que afectarían negativamente a los consumidores. Cualquier cambio al contrato inicial debe ser anunciado, gradual, incremental y retrocompatible dentro de las versiones `MINOR` y solo permitido cambios fuertes al pasar a una versión `MAJOR`.
+
+|Cerrando (_Closing Down)_| Señala que un producto o servicio está siendo cerrado y dejará de estar disponible en un plazo establecido.
+
+|Atardecer (_Sunset_)| El producto o característica ha llegado al fin de su ciclo de vida. No estará disponible, soportado o mantenido.
+|===
