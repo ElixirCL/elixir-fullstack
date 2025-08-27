@@ -1,5 +1,5 @@
 .PHONY: install build server
-BUILD=podman
+BUILD=docker
 CONTAINER_LABEL=local/antora:elixir-fullstack
 
 install i:
@@ -11,6 +11,5 @@ build b:
 	@touch docs/.nojekyll
 
 server s:
-	@make build
 	@cd docs && python3 -m http.server
 	

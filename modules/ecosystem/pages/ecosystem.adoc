@@ -1,0 +1,269 @@
+= Ecosistema Web
+
+Como un vistazo actual de las tecnologías disponibles para desarrollar
+sistemas web de frontend y backend. Se dará un análsis rápido y general de una pequeña selección de las opciones disponibles.
+
+== Bundlers
+
+En el mundo del desarrollo web, Javascript es el motor de las aplicaciones web dinámicas, interactivas y de una sola página. Sin embargo, a medida que crece la complejidad de las aplicaciones web modernas, también lo hace el número de bibliotecas, frameworks y dependencias de Javascript. Esto conduce a una base de código hinchada e ineficiente, que compromete el rendimiento y la experiencia del usuario.
+
+Para hacer frente a este reto, se introdujeron los bundlers de Javascript. Estos asistentes de optimización están especializados en refinar el código y potenciar el rendimiento. 
+
+En el pasado, los desarrolladores solían incrustar las etiquetas `<script />` directamente en el HTML o enlazar varios archivos dentro de las páginas HTML. Pero las cosas se complicaron a medida que crecía la web. La antigua técnica hacía que las páginas web se cargaran lentamente debido a demasiadas peticiones al servidor y daba lugar a código repetitivo, lo que obligaba a los desarrolladores a hacer que las cosas funcionaran para distintos navegadores web.
+
+Los bundlers de JavaScript son algo más que utilidades de moda; son los arquitectos de la eficiencia en el desarrollo web. Estas herramientas no sólo minimizan la sobrecarga de peticiones, sino que también mejoran la estructura del código, aumentan el rendimiento y agilizan los flujos de trabajo de desarrollo.
+
+En esencia, funcionan como conductores, organizando el código armoniosamente, acelerando el desarrollo y garantizando que todo funcione sin problemas en diversos escenarios.
+
+El bundler puede realizar varias transformaciones en el código JavaScript antes de ensamblarlo en un bundle. Estas transformaciones pueden incluir:
+
+- *Minificación*: eliminación de caracteres y espacios innecesarios del código, lo que da como resultado un bundle más compacto y racionalizado.
+
+- *Transpilación*: convertir el código JavaScript moderno en versiones antiguas para garantizar la compatibilidad en distintos navegadores y entornos.
+
+- *Optimización*: aplicando diversas técnicas para mejorar la eficacia del código. Esto puede incluir reordenar y reestructurar el código para reducir la redundancia o incluso aplicar algoritmos sofisticados para mejorar el rendimiento
+
+Aunque los bundlers de JavaScript son conocidos por empaquetar código JavaScript, también pueden empaquetar otros activos (imágenes y archivos CSS) mediante un proceso llamado empaquetado de activos.
+
+Sin embargo, es importante tener en cuenta que no todos los bundlers tienen esta función incorporada. Para algunos bundlers, la agrupación de activos puede requerir una configuración adicional de plugins, cargadores y ajustes de configuración.
+
+(Kinsta, 2023)
+
+
+=== Webpack
+
+Webpack es una herramienta vital en el mundo del desarrollo web. Nació en 2012, cuando el desarrollo web estaba evolucionando y surgían nuevos retos, sobre todo a la hora de gestionar eficazmente los activos de las aplicaciones web modernas.
+Para los desarrolladores web que buscan personalización y flexibilidad, Webpack se ha erigido como la elección de confianza. (Kinsta, 2023).
+
+- https://webpack.js.org/
+
+
+=== Esbuild
+
+Esbuild es un compilador de JavaScript extremadamente rápido y eficiente en términos de memoria. Es una herramienta que transforma el código JavaScript en un formato ejecutable en el navegador o en un servidor. Esbuild es conocido por su velocidad, ya que es capaz de compilar grandes proyectos en poco tiempo (Dominicode, 2023).
+
+- https://esbuild.github.io/
+
+== Webassembly
+
+WebAssembly es un nuevo tipo de código que puede ser ejecutado en navegadores modernos — es un lenguaje de bajo nivel, similar al lenguaje ensamblador, con un formato binario compacto que se ejecuta con rendimiento casi nativo y provee un objetivo de compilación para lenguajes como C/C++, Go y Rust que les permite correr en la web. También está diseñado para correr a la par de JavaScript, permitiendo que ambos trabajen juntos.
+
+[source, lisp]
+----
+(module
+  (func $i (import "my_namespace" "imported_func") (param i32))
+  (func (export "exported_func")
+    i32.const 42
+    call $i
+  )
+)
+----
+
+- https://developer.mozilla.org/es/docs/WebAssembly
+
+== Frameworks CSS
+
+Los frameworks de CSS son colecciones preescritas de código CSS que simplifican y aceleran el desarrollo de sitios web. En lugar de empezar desde cero cada vez, puedes utilizar estos frameworks para crear diseños hermosos y receptivos con un esfuerzo mínimo. (Dreamhost, 2025).
+
+=== Bootstrap
+
+Bootstrap ha estado presente desde 2011 y se ha convertido en un elemento básico en el mundo del desarrollo web. Una de las mayores ventajas de Bootstrap es su extensa biblioteca de componentes preconstruidos.
+
+Ninguna herramienta es perfecta, y Bootstrap tiene sus limitaciones. Algunos desarrolladores argumentan que es demasiado opinionado, lo que significa que puede ser difícil de personalizar si quieres alejarte demasiado de los estilos predeterminados. Otros señalan que el tamaño del archivo de Bootstrap puede ser bastante grande, lo que puede ralentizar los tiempos de carga de tu sitio web. (Dreamhost, 2025).
+
+[source, html]
+----
+<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Home</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Profile</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Contact</button>
+  </li>
+</ul>
+----
+
+- https://getbootstrap.com/
+
+=== Tailwind
+
+A diferencia de Bootstrap, que depende en gran medida de componentes preconstruidos, Tailwind toma un enfoque diferente. Proporciona un conjunto de clases de utilidad de bajo nivel que puedes usar para construir tus propios diseños personalizados.
+
+Esto significa que tienes un control completo sobre el aspecto y la sensación de tu sitio web, sin estar limitado por decisiones de diseño de otra persona. Sin embargo, no encontrarás muchas plantillas preconstruidas para secciones de páginas. En lugar de usar nombres de clases semánticas como btn-primary, verás cosas como bg-blue-500 y px-4. 
+
+Al igual que Bootstrap, Tailwind tampoco es perfecto.
+
+Algunos desarrolladores encuentran la curva de aprendizaje un poco más empinada, especialmente si están acostumbrados a frameworks de CSS más tradicionales. Y debido a que Tailwind depende tanto de clases de utilidad, tu HTML puede empezar a sentirse un poco abarrotado y más difícil de leer (Dreamhost, 2025).
+
+[source, html]
+----
+<button class="bg-violet-500 hover:bg-violet-600 focus:outline-2 focus:outline-offset-2 focus:outline-violet-500 active:bg-violet-700">  
+Save changes
+</button>
+----
+
+- https://tailwindcss.com/
+
+== Frameworks de Frontend
+
+Los frameworks de frontend proporcionan herramientas y estructuras para organizar una aplicación web. 
+
+=== Renderizado en cliente 
+
+Se renderizan tradicionalmente en el cliente utilizando un bundler. La principal desventaja es que aumentan considerablemente el tamaño de los archivos a descargar para un sitio web, si no se realiza una correcto manejo de los tamaños. Además la seguridad es menor debido a que se debe almacenar las credenciales en el cliente, lo que no los hace recomendables para operaciones delicadas como acceso a la base de datos, obligando al uso de un servidor con una API Rest o similar.
+
+- jQuery
+- Alpine
+- React (Next.js)
+- Angular
+- Vue
+- Svelte
+
+=== Híbridos
+
+Las herramientas como Inertia proporcionan un híbrido entre el servidor y el cliente web. Presentan un puente que permite conectar un framework web y endpoints en el servidor. Logrando facilidad de comunicación sin necesidad de crear endpoints dedicados como si fuera usando un framework de frontend tradicional, disminuyendo la complejidad del sistema y aumentando la cohesión de los componentes.
+
+- Inertia.js
+
+=== Renderizado en servidor
+
+Los siguientes frameworks utilizan una conexión por websockets o estrategias de long polling para la comunicación del servidor con el cliente. Por lo que la mayoría de la renderización es en el servidor, no necesitando de frameworks de cliente como React.
+
+
+- Hotwire (Ruby)
+- Blazor (C#)
+- Livewire (PHP)
+
+==== LiveView (Elixir)
+
+Su modo de uso es muy similar a React.js. Si se utiliza la extensión https://surface-ui.org/[SurfaceUI] es aún más similar. Es la opción recomendable y predeterminada de realizar aplicaciones con Phoenix y Elixir. Es la principal inspiración de soluciones como Blazor y Livewire.
+
+[source, html]
+----
+<button phx-click="inc_temperature">+</button>
+----
+
+[source, elixir]
+----
+def handle_event("inc_temperature", _value, socket) do
+  {:noreply, update(socket, :temperature, &(&1 + 1))}
+end
+----
+
+== Frameworks de Backend
+
+En general los frameworks de backends se separan en dos categorías principales. 
+Uno que proporciona un conjunto de herramientas completo y otro más minimalista que proporciona una estructura base, la cual puede ser expandida según la necesidad. Escoger entre estas dos estrategias queda a juicio del equipo de desarrollo y las necesidades del proyecto. La opción recomendable es utilizar el framework más completo debido a que es más sencillo tomar las decisiones y se estandariza el conjunto de herramientas a usar.
+
+=== Beam
+
+|====
+|Item | Descripcion
+
+| https://phoenixframework.org/[Phoenix] (Elixir) | Framework más popular y completo para la generación de web y APIs en Elixir. Es la opción recomendada dentro del ecosistema Beam.
+| https://nitrogenproject.com/[Nitrogen] (Erlang) | Framework completo en Erlang para elaboración de sistemas web simples y complejos.
+| https://github.com/elli-lib/elli[Elli] (Erlang) | Pequeño framework pensado para APIs y peticiones web en Erlang.
+|====
+
+=== Ruby
+
+|====
+|Item | Descripcion
+
+| https://rubyonrails.org/[Ruby on Rails] | Framework principal de Ruby. Tiene un amplio ecosistema y ha sido la inspiración para muchos frameworks posteriores.
+| https://hanamirb.org/[Hanami] | Framework liviano de Ruby. Recomendado para soluciones más acotadas que no necesiten toda la infraestructura proporcionada por Rails.
+
+|====
+
+=== Python
+
+|====
+|Item | Descripcion
+
+| https://www.djangoproject.com/[Django] | Framework full stack de Python. Tan venerable como Ruby on Rails.
+| https://fastapi.tiangolo.com/[FastAPI] | Framework que ofrece mayor velocidad para Python. Pensado principalmente para la creación de APIs.
+
+|====
+
+=== PHP
+
+- Laravel, Symphony (PHP)
+
+=== Go
+
+- Goravel, Fiber (Go)
+
+=== JS
+
+- Redwood.js, Koa.js (Javascript)
+
+=== Swift
+
+- Vapor (Swift)
+
+=== JVM
+
+- Spring Boot, Spark (Java)
+- Ktor (Kotlin)
+
+=== .NET
+
+- ASP.NET (C#)
+
+=== Stacks Comunes
+
+Entre las distintas combinaciones de herramientas los siguientes stacks pueden ser encontrados dentro de diversos proyectos.
+
+|====
+|Stack| Descripción
+
+|PPoETL | Phoenix, Postgres, Elixir, Tailwind, LiveView. Stack utilizado en la mayoría de los proyectos con Elixir. Se podría añadir también https://ash-hq.org/[Ash Framework] como una capa de abastracción para la gestión de recursos de datos.
+
+|LAMPP| Linux, Apache, Mysql + (PHP o Perl). Un stack venerable, pero muy usado en proyectos legacy y páginas web con Wordpress. La mayoría de los hostings compartidos tienen este stack pre configurado.
+
+|MERN| Mongo, Express, React, Node.js. Un stack popular por el 2015, pero ya no muy usado actualmente. Ahora se prefiere soluciones como Nest.js o Redwood.js y bases de datos como Postgres.
+
+|VITL| Vue, Inertia, Tailwind, Laravel. En Laravel es muy común utilizar el framework Vue.js para generar sus vistas. Combinándolo con Inertia.js también genera mayor facilidad de gestionar el código que utilizando Blade. Una alternativa a Vue sería Livewire.
+
+| Ruby on Rails + Hotwire | El stack recomendado para aplicaciones Ruby on Rails modernas.
+
+| Springboot + Angular | Muy común en aplicaciones empresariales como bancos.
+
+| ASP.Net + Blazor | Común en ambientes empresariales que utilizan las tecnologías C# de Microsoft.
+
+|====
+
+== CMS
+
+- Wordpress
+- ProcessWire
+
+== Servidores Web
+
+- Apache2
+- Yaws
+- Nginx
+- Monkey HTTP
+
+== Backend as a Service
+
+- Firebase
+- Supabase
+
+== Servicios en la Nube
+
+- AWS Lambda
+- GCP
+- Azure
+- Vercel
+
+=== Referencias
+
+- Kinsta. (2023, 8 de octubre). Comparando bundlers de JavaScript: Rollup vs Webpack vs Parcel. Kinsta. https://kinsta.com/es/blog/rollup-vs-webpack-vs-parcel/
+
+- Domini Code. (2023, 11 de marzo). ¿Qué es el Compilador Esbuild? DOMINICODE. https://dominicode.com/que-es-el-compilador-esbuild/
+
+- DreamHost. (2025, 15 de enero). Tailwind Vs. Bootstrap: ¿Qué framework CSS necesitas? DreamHost. https://www.dreamhost.com/blog/es/tailwind-vs-bootstrap-que-framework-css-necesitas/
