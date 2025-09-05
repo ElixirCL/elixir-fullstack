@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Ecosistema Web :: Elixir Full-Stack</title>
     <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/ecosystem/ecosystem.html">
-    <link rel="prev" href="../hosting/chapter.html">
-    <link rel="next" href="../networking/chapter.html">
+    <link rel="prev" href="../devops/golden.html">
     <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -130,15 +129,6 @@
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Ecosistema Web</span>
-<ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="ecosystem.html">Ecosistema Web</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-    <button class="nav-item-toggle"></button>
     <span class="nav-text">Networking</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
@@ -206,6 +196,15 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ecosistema Web</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="ecosystem.html">Ecosistema Web</a>
   </li>
 </ul>
   </li>
@@ -438,22 +437,22 @@ Save changes
 <div class="ulist">
 <ul>
 <li>
-<p>jQuery</p>
+<p><a href="https://jquery.com/">jQuery</a>: Muy usado en principios de la década del 2010, hoy no tanto.</p>
 </li>
 <li>
-<p>Alpine</p>
+<p><a href="https://alpinejs.dev/">Alpine.js</a>: Una versión más simple de manipular el DOM sin necesidad de frameworks más grandes como React.</p>
 </li>
 <li>
-<p>React (Next.js)</p>
+<p><a href="https://react.dev/">React</a> (<a href="https://nextjs.org/">Next.js</a>): Framework muy usado actualmente.</p>
 </li>
 <li>
-<p>Angular</p>
+<p><a href="https://angular.dev/">Angular</a> (<a href="https://nestjs.com/">Nest.js</a>): Popular para aplicaciones con Springboot.</p>
 </li>
 <li>
-<p>Vue</p>
+<p><a href="https://vuejs.org/">Vue</a>: Popular en aplicaciones con Laravel.</p>
 </li>
 <li>
-<p>Svelte</p>
+<p><a href="https://svelte.dev/">Svelte</a>: Una excelente alternativa a React, Vue y Angular que combina múltiples ideas de cada uno.</p>
 </li>
 </ul>
 </div>
@@ -466,7 +465,10 @@ Save changes
 <div class="ulist">
 <ul>
 <li>
-<p>Inertia.js</p>
+<p><a href="https://inertiajs.com/">Inertia.js</a> (Laravel, Rails)</p>
+</li>
+<li>
+<p><a href="https://htmx.org/">HTMX</a> (Go, Java).</p>
 </li>
 </ul>
 </div>
@@ -479,20 +481,20 @@ Save changes
 <div class="ulist">
 <ul>
 <li>
-<p>Hotwire (Ruby)</p>
+<p><a href="https://hotwired.dev/">Hotwire</a> (Ruby)</p>
 </li>
 <li>
-<p>Blazor (C#)</p>
+<p><a href="https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor">Blazor</a> (C#)</p>
 </li>
 <li>
-<p>Livewire (PHP)</p>
+<p><a href="https://laravel-livewire.com/">Livewire</a> (PHP)</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
 <h4 id="liveview-elixir"><a class="anchor" href="#liveview-elixir"></a>LiveView (Elixir)</h4>
 <div class="paragraph">
-<p>Su modo de uso es muy similar a React.js. Si se utiliza la extensión <a href="https://surface-ui.org/">SurfaceUI</a> es aún más similar. Es la opción recomendable y predeterminada de realizar aplicaciones con Phoenix y Elixir.</p>
+<p>Su modo de uso es muy similar a React.js. Si se utiliza la extensión <a href="https://surface-ui.org/">SurfaceUI</a> es aún más similar. Es la opción recomendable y predeterminada de realizar aplicaciones con Phoenix y Elixir. Es la principal inspiración de soluciones como Blazor y Livewire.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -516,6 +518,11 @@ end</code></pre>
 <div class="paragraph">
 <p>En general los frameworks de backends se separan en dos categorías principales.
 Uno que proporciona un conjunto de herramientas completo y otro más minimalista que proporciona una estructura base, la cual puede ser expandida según la necesidad. Escoger entre estas dos estrategias queda a juicio del equipo de desarrollo y las necesidades del proyecto. La opción recomendable es utilizar el framework más completo debido a que es más sencillo tomar las decisiones y se estandariza el conjunto de herramientas a usar.</p>
+</div>
+<div class="paragraph">
+<p>Los frameworks que impulsaron este ecosistema son Ruby on Rails y Django. Ambos fueron los pioneros en la forma
+de estructurar los proyectos y herramientas anexas (como la línea de comandos) que permitieron y dieron inspiración
+a frameworks actuales como Laravel y Phoenix.</p>
 </div>
 <div class="sect2">
 <h3 id="beam"><a class="anchor" href="#beam"></a>Beam</h3>
@@ -593,71 +600,178 @@ Uno que proporciona un conjunto de herramientas completo y otro más minimalista
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fastapi.tiangolo.com/">FastAPI</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Framework que ofrece mayor velocidad para Python. Pensado principalmente para la creación de APIs.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.masoniteproject.com/">Masonite</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework similar a Laravel pero hecho en Python.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
 <h3 id="php"><a class="anchor" href="#php"></a>PHP</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Laravel, Symphony (PHP)</p>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://laravel.com/">Laravel</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework más popular de PHP, similar a Rails en muchos aspectos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://symfony.com/">Symphony</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conjunto de componentes y framework web. Laravel utiliza mucho de sus componentes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://phalcon.io">Phalcon</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework de PHP creado como extensión del lenguaje para mayor velocidad.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="go"><a class="anchor" href="#go"></a>Go</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Goravel, Fiber (Go)</p>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.goravel.dev/">Goravel</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework de Go muy similar a Laravel.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://gobuffalo.io/">Buffalo</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conjunto de componentes y framework web en Go.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://gofiber.io/">Fiber</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework más liviano pensado para APIs.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
-<h3 id="js"><a class="anchor" href="#js"></a>JS</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Redwood.js, Koa.js (Javascript)</p>
-</li>
-</ul>
-</div>
+<h3 id="javascript"><a class="anchor" href="#javascript"></a>Javascript</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://rwsdk.com/">Redwood SDK</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework fullstack recomendado para Javascript.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://expressjs.com/">Express</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework más conocido para APIs en Javascript, aunque existen alternativas más modernas como Koa.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://koajs.com/">Koa.js</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework para APIs en Javascript.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="swift"><a class="anchor" href="#swift"></a>Swift</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Vapor (Swift)</p>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://vapor.codes/">Vapor.code</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework más popular para backends con Swift.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="jvm"><a class="anchor" href="#jvm"></a>JVM</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Spring Boot, Spark (Java)</p>
-</li>
-<li>
-<p>Ktor (Kotlin)</p>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://spring.io/projects/spring-boot">Springboot</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework más popular para Java. Usado comunmente como alternativa a ASP.net por empresas grandes como bancos. Normalmente emparejado con Angular.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.dropwizard.io/en/stable/">Dropwizard</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework para backends restful con herramientas preseleccionadas sólidas.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://sparkjava.com/">Spark</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework más liviano que Springboot, pensado para Kotlin y Java. Similar a frameworks como ExpressJS.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://ktor.io/">Ktor</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework web pensado para Kotlin.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="net"><a class="anchor" href="#net"></a>.NET</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>ASP.NET (C#)</p>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item</th>
+<th class="tableblock halign-left valign-top">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://dotnet.microsoft.com/en-us/apps/aspnet">ASP.NET Core</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El framework oficial de Microsoft para crear aplicaciones y servicios web con .NET y C#.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://es.wikipedia.org/wiki/ASP.NET_MVC_Framework">ASP.NET MVC</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Versión anterior de ASP.NET Core, la cual era exclusiva de Windows. Si bien fue reemplazada por ASP.NET Core, muchas empresas todavía la usan en sus proyectos legacy.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="stacks-comunes"><a class="anchor" href="#stacks-comunes"></a>Stacks Comunes</h3>
@@ -677,7 +791,7 @@ Uno que proporciona un conjunto de herramientas completo y otro más minimalista
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PPoETL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PETaL</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Phoenix, Postgres, Elixir, Tailwind, LiveView. Stack utilizado en la mayoría de los proyectos con Elixir. Se podría añadir también <a href="https://ash-hq.org/">Ash Framework</a> como una capa de abastracción para la gestión de recursos de datos.</p></td>
 </tr>
 <tr>
@@ -715,10 +829,10 @@ Uno que proporciona un conjunto de herramientas completo y otro más minimalista
 <div class="ulist">
 <ul>
 <li>
-<p>Wordpress</p>
+<p><a href="https://wordpress.org/">Wordpress</a>: CMS popular para la creación de sitios web informativos como blogs. Se puede encontrar múltiples plantillas gratuitas y de pago para armar sitios web rápidamente. Pero se vuelve engorroso al poco tiempo.</p>
 </li>
 <li>
-<p>ProcessWire</p>
+<p><a href="https://processwire.com/">ProcessWire</a>: Excelente alternativa a Wordpress cuando se necesita mayor nivel de personalización y control.</p>
 </li>
 </ul>
 </div>
@@ -730,16 +844,16 @@ Uno que proporciona un conjunto de herramientas completo y otro más minimalista
 <div class="ulist">
 <ul>
 <li>
-<p>Apache2</p>
+<p><a href="https://httpd.apache.org/">Apache2</a>: Servidor popular con aplicaciones PHP como Wordpress.</p>
 </li>
 <li>
-<p>Yaws</p>
+<p><a href="https://github.com/erlyaws/yaws">Yaws</a>: Una alternativa similar a Apache2 pero desarrollada en Erlang.</p>
 </li>
 <li>
-<p>Nginx</p>
+<p><a href="https://nginx.org/">Nginx</a>: Servidor muy popular como proxy reverso y servir archivos estáticos.</p>
 </li>
 <li>
-<p>Monkey HTTP</p>
+<p><a href="https://github.com/monkey/monkey">Monkey HTTP</a>: Servidor web creado en Chile.</p>
 </li>
 </ul>
 </div>
@@ -751,10 +865,10 @@ Uno que proporciona un conjunto de herramientas completo y otro más minimalista
 <div class="ulist">
 <ul>
 <li>
-<p>Firebase</p>
+<p><a href="https://firebase.google.com/?hl=es-419">Firebase</a>: Servidor todo en uno, principalmente para aplicaciones móviles.</p>
 </li>
 <li>
-<p>Supabase</p>
+<p><a href="https://supabase.com/">Supabase</a>: Gestión de base de datos, excelente alternativa a firebase.</p>
 </li>
 </ul>
 </div>
@@ -798,8 +912,7 @@ Uno que proporciona un conjunto de herramientas completo y otro más minimalista
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a></span>
-  <span class="next"><a href="../networking/chapter.html">Redes e Internet</a></span>
+  <span class="prev"><a href="../devops/golden.html">Golden Signals</a></span>
 </nav>
 </article>
   </div>

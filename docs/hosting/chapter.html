@@ -6,7 +6,7 @@
     <title>Hosting, Dominios y Cpanel :: Elixir Full-Stack</title>
     <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/hosting/chapter.html">
     <link rel="prev" href="../github/chapter.html">
-    <link rel="next" href="../ecosystem/ecosystem.html">
+    <link rel="next" href="../networking/chapter.html">
     <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -130,15 +130,6 @@
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Ecosistema Web</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../ecosystem/ecosystem.html">Ecosistema Web</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-    <button class="nav-item-toggle"></button>
     <span class="nav-text">Networking</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
@@ -206,6 +197,15 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ecosistema Web</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/ecosystem.html">Ecosistema Web</a>
   </li>
 </ul>
   </li>
@@ -382,31 +382,40 @@
 <div class="paragraph">
 <p>El uso de URLs relativas puede ser un riesgo para el robo de contenido ya que la gente no tiene que reescribir ningún enlace interno. Pueden copiar fácilmente tu página y ponerla en un nuevo dominio utilizando un raspador web (web scrapper).</p>
 </div>
-<div class="paragraph">
-<p>|=
-| URL | Descripción</p>
-</div>
-<div class="paragraph">
-<p>| <code>https://developer.mozilla.org/es/docs/Learn</code>
-| URL Completa (absoluta)</p>
-</div>
-<div class="paragraph">
-<p>| <code>//developer.mozilla.org/es/docs/Learn</code>
-| URL relativa con protocolo implícito (Reutiliza el protocolo inicial)</p>
-</div>
-<div class="paragraph">
-<p>| <code>/es/docs/Learn</code>
-| URL relativa con dominio implícito</p>
-</div>
-<div class="paragraph">
-<p>| <code>Skills/Infrastructure/Understanding_URLs</code>
-| URL relativa que utiliza el directorio actual.</p>
-</div>
-<div class="paragraph">
-<p>| <code>../CSS/display</code>
-| URL relativa que utiliza el directorio anterior.
-|=</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">URL</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>https://developer.mozilla.org/es/docs/Learn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL Completa (absoluta)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>//developer.mozilla.org/es/docs/Learn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL relativa con protocolo implícito (Reutiliza el protocolo inicial)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/es/docs/Learn</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL relativa con dominio implícito</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Skills/Infrastructure/Understanding_URLs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL relativa que utiliza el directorio actual.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>../CSS/display</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL relativa que utiliza el directorio anterior.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <ul>
 <li>
@@ -623,27 +632,36 @@ urn:ietf:rfc:2648</code></pre>
 <div class="sect1">
 <h2 id="dónde-compro-un-dominio"><a class="anchor" href="#dónde-compro-un-dominio"></a>¿Dónde Compro un Dominio?</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>|=
-| URL | Descripción</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://nic.cl" class="bare">https://nic.cl</a>
-| Compra de dominios en Chile. Valor promedio $10.000 CLP por año.</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://dynadot.com" class="bare">https://dynadot.com</a>
-| Compra de dominios Internacional. Valor depende del TLD. Aceptan Paypal o tarjetas de crédito internacional como <a href="https://www.tenpo.cl/" class="bare">https://www.tenpo.cl/</a> o <a href="https://dalecoopeuch.cl/" class="bare">https://dalecoopeuch.cl/</a></p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://dynv6.com/" class="bare">https://dynv6.com/</a>
-| Subdominios gratuitos. Ideal para tener servidores hogareños sin recurrir a un dominio principal.</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://www.noip.com" class="bare">https://www.noip.com</a>
-| Subdominios gratuitos. Ideal para tener servidores hogareños sin recurrir a un dominio principal.
-|=</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">URL</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://nic.cl" class="bare">https://nic.cl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compra de dominios en Chile. Valor promedio $10.000 CLP por año.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://dynadot.com" class="bare">https://dynadot.com</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compra de dominios Internacional. Valor depende del TLD. Aceptan Paypal o tarjetas de crédito internacional como <a href="https://www.tenpo.cl/" class="bare">https://www.tenpo.cl/</a> o <a href="https://dalecoopeuch.cl/" class="bare">https://dalecoopeuch.cl/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://dynv6.com/" class="bare">https://dynv6.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subdominios gratuitos. Ideal para tener servidores hogareños sin recurrir a un dominio principal.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.noip.com" class="bare">https://www.noip.com</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subdominios gratuitos. Ideal para tener servidores hogareños sin recurrir a un dominio principal.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -753,79 +771,88 @@ urn:ietf:rfc:2648</code></pre>
 <div class="sect1">
 <h2 id="dónde-consigo-un-hosting"><a class="anchor" href="#dónde-consigo-un-hosting"></a>¿Dónde Consigo un Hosting?</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>|=
-| URL | Descripción</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://cpanelhost.cl" class="bare">https://cpanelhost.cl</a>
-| Hosting económico gama baja/media para servidores en Chile. Valor promedio $10.000 CLP por año. Ideal para tener un servidor de correos propio de forma económica. Páginas webs simples o de poco tráfico.</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://silverhost.cl" class="bare">https://silverhost.cl</a>
-| Hosting de gama media en Chile. Valor promedio $30.000 CLP por año. Ideal para páginas web más exigentes o múltiples dominios.</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://gohosting.cl" class="bare">https://gohosting.cl</a>
-| Hosting de gama baja/media en servidores internacionales.</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://hostgator.com" class="bare">https://hostgator.com</a>
-| Hosting gama baja/media internacional. Muchos resellers compran a Hostgator y revenden en Chile. Revisar siempre que las ips y nameservers sean de chile antes de seleccionar un hosting chileno.</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://www.hostinger.com/" class="bare">https://www.hostinger.com/</a>
-| Hosting de gama baja/media internacional</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://www.digitalocean.com/" class="bare">https://www.digitalocean.com/</a>
-| VPS</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://www.linode.com/" class="bare">https://www.linode.com/</a>
-| VPS</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://www.vultr.com/" class="bare">https://www.vultr.com/</a>
-| VPS</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://neocities.org/" class="bare">https://neocities.org/</a>
-| Hosting gratuito de páginas web estáticas</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://www.cloudflare.com/" class="bare">https://www.cloudflare.com/</a>
-| Entre sus servicios gratuitos hospeda páginas web estáticas</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://pages.github.com/" class="bare">https://pages.github.com/</a>
-| Si se tiene un proyecto en Github se puede utilizar su hosting gratuito para web estáticas. Ideal para documentación de proyectos o experimentos</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://www.heroku.com/" class="bare">https://www.heroku.com/</a>
-| Servidor de Aplicaciones en la Nube</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://fly.io/" class="bare">https://fly.io/</a>
-| Servidor de Aplicaciones en la Nube. Recomendado para Elixir.</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://vercel.com/" class="bare">https://vercel.com/</a>
-| Servidor de Aplicaciones en la Nube. Especializado en Frontend.</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://aws.amazon.com/es/" class="bare">https://aws.amazon.com/es/</a>
-| Plataforma de Servicios en la Nube de Amazon.</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://azure.microsoft.com/en-us" class="bare">https://azure.microsoft.com/en-us</a>
-| Plataforma de Servicios en la Nube de Microsoft.</p>
-</div>
-<div class="paragraph">
-<p>| <a href="https://cloud.google.com/" class="bare">https://cloud.google.com/</a>
-| Plataforma de Servicios en la Nube de Google.
-|=</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">URL</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://cpanelhost.cl" class="bare">https://cpanelhost.cl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hosting económico gama baja/media para servidores en Chile. Valor promedio $10.000 CLP por año. Ideal para tener un servidor de correos propio de forma económica. Páginas webs simples o de poco tráfico.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://silverhost.cl" class="bare">https://silverhost.cl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hosting de gama media en Chile. Valor promedio $30.000 CLP por año. Ideal para páginas web más exigentes o múltiples dominios.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://gohosting.cl" class="bare">https://gohosting.cl</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hosting de gama baja/media en servidores internacionales.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://hostgator.com" class="bare">https://hostgator.com</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hosting gama baja/media internacional. Muchos resellers compran a Hostgator y revenden en Chile. Revisar siempre que las ips y nameservers sean de chile antes de seleccionar un hosting chileno.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.hostinger.com/" class="bare">https://www.hostinger.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hosting de gama baja/media internacional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.digitalocean.com/" class="bare">https://www.digitalocean.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.linode.com/" class="bare">https://www.linode.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.vultr.com/" class="bare">https://www.vultr.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://neocities.org/" class="bare">https://neocities.org/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hosting gratuito de páginas web estáticas</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.cloudflare.com/" class="bare">https://www.cloudflare.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entre sus servicios gratuitos hospeda páginas web estáticas</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://pages.github.com/" class="bare">https://pages.github.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Si se tiene un proyecto en Github se puede utilizar su hosting gratuito para web estáticas. Ideal para documentación de proyectos o experimentos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.heroku.com/" class="bare">https://www.heroku.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Servidor de Aplicaciones en la Nube</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fly.io/" class="bare">https://fly.io/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Servidor de Aplicaciones en la Nube. Recomendado para Elixir.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://vercel.com/" class="bare">https://vercel.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Servidor de Aplicaciones en la Nube. Especializado en Frontend.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://aws.amazon.com/es/" class="bare">https://aws.amazon.com/es/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plataforma de Servicios en la Nube de Amazon.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://azure.microsoft.com/en-us" class="bare">https://azure.microsoft.com/en-us</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plataforma de Servicios en la Nube de Microsoft.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://cloud.google.com/" class="bare">https://cloud.google.com/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plataforma de Servicios en la Nube de Google.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -1269,7 +1296,7 @@ Request timeout for icmp_seq 6
 </div>
 <nav class="pagination">
   <span class="prev"><a href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a></span>
-  <span class="next"><a href="../ecosystem/ecosystem.html">Ecosistema Web</a></span>
+  <span class="next"><a href="../networking/chapter.html">Redes e Internet</a></span>
 </nav>
 </article>
   </div>

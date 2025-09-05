@@ -115,27 +115,28 @@ Los frameworks de frontend proporcionan herramientas y estructuras para organiza
 
 Se renderizan tradicionalmente en el cliente utilizando un bundler. La principal desventaja es que aumentan considerablemente el tamaño de los archivos a descargar para un sitio web, si no se realiza una correcto manejo de los tamaños. Además la seguridad es menor debido a que se debe almacenar las credenciales en el cliente, lo que no los hace recomendables para operaciones delicadas como acceso a la base de datos, obligando al uso de un servidor con una API Rest o similar.
 
-- jQuery
-- Alpine
-- React (Next.js)
-- Angular
-- Vue
-- Svelte
+- https://jquery.com/[jQuery]: Muy usado en principios de la década del 2010, hoy no tanto.
+- https://alpinejs.dev/[Alpine.js]: Una versión más simple de manipular el DOM sin necesidad de frameworks más grandes como React.
+- https://react.dev/[React] (https://nextjs.org/[Next.js]): Framework muy usado actualmente.
+- https://angular.dev/[Angular] (https://nestjs.com/[Nest.js]): Popular para aplicaciones con Springboot.
+- https://vuejs.org/[Vue]: Popular en aplicaciones con Laravel.
+- https://svelte.dev/[Svelte]: Una excelente alternativa a React, Vue y Angular que combina múltiples ideas de cada uno.
 
 === Híbridos
 
 Las herramientas como Inertia proporcionan un híbrido entre el servidor y el cliente web. Presentan un puente que permite conectar un framework web y endpoints en el servidor. Logrando facilidad de comunicación sin necesidad de crear endpoints dedicados como si fuera usando un framework de frontend tradicional, disminuyendo la complejidad del sistema y aumentando la cohesión de los componentes.
 
-- Inertia.js
+- https://inertiajs.com/[Inertia.js] (Laravel, Rails)
+- https://htmx.org/[HTMX] (Go, Java).
 
 === Renderizado en servidor
 
 Los siguientes frameworks utilizan una conexión por websockets o estrategias de long polling para la comunicación del servidor con el cliente. Por lo que la mayoría de la renderización es en el servidor, no necesitando de frameworks de cliente como React.
 
 
-- Hotwire (Ruby)
-- Blazor (C#)
-- Livewire (PHP)
+- https://hotwired.dev/[Hotwire] (Ruby)
+- https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor[Blazor] (C#)
+- https://laravel-livewire.com/[Livewire] (PHP)
 
 ==== LiveView (Elixir)
 
@@ -157,6 +158,10 @@ end
 
 En general los frameworks de backends se separan en dos categorías principales. 
 Uno que proporciona un conjunto de herramientas completo y otro más minimalista que proporciona una estructura base, la cual puede ser expandida según la necesidad. Escoger entre estas dos estrategias queda a juicio del equipo de desarrollo y las necesidades del proyecto. La opción recomendable es utilizar el framework más completo debido a que es más sencillo tomar las decisiones y se estandariza el conjunto de herramientas a usar.
+
+Los frameworks que impulsaron este ecosistema son Ruby on Rails y Django. Ambos fueron los pioneros en la forma
+de estructurar los proyectos y herramientas anexas (como la línea de comandos) que permitieron y dieron inspiración
+a frameworks actuales como Laravel y Phoenix.
 
 === Beam
 
@@ -185,33 +190,70 @@ Uno que proporciona un conjunto de herramientas completo y otro más minimalista
 
 | https://www.djangoproject.com/[Django] | Framework full stack de Python. Tan venerable como Ruby on Rails.
 | https://fastapi.tiangolo.com/[FastAPI] | Framework que ofrece mayor velocidad para Python. Pensado principalmente para la creación de APIs.
+| https://docs.masoniteproject.com/[Masonite] | Framework similar a Laravel pero hecho en Python.
 
 |====
 
 === PHP
 
-- Laravel, Symphony (PHP)
+|====
+|Item | Descripcion
+
+| https://laravel.com/[Laravel] | Framework más popular de PHP, similar a Rails en muchos aspectos.
+| https://symfony.com/[Symphony] | Conjunto de componentes y framework web. Laravel utiliza mucho de sus componentes.
+| https://phalcon.io[Phalcon] | Framework de PHP creado como extensión del lenguaje para mayor velocidad.
+|====
 
 === Go
 
-- Goravel, Fiber (Go)
+|====
+|Item | Descripcion
 
-=== JS
+| https://www.goravel.dev/[Goravel] | Framework de Go muy similar a Laravel.
+| https://gobuffalo.io/[Buffalo] | Conjunto de componentes y framework web en Go.
+| https://gofiber.io/[Fiber] | Framework más liviano pensado para APIs.
+|====
 
-- Redwood.js, Koa.js (Javascript)
+=== Javascript
+
+|====
+|Item | Descripcion
+
+| https://rwsdk.com/[Redwood SDK] | Framework fullstack recomendado para Javascript.
+| https://expressjs.com/[Express] | Framework más conocido para APIs en Javascript, aunque existen alternativas más modernas como Koa.
+| https://koajs.com/[Koa.js] | Framework para APIs en Javascript.
+|====
 
 === Swift
 
-- Vapor (Swift)
+|====
+|Item | Descripcion
+
+| https://vapor.codes/[Vapor.code] | Framework más popular para backends con Swift.
+|====
 
 === JVM
 
-- Spring Boot, Spark (Java)
-- Ktor (Kotlin)
+|====
+|Item | Descripcion
+
+| https://spring.io/projects/spring-boot[Springboot] | Framework más popular para Java. Usado comunmente como alternativa a ASP.net por empresas grandes como bancos. Normalmente emparejado con Angular.
+
+| https://www.dropwizard.io/en/stable/[Dropwizard] | Framework para backends restful con herramientas preseleccionadas sólidas.
+
+| https://sparkjava.com/[Spark]| Framework más liviano que Springboot, pensado para Kotlin y Java. Similar a frameworks como ExpressJS.
+
+| https://ktor.io/[Ktor] | Framework web pensado para Kotlin.
+|====
 
 === .NET
 
-- ASP.NET (C#)
+|====
+|Item | Descripcion
+
+| https://dotnet.microsoft.com/en-us/apps/aspnet[ASP.NET Core] | El framework oficial de Microsoft para crear aplicaciones y servicios web con .NET y C#.
+| https://es.wikipedia.org/wiki/ASP.NET_MVC_Framework[ASP.NET MVC]| Versión anterior de ASP.NET Core, la cual era exclusiva de Windows. Si bien fue reemplazada por ASP.NET Core, muchas empresas todavía la usan en sus proyectos legacy. 
+|====
 
 === Stacks Comunes
 
@@ -220,7 +262,7 @@ Entre las distintas combinaciones de herramientas los siguientes stacks pueden s
 |====
 |Stack| Descripción
 
-|PPoETL | Phoenix, Postgres, Elixir, Tailwind, LiveView. Stack utilizado en la mayoría de los proyectos con Elixir. Se podría añadir también https://ash-hq.org/[Ash Framework] como una capa de abastracción para la gestión de recursos de datos.
+|PETaL | Phoenix, Postgres, Elixir, Tailwind, LiveView. Stack utilizado en la mayoría de los proyectos con Elixir. Se podría añadir también https://ash-hq.org/[Ash Framework] como una capa de abastracción para la gestión de recursos de datos.
 
 |LAMPP| Linux, Apache, Mysql + (PHP o Perl). Un stack venerable, pero muy usado en proyectos legacy y páginas web con Wordpress. La mayoría de los hostings compartidos tienen este stack pre configurado.
 
@@ -238,20 +280,20 @@ Entre las distintas combinaciones de herramientas los siguientes stacks pueden s
 
 == CMS
 
-- Wordpress
-- ProcessWire
+- https://wordpress.org/[Wordpress]: CMS popular para la creación de sitios web informativos como blogs. Se puede encontrar múltiples plantillas gratuitas y de pago para armar sitios web rápidamente. Pero se vuelve engorroso al poco tiempo.
+- https://processwire.com/[ProcessWire]: Excelente alternativa a Wordpress cuando se necesita mayor nivel de personalización y control.
 
 == Servidores Web
 
-- Apache2
-- Yaws
-- Nginx
-- Monkey HTTP
+- https://httpd.apache.org/[Apache2]: Servidor popular con aplicaciones PHP como Wordpress.
+- https://github.com/erlyaws/yaws[Yaws]: Una alternativa similar a Apache2 pero desarrollada en Erlang.
+- https://nginx.org/[Nginx]: Servidor muy popular como proxy reverso y servir archivos estáticos.
+- https://github.com/monkey/monkey[Monkey HTTP]: Servidor web creado en Chile.
 
 == Backend as a Service
 
-- Firebase
-- Supabase
+- https://firebase.google.com/?hl=es-419[Firebase]: Servidor todo en uno, principalmente para aplicaciones móviles.
+- https://supabase.com/[Supabase]: Gestión de base de datos, excelente alternativa a firebase.
 
 == Servicios en la Nube
 

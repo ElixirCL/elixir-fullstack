@@ -60,7 +60,7 @@ Cuando se usa una URL dentro de un documento, como en una página HTML, las cosa
 
 El uso de URLs relativas puede ser un riesgo para el robo de contenido ya que la gente no tiene que reescribir ningún enlace interno. Pueden copiar fácilmente tu página y ponerla en un nuevo dominio utilizando un raspador web (web scrapper).
 
-|=
+|====
 | URL | Descripción
 
 | `+https://developer.mozilla.org/es/docs/Learn+`
@@ -77,7 +77,7 @@ El uso de URLs relativas puede ser un riesgo para el robo de contenido ya que la
 
 | `../CSS/display`
 | URL relativa que utiliza el directorio anterior.
-|=
+|====
 
 * https://en.wikipedia.org/wiki/URL[URL]
 * https://developer.mozilla.org/es/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL[Mozilla. ¿Qué es una URL?]
@@ -182,7 +182,7 @@ Te recomendamos que para crear subdominios uses nombres cortos y palabras claves
 
 == ¿Dónde Compro un Dominio?
 
-|=
+|====
 | URL | Descripción
 
 | https://nic.cl
@@ -196,7 +196,7 @@ Te recomendamos que para crear subdominios uses nombres cortos y palabras claves
 
 | https://www.noip.com
 | Subdominios gratuitos. Ideal para tener servidores hogareños sin recurrir a un dominio principal.
-|=
+|====
 
 == ¿Qué es un Domain Name Server?
 
@@ -248,7 +248,7 @@ Entre los hosting web existen principalmente las siguientes opciones:
 
 == ¿Dónde Consigo un Hosting?
 
-|=
+|====
 | URL | Descripción
 
 | https://cpanelhost.cl
@@ -301,7 +301,7 @@ Entre los hosting web existen principalmente las siguientes opciones:
 
 | https://cloud.google.com/
 | Plataforma de Servicios en la Nube de Google.
-|=
+|====
 
 == Herramienta Whois
 

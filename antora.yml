@@ -13,7 +13,6 @@ nav:
   - modules/systemd/nav.adoc
   - modules/github/nav.adoc
   - modules/hosting/nav.adoc
-  - modules/ecosystem/nav.adoc
   - modules/networking/nav.adoc
   - modules/http/nav.adoc
   - modules/security/nav.adoc
@@ -22,3 +21,4 @@ nav:
   - modules/elixir/nav.adoc
   - modules/mobile/nav.adoc
   - modules/devops/nav.adoc
+  - modules/ecosystem/nav.adoc
