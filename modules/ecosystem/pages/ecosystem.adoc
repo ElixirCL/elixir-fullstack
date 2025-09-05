@@ -302,6 +302,19 @@ Entre las distintas combinaciones de herramientas los siguientes stacks pueden s
 - Azure
 - Vercel
 
+== ¿Cómo elegir la tecnología?
+
+Se recomienda seleccionar un stack y profundizarlo mínimo 2 años. 
+Esto permitirá ganar experiencia y conocer tanto sus fortalezas
+como sus debilidades. Lo ideal es tener almenos un framework backend
+y un framework frontend dominado para poder abarcar mayor número de ofertas laborales.
+
+- Phoenix + Liveview: Opción recomendada para aplicaciones con Elixir. Se recomienda obtener certificaciones de la Erlang Foundation.
+- Laravel + Vue: Opción con gran oferta laboral en PHP.
+- Springboot + Angular: Opción recomendada para aplicaciones bancarias y de alta rigurosidad. Se recomienda obtener certificaciones asociadas.
+- ASP.NET Core + Blazor: Opción recomendada para nuevas aplicaciones en C#. Se recomienda obtener certificaciones asociadas.
+- React.js: Framework con mayor cantidad de ofertas laborales. Se recomienda aprender React como alternativa a Vue y LiveView.
+
 === Referencias
 
 - Kinsta. (2023, 8 de octubre). Comparando bundlers de JavaScript: Rollup vs Webpack vs Parcel. Kinsta. https://kinsta.com/es/blog/rollup-vs-webpack-vs-parcel/
