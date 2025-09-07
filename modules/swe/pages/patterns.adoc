@@ -71,7 +71,29 @@ image:applemvc.png[Apple MVC]
 
 - https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/index.html
 
-El principal problema de MVC y por qué razón nacieron otros patrones derivados es debido a la tendencia de que los controladores crecían de forma exponencial. Incluso llegando a ser llamado Massive View Controllers, por la cantidad de responsabilidades que tenían que cumplir.
+El principal problema de MVC y por qué razón nacieron otros patrones derivados es debido a la tendencia de que los controladores crecían de forma exponencial. Incluso llegando a ser llamado _"Massive View Controllers"_, por la cantidad de responsabilidades que tenían que cumplir.
+
+En su origen en https://stlab.cc/tips/about-mvc.html[SmallTalk] el patrón representaba tres conceptos fundamentales. El _Modelo_ (Datos y sus validaciones), la _Vista_ (Presentación) y el _Controlador_ (Lógica de Negocios) que tenían una relación como se muestra en la siguiente figura.
+
+.MVC en SmallTalk
+image:mvc-structure-smalltalk.png[]
+
+En la figura las líneas continuas implican una asociación directa. Las líneas discontinuas, una asociación indirecta por parte de un observador. Por lo tanto, se puede notar que el modelo desconoce la vista y el controlador, excepto indirectamente mediante notificaciones, y por lo tanto, el código del modelo es reutilizable. El controlador y la vista se vinculan al modelo, no al revés.
+
+La función de la vista y el controlador está fuertemente acoplada, pero no significa que el controlador tenga la responsabilidad sobre múltiples vistas. Apple se desvió de la versión de _SmallTalk_ original al promover un controlador masivo para múltiples vistas y modelos, por lo que se entiende una diferencia entre _SmallTalk MVC_ y _Cocoa MVC_ (Apple). Esto pudo ser consecuencia de las limitaciones en lenguajes como _C_ y _Pascal_ que no contaban con las características de _SmallTalk_ que facilitaban la observabilidad de propiedades.
+
+Para entender bien este patrón se debe mencionar que el _Modelo_ es un objeto que puede ser observado y que encapsula la lógica compleja de las relaciones entre sus propiedades. Es decir, si ocurre un cambio de estado debe lanzar un evento que notifique a la vista y esta a su vez al controlador para que estos puedan actualizar sus estados internos. El modelo es independiente y no interactúa directamente con la vista o el controlador. El estado de la vista siempre debe ser el último estado del modelo. Como mínimo una vista debe ser notificada de las siguientes cosas:
+
+. ¿Qué cambió?. Puede ser una notificación tan simple como "El modelo asociado a la vista".
+. El nuevo valor a mostrar.
+
+Para una implementación robusta el _Modelo_ debe ser capaz de notificar exactamente las partes que han cambiado y cómo han cambiado. De esta forma logrando ser compatible con cualquier tipo de vista presente o futura. Como este patrón es compuesto, puede llegar a ocurrir que se necesite un modelo exclusivo para la vista y su estado actual (tamaño de ventana, entre otros), el cual también debe ser observable. Es decir, una vista puede estar escuchando notificaciones de múltiples modelos, incluso uno exclusivo para su estado interno.
+
+La identificación y correcta definición del _Modelo_ es vital para un sistema bien diseñado. Es común identificar modelos generales como "Imagen", pero un mejor modelo debe considerar los detalles adicionales como "Imagen con configuraciones". Una buena técnica es crear modelos según los parámetros de las funciones de la lógica de negocios.
+
+Un ejemplo sería un botón asociado a eliminar una selección de archivos. Ésta eliminación de archivos está vinculada a una función que requiere una cantidad de parámetros y valores específicos (como ruta del archivo) para su correcta ejecución.
+Entonces el _Modelo_ asociado a esta función construiría los parámetros necesarios y sus validaciones (como que el nombre del archivo exista y no sea nulo). Ésta validación puede ser observable por la _Vista_ para habilitar/deshabilitar el botón según si es posible eliminar o no. Éste mismo _Modelo_ puede ser reutilizado en distintas vistas y controladores dentro de la aplicación.
+
 
 === Modelo
 
