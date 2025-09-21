@@ -8,6 +8,8 @@ include::foreword.adoc[]
 
 include::abstract.adoc[]
 
+include::syllabus.adoc[]
+
 include::colophon.adoc[]
 
 include::glossary.adoc[]

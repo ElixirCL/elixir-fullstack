@@ -1,0 +1,301 @@
+== Syllabus
+
+Para aprender los conceptos de este libro se recomienda
+una calendarización de 16 semanas.
+
+Centrándose principalmente en las siguientes unidades:
+
+* Unidad 1: HTML, CSS y JS
+ ** Historia de la Web y Aplicaciones Móviles
+ ** Ecosistema Tecnológico y Laboral
+ ** Tecnologías Web (HTML, CSS, JS, Markdown)
+ ** Conceptos de Github, Hosting, Dominios y Cpanel
+ ** Proyecto 1: Página Web Estática
+* Unidad 2: Backends
+ ** Diseño de Sistemas
+ ** Ingeniería de Software y Devops
+ ** Protocolo HTTP y Redes
+ ** Herramientas Bruno, Docker, Servidor en la Nube
+ ** Uso de Linux
+ ** Tecnologías Backend Elixir y Phoenix
+* Unidad 3: Seguridad
+ ** Seguridad en contexto Web y Móvil
+ ** Proyecto 2: API Rest + Frontend
+* Unidad 4: Apps Móviles
+ ** Ecosistema Android e iOS
+ ** Tecnologías multiplataformas
+ ** Proyecto 3: Videojuego Móvil
+
+=== Tareas
+
+Las tareas consistirán en desarrollar ejercicios de programación tanto
+en https://exercism.org/tracks/javascript/concepts[_JavaScript_] como
+https://exercism.org/tracks/elixir/concepts[_Elixir_], para fomentar el
+aprendizaje de lenguajes de programación tanto de frontend como de
+backend.
+
+Para esto se utilizará la plataforma https://exercism.org/[_Exercism_]
+que permitirá desarrollar los ejercicios con una estructura progresiva
+de dificultad.
+
+Se recomienda mínimo dos tareas por semana, una por cada lenguaje.
+
+*Libros de Apoyo*
+
+- https://github.com/radar/joyofelixir
+- https://github.com/Eloquent-JavaScript-Espanol/Eloquent-JavaScript-ES
+
+|====
+|Semana |Tarea JavaScript |Tarea Elixir
+
+|1 |https://exercism.org/tracks/javascript/exercises/hello-world[Hello
+World] |https://exercism.org/tracks/elixir/exercises/hello-world[Hello
+World]
+
+|2 |https://exercism.org/tracks/javascript/concepts/basics[Basics:
+Lucian’s Luscious Lasagna]
+|https://exercism.org/tracks/elixir/concepts/basics[Basics: Lasagna]
+
+|3 |https://exercism.org/tracks/javascript/concepts/numbers[Numbers:
+Freelancer Rates]
+|https://exercism.org/tracks/elixir/concepts/floating-point-numbers[Floating
+Point Numbers: Freelancer Rates]
+
+|4 |https://exercism.org/tracks/javascript/concepts/booleans[Booleans:
+Annalyn’s Infiltration]
+|https://exercism.org/tracks/elixir/concepts/booleans[Booleans: Pacman
+Rules]
+
+|5 |https://exercism.org/tracks/javascript/concepts/strings[Strings:
+Poetry Club Door Policy]
+|https://exercism.org/tracks/elixir/concepts/anonymous-functions[Anonymous
+Functions: Secrets]
+
+|6 |https://exercism.org/tracks/javascript/concepts/arrays[Arrays:
+Elyses Enchantments]
+|https://exercism.org/tracks/elixir/concepts/lists[Lists: Strain]
+
+|7
+|https://exercism.org/tracks/javascript/concepts/conditionals[Conditionals:
+Vehicle Purchase]
+|https://exercism.org/tracks/elixir/concepts/cond[Cond: Log Level]
+
+|8
+|https://exercism.org/tracks/javascript/concepts/conditionals-switch[Switch
+Statement: Mixed Juices]
+|https://exercism.org/tracks/elixir/concepts/default-arguments[Default
+Arguments: Guessing Game]
+
+|9 |https://exercism.org/tracks/javascript/concepts/for-loops[For Loops:
+Bird Watcher]
+|https://exercism.org/tracks/elixir/concepts/pattern-matching[Pattern
+Matching: Kitchen Calculator]
+
+|10 |https://exercism.org/tracks/javascript/concepts/objects[Objects:
+High Score Board]
+|https://exercism.org/tracks/elixir/concepts/pipe-operator[Pipe
+Operator: High School Sweetheart]
+
+|11 |https://exercism.org/tracks/javascript/concepts/null-undefined[Null
+and Undefined: Amusement Park]
+|https://exercism.org/tracks/elixir/concepts/recursion[Recursion: Bird
+Count]
+
+|12
+|https://exercism.org/tracks/javascript/concepts/functions[Functions:
+Lasagna Master] |https://exercism.org/tracks/elixir/concepts/maps[Maps:
+High Score]
+
+|13 |https://exercism.org/tracks/javascript/concepts/closures[Closures:
+Coordinate Transformation]
+|https://exercism.org/tracks/elixir/concepts/io[IO: RPG Character Sheet]
+
+|14
+|https://exercism.org/tracks/javascript/concepts/array-destructuring[Array
+Destructuring: Elyses Destructured Enchantments]
+|https://exercism.org/tracks/elixir/concepts/docs[Docs: City Office]
+
+|15
+|https://exercism.org/tracks/javascript/concepts/array-analysis[Array
+Analysis: Elyses Analytic Enchantments]
+|https://exercism.org/tracks/elixir/concepts/case[Case: German Sysadmin]
+
+|16
+|https://exercism.org/tracks/javascript/concepts/array-transformations[Array
+Transformations: Elyses Transformative Enchantments]
+|https://exercism.org/tracks/elixir/concepts/enum[Enum: Boutique
+Inventory]
+|====
+
+== Proyectos
+
+Los siguientes proyectos son recomendados para reforzar los conocimientos y tener
+productos que pueden ser utilizados en el currículum vitae.
+
+=== Proyecto 1: Sitio Web estático con HTML, CSS y JavaScript
+
+La revista "Club Nientiendo" le ha solicitado elaborar un sitio web
+para un juego "retro" a su elección (20 años de antigüedad o más).
+
+El sitio web debe contener los siguientes elementos:
+
+- Imágenes del Gameplay del Juego.
+- Videos de Youtube.
+- Historia, Personajes del Juego.
+- Tips y Secretos del Juego.
+- Review personal.
+- Información sobre la creación del Juego (personas, estudio, periódo histórico).
+- Citar correctamente las fuentes.
+- Visualización en dispositivos móviles (responsive).
+
+El sitio web debe estar muy bonito y personalizado para el juego.
+
+Puede obtener información e imágenes de los siguientes sitios webs:
+
+- https://www.spriters-resource.com/
+- https://nintendo.fandom.com/es/wiki/Nintendo_64
+- https://es.wikipedia.org/wiki/Anexo:Videojuegos_para_Nintendo_64
+- https://archive.org/details/club-nintendo-magazine
+
+*Restricciones y Expectativas*
+
+- Se debe subir y ejecutar en el hosting https://neocities.org en una url pública.
+- Debe ser sin utilizar bibliotecas o frameworks css o templates html. Solo código de [reset.css](https://www.joshwcomeau.com/css/custom-css-reset/) será permitido como dependencia externa.
+- No usar LLM ni otras herramientas que faciliten la programación más allá de un editor de código básico y el navegador. Se recomienda programar como en la vieja escuela para reforzar conocimientos.
+- Debe utilizar la mayor creatividad posible en temas de diseño y contenido, simulando ser parte de una revista de videojuegos.
+- Debe entregar el código fuente en Github. Commits deben ser incrementales con avances relevantes, no simplemente un commit grande con todos los cambios.
+- Plazo recomendado 4 semanas.
+
+*Libro de Apoyo*
+
+- https://ninjas.cl/books/superclubnet/
+
+=== Proyecto 2: API Rest + Frontend
+
+El proyecto consiste en planificar una página *eCommerce* e implementar una API Rest y un Frontend
+simple para uno de sus componentes. 
+
+Se recomienda elaborar el informe con **Asciidoc** que contenga las siguientes características:
+
+- Selección de Servidor.
+- Diseño de base de datos.
+- Diseño de endpoint Rest.
+- Estimación de Costos de Servidor y Operación.
+- Selección Tecnológica Backend (¿CMS o custom?).
+- Selección Tecnológica Frontend.
+- Selección de Profesionales necesarios.
+- Estimación de Plazos para implementar.
+- Github del proyecto y documentación.
+
+*Importante*
+
+- Elaborar una API REST para un caso de uso específico.
+- Elaborar el frontend para utilizar la API REST.
+- Elaborar ejemplos de uso en Bruno.
+- Elaborar documentación utilizando Antora docs https://github.com/NinjasCL/antora-docs-bootstrap
+- Plazo Máximo 4 semanas.
+
+*Tecnologías permitidas*
+
+- Base de Datos: Sqlite
+- Elixir: Phoenix + LiveView (Recomendado)
+
+Opcionalmente se puede usar estas tecnologías, ya que utilizan lenguajes para 
+aplicaciones móviles y pueden servir para explorar opciones. Sin embargo
+se debe justificar en el documento la decisión de usarlas.
+
+- Kotlin: https://ktor.io/[Ktor] + https://htmx.org/[Htmx]
+- Swift: https://vapor.codes/[Vapor] + https://react.dev/[React.js]
+
+*¿Por qué API Rest?*
+
+Hay diversas formas de elaborar un backend y la _API Rest_ es una de las más comunes.
+Otras opciones son GraphQL, SOAP, GRPC, entre otras. Sin embargo el uso de _REST_ 
+proporciona las bases para elaborar endpoints con otros protocolos. Queda el aprendizaje
+de otros protocolos como tarea personal de cada uno.
+
+*Libros de Apoyo*
+
+- https://thephoenixtutorial.org/book
+- https://shankardevy.com/phoenix-inside-out-mpf/
+
+*Ejemplo de eCommerce*
+
+Se puede usar alguno de estos casos de uso como base para el diseño
+e implementación de la solución.
+
+*Ecommerce 1*
+
+- Nivel de Presupuesto: Bajo
+- Estimación de transacciones al día: 10
+- Estimación de transacciones al día (máximo): 100
+- Referencia: Tienda de Comida Al Paso (Delivery)
+- Endpoint a Implementar: Gestión del Delivery
+
+*Ecommerce 2*
+
+- Nivel de Presupuesto: Bajo
+- Estimación de transacciones al día: 1000
+- Estimación de transacciones al día (máximo): 5000
+- Referencia: Tienda de Ferretería
+- Endpoint a Implementar: Gestión de Proveedores
+
+*Ecommerce 3*
+
+- Nivel de Presupuesto: Medio
+- Estimación de transacciones al día: 10.000
+- Estimación de transacciones al día (máximo): 100.000
+- Referencia: Tienda de Venta de Videojuegos
+- Endpoint a Implementar: Gestión de Carro de Compra
+
+*Ecommerce 4*
+
+- Nivel de Presupuesto: Alto
+- Estimación de transacciones al día: 10000000
+- Estimación de transacciones al día (máximo): 10000000
+- Referencia: Tienda de Retail
+- Endpoint a Implementar: Gestión de Devoluciones
+
+*Ecommerce 5*
+
+- Nivel de Presupuesto: Alto
+- Estimación de transacciones al día: 10000000
+- Estimación de transacciones al día (máximo): 10000000
+- Referencia: Tienda de Areolínea
+- Endpoint a Implementar: Gestión de Puntos de Fidelización (Millas Lanpass).
+
+=== Proyecto 3: Video Juego Móvil
+
+Utilizando un framework de videojuegos se debe crear una aplicación que se ejecute en un 
+dispositivo Android, iOS y Web.
+
+Se recomienda usar el engine gratuito de videojuegos https://tic80.com/[TIC-80], el cual permite crear el 
+código en distintos lenguajes de programación (Lua, Javascript, Wren, entre otros), 
+crear la música y los gráficos con entornos 2d similares a un Super Nintendo.
+
+Otra buena opción es el framework https://defold.com/[Defold], pero solo admite el lenguaje _Lua_, 
+aunque puede ser más flexible para usar llamadas HTTP y otras herramientas de apoyo.
+
+*Temática*
+
+Para simplificar la elección y diseño de un juego se recomienda participar
+en las https://itch.io/jams[Game Jams de Itch.io]. Éstas dan una temática 
+y restricciones necesarias.
+
+*Desafío Adicional*
+
+Programar un backend que permita almacenar los _High Scores_
+y mostrarlos en un sitio web.
+
+**Entregables y Expectativas**
+
+- Repositorio público del juego. Con licencia AGPLv3
+- Definir el nombre de su empresa y logotipo
+- Github pages donde se pueda jugar el juego en su versión web.
+- Por cada commit en el repositorio el juego debe ser compilado y desplegado a github pages. (Usar Github Actions https://github.com/features/actions)
+- Seguir la metodología Trunk Based Development.
+- Documentación con _Asciidoc + Antora_ del proyecto siguiendo el PRD (Product Requirement Document) y plan de pruebas con UAT (User Acceptance Test). (dentro del directorio docs del repositorio) - (Esto incluye personas, casos de uso con storyboards y ADR). Entregar HTML.
+- Manual del jugador. Entregar HTML (página web personalizada).
+- Código bien hecho y correctamente documentado.
+- Usar lenguaje de programación **Lua** o **Javascript**.
+- Plazo recomendado entre 4 a 6 semanas.

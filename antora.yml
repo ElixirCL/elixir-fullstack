@@ -8,7 +8,7 @@ asciidoc:
 nav:
   - modules/ROOT/nav.adoc
   - modules/history/nav.adoc
-  - modules/jobs/nav.adoc
+  - modules/ecosystem/nav.adoc
   - modules/swe/nav.adoc
   - modules/systemd/nav.adoc
   - modules/github/nav.adoc
@@ -21,4 +21,3 @@ nav:
   - modules/elixir/nav.adoc
   - modules/mobile/nav.adoc
   - modules/devops/nav.adoc
-  - modules/ecosystem/nav.adoc

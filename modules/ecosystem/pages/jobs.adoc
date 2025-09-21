@@ -1,5 +1,5 @@
-
 = Mundo Laboral y su Estado del Arte
+
 El mundo laboral consiste en diversos escenarios posibles. En el siguiente capítulo se pondrá un breve resumen de lo actualmente disponible.
 
 == Trabajo Independiente (Freelance)
@@ -158,9 +158,22 @@ maratones de "Aprender sobre la marcha" y sorpresas a las 3 Am del fin de semana
 y experimentos con nuevas tecnologías y estrategias es importante o se corre el riesgo de estancarse.
 Siempre ser flexible y estar abiertos al cambio, de forma estratégica y controlada.
 
+Según la definición de Edward Melendez
+
+La mayoría de la gente se imagina a un desarrollador capaz de gestionar frontend y backend.
+Pero, en realidad, un verdadero Full Stack incluye mucho más:
+Base de datos, servidor, redes, infraestructura en la nube, CI/CD, seguridad, monitorización, 
+contenedores, CDN, copias de seguridad... y eso es solo el comienzo.
+
+Ser un Full Stack hoy en día no se trata solo de escribir código, sino de comprender todo el 
+ecosistema que impulsa las aplicaciones modernas.
+
+.Definición de Fullstack por Edward Melendez
+image::fullstack.jpg[]
+
 == Algunas Combinaciones Full-Stack
 
-|==
+|====
 | Lenguaje | Backend | Frontend
 
 | https://elixir-lang.org/[Elixir]
@@ -202,14 +215,14 @@ Siempre ser flexible y estar abiertos al cambio, de forma estratégica y control
 | https://kotlinlang.org/[Kotlin]
 | https://ktor.io/[Ktor]
 | https://www.android.com/[Android]
-|==
+|====
 
 === Stack Sugerido
 
 El Stack predilecto del profesor es: *Elixir*, *PHP* y *Swift* debido a que permite abordar gran cantidad de casos de uso,
 utilizando tecnologías modernas y versátiles. Siguiendo el principio de https://en.wikipedia.org/wiki/Pareto_principle[Pareto de 80/20].
 
-|==
+|====
 | Tecnología | Descripción
 
 | Elixir + Postgres: Phoenix
@@ -221,18 +234,18 @@ utilizando tecnologías modernas y versátiles. Siguiendo el principio de https:
 | Javascript + Inertia.js + Svelte.js + Esbuild: Web
 | Es el lenguaje predilecto para crear animaciones y manipulación del DOM. Si bien puede ser utilizado en otras áreas, se recomienda utilizarlo solamente para el ambiente web, ya que existen opciones más adecuadas para backend.
 
-| C / Rust / Zig: Low Level
+| Ada / C / C++ / Rust / Zig: Low Level
 | Permite elaborar aplicaciones de bajo nivel, sobre todo extensiones para Elixir u otros lenguajes. También recomendado para entornos con *Web Assembly*.
 
 | Swift: iOS, Kotlin: Android.
 | Permite crear aplicaciones móviles nativas, en un ecosistema integrado y robusto. De preferencia elegir nativo sobre otras opciones como React Native o Flutter.
 
-| Wren / C#: Videojuegos
-| Utilizar estos lenguajes para realizar videojuegos con TIC80, DOME, Unity, Godot u otro engine.
+| Lua / C# / Wren: Videojuegos
+| Utilizar estos lenguajes para realizar videojuegos con TIC80, DOME, Unity, Godot u otro engine. Framework recomendado https://defold.com/[Defold].
 
-| Bash / Python / AWK / Go: Scripts y CLI
+| Bash + Sed + Awk / Python / Go: Scripts y CLI
 | Utilizar para elaborar scripts de sistema y utilidades simples o para Devops.
-|==
+|====
 
 === Stacks Populares
 

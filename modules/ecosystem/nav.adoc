@@ -1,2 +1,4 @@
-.Ecosistema Web
-* xref:ecosystem.adoc[]
+.Ecosistema Tecnológico y Laboral
+* xref:jobs.adoc[]
+* xref:web.adoc[]
+* xref:llm.adoc[]
