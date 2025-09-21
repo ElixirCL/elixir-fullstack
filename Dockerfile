@@ -1,4 +1,4 @@
-FROM docker.io/antora/antora
+FROM docker.io/antora/antora:3.1.10
 
 RUN yarn global add asciidoctor-kroki
 RUN yarn global add asciidoctor-emoji
