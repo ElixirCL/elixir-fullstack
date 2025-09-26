@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Proyecto: Elixir Stoic API REST :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/elixir/apirest.html">
+    <link rel="prev" href="chapter.html">
+    <link rel="next" href="../mobile/chapter.html">
+    <meta name="generator" content="Antora 3.1.12">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ecosistema Tecnológico y Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/jobs.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/web.html">Ecosistema Web</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/llm.html">Large Language Models (LLM)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapter.html">El Lenguaje Elixir</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="apirest.html">Proyecto: Elixir Stoic API REST</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/devenvs.html">Ambientes de Desarrollo</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Elixir</li>
+    <li><a href="apirest.html">Proyecto: Elixir Stoic API REST</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/elixir/pages/apirest.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Proyecto: Elixir Stoic API REST</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este proyecto basado en el tutorial <a href="https://bryananthonio.com/blog/creating-simple-rest-api-elixir-phoenix/">Simple Rest API with Phoenix</a>
+se creará una API Rest para devolver citas de filósofos estóicos.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-1-crear-el-proyecto-y-la-base-de-datos"><a class="anchor" href="#paso-1-crear-el-proyecto-y-la-base-de-datos"></a>Paso 1: Crear el proyecto y la base de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Se utilizará <em>SQLite3</em> para simplificar la configuración.
+Primero creamos un nuevo proyecto dando el parámetro de <code>--database=sqlite3</code> ya que
+el valor predeterminado es <em>Postgres</em>.</p>
+</div>
+<div class="paragraph">
+<p>También se creará la base de datos con el comando <code>ecto.create</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mix phx.new stoic_quotes --database=sqlite3
+$ cd stoic_quotes
+$ mix ecto.create</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-2-crear-las-migraciones"><a class="anchor" href="#paso-2-crear-las-migraciones"></a>Paso 2: Crear las migraciones</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Una migración es un control de versiones para la base de datos que define cambios en su
+esquema (crear, modificar o eliminar tablas, columnas, llaves primarias, relaciones e índices) en archivos de código <em>Elixir</em>,
+en lugar de usar archivos SQL tradicionales. Esta herramienta permite mantener la base de datos sincronizada
+con la aplicación, facilita la colaboración en equipo al evitar
+conflictos y permite desplegar cambios de forma sencilla en producción.</p>
+</div>
+<div class="paragraph">
+<p>El comando que proporcionada <em>Phoenix</em> para simplificar la creación de los esquemas y migraciones
+es <a href="https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.Context.html"><code>phx.gen.context &lt;nombre de tabla en el esquema (plural)&gt; &lt;recurso (singular)&gt; &lt;nombre de archivo&gt; &lt;attributos&gt;:&lt;tipo&gt;</code></a>.
+Esto es una herramienta llamada "generador" (<a href="https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.html#module-crud-related-generators">puede encontrar más acá</a>)
+y sirven para simplificar tareas comunes y recurrentes como crear recursos.</p>
+</div>
+<div class="paragraph">
+<p>La tabla a crear es la siguiente:</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-0c0cacf977b2574b58d8c657d73b91b2339f6b60.svg" alt="Diagram">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mix phx.gen.context Quotes Quote quotes quote:text author:string source:string</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El comando debío crear la siguiente migración ubicada en <code>priv/repo/migrations/*_create_quotes.exs</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Repo.Migrations.CreateQuotes do
+  use Ecto.Migration
+
+  def change do
+    create table(:quotes) do
+      add :quote, :text
+      add :author, :string
+      add :source, :string
+
+      timestamps(type: :utc_datetime)
+    end
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Y también un esquema ubicado en <code>lib/stoic_quotes/quotes/quote.ex</code>.
+Notemos la función <a href="https://hexdocs.pm/ecto/Ecto.Changeset.html">changeset</a>,
+la cual realiza las validaciones antes de permitir insertar un nuevo registro
+en la base de datos.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Quotes.Quote do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "quotes" do
+    field :quote, :string
+    field :author, :string
+    field :source, :string
+
+    timestamps(type: :utc_datetime)
+  end
+
+  @doc false
+  def changeset(quote, attrs) do
+    quote
+    |&gt; cast(attrs, [:quote, :author, :source])
+    |&gt; validate_required([:quote, :author, :source])
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El esquema es utilizado por el contexto de <em>Phoenix</em>, también conocido
+como dominio (en Domain Driven Desing) o reglas de negocio. Es un archivo utilizado como capa
+superior al esquema y que permite realizar operaciones comunes como consultas, modificaciones o inserciones.
+Esta ubicado en <code>lib/stoic_quotes/quotes.ex</code>. Si bien tiene varias funciones, es recomendable subdividir
+este contexto en archivos con operaciones de lectura y escritura para evitar que se convierta en un archivo demasiado grande,
+esto se llama <em>Command - Query Responsability Segregation</em> (CQRS), segregación de la responsabilidad entre comandos y consultas.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">quotes/
+  quotes.ex (bussiness logic)
+  quote.ex (schema)
+  commands.ex (insert, update, delete)
+  queries.ex (select)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para fines pedagógicos solamente nos enfocaremos en un archivo común.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Quotes do
+  @moduledoc """
+  The Quotes context.
+  """
+
+  import Ecto.Query, warn: false
+  alias StoicQuotes.Repo
+
+  alias StoicQuotes.Quotes.Quote
+
+  @doc """
+  Returns the list of quotes.
+
+  ## Examples
+
+      iex&gt; list_quotes()
+      [%Quote{}, ...]
+
+  """
+  def list_quotes do
+    Repo.all(Quote)
+  end
+
+  @doc """
+  Gets a single quote.
+
+  Raises `Ecto.NoResultsError` if the Quote does not exist.
+
+  ## Examples
+
+      iex&gt; get_quote!(123)
+      %Quote{}
+
+      iex&gt; get_quote!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_quote!(id), do: Repo.get!(Quote, id)
+
+  @doc """
+  Creates a quote.
+
+  ## Examples
+
+      iex&gt; create_quote(%{field: value})
+      {:ok, %Quote{}}
+
+      iex&gt; create_quote(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_quote(attrs) do
+    %Quote{}
+    |&gt; Quote.changeset(attrs)
+    |&gt; Repo.insert()
+  end
+
+  @doc """
+  Updates a quote.
+
+  ## Examples
+
+      iex&gt; update_quote(quote, %{field: new_value})
+      {:ok, %Quote{}}
+
+      iex&gt; update_quote(quote, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_quote(%Quote{} = quote, attrs) do
+    quote
+    |&gt; Quote.changeset(attrs)
+    |&gt; Repo.update()
+  end
+
+  @doc """
+  Deletes a quote.
+
+  ## Examples
+
+      iex&gt; delete_quote(quote)
+      {:ok, %Quote{}}
+
+      iex&gt; delete_quote(quote)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_quote(%Quote{} = quote) do
+    Repo.delete(quote)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking quote changes.
+
+  ## Examples
+
+      iex&gt; change_quote(quote)
+      %Ecto.Changeset{data: %Quote{}}
+
+  """
+  def change_quote(%Quote{} = quote, attrs \\ %{}) do
+    Quote.changeset(quote, attrs)
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La principal diferencia entre la migración y el esquema, es que la migración puede cambiar y esta íntimamente
+ligada a la estructura de la base de datos. El esquema es una capa que puede mantenerse en el tiempo y no necesariamente tenga una migración asociada, aunque
+es recomendable que ambos estén actualizados. La migración solo se utiliza al momento de ejecutar cambios en la base de datos por consola y con la aplicación apagada.
+El esquema se puede utilizar durante la ejecución de la aplicación para almacenar, consultar y modificar los registros en la base de datos.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-3-crear-las-llaves-primarias-e-índices"><a class="anchor" href="#paso-3-crear-las-llaves-primarias-e-índices"></a>Paso 3: Crear las llaves primarias e índices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora se darán restricciones a la base de datos para evitar datos duplicados
+y mejorar la velocidad de lectura y consultas al tener índices.</p>
+</div>
+<div class="paragraph">
+<p>Por defecto, cuando defines un esquema de <em>Ecto</em> sin especificar explícitamente una clave primaria,
+<em>Ecto</em> asume una columna id de tipo :bigserial (o el equivalente para tu base de datos) que se
+incrementa automáticamente y es única.</p>
+</div>
+<div class="paragraph">
+<p>La línea <code>timestamps(type: :utc_datetime)</code> se encarga de crear automáticamente los campos <code>inserted_at</code> y <code>updated_at</code>.</p>
+</div>
+<div class="paragraph">
+<p>Para añadir un índice de valor único añadimos al final de nuestra migración lo siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">create unique_index(:quotes, [:quote], name: :index_for_duplicate_quotes)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quedando el archivo como sigue</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Repo.Migrations.CreateQuotes do
+  use Ecto.Migration
+
+  def change do
+    create table(:quotes) do
+      add :quote, :text
+      add :author, :string
+      add :source, :string
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create unique_index(:quotes, [:quote], name: :index_for_duplicate_quotes)
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>También actualizamos el esquema para reflejar este nuevo índice y restricción.
+Añadiendo la siguiente línea al esquema (<code>lib/stoic_quotes/quotes/quote.ex</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">|&gt; unique_constraint(:quote, name: :index_for_duplicate_quotes)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quedando como sigue</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Quotes.Quote do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "quotes" do
+    field :quote, :string
+    field :author, :string
+    field :source, :string
+
+    timestamps(type: :utc_datetime)
+  end
+
+  @doc false
+  def changeset(quote, attrs) do
+    quote
+    |&gt; cast(attrs, [:quote, :author, :source])
+    |&gt; validate_required([:quote, :author, :source])
+    |&gt; unique_constraint(:quote, name: :index_for_duplicate_quotes)
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ahora simplemente ejecutamos la migración para crear las tablas en la base de datos.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mix ecto.migrate</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Debería crear una nueva tabla, la cual podemos verificar con un gestor de base de datos
+como <a href="https://dbeaver.com/">DBeaver</a>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/tables.png" alt="tables">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-4-añadir-registros-a-la-base-de-datos"><a class="anchor" href="#paso-4-añadir-registros-a-la-base-de-datos"></a>Paso 4: Añadir registros a la base de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tenemos un pequeño archivo <code>json</code> que tiene los datos necesarios.
+Creamos un archivo llamado <code>quotes</code> dentro de <code>priv/repo</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">priv/repo/quotes.json</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "quote": "Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy.",
+    "author": "Marcus Aurelius",
+    "source": "Book II, Meditations"
+  },
+
+  {
+    "quote": "Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil.",
+    "author": "Marcus Aurelius",
+    "source": "Book XI, Meditations"
+  },
+
+  {
+    "quote": "Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all.",
+    "author": "Marcus Aurelius",
+    "source": "Book X, Meditations"
+  }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ahora es necesario crear las "semillas" o "seeds" que iniciarán los valores que nuestra
+base de datos necesita. Este script solo es recomendable ejecutar cuando se inicia la base de datos,
+sobre todo para establecer el ambiente de desarrollo y que tenga los datos necesarios para que
+la aplicación funcione.</p>
+</div>
+<div class="paragraph">
+<p>Editamos el archivo <code>priv/repo/seeds.exs</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">alias StoicQuotes.Quotes
+
+# Read quotes from the JSON file
+quotes_path = "priv/repo/quotes.json"
+quotes_path
+|&gt; File.read!()
+|&gt; Jason.decode!()
+|&gt; Enum.each(fn attrs -&gt;
+	quote = %{quote: attrs["quote"], author: attrs["author"], source: attrs["source"]}
+	case Quotes.create_quote(quote) do
+		{:ok, _quote} -&gt; :ok
+		{:error, _changeset} -&gt; :duplicate
+	end
+end)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Y ejecutamos el comando</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mix run priv/repo/seeds.exs</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si todo sale bien podremos verificar en <em>DBeaver</em> que los datos están presentes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/seeds.png" alt="seeds">
+</div>
+</div>
+<div class="paragraph">
+<p>Si se quiere verificar por consola también se puede ejecutar el siguiente comando:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ iex -S mix
+$ StoicQuotes.Quotes.list_quotes()</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="chapter.html">El Lenguaje Elixir</a></span>
+  <span class="next"><a href="../mobile/chapter.html">Aplicaciones Móviles</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

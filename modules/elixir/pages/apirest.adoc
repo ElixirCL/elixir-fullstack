@@ -1,0 +1,387 @@
+= Proyecto: Elixir Stoic API REST
+
+En este proyecto basado en el tutorial https://bryananthonio.com/blog/creating-simple-rest-api-elixir-phoenix/[Simple Rest API with Phoenix]
+se creará una API Rest para devolver citas de filósofos estóicos.
+
+== Paso 1: Crear el proyecto y la base de datos
+
+Se utilizará _SQLite3_ para simplificar la configuración.
+Primero creamos un nuevo proyecto dando el parámetro de `--database=sqlite3` ya que 
+el valor predeterminado es _Postgres_.
+
+También se creará la base de datos con el comando `ecto.create`.
+
+[source, bash]
+----
+$ mix phx.new stoic_quotes --database=sqlite3
+$ cd stoic_quotes
+$ mix ecto.create
+----
+
+== Paso 2: Crear las migraciones
+
+Una migración es un control de versiones para la base de datos que define cambios en su 
+esquema (crear, modificar o eliminar tablas, columnas, llaves primarias, relaciones e índices) en archivos de código _Elixir_, 
+en lugar de usar archivos SQL tradicionales. Esta herramienta permite mantener la base de datos sincronizada 
+con la aplicación, facilita la colaboración en equipo al evitar 
+conflictos y permite desplegar cambios de forma sencilla en producción.
+
+El comando que proporcionada _Phoenix_ para simplificar la creación de los esquemas y migraciones 
+es https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.Context.html[`phx.gen.context <nombre de tabla en el esquema (plural)> <recurso (singular)> <nombre de archivo> <attributos>:<tipo>`]. 
+Esto es una herramienta llamada "generador" (https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.html#module-crud-related-generators[puede encontrar más acá])
+y sirven para simplificar tareas comunes y recurrentes como crear recursos. 
+
+La tabla a crear es la siguiente:
+
+[dbml]
+----
+Table quotes {
+  id integer [primary key]
+  quote text
+  author string
+  source string
+  inserted_at timestamp
+  updated_at timestamp
+}
+----
+
+[source, bash]
+----
+$ mix phx.gen.context Quotes Quote quotes quote:text author:string source:string
+----
+
+El comando debío crear la siguiente migración ubicada en `priv/repo/migrations/*_create_quotes.exs`:
+
+[source, elixir]
+----
+defmodule StoicQuotes.Repo.Migrations.CreateQuotes do
+  use Ecto.Migration
+
+  def change do
+    create table(:quotes) do
+      add :quote, :text
+      add :author, :string
+      add :source, :string
+
+      timestamps(type: :utc_datetime)
+    end
+  end
+end
+----
+
+Y también un esquema ubicado en `lib/stoic_quotes/quotes/quote.ex`.
+Notemos la función https://hexdocs.pm/ecto/Ecto.Changeset.html[changeset], 
+la cual realiza las validaciones antes de permitir insertar un nuevo registro
+en la base de datos.
+
+[source, elixir]
+----
+defmodule StoicQuotes.Quotes.Quote do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "quotes" do
+    field :quote, :string
+    field :author, :string
+    field :source, :string
+
+    timestamps(type: :utc_datetime)
+  end
+
+  @doc false
+  def changeset(quote, attrs) do
+    quote
+    |> cast(attrs, [:quote, :author, :source])
+    |> validate_required([:quote, :author, :source])
+  end
+end
+----
+
+El esquema es utilizado por el contexto de _Phoenix_, también conocido
+como dominio (en Domain Driven Desing) o reglas de negocio. Es un archivo utilizado como capa 
+superior al esquema y que permite realizar operaciones comunes como consultas, modificaciones o inserciones.
+Esta ubicado en `lib/stoic_quotes/quotes.ex`. Si bien tiene varias funciones, es recomendable subdividir
+este contexto en archivos con operaciones de lectura y escritura para evitar que se convierta en un archivo demasiado grande, 
+esto se llama _Command - Query Responsability Segregation_ (CQRS), segregación de la responsabilidad entre comandos y consultas.
+
+[source, text]
+----
+quotes/
+  quotes.ex (bussiness logic)
+  quote.ex (schema)
+  commands.ex (insert, update, delete)
+  queries.ex (select)
+----
+
+Para fines pedagógicos solamente nos enfocaremos en un archivo común.
+
+[source, elixir]
+----
+defmodule StoicQuotes.Quotes do
+  @moduledoc """
+  The Quotes context.
+  """
+
+  import Ecto.Query, warn: false
+  alias StoicQuotes.Repo
+
+  alias StoicQuotes.Quotes.Quote
+
+  @doc """
+  Returns the list of quotes.
+
+  ## Examples
+
+      iex> list_quotes()
+      [%Quote{}, ...]
+
+  """
+  def list_quotes do
+    Repo.all(Quote)
+  end
+
+  @doc """
+  Gets a single quote.
+
+  Raises `Ecto.NoResultsError` if the Quote does not exist.
+
+  ## Examples
+
+      iex> get_quote!(123)
+      %Quote{}
+
+      iex> get_quote!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_quote!(id), do: Repo.get!(Quote, id)
+
+  @doc """
+  Creates a quote.
+
+  ## Examples
+
+      iex> create_quote(%{field: value})
+      {:ok, %Quote{}}
+
+      iex> create_quote(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_quote(attrs) do
+    %Quote{}
+    |> Quote.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a quote.
+
+  ## Examples
+
+      iex> update_quote(quote, %{field: new_value})
+      {:ok, %Quote{}}
+
+      iex> update_quote(quote, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_quote(%Quote{} = quote, attrs) do
+    quote
+    |> Quote.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a quote.
+
+  ## Examples
+
+      iex> delete_quote(quote)
+      {:ok, %Quote{}}
+
+      iex> delete_quote(quote)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_quote(%Quote{} = quote) do
+    Repo.delete(quote)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking quote changes.
+
+  ## Examples
+
+      iex> change_quote(quote)
+      %Ecto.Changeset{data: %Quote{}}
+
+  """
+  def change_quote(%Quote{} = quote, attrs \\ %{}) do
+    Quote.changeset(quote, attrs)
+  end
+end
+----
+
+La principal diferencia entre la migración y el esquema, es que la migración puede cambiar y esta íntimamente
+ligada a la estructura de la base de datos. El esquema es una capa que puede mantenerse en el tiempo y no necesariamente tenga una migración asociada, aunque
+es recomendable que ambos estén actualizados. La migración solo se utiliza al momento de ejecutar cambios en la base de datos por consola y con la aplicación apagada.
+El esquema se puede utilizar durante la ejecución de la aplicación para almacenar, consultar y modificar los registros en la base de datos.
+
+== Paso 3: Crear las llaves primarias e índices
+
+Ahora se darán restricciones a la base de datos para evitar datos duplicados
+y mejorar la velocidad de lectura y consultas al tener índices.
+
+Por defecto, cuando defines un esquema de _Ecto_ sin especificar explícitamente una clave primaria, 
+_Ecto_ asume una columna id de tipo :bigserial (o el equivalente para tu base de datos) que se 
+incrementa automáticamente y es única.
+
+La línea `timestamps(type: :utc_datetime)` se encarga de crear automáticamente los campos `inserted_at` y `updated_at`.
+
+Para añadir un índice de valor único añadimos al final de nuestra migración lo siguiente:
+
+[source, elixir]
+----
+create unique_index(:quotes, [:quote], name: :index_for_duplicate_quotes)
+----
+
+Quedando el archivo como sigue
+
+[source, elixir]
+----
+defmodule StoicQuotes.Repo.Migrations.CreateQuotes do
+  use Ecto.Migration
+
+  def change do
+    create table(:quotes) do
+      add :quote, :text
+      add :author, :string
+      add :source, :string
+
+      timestamps(type: :utc_datetime)
+    end
+    
+    create unique_index(:quotes, [:quote], name: :index_for_duplicate_quotes)
+  end
+end
+----
+
+También actualizamos el esquema para reflejar este nuevo índice y restricción.
+Añadiendo la siguiente línea al esquema (`lib/stoic_quotes/quotes/quote.ex`).
+
+[source, elixir]
+----
+|> unique_constraint(:quote, name: :index_for_duplicate_quotes)
+----
+
+Quedando como sigue 
+
+[source, elixir]
+----
+defmodule StoicQuotes.Quotes.Quote do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "quotes" do
+    field :quote, :string
+    field :author, :string
+    field :source, :string
+
+    timestamps(type: :utc_datetime)
+  end
+
+  @doc false
+  def changeset(quote, attrs) do
+    quote
+    |> cast(attrs, [:quote, :author, :source])
+    |> validate_required([:quote, :author, :source])
+    |> unique_constraint(:quote, name: :index_for_duplicate_quotes)
+  end
+end
+----
+
+Ahora simplemente ejecutamos la migración para crear las tablas en la base de datos.
+
+[source, bash]
+----
+$ mix ecto.migrate
+----
+
+Debería crear una nueva tabla, la cual podemos verificar con un gestor de base de datos 
+como https://dbeaver.com/[DBeaver].
+
+image::tables.png[]
+
+== Paso 4: Añadir registros a la base de datos
+
+Tenemos un pequeño archivo `json` que tiene los datos necesarios.
+Creamos un archivo llamado `quotes` dentro de `priv/repo`.
+
+.priv/repo/quotes.json
+[source, json]
+----
+[
+  {
+    "quote": "Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy.",
+    "author": "Marcus Aurelius",
+    "source": "Book II, Meditations"
+  },
+
+  {
+    "quote": "Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil.",
+    "author": "Marcus Aurelius",
+    "source": "Book XI, Meditations"
+  },
+
+  {
+    "quote": "Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all.",
+    "author": "Marcus Aurelius",
+    "source": "Book X, Meditations"
+  }
+]
+----
+
+Ahora es necesario crear las "semillas" o "seeds" que iniciarán los valores que nuestra 
+base de datos necesita. Este script solo es recomendable ejecutar cuando se inicia la base de datos, 
+sobre todo para establecer el ambiente de desarrollo y que tenga los datos necesarios para que 
+la aplicación funcione.
+
+Editamos el archivo `priv/repo/seeds.exs`
+
+[source, elixir]
+----
+alias StoicQuotes.Quotes
+
+# Read quotes from the JSON file
+quotes_path = "priv/repo/quotes.json"
+quotes_path
+|> File.read!()
+|> Jason.decode!()
+|> Enum.each(fn attrs ->
+	quote = %{quote: attrs["quote"], author: attrs["author"], source: attrs["source"]}
+	case Quotes.create_quote(quote) do
+		{:ok, _quote} -> :ok
+		{:error, _changeset} -> :duplicate
+	end
+end)
+----
+
+Y ejecutamos el comando 
+
+[source, bash]
+----
+$ mix run priv/repo/seeds.exs
+----
+
+Si todo sale bien podremos verificar en _DBeaver_ que los datos están presentes.
+
+image::seeds.png[]
+
+Si se quiere verificar por consola también se puede ejecutar el siguiente comando:
+
+[source, bash]
+----
+$ iex -S mix
+$ StoicQuotes.Quotes.list_quotes()
+----

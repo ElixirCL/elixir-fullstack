@@ -1,2 +1,3 @@
 .Elixir
 * xref:chapter.adoc[]
+* xref:apirest.adoc[]
