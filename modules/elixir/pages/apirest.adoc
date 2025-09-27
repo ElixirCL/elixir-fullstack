@@ -98,7 +98,7 @@ end
 ----
 
 El esquema es utilizado por el contexto de _Phoenix_, también conocido
-como dominio (en Domain Driven Desing) o reglas de negocio. Es un archivo utilizado como capa 
+como dominio (en Domain Driven Desing), modelo (en MVC) o reglas de negocio (en capas). Es un archivo utilizado como capa 
 superior al esquema y que permite realizar operaciones comunes como consultas, modificaciones o inserciones.
 Esta ubicado en `lib/stoic_quotes/quotes.ex`. Si bien tiene varias funciones, es recomendable subdividir
 este contexto en archivos con operaciones de lectura y escritura para evitar que se convierta en un archivo demasiado grande, 
@@ -374,6 +374,12 @@ Y ejecutamos el comando
 $ mix run priv/repo/seeds.exs
 ----
 
+[NOTE]
+====
+Los comandos de `mix` deben ser ejecutados en el mismo lugar donde esta presente el archivo `mix.exs`.
+Podemos verificar usando los comandos `ls` y `pwd`.
+====
+
 Si todo sale bien podremos verificar en _DBeaver_ que los datos están presentes.
 
 image::seeds.png[]
@@ -384,4 +390,229 @@ Si se quiere verificar por consola también se puede ejecutar el siguiente coman
 ----
 $ iex -S mix
 $ StoicQuotes.Quotes.list_quotes()
+----
+
+== Paso 5: Construcción de Rutas
+
+Esta API tendrá dos rutas principales:
+
+- `/api/quotes/`: Lista todas las citas disponibles.
+- `/api/quotes/random`: Lista una cita aleatoria.
+
+Para esto se debe editar el `router` ubicado en `lib/stoic_quotes_web/router.ex`.
+
+[source, elixir]
+----
+scope "/api", StoicQuotesWeb do
+	pipe_through :api
+	get "/quotes", QuotesController, :index
+	get "/quotes/random", QuotesController, :show
+end
+----
+
+El siguiente código nos indica lo siguiente:
+
+- `scope`: Es una macro que acepta como parámetro la ruta base (endpoint) y el módulo base para buscar los controladores.
+
+[source, elixir]
+----
+# las rutas tendrán como base /api y como base el módulo StoicQuotesWeb
+scope "/api", StoicQuotesWeb do
+----
+
+El siguiente código nos indica lo siguiente:
+
+- `pipe_through`: Es una macro que gatillará lo definido en el pipeline `:api` para todos los requests que cumplan el `scope "/api"`.
+
+[source, elixir]
+----
+pipe_through :api
+----
+
+El pipeline de `:api` establece un pipeline para aceptar requests del formato `json`, 
+se define como lo siguiente:
+
+[source, elixir]
+----
+pipeline :api do
+  plug(:accepts, ["json"])
+end
+----
+
+El código nos indica lo siguiente:
+
+- `get`: Es la función identificada con el verbo HTTP a usar en la ruta. Por ejemplo si usamos _POST_ no encontrará la ruta.
+- `/quotes`: Es la ruta donde deberemos hacer las llamadas HTTP. Como estamos dentro del scope `/api/` la ruta completa será `/api/quotes` 
+- `QuotesController`: Es el módulo donde se encontrarán las funciones para procesar el request. Como estamos dentro del scope `StoicQuotesWeb` el módulo usado será `StoicQuotesWeb.QuotesController`.
+- `:index`: Es un átomo que permite identificar el request, utilizado en el módulo para segregar las funcionalidad de manejar el request. En este caso se asociará a una función dentro del controlador llamada `index`.
+
+[source, elixir]
+----
+# verbo http, "/ruta", modulo, parámetro
+get "/quotes", QuotesController, :index
+----
+
+Quedando el archivo como lo siguiente:
+
+.stoic_quotes_web/router.ex
+[source, elixir]
+----
+defmodule StoicQuotesWeb.Router do
+  use StoicQuotesWeb, :router
+
+  pipeline :browser do
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_live_flash)
+    plug(:put_root_layout, html: {StoicQuotesWeb.Layouts, :root})
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
+  end
+
+  pipeline :api do
+    plug(:accepts, ["json"])
+  end
+
+  scope "/", StoicQuotesWeb do
+    pipe_through(:browser)
+
+    get("/", PageController, :home)
+  end
+
+  scope "/api", StoicQuotesWeb do
+    pipe_through(:api)
+    get("/quotes", QuotesController, :index)
+    get("/quotes/random", QuotesController, :show)
+  end
+
+  # Enable LiveDashboard and Swoosh mailbox preview in development
+  if Application.compile_env(:stoic_quotes, :dev_routes) do
+    # If you want to use the LiveDashboard in production, you should put
+    # it behind authentication and allow only admins to access it.
+    # If your application does not have an admins-only section yet,
+    # you can use Plug.BasicAuth to set up some basic authentication
+    # as long as you are also using SSL (which you should anyway).
+    import Phoenix.LiveDashboard.Router
+
+    scope "/dev" do
+      pipe_through(:browser)
+
+      live_dashboard("/dashboard", metrics: StoicQuotesWeb.Telemetry)
+      forward("/mailbox", Plug.Swoosh.MailboxPreview)
+    end
+  end
+end
+----
+
+== Paso 6: Crear el controlador
+
+El https://hexdocs.pm/phoenix/controllers.html#actions[controlador] es donde se alojan las funciones que responderán a las requests definidas en el router.
+Por lo que se debe crear un nuevo archivo llamado  `quotes_controller.ex` dentro de `stoic_quotes_web/controllers/quotes_controller.ex`
+y tener el siguiente contenido:
+
+.stoic_quotes_web/controllers/quotes_controller.ex
+[source, elixir]
+----
+defmodule StoicQuotesWeb.QuotesController do
+  use Phoenix.Controller, formats: [:json]
+  alias StoicQuotes.Quotes
+
+  def index(conn, _params) do
+    quotes = %{quotes: Quotes.list_quotes()}
+    render(conn, :index, quotes)
+  end
+
+  def show(conn, _params) do
+    quote = %{quote: Quotes.get_random_quote()}
+    render(conn, :show, quote)
+  end
+end
+----
+
+- `def index(conn, _params)`: Notar como cada función recibe un parámetro conexión (conn), donde tiene los detalles del request, el cual se usará para ser enviado a otras funciones como `render` y el resto de parámetros (params) donde se reciben los distintos parámetros definidos en la ruta principal.
+- `use Phoenix.Controller, formats: [:json]`: Define a este módulo como un controlador que responde con `json`.
+- `render(conn, :index, quotes)`: Utiliza la https://hexdocs.pm/phoenix/Phoenix.Controller.html#module-rendering-and-layouts[función render] que llama a la vista y genera el json final pasándole los parámetros desde el controlador.
+
+== Paso 7: Crear la vista
+
+La vista será principalmente un `json`, por lo que tenemos que crear un nuevo archivo llamado `quotes_json.ex` 
+dentro del mismo directorio que `quotes_controller.ex`.
+
+Notar que tiene las mismas funciones usadas en el controlador, con la excepción de que definen su parámetro 
+como el dato a mostrar, que es pasado a la función `render` usada en el controlador.
+
+[source, elixir]
+----
+defmodule StoicQuotesWeb.QuotesJSON do
+	alias StoicQuotes.Quotes.Quote
+
+	def index(%{quotes: quotes}) do
+		%{data: for(quote <- quotes, do: data(quote))}
+	end
+
+	def show(%{quote: quote}) do
+		%{data: data(quote)}
+	end
+
+	defp data(%Quote{} = datum) do
+		%{
+			quote: datum.quote,
+			author: datum.author,
+			source: datum.source
+		}
+	end
+end
+----
+
+== Paso 8: Modificar el contexto
+
+Debemos modificar el contexto (o modelo) para añadir la función `Quotes.get_random_quote()` usada en el controlador 
+en su función `show`.
+
+.lib/stoic_quotes/quotes.ex
+[source, elixir]
+----
+@doc """
+Gets a random quote
+
+## Examples
+
+    iex> get_random_quote()
+    %Quote{}
+"""
+def get_random_quote() do
+  query =
+    from(q in Quote,
+      order_by: fragment("RANDOM()"),
+      limit: 1
+    )
+
+  Repo.one(query)
+end
+----
+
+== Paso 9: Pruebas Manuales
+
+Para las pruebas se puede usar `curl` o crear una colección con https://www.usebruno.com/[Bruno].
+Las pruebas automatizadas con `mix test` serán implementadas en un proyecto futuro.
+
+[source, bash]
+----
+$ iex -S mix phx.server
+$ curl -i localhost:4000/api/quotes/
+$ curl -i localhost:4000/api/quotes/random
+----
+
+[source, text]
+----
+➜  ~ curl -i localhost:4000/api/quotes/
+HTTP/1.1 200 OK
+date: Sat, 27 Sep 2025 03:16:50 GMT
+content-length: 723
+vary: accept-encoding
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: GGkFWTujtWGncGAAAAGC
+
+{"data":[{"author":"Marcus Aurelius","source":"Book II, Meditations","quote":"Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy."},{"author":"Marcus Aurelius","source":"Book XI, Meditations","quote":"Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil."},{"author":"Marcus Aurelius","source":"Book X, Meditations","quote":"Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all."}]}%
 ----

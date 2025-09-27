@@ -358,7 +358,7 @@ end</code></pre>
 </div>
 <div class="paragraph">
 <p>El esquema es utilizado por el contexto de <em>Phoenix</em>, también conocido
-como dominio (en Domain Driven Desing) o reglas de negocio. Es un archivo utilizado como capa
+como dominio (en Domain Driven Desing), modelo (en MVC) o reglas de negocio (en capas). Es un archivo utilizado como capa
 superior al esquema y que permite realizar operaciones comunes como consultas, modificaciones o inserciones.
 Esta ubicado en <code>lib/stoic_quotes/quotes.ex</code>. Si bien tiene varias funciones, es recomendable subdividir
 este contexto en archivos con operaciones de lectura y escritura para evitar que se convierta en un archivo demasiado grande,
@@ -658,6 +658,21 @@ end)</code></pre>
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mix run priv/repo/seeds.exs</code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Los comandos de <code>mix</code> deben ser ejecutados en el mismo lugar donde esta presente el archivo <code>mix.exs</code>.
+Podemos verificar usando los comandos <code>ls</code> y <code>pwd</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Si todo sale bien podremos verificar en <em>DBeaver</em> que los datos están presentes.</p>
 </div>
@@ -673,6 +688,295 @@ end)</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ iex -S mix
 $ StoicQuotes.Quotes.list_quotes()</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-5-construcción-de-rutas"><a class="anchor" href="#paso-5-construcción-de-rutas"></a>Paso 5: Construcción de Rutas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Esta API tendrá dos rutas principales:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/api/quotes/</code>: Lista todas las citas disponibles.</p>
+</li>
+<li>
+<p><code>/api/quotes/random</code>: Lista una cita aleatoria.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Para esto se debe editar el <code>router</code> ubicado en <code>lib/stoic_quotes_web/router.ex</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">scope "/api", StoicQuotesWeb do
+	pipe_through :api
+	get "/quotes", QuotesController, :index
+	get "/quotes/random", QuotesController, :show
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El siguiente código nos indica lo siguiente:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>scope</code>: Es una macro que acepta como parámetro la ruta base (endpoint) y el módulo base para buscar los controladores.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir"># las rutas tendrán como base /api y como base el módulo StoicQuotesWeb
+scope "/api", StoicQuotesWeb do</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El siguiente código nos indica lo siguiente:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pipe_through</code>: Es una macro que gatillará lo definido en el pipeline <code>:api</code> para todos los requests que cumplan el <code>scope "/api"</code>.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">pipe_through :api</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El pipeline de <code>:api</code> establece un pipeline para aceptar requests del formato <code>json</code>,
+se define como lo siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">pipeline :api do
+  plug(:accepts, ["json"])
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>El código nos indica lo siguiente:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>get</code>: Es la función identificada con el verbo HTTP a usar en la ruta. Por ejemplo si usamos <em>POST</em> no encontrará la ruta.</p>
+</li>
+<li>
+<p><code>/quotes</code>: Es la ruta donde deberemos hacer las llamadas HTTP. Como estamos dentro del scope <code>/api/</code> la ruta completa será <code>/api/quotes</code></p>
+</li>
+<li>
+<p><code>QuotesController</code>: Es el módulo donde se encontrarán las funciones para procesar el request. Como estamos dentro del scope <code>StoicQuotesWeb</code> el módulo usado será <code>StoicQuotesWeb.QuotesController</code>.</p>
+</li>
+<li>
+<p><code>:index</code>: Es un átomo que permite identificar el request, utilizado en el módulo para segregar las funcionalidad de manejar el request. En este caso se asociará a una función dentro del controlador llamada <code>index</code>.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir"># verbo http, "/ruta", modulo, parámetro
+get "/quotes", QuotesController, :index</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quedando el archivo como lo siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="title">stoic_quotes_web/router.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.Router do
+  use StoicQuotesWeb, :router
+
+  pipeline :browser do
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_live_flash)
+    plug(:put_root_layout, html: {StoicQuotesWeb.Layouts, :root})
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
+  end
+
+  pipeline :api do
+    plug(:accepts, ["json"])
+  end
+
+  scope "/", StoicQuotesWeb do
+    pipe_through(:browser)
+
+    get("/", PageController, :home)
+  end
+
+  scope "/api", StoicQuotesWeb do
+    pipe_through(:api)
+    get("/quotes", QuotesController, :index)
+    get("/quotes/random", QuotesController, :show)
+  end
+
+  # Enable LiveDashboard and Swoosh mailbox preview in development
+  if Application.compile_env(:stoic_quotes, :dev_routes) do
+    # If you want to use the LiveDashboard in production, you should put
+    # it behind authentication and allow only admins to access it.
+    # If your application does not have an admins-only section yet,
+    # you can use Plug.BasicAuth to set up some basic authentication
+    # as long as you are also using SSL (which you should anyway).
+    import Phoenix.LiveDashboard.Router
+
+    scope "/dev" do
+      pipe_through(:browser)
+
+      live_dashboard("/dashboard", metrics: StoicQuotesWeb.Telemetry)
+      forward("/mailbox", Plug.Swoosh.MailboxPreview)
+    end
+  end
+end</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-6-crear-el-controlador"><a class="anchor" href="#paso-6-crear-el-controlador"></a>Paso 6: Crear el controlador</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El <a href="https://hexdocs.pm/phoenix/controllers.html#actions">controlador</a> es donde se alojan las funciones que responderán a las requests definidas en el router.
+Por lo que se debe crear un nuevo archivo llamado  <code>quotes_controller.ex</code> dentro de <code>stoic_quotes_web/controllers/quotes_controller.ex</code>
+y tener el siguiente contenido:</p>
+</div>
+<div class="listingblock">
+<div class="title">stoic_quotes_web/controllers/quotes_controller.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.QuotesController do
+  use Phoenix.Controller, formats: [:json]
+  alias StoicQuotes.Quotes
+
+  def index(conn, _params) do
+    quotes = %{quotes: Quotes.list_quotes()}
+    render(conn, :index, quotes)
+  end
+
+  def show(conn, _params) do
+    quote = %{quote: Quotes.get_random_quote()}
+    render(conn, :show, quote)
+  end
+end</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>def index(conn, _params)</code>: Notar como cada función recibe un parámetro conexión (conn), donde tiene los detalles del request, el cual se usará para ser enviado a otras funciones como <code>render</code> y el resto de parámetros (params) donde se reciben los distintos parámetros definidos en la ruta principal.</p>
+</li>
+<li>
+<p><code>use Phoenix.Controller, formats: [:json]</code>: Define a este módulo como un controlador que responde con <code>json</code>.</p>
+</li>
+<li>
+<p><code>render(conn, :index, quotes)</code>: Utiliza la <a href="https://hexdocs.pm/phoenix/Phoenix.Controller.html#module-rendering-and-layouts">función render</a> que llama a la vista y genera el json final pasándole los parámetros desde el controlador.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-7-crear-la-vista"><a class="anchor" href="#paso-7-crear-la-vista"></a>Paso 7: Crear la vista</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La vista será principalmente un <code>json</code>, por lo que tenemos que crear un nuevo archivo llamado <code>quotes_json.ex</code>
+dentro del mismo directorio que <code>quotes_controller.ex</code>.</p>
+</div>
+<div class="paragraph">
+<p>Notar que tiene las mismas funciones usadas en el controlador, con la excepción de que definen su parámetro
+como el dato a mostrar, que es pasado a la función <code>render</code> usada en el controlador.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.QuotesJSON do
+	alias StoicQuotes.Quotes.Quote
+
+	def index(%{quotes: quotes}) do
+		%{data: for(quote &lt;- quotes, do: data(quote))}
+	end
+
+	def show(%{quote: quote}) do
+		%{data: data(quote)}
+	end
+
+	defp data(%Quote{} = datum) do
+		%{
+			quote: datum.quote,
+			author: datum.author,
+			source: datum.source
+		}
+	end
+end</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-8-modificar-el-contexto"><a class="anchor" href="#paso-8-modificar-el-contexto"></a>Paso 8: Modificar el contexto</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Debemos modificar el contexto (o modelo) para añadir la función <code>Quotes.get_random_quote()</code> usada en el controlador
+en su función <code>show</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_quotes/quotes.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">@doc """
+Gets a random quote
+
+## Examples
+
+    iex&gt; get_random_quote()
+    %Quote{}
+"""
+def get_random_quote() do
+  query =
+    from(q in Quote,
+      order_by: fragment("RANDOM()"),
+      limit: 1
+    )
+
+  Repo.one(query)
+end</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-9-pruebas-manuales"><a class="anchor" href="#paso-9-pruebas-manuales"></a>Paso 9: Pruebas Manuales</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para las pruebas se puede usar <code>curl</code> o crear una colección con <a href="https://www.usebruno.com/">Bruno</a>.
+Las pruebas automatizadas con <code>mix test</code> serán implementadas en un proyecto futuro.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ iex -S mix phx.server
+$ curl -i localhost:4000/api/quotes/
+$ curl -i localhost:4000/api/quotes/random</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">➜  ~ curl -i localhost:4000/api/quotes/
+HTTP/1.1 200 OK
+date: Sat, 27 Sep 2025 03:16:50 GMT
+content-length: 723
+vary: accept-encoding
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: GGkFWTujtWGncGAAAAGC
+
+{"data":[{"author":"Marcus Aurelius","source":"Book II, Meditations","quote":"Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy."},{"author":"Marcus Aurelius","source":"Book XI, Meditations","quote":"Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil."},{"author":"Marcus Aurelius","source":"Book X, Meditations","quote":"Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all."}]}%</code></pre>
 </div>
 </div>
 </div>

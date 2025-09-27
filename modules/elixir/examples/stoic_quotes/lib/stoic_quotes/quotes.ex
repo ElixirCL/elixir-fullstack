@@ -101,4 +101,22 @@ defmodule StoicQuotes.Quotes do
   def change_quote(%Quote{} = quote, attrs \\ %{}) do
     Quote.changeset(quote, attrs)
   end
+
+  @doc """
+  Gets a random quote
+
+  ## Examples
+
+      iex> get_random_quote()
+      %Quote{}
+  """
+  def get_random_quote() do
+    query =
+      from(q in Quote,
+        order_by: fragment("RANDOM()"),
+        limit: 1
+      )
+
+    Repo.one(query)
+  end
 end
