@@ -1,0 +1,635 @@
+= LiveView: Stoic API
+
+En este tutorial se realizará un formulario para ingresar más citas de filósofos
+estóicos para nuestra API creada en el tutorial anterior.
+
+== Paso 1: Agregar nuestra ruta de LiveView
+
+Vamos al router y agregamos nuestra nueva página en `lib/stoic_quotes_web/router.ex`.
+
+Debemos modificar el `scope` principal donde se muestra la página del navegador
+y cambiar el _PageController_ por un nuevo módulo que crearemos después.
+Usamos la siguiente función `live("/", Live.QuotesForm, :live)`.
+
+.router.ex antes
+[source, elixir]
+----
+scope "/", StoicQuotesWeb do
+  pipe_through(:browser)
+
+  get("/", PageController, :home)
+end
+----
+
+A diferencia de las páginas normales que utilizan los mismos verbos _HTTP_ como `get` y `post`.
+_LiveView_ solo utiliza la función `live` para indicar que esto es una página de _LiveView_.
+
+.router.ex después
+[source, elixir]
+----
+scope "/", StoicQuotesWeb do
+  pipe_through(:browser)
+
+  live("/", Live.QuotesForm, :live)
+end
+----
+
+== Paso 2: Crear nuestro controlador de LiveView
+
+Creamos un nuevo directorio dentro de `stoic_quotes_web` que se llame `live`. 
+Este será el directorio que usaremos para almacenar todas nuestras páginas de _LiveView_.
+Lo llamaremos  `live/quotes_form.ex`
+
+.live/quotes_form.ex
+[source, elixir]
+----
+defmodule StoicQuotesWeb.Live.QuotesForm do
+  use StoicQuotesWeb, :live_view
+  
+  def mount(_params, _session, socket) do
+    {:ok, socket}
+  end
+end
+----
+
+[NOTE]
+====
+Se recomienda una división adicional, con un nombre del directorio como la página
+y el controlador y la vista llamados como `page`. Esto permite estandarizar la estructura, 
+aunque por motivos pedagógicos solo usaremos un archivo de controlador y otro de vista llamados `quotes_form.*`.
+====
+
+[source, text]
+----
+live/
+  quotes_form/
+    page.ex
+    page.html.heex
+----
+
+La línea `use StoicQuotesWeb, :live_view` nos indica que usaremos el macro asociado a un _LiveView_, 
+esto esta definido en el archivo `lib/stoic_quotes_web/stoic_quotes_web.ex`.
+
+.lib/stoic_quotes_web/stoic_quotes_web.ex
+[source, elixir]
+----
+def live_view do
+  quote do
+    use Phoenix.LiveView
+
+    unquote(html_helpers())
+  end
+end
+----
+
+La línea `def mount(__params, __session, socket)` nos indica que esta función 
+será la ejecutada al momento de `montar` la página. Se nos dan tres argumentos, 
+el primero son los parámetros del request (definidos en la ruta dentro del router), el segundo son los elementos dentro de la sesión (cookies)
+y finalmente la estructura `socket`, la cual es usada a lo largo de todo el ciclo
+de vida del _LiveView_ para almacenar distintos datos que pueden ser compartidos
+de padres a hijos.
+
+La línea `{:ok, socket}` es obligatoria para que el ciclo de vida pueda continuar, 
+estamos diciendo a _Phoenix_ que todo ha resultado correctamente y puede seguir con 
+el ciclo de vida. Podemos modificar el _socket_ en esta función para almacenar datos.
+
+Luego crearemos nuestro archivo _HTML_ que tendrá nuestra vista y formulario, 
+lo llamaremos de la misma forma que el archivo del controlador live, pero 
+utilizando el sufijo `*.html.heex`, de esta forma: `quotes_form.html.heex`.
+
+Por el momento solo mostraremos un mensaje para validar que se haya configurado correctamente.
+
+.live/quotes_form.html.heex
+[source, html]
+----
+<p>Formulario Estóico</p>
+----
+
+Si ejecutamos el proyecto deberíamos ver el HTML en la dirección `http://localhost:4000`.
+
+[source, bash]
+----
+$ mix phx.server
+----
+
+image::form1.png[]
+
+Si analizamos el _HTML_ generado en la página, descubriremos que _Phoenix_ ha añadido 
+código adicional. ¿Dónde están definidos estos HTML?.
+
+[source, html]
+----
+<!-- <StoicQuotesWeb.Layouts.root> lib/stoic_quotes_web/components/layouts/root.html.heex:1 (stoic_quotes) --><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="HDofMiYGdwwcPRwgPiB8JDNsKiRRNAAbwHTdSeZnpI_BdMQBU-mg8_8Y">
+    <!-- @caller lib/stoic_quotes_web/components/layouts/root.html.heex:7 (stoic_quotes) --><!-- <Phoenix.Component.live_title> lib/phoenix_component.ex:2195 (phoenix_live_view) --><title data-default="StoicQuotes" data-suffix=" · Phoenix Framework">StoicQuotes · Phoenix Framework</title><!-- </Phoenix.Component.live_title> -->
+    <link phx-track-static rel="stylesheet" href="/assets/css/app.css">
+    <script defer phx-track-static type="text/javascript" src="/assets/js/app.js">
+    </script>
+    <script>
+      (() => {
+        const setTheme = (theme) => {
+          if (theme === "system") {
+            localStorage.removeItem("phx:theme");
+            document.documentElement.removeAttribute("data-theme");
+          } else {
+            localStorage.setItem("phx:theme", theme);
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        };
+        if (!document.documentElement.hasAttribute("data-theme")) {
+          setTheme(localStorage.getItem("phx:theme") || "system");
+        }
+        window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
+        window.addEventListener("phx:set-theme", ({ detail: { theme } }) => setTheme(theme));
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="phx-GGl-vRc7pJr_fwWB" data-phx-main data-phx-session="SFMyNTY.g2gDaAJhBnQAAAAIdwJpZG0AAAAUcGh4LUdHbC12UmM3cEpyX2Z3V0J3B3Nlc3Npb250AAAAAHcGcm91dGVydxxFbGl4aXIuU3RvaWNRdW90ZXNXZWIuUm91dGVydwR2aWV3dyVFbGl4aXIuU3RvaWNRdW90ZXNXZWIuTGl2ZS5RdW90ZXNGb3JtdwpwYXJlbnRfcGlkdwNuaWx3CXJvb3Rfdmlld3clRWxpeGlyLlN0b2ljUXVvdGVzV2ViLkxpdmUuUXVvdGVzRm9ybXcRbGl2ZV9zZXNzaW9uX25hbWV3B2RlZmF1bHR3CHJvb3RfcGlkdwNuaWxuBgBE9CCRmQFiAAFRgA.ezDcn_NTue6_ZWfuSQeErOe4BX6hYh6GJ-P3XpwnoN8" data-phx-static="SFMyNTY.g2gDaAJhBnQAAAADdwJpZG0AAAAUcGh4LUdHbC12UmM3cEpyX2Z3V0J3BWZsYXNodAAAAAB3CmFzc2lnbl9uZXdqbgYARfQgkZkBYgABUYA.VDBvnUZgQNL8phJlkpF3O80LDbxKVcezEXZCpjF1SYQ"><!-- <StoicQuotesWeb.Live.QuotesForm.render> lib/stoic_quotes_web/live/quotes_form.html.heex:1 (stoic_quotes) --><p>Formulario Estóico</p><!-- </StoicQuotesWeb.Live.QuotesForm.render> --></div>
+  <iframe hidden height="0" width="0" src="/phoenix/live_reload/frame"></iframe></body>
+</html><!-- </StoicQuotesWeb.Layouts.root> -->
+----
+
+Estos _HTML_ adicionales están definidos en el directorio `layouts/`. Son heredados desde el archivo `root.html.heex`
+el cual se encuentra en el directorio `lib/stoic_quotes_web/components/layouts/`.
+Los contenidos de este archivo son transversales para todas las vistas.
+
+Si se desea utilizar otro archivo se debe modificar el router.
+
+.router.ex
+[source, elixir]
+----
+plug(:put_root_layout, html: {StoicQuotesWeb.Layouts, :root})
+----
+
+.lib/stoic_quotes_web/components/layouts/root.html.heex
+[source, html]
+----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title default="StoicQuotes" suffix=" · Phoenix Framework">
+      {assigns[:page_title]}
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
+    </script>
+    <script>
+      (() => {
+        const setTheme = (theme) => {
+          if (theme === "system") {
+            localStorage.removeItem("phx:theme");
+            document.documentElement.removeAttribute("data-theme");
+          } else {
+            localStorage.setItem("phx:theme", theme);
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        };
+        if (!document.documentElement.hasAttribute("data-theme")) {
+          setTheme(localStorage.getItem("phx:theme") || "system");
+        }
+        window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
+        window.addEventListener("phx:set-theme", ({ detail: { theme } }) => setTheme(theme));
+      })();
+    </script>
+  </head>
+  <body>
+    {@inner_content}
+  </body>
+</html>
+----
+
+- `{assigns[:page_title]}`: Imprime el contenido que puede ser modificado usando la estructura `sockets` en la función `mount` usando `socket = assign(socket, page_title: 'Mi Título')`.
+- `{@inner_content}`: Imprime un texto que puede ser reemplazado por una vista de un _LiveView_.
+
+== Paso 3: Implementar el formulario HTML
+
+Editamos nuestro formulario (`lib/stoic_quotes_web/quotes_form.html.heex`) con el _HTML_ necesario.
+
+.lib/stoic_quotes_web/quotes_form.html.heex
+[source, html]
+----
+<div class="min-h-full">
+
+  <header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold tracking-tight text-white">Stoic Quotes Form</h1>
+    </div>
+  </header>
+  <main>
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+
+    <form>
+      <div class="space-y-12">
+        <%# Alert Section %>
+        <div role="alert" class="alert">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info h-6 w-6 shrink-0">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>12 unread messages. Tap to see.</span>
+        </div>
+
+        <div class="border-b border-white/10 pb-12">
+
+          <h2 class="text-base/7 font-semibold text-white">Stoic Quote Information</h2>
+          <p class="mt-1 text-sm/6 text-gray-400">Use this form to add a new Stoic Quote</p>
+
+          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="sm:col-span-3">
+              <label for="author" class="block text-sm/6 font-medium text-white">
+              Author
+              </label>
+              <div class="mt-2">
+                <input id="author" type="text" name="author" autofocus="true" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="source" class="block text-sm/6 font-medium text-white">
+              Source
+              </label>
+              <div class="mt-2">
+                <input id="source" type="text" name="source" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+              </div>
+            </div>
+
+            <div class="col-span-full">
+
+              <label
+                for="quote"
+                class="block text-sm/6 font-medium text-white">
+                Quote
+              </label>
+
+              <div class="mt-2">
+                <textarea
+                  id="quote"
+                  type="text"
+                  rows="5"
+                  name="quote"
+                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"></textarea>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 flex items-center justify-end gap-x-6">
+        <button type="reset" class="btn text-sm/6 font-semibold text-white">
+        Reset
+        </button>
+
+        <button type="submit" class="rounded-md btn btn-xl btn-wide bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+        Save
+        </button>
+      </div>
+    </form>
+
+    </div>
+  </main>
+</div>
+----
+
+Lo que mostrará una página similar a lo siguiente:
+
+image::form2.png[]
+
+== Paso 4: Conectar el formulario al controlador 
+
+Para esto utilizaremos las herramientas proporcionadas por _LiveView_ la cual 
+permite enviar eventos y valores hacia el controlador.
+
+=== Alertas 
+
+Lo primero que se hará es configurar para que el mensaje de alerta 
+solamente se muestre si hay un mensaje y también cambie de color dependiendo
+del tipo de alerta (éxito o error).
+
+Para esto añadimos un elemento en el div correspondiente llamado `:if={@alert}`.
+El cual permite mostrar condicionalmente un elemento.
+
+.quotes_form.html.heex
+[source, html]
+----
+<div :if={@alert}>
+  <%= if @alert[:type] == :error do %>
+      <div role="alert" class="alert alert-error">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>{@alert[:message]}</span>
+      </div>
+  <% else %>
+      <div role="alert" class="alert alert-success">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>{@alert[:message]}</span>
+      </div>
+  <% end %>
+</div>
+----
+
+Ahora debemos añadir este valor al `socket` en mount, para que tenga un valor predeterminado.
+
+.quotes_form.ex
+[source, elixir]
+-----
+defmodule StoicQuotesWeb.Live.QuotesForm do
+  use StoicQuotesWeb, :live_view
+
+  def mount(_params, _session, socket) do
+    {:ok,
+     socket
+     |> assign(alert: nil) # alert = %{type: :success, message: "Hola"}
+    }
+  end
+end
+-----
+
+=== Formulario
+
+Ahora configuramos el valor de cada input para que sea enviado al controlador.
+Para esto creamos una nueva estructura que almacenará los valores.
+
+[source, elixir]
+----
+|> assign(form: to_form(%{"author" => nil, "source" => nil, "quote" => nil}))
+----
+
+También añadiremos dos eventos "validate" y "save" que por el momento solamente
+devuelven los valores del formulario. Luego serán mejorados.
+
+.quotes_form.ex
+[source, elixir]
+----
+def handle_event("validate", params, socket) do
+  IO.inspect(params, label: :validate)
+  form = to_form(params)
+  {:noreply,
+    socket
+    |> assign(form: form)
+  }
+end
+
+def handle_event("save", params, socket) do
+  IO.inspect(params, label: :save)
+  form = to_form(params)
+  {:noreply,
+    socket
+    |> assign(form: form)
+  }
+end
+----
+
+Quedando el archivo de la siguiente forma:
+
+.quotes_form.ex
+[source, elixir]
+-----
+defmodule StoicQuotesWeb.Live.QuotesForm do
+  use StoicQuotesWeb, :live_view
+
+  def mount(_params, _session, socket) do
+    {:ok,
+     socket
+     |> assign(alert: nil)
+     |> assign(form: to_form(%{"author" => nil, "source" => nil, "quote" => nil}))
+    }
+  end
+  
+  def handle_event("validate", params, socket) do
+    IO.inspect(params, label: :validate)
+    form = to_form(params)
+    {:noreply,
+      socket
+      |> assign(form: form)
+    }
+  end
+
+  def handle_event("save", params, socket) do
+    IO.inspect(params, label: :save)
+    form = to_form(params)
+    {:noreply,
+      socket
+      |> assign(form: form)
+    }
+  end
+end
+-----
+
+También es necesario utilizar el elemento `.form` para asociar el formulario al controlador.
+Notar los eventos que se manejaran, `phx-change` y `phx-submit`.
+
+.quotes_form.html.heex
+[source, html]
+----
+<.form for={@form} phx-change="validate" phx-submit="save">
+...
+</.form>
+----
+
+Ahora es turno de asociar los elementos para que sean enviados en los eventos del formulario.
+Para esto utilizamos los elementos `.input`.
+
+*Author*
+
+.quotes_form.html.heex
+[source, html]
+----
+<.input
+  autofocus="true"
+  placeholder="Marcus Aurelius"
+  phx-debounce="blur"
+  field={@form[:author]}
+  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+/>
+----
+
+*Source*
+
+.quotes_form.html.heex
+[source, html]
+----
+<.input
+  placeholder="Meditations"
+  phx-debounce="blur"
+  field={@form[:source]}
+  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+/>
+----
+
+*Quote*
+
+.quotes_form.html.heex
+[source, html]
+----
+<.input
+  type="textarea"
+  rows="5"
+  placeholder="Lorem Ipsum"
+  phx-debounce="blur"
+  field={@form[:quote]}
+  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+/>
+----
+
+Quedando el formulario como lo siguiente:
+
+.quotes_form.html.heex
+[source, html]
+----
+<div class="min-h-full">
+
+  <header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold tracking-tight text-white">Stoic Quotes Form</h1>
+    </div>
+  </header>
+  <main>
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+
+    <.form for={@form} phx-change="validate" phx-submit="save">
+      <div class="space-y-12">
+
+        <div :if={@alert}>
+          <%= if @alert[:type] == :error do %>
+              <div role="alert" class="alert alert-error">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{@alert[:message]}</span>
+              </div>
+          <% else %>
+              <div role="alert" class="alert alert-success">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{@alert[:message]}</span>
+              </div>
+          <% end %>
+        </div>
+
+        <div class="border-b border-white/10 pb-12">
+
+          <h2 class="text-base/7 font-semibold text-white">Stoic Quote Information</h2>
+          <p class="mt-1 text-sm/6 text-gray-400">Use this form to add a new Stoic Quote</p>
+
+          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div class="sm:col-span-3">
+              <label for="author" class="block text-sm/6 font-medium text-white">
+              Author
+              </label>
+              <div class="mt-2">
+                <.input
+                autofocus="true"
+                placeholder="Marcus Aurelius"
+                phx-debounce="blur"
+                field={@form[:author]}
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="source" class="block text-sm/6 font-medium text-white">
+              Source
+              </label>
+              <div class="mt-2">
+                <.input
+                placeholder="Meditations"
+                phx-debounce="blur"
+                field={@form[:source]}
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div class="col-span-full">
+
+              <label
+                for="quote"
+                class="block text-sm/6 font-medium text-white">
+                Quote
+              </label>
+
+              <div class="mt-2">
+                <.input
+                  type="textarea"
+                  rows="5"
+                  placeholder="Lorem Ipsum"
+                  phx-debounce="blur"
+                  field={@form[:quote]}
+                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                />
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 flex items-center justify-end gap-x-6">
+        <button type="reset" class="btn text-sm/6 font-semibold text-white">
+        Reset
+        </button>
+
+        <button type="submit" class="rounded-md btn btn-xl btn-wide bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+        Save
+        </button>
+      </div>
+    </.form>
+
+    </div>
+  </main>
+</div>
+----
+
+== Paso 5: Implementar validación del formulario
+
+Ahora se realizará la validación del formulario, para que muestre errores
+si se envía un valor que no sea correcto. Para esto modificaremos la función
+`def handle_event("validate", params, socket)`.
+
+.quotes_form.ex
+[source, elixir]
+----
+def handle_event("validate", params, socket) do
+  IO.inspect(params, label: :validate)
+  form = to_form(params)
+  {:noreply,
+    socket
+    |> assign(form: form)
+  }
+end
+----
+
+== Paso 6: Implementar el guardado en la base de datos
+
+Si las validaciones son exitosas, entonces podemos enviarlo para su almacenamiento
+en la base de datos. Para esto modificamos la función `def handle_event("save", params, socket)`.
+
+.quotes_form.ex
+[source, elixir]
+----
+def handle_event("save", params, socket) do
+  IO.inspect(params, label: :save)
+  form = to_form(params)
+  {:noreply,
+    socket
+    |> assign(form: form)
+  }
+end
+----

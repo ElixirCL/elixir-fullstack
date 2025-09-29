@@ -1,4 +1,4 @@
-= Proyecto: Elixir Stoic API REST
+= REST: Stoic API
 
 En este proyecto basado en el tutorial https://bryananthonio.com/blog/creating-simple-rest-api-elixir-phoenix/[Simple Rest API with Phoenix]
 se creará una API Rest para devolver citas de filósofos estóicos.

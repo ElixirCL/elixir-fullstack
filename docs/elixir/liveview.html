@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LiveView: Stoic API :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/elixir/liveview.html">
+    <link rel="prev" href="apirest.html">
+    <link rel="next" href="../mobile/chapter.html">
+    <meta name="generator" content="Antora 3.1.12">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ecosistema Tecnológico y Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/jobs.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/web.html">Ecosistema Web</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/llm.html">Large Language Models (LLM)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="elixir.html">El Lenguaje Elixir</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="apirest.html">REST: Stoic API</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="liveview.html">LiveView: Stoic API</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/devenvs.html">Ambientes de Desarrollo</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Elixir</li>
+    <li><a href="liveview.html">LiveView: Stoic API</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/elixir/pages/liveview.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">LiveView: Stoic API</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial se realizará un formulario para ingresar más citas de filósofos
+estóicos para nuestra API creada en el tutorial anterior.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-1-agregar-nuestra-ruta-de-liveview"><a class="anchor" href="#paso-1-agregar-nuestra-ruta-de-liveview"></a>Paso 1: Agregar nuestra ruta de LiveView</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vamos al router y agregamos nuestra nueva página en <code>lib/stoic_quotes_web/router.ex</code>.</p>
+</div>
+<div class="paragraph">
+<p>Debemos modificar el <code>scope</code> principal donde se muestra la página del navegador
+y cambiar el <em>PageController</em> por un nuevo módulo que crearemos después.
+Usamos la siguiente función <code>live("/", Live.QuotesForm, :live)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">router.ex antes</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">scope "/", StoicQuotesWeb do
+  pipe_through(:browser)
+
+  get("/", PageController, :home)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A diferencia de las páginas normales que utilizan los mismos verbos <em>HTTP</em> como <code>get</code> y <code>post</code>.
+<em>LiveView</em> solo utiliza la función <code>live</code> para indicar que esto es una página de <em>LiveView</em>.</p>
+</div>
+<div class="listingblock">
+<div class="title">router.ex después</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">scope "/", StoicQuotesWeb do
+  pipe_through(:browser)
+
+  live("/", Live.QuotesForm, :live)
+end</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-2-crear-nuestro-controlador-de-liveview"><a class="anchor" href="#paso-2-crear-nuestro-controlador-de-liveview"></a>Paso 2: Crear nuestro controlador de LiveView</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creamos un nuevo directorio dentro de <code>stoic_quotes_web</code> que se llame <code>live</code>.
+Este será el directorio que usaremos para almacenar todas nuestras páginas de <em>LiveView</em>.
+Lo llamaremos  <code>live/quotes_form.ex</code></p>
+</div>
+<div class="listingblock">
+<div class="title">live/quotes_form.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.Live.QuotesForm do
+  use StoicQuotesWeb, :live_view
+
+  def mount(_params, _session, socket) do
+    {:ok, socket}
+  end
+end</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Se recomienda una división adicional, con un nombre del directorio como la página
+y el controlador y la vista llamados como <code>page</code>. Esto permite estandarizar la estructura,
+aunque por motivos pedagógicos solo usaremos un archivo de controlador y otro de vista llamados <code>quotes_form.*</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">live/
+  quotes_form/
+    page.ex
+    page.html.heex</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La línea <code>use StoicQuotesWeb, :live_view</code> nos indica que usaremos el macro asociado a un <em>LiveView</em>,
+esto esta definido en el archivo <code>lib/stoic_quotes_web/stoic_quotes_web.ex</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_quotes_web/stoic_quotes_web.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">def live_view do
+  quote do
+    use Phoenix.LiveView
+
+    unquote(html_helpers())
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La línea <code>def mount(<em>params, </em>session, socket)</code> nos indica que esta función
+será la ejecutada al momento de <code>montar</code> la página. Se nos dan tres argumentos,
+el primero son los parámetros del request (definidos en la ruta dentro del router), el segundo son los elementos dentro de la sesión (cookies)
+y finalmente la estructura <code>socket</code>, la cual es usada a lo largo de todo el ciclo
+de vida del <em>LiveView</em> para almacenar distintos datos que pueden ser compartidos
+de padres a hijos.</p>
+</div>
+<div class="paragraph">
+<p>La línea <code>{:ok, socket}</code> es obligatoria para que el ciclo de vida pueda continuar,
+estamos diciendo a <em>Phoenix</em> que todo ha resultado correctamente y puede seguir con
+el ciclo de vida. Podemos modificar el <em>socket</em> en esta función para almacenar datos.</p>
+</div>
+<div class="paragraph">
+<p>Luego crearemos nuestro archivo <em>HTML</em> que tendrá nuestra vista y formulario,
+lo llamaremos de la misma forma que el archivo del controlador live, pero
+utilizando el sufijo <code>*.html.heex</code>, de esta forma: <code>quotes_form.html.heex</code>.</p>
+</div>
+<div class="paragraph">
+<p>Por el momento solo mostraremos un mensaje para validar que se haya configurado correctamente.</p>
+</div>
+<div class="listingblock">
+<div class="title">live/quotes_form.html.heex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;p&gt;Formulario Estóico&lt;/p&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si ejecutamos el proyecto deberíamos ver el HTML en la dirección <code><a href="http://localhost:4000" class="bare">http://localhost:4000</a></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mix phx.server</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/form1.png" alt="form1">
+</div>
+</div>
+<div class="paragraph">
+<p>Si analizamos el <em>HTML</em> generado en la página, descubriremos que <em>Phoenix</em> ha añadido
+código adicional. ¿Dónde están definidos estos HTML?.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;!-- &lt;StoicQuotesWeb.Layouts.root&gt; lib/stoic_quotes_web/components/layouts/root.html.heex:1 (stoic_quotes) --&gt;&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;meta name="csrf-token" content="HDofMiYGdwwcPRwgPiB8JDNsKiRRNAAbwHTdSeZnpI_BdMQBU-mg8_8Y"&gt;
+    &lt;!-- @caller lib/stoic_quotes_web/components/layouts/root.html.heex:7 (stoic_quotes) --&gt;&lt;!-- &lt;Phoenix.Component.live_title&gt; lib/phoenix_component.ex:2195 (phoenix_live_view) --&gt;&lt;title data-default="StoicQuotes" data-suffix=" · Phoenix Framework"&gt;StoicQuotes · Phoenix Framework&lt;/title&gt;&lt;!-- &lt;/Phoenix.Component.live_title&gt; --&gt;
+    &lt;link phx-track-static rel="stylesheet" href="/assets/css/app.css"&gt;
+    &lt;script defer phx-track-static type="text/javascript" src="/assets/js/app.js"&gt;
+    &lt;/script&gt;
+    &lt;script&gt;
+      (() =&gt; {
+        const setTheme = (theme) =&gt; {
+          if (theme === "system") {
+            localStorage.removeItem("phx:theme");
+            document.documentElement.removeAttribute("data-theme");
+          } else {
+            localStorage.setItem("phx:theme", theme);
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        };
+        if (!document.documentElement.hasAttribute("data-theme")) {
+          setTheme(localStorage.getItem("phx:theme") || "system");
+        }
+        window.addEventListener("storage", (e) =&gt; e.key === "phx:theme" &amp;&amp; setTheme(e.newValue || "system"));
+        window.addEventListener("phx:set-theme", ({ detail: { theme } }) =&gt; setTheme(theme));
+      })();
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="phx-GGl-vRc7pJr_fwWB" data-phx-main data-phx-session="SFMyNTY.g2gDaAJhBnQAAAAIdwJpZG0AAAAUcGh4LUdHbC12UmM3cEpyX2Z3V0J3B3Nlc3Npb250AAAAAHcGcm91dGVydxxFbGl4aXIuU3RvaWNRdW90ZXNXZWIuUm91dGVydwR2aWV3dyVFbGl4aXIuU3RvaWNRdW90ZXNXZWIuTGl2ZS5RdW90ZXNGb3JtdwpwYXJlbnRfcGlkdwNuaWx3CXJvb3Rfdmlld3clRWxpeGlyLlN0b2ljUXVvdGVzV2ViLkxpdmUuUXVvdGVzRm9ybXcRbGl2ZV9zZXNzaW9uX25hbWV3B2RlZmF1bHR3CHJvb3RfcGlkdwNuaWxuBgBE9CCRmQFiAAFRgA.ezDcn_NTue6_ZWfuSQeErOe4BX6hYh6GJ-P3XpwnoN8" data-phx-static="SFMyNTY.g2gDaAJhBnQAAAADdwJpZG0AAAAUcGh4LUdHbC12UmM3cEpyX2Z3V0J3BWZsYXNodAAAAAB3CmFzc2lnbl9uZXdqbgYARfQgkZkBYgABUYA.VDBvnUZgQNL8phJlkpF3O80LDbxKVcezEXZCpjF1SYQ"&gt;&lt;!-- &lt;StoicQuotesWeb.Live.QuotesForm.render&gt; lib/stoic_quotes_web/live/quotes_form.html.heex:1 (stoic_quotes) --&gt;&lt;p&gt;Formulario Estóico&lt;/p&gt;&lt;!-- &lt;/StoicQuotesWeb.Live.QuotesForm.render&gt; --&gt;&lt;/div&gt;
+  &lt;iframe hidden height="0" width="0" src="/phoenix/live_reload/frame"&gt;&lt;/iframe&gt;&lt;/body&gt;
+&lt;/html&gt;&lt;!-- &lt;/StoicQuotesWeb.Layouts.root&gt; --&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Estos <em>HTML</em> adicionales están definidos en el directorio <code>layouts/</code>. Son heredados desde el archivo <code>root.html.heex</code>
+el cual se encuentra en el directorio <code>lib/stoic_quotes_web/components/layouts/</code>.
+Los contenidos de este archivo son transversales para todas las vistas.</p>
+</div>
+<div class="paragraph">
+<p>Si se desea utilizar otro archivo se debe modificar el router.</p>
+</div>
+<div class="listingblock">
+<div class="title">router.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">plug(:put_root_layout, html: {StoicQuotesWeb.Layouts, :root})</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_quotes_web/components/layouts/root.html.heex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+    &lt;meta name="csrf-token" content={get_csrf_token()} /&gt;
+    &lt;.live_title default="StoicQuotes" suffix=" · Phoenix Framework"&gt;
+      {assigns[:page_title]}
+    &lt;/.live_title&gt;
+    &lt;link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} /&gt;
+    &lt;script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}&gt;
+    &lt;/script&gt;
+    &lt;script&gt;
+      (() =&gt; {
+        const setTheme = (theme) =&gt; {
+          if (theme === "system") {
+            localStorage.removeItem("phx:theme");
+            document.documentElement.removeAttribute("data-theme");
+          } else {
+            localStorage.setItem("phx:theme", theme);
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        };
+        if (!document.documentElement.hasAttribute("data-theme")) {
+          setTheme(localStorage.getItem("phx:theme") || "system");
+        }
+        window.addEventListener("storage", (e) =&gt; e.key === "phx:theme" &amp;&amp; setTheme(e.newValue || "system"));
+        window.addEventListener("phx:set-theme", ({ detail: { theme } }) =&gt; setTheme(theme));
+      })();
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    {@inner_content}
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>{assigns[:page_title]}</code>: Imprime el contenido que puede ser modificado usando la estructura <code>sockets</code> en la función <code>mount</code> usando <code>socket = assign(socket, page_title: 'Mi Título')</code>.</p>
+</li>
+<li>
+<p><code>{@inner_content}</code>: Imprime un texto que puede ser reemplazado por una vista de un <em>LiveView</em>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-3-implementar-el-formulario-html"><a class="anchor" href="#paso-3-implementar-el-formulario-html"></a>Paso 3: Implementar el formulario HTML</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Editamos nuestro formulario (<code>lib/stoic_quotes_web/quotes_form.html.heex</code>) con el <em>HTML</em> necesario.</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_quotes_web/quotes_form.html.heex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div class="min-h-full"&gt;
+
+  &lt;header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10"&gt;
+    &lt;div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"&gt;
+      &lt;h1 class="text-3xl font-bold tracking-tight text-white"&gt;Stoic Quotes Form&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"&gt;
+
+    &lt;form&gt;
+      &lt;div class="space-y-12"&gt;
+        &lt;%# Alert Section %&gt;
+        &lt;div role="alert" class="alert"&gt;
+          &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info h-6 w-6 shrink-0"&gt;
+            &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"&gt;&lt;/path&gt;
+          &lt;/svg&gt;
+          &lt;span&gt;12 unread messages. Tap to see.&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div class="border-b border-white/10 pb-12"&gt;
+
+          &lt;h2 class="text-base/7 font-semibold text-white"&gt;Stoic Quote Information&lt;/h2&gt;
+          &lt;p class="mt-1 text-sm/6 text-gray-400"&gt;Use this form to add a new Stoic Quote&lt;/p&gt;
+
+          &lt;div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"&gt;
+            &lt;div class="sm:col-span-3"&gt;
+              &lt;label for="author" class="block text-sm/6 font-medium text-white"&gt;
+              Author
+              &lt;/label&gt;
+              &lt;div class="mt-2"&gt;
+                &lt;input id="author" type="text" name="author" autofocus="true" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="sm:col-span-3"&gt;
+              &lt;label for="source" class="block text-sm/6 font-medium text-white"&gt;
+              Source
+              &lt;/label&gt;
+              &lt;div class="mt-2"&gt;
+                &lt;input id="source" type="text" name="source" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="col-span-full"&gt;
+
+              &lt;label
+                for="quote"
+                class="block text-sm/6 font-medium text-white"&gt;
+                Quote
+              &lt;/label&gt;
+
+              &lt;div class="mt-2"&gt;
+                &lt;textarea
+                  id="quote"
+                  type="text"
+                  rows="5"
+                  name="quote"
+                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"&gt;&lt;/textarea&gt;
+
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+      &lt;div class="mt-6 flex items-center justify-end gap-x-6"&gt;
+        &lt;button type="reset" class="btn text-sm/6 font-semibold text-white"&gt;
+        Reset
+        &lt;/button&gt;
+
+        &lt;button type="submit" class="rounded-md btn btn-xl btn-wide bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"&gt;
+        Save
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lo que mostrará una página similar a lo siguiente:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/form2.png" alt="form2">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-4-conectar-el-formulario-al-controlador"><a class="anchor" href="#paso-4-conectar-el-formulario-al-controlador"></a>Paso 4: Conectar el formulario al controlador</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para esto utilizaremos las herramientas proporcionadas por <em>LiveView</em> la cual
+permite enviar eventos y valores hacia el controlador.</p>
+</div>
+<div class="sect2">
+<h3 id="alertas"><a class="anchor" href="#alertas"></a>Alertas</h3>
+<div class="paragraph">
+<p>Lo primero que se hará es configurar para que el mensaje de alerta
+solamente se muestre si hay un mensaje y también cambie de color dependiendo
+del tipo de alerta (éxito o error).</p>
+</div>
+<div class="paragraph">
+<p>Para esto añadimos un elemento en el div correspondiente llamado <code>:if={@alert}</code>.
+El cual permite mostrar condicionalmente un elemento.</p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.html.heex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div :if={@alert}&gt;
+  &lt;%= if @alert[:type] == :error do %&gt;
+      &lt;div role="alert" class="alert alert-error"&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"&gt;
+            &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;
+        &lt;/svg&gt;
+        &lt;span&gt;{@alert[:message]}&lt;/span&gt;
+      &lt;/div&gt;
+  &lt;% else %&gt;
+      &lt;div role="alert" class="alert alert-success"&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"&gt;
+          &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;
+        &lt;/svg&gt;
+        &lt;span&gt;{@alert[:message]}&lt;/span&gt;
+      &lt;/div&gt;
+  &lt;% end %&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ahora debemos añadir este valor al <code>socket</code> en mount, para que tenga un valor predeterminado.</p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.Live.QuotesForm do
+  use StoicQuotesWeb, :live_view
+
+  def mount(_params, _session, socket) do
+    {:ok,
+     socket
+     |&gt; assign(alert: nil) # alert = %{type: :success, message: "Hola"}
+    }
+  end
+end</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="formulario"><a class="anchor" href="#formulario"></a>Formulario</h3>
+<div class="paragraph">
+<p>Ahora configuramos el valor de cada input para que sea enviado al controlador.
+Para esto creamos una nueva estructura que almacenará los valores.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">|&gt; assign(form: to_form(%{"author" =&gt; nil, "source" =&gt; nil, "quote" =&gt; nil}))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>También añadiremos dos eventos "validate" y "save" que por el momento solamente
+devuelven los valores del formulario. Luego serán mejorados.</p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">def handle_event("validate", params, socket) do
+  IO.inspect(params, label: :validate)
+  form = to_form(params)
+  {:noreply,
+    socket
+    |&gt; assign(form: form)
+  }
+end
+
+def handle_event("save", params, socket) do
+  IO.inspect(params, label: :save)
+  form = to_form(params)
+  {:noreply,
+    socket
+    |&gt; assign(form: form)
+  }
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quedando el archivo de la siguiente forma:</p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.Live.QuotesForm do
+  use StoicQuotesWeb, :live_view
+
+  def mount(_params, _session, socket) do
+    {:ok,
+     socket
+     |&gt; assign(alert: nil)
+     |&gt; assign(form: to_form(%{"author" =&gt; nil, "source" =&gt; nil, "quote" =&gt; nil}))
+    }
+  end
+
+  def handle_event("validate", params, socket) do
+    IO.inspect(params, label: :validate)
+    form = to_form(params)
+    {:noreply,
+      socket
+      |&gt; assign(form: form)
+    }
+  end
+
+  def handle_event("save", params, socket) do
+    IO.inspect(params, label: :save)
+    form = to_form(params)
+    {:noreply,
+      socket
+      |&gt; assign(form: form)
+    }
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>También es necesario utilizar el elemento <code>.form</code> para asociar el formulario al controlador.
+Notar los eventos que se manejaran, <code>phx-change</code> y <code>phx-submit</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.html.heex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;.form for={@form} phx-change="validate" phx-submit="save"&gt;
+...
+&lt;/.form&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ahora es turno de asociar los elementos para que sean enviados en los eventos del formulario.
+Para esto utilizamos los elementos <code>.input</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Author</strong></p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.html.heex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;.input
+  autofocus="true"
+  placeholder="Marcus Aurelius"
+  phx-debounce="blur"
+  field={@form[:author]}
+  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+/&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Source</strong></p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.html.heex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;.input
+  placeholder="Meditations"
+  phx-debounce="blur"
+  field={@form[:source]}
+  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+/&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Quote</strong></p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.html.heex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;.input
+  type="textarea"
+  rows="5"
+  placeholder="Lorem Ipsum"
+  phx-debounce="blur"
+  field={@form[:quote]}
+  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+/&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quedando el formulario como lo siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.html.heex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div class="min-h-full"&gt;
+
+  &lt;header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10"&gt;
+    &lt;div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"&gt;
+      &lt;h1 class="text-3xl font-bold tracking-tight text-white"&gt;Stoic Quotes Form&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"&gt;
+
+    &lt;.form for={@form} phx-change="validate" phx-submit="save"&gt;
+      &lt;div class="space-y-12"&gt;
+
+        &lt;div :if={@alert}&gt;
+          &lt;%= if @alert[:type] == :error do %&gt;
+              &lt;div role="alert" class="alert alert-error"&gt;
+                &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"&gt;
+                    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;
+                &lt;/svg&gt;
+                &lt;span&gt;{@alert[:message]}&lt;/span&gt;
+              &lt;/div&gt;
+          &lt;% else %&gt;
+              &lt;div role="alert" class="alert alert-success"&gt;
+                &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"&gt;
+                  &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;
+                &lt;/svg&gt;
+                &lt;span&gt;{@alert[:message]}&lt;/span&gt;
+              &lt;/div&gt;
+          &lt;% end %&gt;
+        &lt;/div&gt;
+
+        &lt;div class="border-b border-white/10 pb-12"&gt;
+
+          &lt;h2 class="text-base/7 font-semibold text-white"&gt;Stoic Quote Information&lt;/h2&gt;
+          &lt;p class="mt-1 text-sm/6 text-gray-400"&gt;Use this form to add a new Stoic Quote&lt;/p&gt;
+
+          &lt;div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"&gt;
+            &lt;div class="sm:col-span-3"&gt;
+              &lt;label for="author" class="block text-sm/6 font-medium text-white"&gt;
+              Author
+              &lt;/label&gt;
+              &lt;div class="mt-2"&gt;
+                &lt;.input
+                autofocus="true"
+                placeholder="Marcus Aurelius"
+                phx-debounce="blur"
+                field={@form[:author]}
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="sm:col-span-3"&gt;
+              &lt;label for="source" class="block text-sm/6 font-medium text-white"&gt;
+              Source
+              &lt;/label&gt;
+              &lt;div class="mt-2"&gt;
+                &lt;.input
+                placeholder="Meditations"
+                phx-debounce="blur"
+                field={@form[:source]}
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="col-span-full"&gt;
+
+              &lt;label
+                for="quote"
+                class="block text-sm/6 font-medium text-white"&gt;
+                Quote
+              &lt;/label&gt;
+
+              &lt;div class="mt-2"&gt;
+                &lt;.input
+                  type="textarea"
+                  rows="5"
+                  placeholder="Lorem Ipsum"
+                  phx-debounce="blur"
+                  field={@form[:quote]}
+                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                /&gt;
+
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+      &lt;div class="mt-6 flex items-center justify-end gap-x-6"&gt;
+        &lt;button type="reset" class="btn text-sm/6 font-semibold text-white"&gt;
+        Reset
+        &lt;/button&gt;
+
+        &lt;button type="submit" class="rounded-md btn btn-xl btn-wide bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"&gt;
+        Save
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/.form&gt;
+
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-5-implementar-validación-del-formulario"><a class="anchor" href="#paso-5-implementar-validación-del-formulario"></a>Paso 5: Implementar validación del formulario</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora se realizará la validación del formulario, para que muestre errores
+si se envía un valor que no sea correcto. Para esto modificaremos la función
+<code>def handle_event("validate", params, socket)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">def handle_event("validate", params, socket) do
+  IO.inspect(params, label: :validate)
+  form = to_form(params)
+  {:noreply,
+    socket
+    |&gt; assign(form: form)
+  }
+end</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-6-implementar-el-guardado-en-la-base-de-datos"><a class="anchor" href="#paso-6-implementar-el-guardado-en-la-base-de-datos"></a>Paso 6: Implementar el guardado en la base de datos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Si las validaciones son exitosas, entonces podemos enviarlo para su almacenamiento
+en la base de datos. Para esto modificamos la función <code>def handle_event("save", params, socket)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">def handle_event("save", params, socket) do
+  IO.inspect(params, label: :save)
+  form = to_form(params)
+  {:noreply,
+    socket
+    |&gt; assign(form: form)
+  }
+end</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="apirest.html">REST: Stoic API</a></span>
+  <span class="next"><a href="../mobile/chapter.html">Aplicaciones Móviles</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>
