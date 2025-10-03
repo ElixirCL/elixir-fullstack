@@ -675,7 +675,16 @@ Para esto creamos una nueva estructura que almacenará los valores.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">|&gt; assign(form: to_form(%{"author" =&gt; nil, "source" =&gt; nil, "quote" =&gt; nil}))</code></pre>
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defp empty_form() do
+  to_form(%{"author" =&gt; "", "quote" =&gt; "", "source" =&gt; ""})
+end
+
+def mount(_params, _session, socket) do
+  {:ok,
+   socket
+   |&gt; assign(alert: nil)
+   |&gt; assign(form: empty_form())}
+end</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -713,12 +722,15 @@ end</code></pre>
 <pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.Live.QuotesForm do
   use StoicQuotesWeb, :live_view
 
+  defp empty_form() do
+    to_form(%{"author" =&gt; "", "quote" =&gt; "", "source" =&gt; ""})
+  end
+
   def mount(_params, _session, socket) do
     {:ok,
      socket
      |&gt; assign(alert: nil)
-     |&gt; assign(form: to_form(%{"author" =&gt; nil, "source" =&gt; nil, "quote" =&gt; nil}))
-    }
+     |&gt; assign(form: empty_form())}
   end
 
   def handle_event("validate", params, socket) do
@@ -852,6 +864,7 @@ Para esto utilizamos los elementos <code>.input</code>.</p>
               &lt;div class="mt-2"&gt;
                 &lt;.input
                 autofocus="true"
+                required="true"
                 placeholder="Marcus Aurelius"
                 phx-debounce="blur"
                 field={@form[:author]}
@@ -867,6 +880,7 @@ Para esto utilizamos los elementos <code>.input</code>.</p>
               &lt;div class="mt-2"&gt;
                 &lt;.input
                 placeholder="Meditations"
+                required="true"
                 phx-debounce="blur"
                 field={@form[:source]}
                 class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
@@ -885,6 +899,7 @@ Para esto utilizamos los elementos <code>.input</code>.</p>
               &lt;div class="mt-2"&gt;
                 &lt;.input
                   type="textarea"
+                  required="true"
                   rows="5"
                   placeholder="Lorem Ipsum"
                   phx-debounce="blur"
@@ -925,20 +940,94 @@ Para esto utilizamos los elementos <code>.input</code>.</p>
 <div class="paragraph">
 <p>Ahora se realizará la validación del formulario, para que muestre errores
 si se envía un valor que no sea correcto. Para esto modificaremos la función
-<code>def handle_event("validate", params, socket)</code>.</p>
+<code>def handle_event("validate", params, socket)</code>, donde crearemos un nuevo <code>changeset</code>,
+el cual será la estructura usada para realizar todas las validaciones. Como ya tenemos
+un esquema podemos reutilizarlo, sin embargo también existen los <code>changeset</code> sin esquemas
+(por ejemplo un formulario de contacto) que pemiten realizar validaciones a formularios
+no asociados a una base de datos o también cuando sea necesario validar múltiples valores
+no relacionados en la misma tabla.</p>
+</div>
+<div class="paragraph">
+<p>Primero añadimos el módulo y el <em>Logger</em>.</p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.Live.QuotesForm do
+  use StoicQuotesWeb, :live_view
+
+  alias StoicQuotes.Quotes
+  alias StoicQuotes.Quotes.Quote
+  require Logger
+  ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Luego modificamos la función para usar el módulo. Notemos que añadimos
+una nueva función llamada <code>Quote.new</code> que inicia una validación con los parámetros
+que le hemos dado. Para esto debemos añadir la función al esquema correspondiente.</p>
 </div>
 <div class="listingblock">
 <div class="title">quotes_form.ex</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">def handle_event("validate", params, socket) do
-  IO.inspect(params, label: :validate)
-  form = to_form(params)
+  changeset =
+    Quote.new(params)
+
+  form = to_form(params, errors: changeset.errors)
+
+  Logger.debug(changeset)
+  Logger.debug(form)
+
   {:noreply,
-    socket
-    |&gt; assign(form: form)
-  }
+   socket
+   |&gt; assign(form: form)}
 end</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Ahora modicamos el esquema para que tenga la función <code>new</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_quotes/quotes/quote.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Quotes.Quote do
+  use Ecto.Schema
+  import Ecto.Changeset
+  alias __MODULE__
+
+  schema "quotes" do
+    field(:quote, :string)
+    field(:author, :string)
+    field(:source, :string)
+
+    timestamps(type: :utc_datetime)
+  end
+
+  @doc false
+  def changeset(quote, attrs) do
+    quote
+    |&gt; cast(attrs, [:quote, :author, :source])
+    |&gt; validate_required([:quote, :author, :source])
+    |&gt; unique_constraint(:quote, name: :index_for_duplicate_quotes)
+  end
+
+  @doc false
+  def new(attrs \\ %{"author" =&gt; "", "quote" =&gt; "", "source" =&gt; ""}) do
+    changeset(%Quote{}, attrs)
+  end
+end</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>alias <em>MODULE</em></code>: Este elemento permite utilizar el módulo dentro del mismo.</p>
+</li>
+<li>
+<p><code>changeset(%Quote{}, attrs)</code>: Llamamos a la función existente pasando los parámetros adecuados.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -953,12 +1042,38 @@ en la base de datos. Para esto modificamos la función <code>def handle_event("s
 <div class="title">quotes_form.ex</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">def handle_event("save", params, socket) do
-  IO.inspect(params, label: :save)
-  form = to_form(params)
-  {:noreply,
-    socket
-    |&gt; assign(form: form)
-  }
+  changeset =
+    Quote.new(params)
+
+  form = to_form(params, errors: changeset.errors)
+
+  Logger.debug(changeset)
+  Logger.debug(form)
+
+  socket =
+    case changeset.valid? do
+      true -&gt;
+        case Quotes.create_quote(params) do
+          {:ok, result} -&gt;
+            Logger.debug(result)
+
+            socket
+            |&gt; assign(form: empty_form())
+            |&gt; put_flash(:info, "Created new Quote")
+
+          error -&gt;
+            socket
+            |&gt; assign(form: form)
+            |&gt; put_flash(:error, "There was an error saving the Quote")
+        end
+
+      false -&gt;
+        socket
+        |&gt; assign(form: form)
+        |&gt; put_flash(:error, "There was an error saving the Quote")
+    end
+
+  {:noreply, socket}
 end</code></pre>
 </div>
 </div>

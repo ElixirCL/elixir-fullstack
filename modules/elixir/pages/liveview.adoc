@@ -364,7 +364,16 @@ Para esto creamos una nueva estructura que almacenará los valores.
 
 [source, elixir]
 ----
-|> assign(form: to_form(%{"author" => nil, "source" => nil, "quote" => nil}))
+defp empty_form() do
+  to_form(%{"author" => "", "quote" => "", "source" => ""})
+end
+
+def mount(_params, _session, socket) do
+  {:ok,
+   socket
+   |> assign(alert: nil)
+   |> assign(form: empty_form())}
+end
 ----
 
 También añadiremos dos eventos "validate" y "save" que por el momento solamente
@@ -400,12 +409,15 @@ Quedando el archivo de la siguiente forma:
 defmodule StoicQuotesWeb.Live.QuotesForm do
   use StoicQuotesWeb, :live_view
 
+  defp empty_form() do
+    to_form(%{"author" => "", "quote" => "", "source" => ""})
+  end
+
   def mount(_params, _session, socket) do
     {:ok,
      socket
      |> assign(alert: nil)
-     |> assign(form: to_form(%{"author" => nil, "source" => nil, "quote" => nil}))
-    }
+     |> assign(form: empty_form())}
   end
   
   def handle_event("validate", params, socket) do
@@ -533,6 +545,7 @@ Quedando el formulario como lo siguiente:
               <div class="mt-2">
                 <.input
                 autofocus="true"
+                required="true"
                 placeholder="Marcus Aurelius"
                 phx-debounce="blur"
                 field={@form[:author]}
@@ -548,6 +561,7 @@ Quedando el formulario como lo siguiente:
               <div class="mt-2">
                 <.input
                 placeholder="Meditations"
+                required="true"
                 phx-debounce="blur"
                 field={@form[:source]}
                 class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
@@ -566,6 +580,7 @@ Quedando el formulario como lo siguiente:
               <div class="mt-2">
                 <.input
                   type="textarea"
+                  required="true"
                   rows="5"
                   placeholder="Lorem Ipsum"
                   phx-debounce="blur"
@@ -601,20 +616,85 @@ Quedando el formulario como lo siguiente:
 
 Ahora se realizará la validación del formulario, para que muestre errores
 si se envía un valor que no sea correcto. Para esto modificaremos la función
-`def handle_event("validate", params, socket)`.
+`def handle_event("validate", params, socket)`, donde crearemos un nuevo `changeset`, 
+el cual será la estructura usada para realizar todas las validaciones. Como ya tenemos
+un esquema podemos reutilizarlo, sin embargo también existen los `changeset` sin esquemas
+(por ejemplo un formulario de contacto) que pemiten realizar validaciones a formularios 
+no asociados a una base de datos o también cuando sea necesario validar múltiples valores
+no relacionados en la misma tabla.
+
+Primero añadimos el módulo y el _Logger_.
+
+.quotes_form.ex
+[source, elixir]
+----
+defmodule StoicQuotesWeb.Live.QuotesForm do
+  use StoicQuotesWeb, :live_view
+
+  alias StoicQuotes.Quotes
+  alias StoicQuotes.Quotes.Quote
+  require Logger
+  ...
+----
+
+Luego modificamos la función para usar el módulo. Notemos que añadimos 
+una nueva función llamada `Quote.new` que inicia una validación con los parámetros 
+que le hemos dado. Para esto debemos añadir la función al esquema correspondiente.
 
 .quotes_form.ex
 [source, elixir]
 ----
 def handle_event("validate", params, socket) do
-  IO.inspect(params, label: :validate)
-  form = to_form(params)
+  changeset =
+    Quote.new(params)
+
+  form = to_form(params, errors: changeset.errors)
+
+  Logger.debug(changeset)
+  Logger.debug(form)
+
   {:noreply,
-    socket
-    |> assign(form: form)
-  }
+   socket
+   |> assign(form: form)}
 end
 ----
+
+Ahora modicamos el esquema para que tenga la función `new`.
+
+.lib/stoic_quotes/quotes/quote.ex
+[source, elixir]
+----
+defmodule StoicQuotes.Quotes.Quote do
+  use Ecto.Schema
+  import Ecto.Changeset
+  alias __MODULE__
+
+  schema "quotes" do
+    field(:quote, :string)
+    field(:author, :string)
+    field(:source, :string)
+
+    timestamps(type: :utc_datetime)
+  end
+
+  @doc false
+  def changeset(quote, attrs) do
+    quote
+    |> cast(attrs, [:quote, :author, :source])
+    |> validate_required([:quote, :author, :source])
+    |> unique_constraint(:quote, name: :index_for_duplicate_quotes)
+  end
+
+  @doc false
+  def new(attrs \\ %{"author" => "", "quote" => "", "source" => ""}) do
+    changeset(%Quote{}, attrs)
+  end
+end
+----
+
+- `alias __MODULE__`: Este elemento permite utilizar el módulo dentro del mismo.
+- `changeset(%Quote{}, attrs)`: Llamamos a la función existente pasando los parámetros adecuados.
+
 
 == Paso 6: Implementar el guardado en la base de datos
 
@@ -625,11 +705,37 @@ en la base de datos. Para esto modificamos la función `def handle_event("save",
 [source, elixir]
 ----
 def handle_event("save", params, socket) do
-  IO.inspect(params, label: :save)
-  form = to_form(params)
-  {:noreply,
-    socket
-    |> assign(form: form)
-  }
+  changeset =
+    Quote.new(params)
+
+  form = to_form(params, errors: changeset.errors)
+
+  Logger.debug(changeset)
+  Logger.debug(form)
+
+  socket =
+    case changeset.valid? do
+      true ->
+        case Quotes.create_quote(params) do
+          {:ok, result} ->
+            Logger.debug(result)
+
+            socket
+            |> assign(form: empty_form())
+            |> put_flash(:info, "Created new Quote")
+
+          error ->
+            socket
+            |> assign(form: form)
+            |> put_flash(:error, "There was an error saving the Quote")
+        end
+
+      false ->
+        socket
+        |> assign(form: form)
+        |> put_flash(:error, "There was an error saving the Quote")
+    end
+
+  {:noreply, socket}
 end
 ----
