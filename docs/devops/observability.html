@@ -399,11 +399,25 @@
 <div class="paragraph">
 <p>Siempre es recomendable utilizar el <em>SDK</em> de <em>Open Telemetry</em>, sin embargo en el caso de no estar disponible para el sistema o las tecnologías usadas, se debe recurrir a la instrumentación manual, tratando de crear una capa de abstracción compatible con <em>Open Telemetry</em>.</p>
 </div>
-<div class="imageblock kroki">
+<div class="listingblock kroki-error">
+<div class="title">Uso de OpenTelemetry</div>
 <div class="content">
-<img src="_images/diag-488c1568d63e553cdc9cde64970cdea6ff6d00de.svg" alt="Uso de OpenTelemetry">
+<pre>@startuml
+
+skin rose
+
+title Instrumentación
+
+start
+if(¿Hay OpenTelemetry SDK disponible?)
+  :Usar SDK;
+else
+  :Usar instrumentación manual;
+endif
+stop
+
+@enduml</pre>
 </div>
-<div class="title">Figure 1. Uso de OpenTelemetry</div>
 </div>
 </div>
 </div>
