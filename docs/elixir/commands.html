@@ -3,10 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Ambientes de Desarrollo :: Elixir Full-Stack</title>
-    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/devops/devenvs.html">
-    <link rel="prev" href="../mobile/chapter.html">
-    <link rel="next" href="observability.html">
+    <title>Makefiles :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/elixir/commands.html">
     <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -175,13 +173,13 @@
     <span class="nav-text">Elixir</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../elixir/elixir.html">El Lenguaje Elixir</a>
+    <a class="nav-link" href="elixir.html">El Lenguaje Elixir</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../elixir/apirest.html">REST: Stoic API</a>
+    <a class="nav-link" href="apirest.html">REST: Stoic API</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../elixir/liveview.html">LiveView: Stoic API</a>
+    <a class="nav-link" href="liveview.html">LiveView: Stoic API</a>
   </li>
 </ul>
   </li>
@@ -198,17 +196,17 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">DevOps</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="devenvs.html">Ambientes de Desarrollo</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/devenvs.html">Ambientes de Desarrollo</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="observability.html">Observabilidad e Instrumentación</a>
+    <a class="nav-link" href="../devops/observability.html">Observabilidad e Instrumentación</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="dora.html">Métricas DORA</a>
+    <a class="nav-link" href="../devops/dora.html">Métricas DORA</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="golden.html">Golden Signals</a>
+    <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
   </li>
 </ul>
   </li>
@@ -241,103 +239,88 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Elixir Full-Stack</a></li>
-    <li>DevOps</li>
-    <li><a href="devenvs.html">Ambientes de Desarrollo</a></li>
+    <li><a href="commands.html">Makefiles</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="file:///antora/./modules/devops/pages/devenvs.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///antora/./modules/elixir/pages/commands.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Ambientes de Desarrollo</h1>
-<div id="preamble">
-<div class="sectionbody">
+<h1 class="page">Makefiles</h1>
 <div class="paragraph">
-<p>Para el desarrollo de software se necesitan distintos ambientes. Los principales ambientes son: <em>Local</em>, <em>Dev</em>, <em>Staging</em> y <em>Production</em>.</p>
+<p>El siguiente es un listado de los distintos comandos utilizados
+durante la creación de la aplicación <em>Stoic Quotes</em>, además de algunos otros complementarios.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="ambiente-local"><a class="anchor" href="#ambiente-local"></a>Ambiente Local</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>El ambiente local está configurado en la computadora personal del desarrollador. Está pensado para permitir
-el desarrollo del sistema utilizando un ambiente que permita total control. Lo que permite fluidez de movimiento
-para los desarrolladores, aumentando la agilidad y eficiencia al crear las soluciones. Normalmente está definido
-por uno o más archivos <strong>Dockerfile</strong> con los componentes como servidores y bases de datos
-similares a los usados en producción.</p>
-</div>
-<div class="imageblock kroki">
-<div class="content">
-<img src="_images/diag-ea1c7c27bf34145f91f9e04227c599c6b09db91e.svg" alt="Actividades en ambiente local">
-</div>
-<div class="title">Figure 1. Actividades en ambiente local</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="ambiente-dev"><a class="anchor" href="#ambiente-dev"></a>Ambiente Dev</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>El ambiente de desarrollo es un servidor disponible públicamente que es configurado con los últimos cambios
-disponibles en la rama asociada al <em>Pull Request</em>. Los servicios están configurados con la base de datos del ambiente de pruebas (staging), es una versión del ambiente de pruebas la cual tiene menor cantidad de recursos ya que está enfocada en pruebas específicas para uno o un conjunto muy limitado de desarrolladores o interesados.</p>
-</div>
-<div class="paragraph">
-<p>Un servidor dev único es creado automáticamente en cada nuevo <em>PR</em> y tiene una duración máxima de 8 horas. Luego es eliminado automáticamente.</p>
-</div>
-<div class="imageblock kroki">
-<div class="content">
-<img src="_images/diag-54029d3ab172e3e7b974486a1bdb620318b08731.svg" alt="Actividades en ambiente de desarrollo">
-</div>
-<div class="title">Figure 2. Actividades en ambiente de desarrollo</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="ambiente-pruebas-staging"><a class="anchor" href="#ambiente-pruebas-staging"></a>Ambiente Pruebas (Staging)</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>El ambiente staging es un ambiente para realizar pruebas por múltiples equipos. Es el que tiene más recursos que el ambiente dev, pero menos que producción. Tiene una réplica de los datos de producción periódicamente lo que permite realizar pruebas
-con datos lo más cercanos a producción. Se recomienda un periodo de función de 24/5. El despliegue es automático en cada commit en la rama <code>main</code> del repositorio principal del proyecto.</p>
-</div>
-<div class="imageblock kroki">
-<div class="content">
-<img src="_images/diag-0cd9c47b98bcb7b263865989dcc11612b0c0bdd3.svg" alt="Actividades en ambiente de pruebas">
-</div>
-<div class="title">Figure 3. Actividades en ambiente de pruebas</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="ambiente-producción"><a class="anchor" href="#ambiente-producción"></a>Ambiente Producción</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Es el ambiente donde se ejecuta el sistema y el más critico. Todo cambio enviado debe ser aprobado y documentado por personas autorizadas y correctamente informado en los canales de comunicación oficiales. El despliegue es automatizado, pero debe ser autorizado de forma manual. Para el proceso productivo se recomienda utilizar <strong>Canary Deployments</strong>, sobre todo si son sistemas <strong>Tier 0</strong>.</p>
-</div>
-<div class="imageblock kroki">
-<div class="content">
-<img src="_images/diag-a95518798f2ceffadc8a055bec12b25248908a85.svg" alt="Actividades en ambiente de producción">
-</div>
-<div class="title">Figure 4. Actividades en ambiente de producción</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="mejores-prácticas"><a class="anchor" href="#mejores-prácticas"></a>Mejores prácticas</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Se recomienda que el ambiente <em>Dev</em> y ambiente <em>Staging</em> sean apagados los días donde no se trabaje, permitiendo ahorrar costos
-de servidores.</p>
-</div>
-</div>
-</div>
-<nav class="pagination">
-  <span class="prev"><a href="../mobile/chapter.html">Aplicaciones Móviles</a></span>
-  <span class="next"><a href="observability.html">Observabilidad e Instrumentación</a></span>
-</nav>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Comandos Usados</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Comando</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mix phx.server</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ejecuta el servidor de la aplicación.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iex -S mix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Carga la aplicación en modo interactivo, que permite ejecutar módulos y código dentro de la aplicación.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iex -S mix phx.server</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ejecuta el servidor de la aplicación en modo interactivo, para usar debugger y ejecutar código.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mix ecto.create</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crea la base de datos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mix ecto.drop</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elimina la base de datos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mix ecto.migrate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ejecuta las migraciones y crea las tablas, relaciones e índices en la base de datos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mix ecto.dump</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crea un archivo <em>SQL</em> con todas las tablas e indices de la base de datos en <code>priv/repo/structure.sql</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mix run priv/repo/seeds.exs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Llena la base de datos con registros iniciales definidos en el archivo <code>seeds.exs</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mix phx.gen.*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.html">Generador de archivos de <em>Phoenix</em></a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mix test</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ejecuta toda la suite de pruebas de la aplicación.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mix test &lt;ruta&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ejecuta solamente las pruebas del archivo específico. Ejemplo <code>mix test test/calculator_test.exs</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mix test &lt;ruta&gt;:&lt;número de línea&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ejecuta solamente las pruebas definidas en una línea dentro de un archivo específico. Ejemplo <code>mix test test/calculator_test.exs:15</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">`mix test --only describe:"&lt;descripción&gt;"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ejecuta solamente un conjunto de pruebas definidas en un grupo <a href="https://hexdocs.pm/ex_unit/1.18.4/ExUnit.Case.html#describe/2"><code>describe</code></a>. Ejemplo <code>mix test --only describe:"String.capitalize/1"</code>.</p></td>
+</tr>
+</tbody>
+</table>
 </article>
   </div>
 </main>

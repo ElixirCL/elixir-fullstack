@@ -300,16 +300,9 @@ y sirven para simplificar tareas comunes y recurrentes como crear recursos.</p>
 <div class="paragraph">
 <p>La tabla a crear es la siguiente:</p>
 </div>
-<div class="listingblock kroki-error">
+<div class="imageblock kroki">
 <div class="content">
-<pre>Table quotes {
-  id integer [primary key]
-  quote text
-  author string
-  source string
-  inserted_at timestamp
-  updated_at timestamp
-}</pre>
+<img src="_images/diag-0c0cacf977b2574b58d8c657d73b91b2339f6b60.svg" alt="Diagram">
 </div>
 </div>
 <div class="listingblock">
@@ -549,12 +542,23 @@ end</code></pre>
 </div>
 <div class="paragraph">
 <p>También actualizamos el esquema para reflejar este nuevo índice y restricción.
-Añadiendo la siguiente línea al esquema (<code>lib/stoic_quotes/quotes/quote.ex</code>).</p>
+Añadiendo las siguientes línea al esquema (<code>lib/stoic_quotes/quotes/quote.ex</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">|&gt; unique_constraint(:quote, name: :index_for_duplicate_quotes)</code></pre>
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">|&gt; unsafe_validate_unique(:quote, StoicQuotes.Repo)
+|&gt; unique_constraint(:quote)</code></pre>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>unsafe_validate_unique(:quote, StoicQuotes.Repo)</code>: Valida de forma rápida consultando a la base de datos, ideal para los formularios. Puede tener condiciones de carrera por lo que solo es recomendable para validaciones rápidas.</p>
+</li>
+<li>
+<p><code>unique_constraint(:quote)</code>: Intenta agregar un nuevo registro a la base de datos y arroja un error si la base de datos lo impide. Simplemente estamos diciendo a <em>Ecto</em> que el campo <code>quote</code> tiene una restricción de valor único y que debe considerar el error de la bd como parte de las validaciones.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Quedando como sigue</p>
@@ -578,7 +582,8 @@ Añadiendo la siguiente línea al esquema (<code>lib/stoic_quotes/quotes/quote.e
     quote
     |&gt; cast(attrs, [:quote, :author, :source])
     |&gt; validate_required([:quote, :author, :source])
-    |&gt; unique_constraint(:quote, name: :index_for_duplicate_quotes)
+    |&gt; unsafe_validate_unique(:quote, StoicQuotes.Repo)
+    |&gt; unique_constraint(:quote)
   end
 end</code></pre>
 </div>
@@ -988,6 +993,15 @@ x-request-id: GGkFWTujtWGncGAAAAGC
 
 {"data":[{"author":"Marcus Aurelius","source":"Book II, Meditations","quote":"Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy."},{"author":"Marcus Aurelius","source":"Book XI, Meditations","quote":"Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil."},{"author":"Marcus Aurelius","source":"Book X, Meditations","quote":"Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all."}]}%</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-10-siguientes-pasos"><a class="anchor" href="#paso-10-siguientes-pasos"></a>Paso 10: Siguientes Pasos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora se tiene una API Rest. En el siguiente tutorial se verá como crear un formulario
+que permita añadir desde la web una nueva cita estóica utilizando <em>LiveView</em>.</p>
 </div>
 </div>
 </div>

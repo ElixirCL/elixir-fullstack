@@ -1,0 +1,23 @@
+= Makefiles
+
+El siguiente es un listado de los distintos comandos utilizados
+durante la creación de la aplicación _Stoic Quotes_, además de algunos otros complementarios.
+
+.Comandos Usados
+|====
+| Comando | Descripción
+
+| `mix phx.server` | Ejecuta el servidor de la aplicación.
+| `iex -S mix` | Carga la aplicación en modo interactivo, que permite ejecutar módulos y código dentro de la aplicación.
+| `iex -S mix phx.server` | Ejecuta el servidor de la aplicación en modo interactivo, para usar debugger y ejecutar código.
+| `mix ecto.create` | Crea la base de datos.
+| `mix ecto.drop` | Elimina la base de datos.
+| `mix ecto.migrate` | Ejecuta las migraciones y crea las tablas, relaciones e índices en la base de datos.
+| `mix ecto.dump` | Crea un archivo _SQL_ con todas las tablas e indices de la base de datos en `priv/repo/structure.sql`
+| `mix run priv/repo/seeds.exs` | Llena la base de datos con registros iniciales definidos en el archivo `seeds.exs`.
+| `mix phx.gen.*`| https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.html[Generador de archivos de _Phoenix_].
+| `mix test` | Ejecuta toda la suite de pruebas de la aplicación.
+| `mix test <ruta>` | Ejecuta solamente las pruebas del archivo específico. Ejemplo `mix test test/calculator_test.exs`.
+| `mix test <ruta>:<número de línea>` | Ejecuta solamente las pruebas definidas en una línea dentro de un archivo específico. Ejemplo `mix test test/calculator_test.exs:15`.
+| `mix test --only describe:"<descripción>" | Ejecuta solamente un conjunto de pruebas definidas en un grupo https://hexdocs.pm/ex_unit/1.18.4/ExUnit.Case.html#describe/2[`describe`]. Ejemplo `mix test --only describe:"String.capitalize/1"`.
+|====

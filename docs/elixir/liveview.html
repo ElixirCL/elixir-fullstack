@@ -615,63 +615,11 @@ Los contenidos de este archivo son transversales para todas las vistas.</p>
 <p>Para esto utilizaremos las herramientas proporcionadas por <em>LiveView</em> la cual
 permite enviar eventos y valores hacia el controlador.</p>
 </div>
-<div class="sect2">
-<h3 id="alertas"><a class="anchor" href="#alertas"></a>Alertas</h3>
 <div class="paragraph">
-<p>Lo primero que se hará es configurar para que el mensaje de alerta
-solamente se muestre si hay un mensaje y también cambie de color dependiendo
-del tipo de alerta (éxito o error).</p>
-</div>
-<div class="paragraph">
-<p>Para esto añadimos un elemento en el div correspondiente llamado <code>:if={@alert}</code>.
-El cual permite mostrar condicionalmente un elemento.</p>
-</div>
-<div class="listingblock">
-<div class="title">quotes_form.html.heex</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div :if={@alert}&gt;
-  &lt;%= if @alert[:type] == :error do %&gt;
-      &lt;div role="alert" class="alert alert-error"&gt;
-        &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"&gt;
-            &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;
-        &lt;/svg&gt;
-        &lt;span&gt;{@alert[:message]}&lt;/span&gt;
-      &lt;/div&gt;
-  &lt;% else %&gt;
-      &lt;div role="alert" class="alert alert-success"&gt;
-        &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"&gt;
-          &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;
-        &lt;/svg&gt;
-        &lt;span&gt;{@alert[:message]}&lt;/span&gt;
-      &lt;/div&gt;
-  &lt;% end %&gt;
-&lt;/div&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Ahora debemos añadir este valor al <code>socket</code> en mount, para que tenga un valor predeterminado.</p>
-</div>
-<div class="listingblock">
-<div class="title">quotes_form.ex</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.Live.QuotesForm do
-  use StoicQuotesWeb, :live_view
-
-  def mount(_params, _session, socket) do
-    {:ok,
-     socket
-     |&gt; assign(alert: nil) # alert = %{type: :success, message: "Hola"}
-    }
-  end
-end</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="formulario"><a class="anchor" href="#formulario"></a>Formulario</h3>
-<div class="paragraph">
-<p>Ahora configuramos el valor de cada input para que sea enviado al controlador.
-Para esto creamos una nueva estructura que almacenará los valores.</p>
+<p>Configuramos el valor de cada input para que sea enviado al controlador.
+Para esto creamos una nueva estructura que almacenará los valores,
+utilizamos una función llamada <code>empty_form()</code> que utiliza la función de <em>Phoenix</em> <code>to_form()</code>
+para entregar la estructura que usaremos en el formulario.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -682,7 +630,6 @@ end
 def mount(_params, _session, socket) do
   {:ok,
    socket
-   |&gt; assign(alert: nil)
    |&gt; assign(form: empty_form())}
 end</code></pre>
 </div>
@@ -729,7 +676,6 @@ end</code></pre>
   def mount(_params, _session, socket) do
     {:ok,
      socket
-     |&gt; assign(alert: nil)
      |&gt; assign(form: empty_form())}
   end
 
@@ -815,6 +761,63 @@ Para esto utilizamos los elementos <code>.input</code>.</p>
 </div>
 </div>
 <div class="paragraph">
+<p>¿Dónde están estos elementos de <code>&lt;.form&gt;</code> e <code>&lt;.input&gt;</code>?</p>
+</div>
+<div class="paragraph">
+<p>Estos elementos están definidos en <code>lib/stoic_quotes_web/components/core_components.ex</code>
+donde corresponden a una función que devuelve un html según los parámetros.
+Estos son componentes que vienen predefinidos en <em>Phoenix</em> y son opcionales de utilizar,
+pero recomendados.</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_quotes_web/components/core_components.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">...
+def input(%{type: "textarea"} = assigns) do
+  ~H"""
+  &lt;fieldset class="fieldset mb-2"&gt;
+    &lt;label&gt;
+      &lt;span :if={@label} class="label mb-1"&gt;{@label}&lt;/span&gt;
+      &lt;textarea
+        id={@id}
+        name={@name}
+        class={[
+          @class || "w-full textarea",
+          @errors != [] &amp;&amp; (@error_class || "textarea-error")
+        ]}
+        {@rest}
+      &gt;{Phoenix.HTML.Form.normalize_value("textarea", @value)}&lt;/textarea&gt;
+    &lt;/label&gt;
+    &lt;.error :for={msg &lt;- @errors}&gt;{msg}&lt;/.error&gt;
+  &lt;/fieldset&gt;
+  """
+end
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Alertas</strong></p>
+</div>
+<div class="paragraph">
+<p>Para generar alertas utilizaremos el componente <code>&lt;Layouts.flash_group&gt;</code>
+el cual está dentro del archivo <code>lib/stoic_quotes_web/components/layouts.ex</code>.</p>
+</div>
+<div class="paragraph">
+<p>Este es un mensaje de alerta
+que cambia de color dependiendo
+del tipo de alerta (éxito o error).</p>
+</div>
+<div class="paragraph">
+<p>Se utiliza la función <code>put_flash()</code> en el <code>socket</code> para enviar
+mensajes.</p>
+</div>
+<div class="listingblock">
+<div class="title">quotes_form.html.heex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;Layouts.flash_group flash={@flash} /&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Quedando el formulario como lo siguiente:</p>
 </div>
 <div class="listingblock">
@@ -833,23 +836,7 @@ Para esto utilizamos los elementos <code>.input</code>.</p>
     &lt;.form for={@form} phx-change="validate" phx-submit="save"&gt;
       &lt;div class="space-y-12"&gt;
 
-        &lt;div :if={@alert}&gt;
-          &lt;%= if @alert[:type] == :error do %&gt;
-              &lt;div role="alert" class="alert alert-error"&gt;
-                &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"&gt;
-                    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;
-                &lt;/svg&gt;
-                &lt;span&gt;{@alert[:message]}&lt;/span&gt;
-              &lt;/div&gt;
-          &lt;% else %&gt;
-              &lt;div role="alert" class="alert alert-success"&gt;
-                &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24"&gt;
-                  &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /&gt;
-                &lt;/svg&gt;
-                &lt;span&gt;{@alert[:message]}&lt;/span&gt;
-              &lt;/div&gt;
-          &lt;% end %&gt;
-        &lt;/div&gt;
+        &lt;Layouts.flash_group flash={@flash} /&gt;
 
         &lt;div class="border-b border-white/10 pb-12"&gt;
 
@@ -920,16 +907,15 @@ Para esto utilizamos los elementos <code>.input</code>.</p>
         Reset
         &lt;/button&gt;
 
-        &lt;button type="submit" class="rounded-md btn btn-xl btn-wide bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"&gt;
+        &lt;.button type="submit" class="rounded-md btn btn-xl btn-wide bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"&gt;
         Save
-        &lt;/button&gt;
+        &lt;/.button&gt;
       &lt;/div&gt;
     &lt;/.form&gt;
 
     &lt;/div&gt;
   &lt;/main&gt;
 &lt;/div&gt;</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -976,7 +962,6 @@ que le hemos dado. Para esto debemos añadir la función al esquema correspondie
 
   form = to_form(params, errors: changeset.errors)
 
-  Logger.debug(changeset)
   Logger.debug(form)
 
   {:noreply,
@@ -984,6 +969,22 @@ que le hemos dado. Para esto debemos añadir la función al esquema correspondie
    |&gt; assign(form: form)}
 end</code></pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Notar que separamos el changeset del formulario. Esto es por que un
+formulario puede tener distintos campos que no necesariamente tienen relación con el esquema y sus validaciones.
+Por lo que siempre es recomendable tener entidades separadas para mayor mantenibilidad y bajo acoplamiento.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Ahora modicamos el esquema para que tenga la función <code>new</code>.</p>
@@ -1009,12 +1010,16 @@ end</code></pre>
     quote
     |&gt; cast(attrs, [:quote, :author, :source])
     |&gt; validate_required([:quote, :author, :source])
-    |&gt; unique_constraint(:quote, name: :index_for_duplicate_quotes)
+    |&gt; unsafe_validate_unique(:quote, StoicQuotes.Repo)
+    |&gt; unique_constraint(:quote)
   end
 
   @doc false
   def new(attrs \\ %{"author" =&gt; "", "quote" =&gt; "", "source" =&gt; ""}) do
-    changeset(%Quote{}, attrs)
+    case changeset(%Quote{}, attrs) do
+      {_, changeset} -&gt; changeset
+      changeset -&gt; changeset
+    end
   end
 end</code></pre>
 </div>
@@ -1027,6 +1032,12 @@ end</code></pre>
 <li>
 <p><code>changeset(%Quote{}, attrs)</code>: Llamamos a la función existente pasando los parámetros adecuados.</p>
 </li>
+<li>
+<p><code>{_, changeset} &#8594; changeset</code>: La validación <code>unique_constraint(:quote)</code> entrega una tupla <code>{:error, changeset}</code>, por lo cual debemos estandarizar para simplificar el manejo de errores.</p>
+</li>
+<li>
+<p><code>changeset &#8594; changeset</code>: Si la validación entrega el formato estándar entonces la devolvemos tal cual es.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -1036,7 +1047,9 @@ end</code></pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Si las validaciones son exitosas, entonces podemos enviarlo para su almacenamiento
-en la base de datos. Para esto modificamos la función <code>def handle_event("save", params, socket)</code>.</p>
+en la base de datos. Para esto modificamos la función <code>def handle_event("save", params, socket)</code>.
+Debemos evaluar los casos: las validaciones son correcta o no, se guardo exitosamente o no,
+como también considerar un caso excepcional donde no se retornó el valor esperado al guardar (éxito o fracaso).</p>
 </div>
 <div class="listingblock">
 <div class="title">quotes_form.ex</div>
@@ -1047,7 +1060,6 @@ en la base de datos. Para esto modificamos la función <code>def handle_event("s
 
   form = to_form(params, errors: changeset.errors)
 
-  Logger.debug(changeset)
   Logger.debug(form)
 
   socket =
@@ -1055,19 +1067,34 @@ en la base de datos. Para esto modificamos la función <code>def handle_event("s
       true -&gt;
         case Quotes.create_quote(params) do
           {:ok, result} -&gt;
+            Logger.debug("Insert completed")
             Logger.debug(result)
 
             socket
             |&gt; assign(form: empty_form())
             |&gt; put_flash(:info, "Created new Quote")
 
-          error -&gt;
+          {:error, error} -&gt;
+            Logger.debug("Insert failed")
+            Logger.debug(error)
+
+            socket
+            |&gt; assign(form: form)
+            |&gt; put_flash(:error, "There was an error saving the Quote")
+
+          unknown -&gt;
+            Logger.debug("Insert operation with unknown state")
+            Logger.debug(unknown)
+
             socket
             |&gt; assign(form: form)
             |&gt; put_flash(:error, "There was an error saving the Quote")
         end
 
       false -&gt;
+        Logger.debug("Changeset with errors can not be saved")
+        Logger.debug(changeset.errors)
+
         socket
         |&gt; assign(form: form)
         |&gt; put_flash(:error, "There was an error saving the Quote")
@@ -1075,6 +1102,283 @@ en la base de datos. Para esto modificamos la función <code>def handle_event("s
 
   {:noreply, socket}
 end</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-7-botón-guardar"><a class="anchor" href="#paso-7-botón-guardar"></a>Paso 7: Botón Guardar</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora que tenemos las validaciones listas se modificará un poco el botón guardar
+para que solo esté activo si el formulario tiene valores válidos.</p>
+</div>
+<div class="paragraph">
+<p>Para esto le añadimos la propiedad <code>disabled</code> que estará en verdadero si no se puede guardar.
+<code>disabled={@can_save? == false}</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;button
+  type="submit"
+  class="rounded-md btn btn-xl btn-wide bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+  disabled={@can_save? == false}
+  &gt;
+Save
+&lt;/button&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ahora debemos añadir esta nueva variable en nuestro <code>socket</code> y función de validación.
+Para esto creamos la variable con su valor inicial en <code>mount</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">def mount(_params, _session, socket) do
+  {:ok,
+   socket
+   |&gt; assign(can_save?: false)
+   |&gt; assign(form: empty_form())}
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Y modificamos tanto la función de validación, como la función de guardado.
+En la función de validación debemos obtener el valor del changeset de validaciones
+para determinar si el botón puede ser habilitado.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">def handle_event("validate", params, socket) do
+  changeset =
+    Quote.new(params)
+
+  form = to_form(params, errors: changeset.errors)
+
+  Logger.debug(form)
+
+  {:noreply,
+   socket
+   |&gt; assign(can_save?: changeset.valid?)
+   |&gt; assign(form: form)}
+end</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">def handle_event("save", params, socket) do
+...
+case Quotes.create_quote(params) do
+  {:ok, result} -&gt;
+    Logger.debug("Insert completed")
+    Logger.debug(result)
+
+    socket
+    |&gt; assign(can_save?: false)
+    |&gt; assign(form: empty_form())
+    |&gt; put_flash(:info, "Created new Quote")
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-9-siguientes-pasos"><a class="anchor" href="#paso-9-siguientes-pasos"></a>Paso 9: Siguientes pasos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora se debería tener un formulario que realiza validaciones, muestra mensajes de éxito y error
+y permite insertar registros en la base de datos. El siguiente tutorial verá cómo realizar
+pruebas unitarias al código realizado.</p>
+</div>
+<div class="paragraph">
+<p>Se mostrará el código final de cada archivo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.Live.QuotesForm do
+  use StoicQuotesWeb, :live_view
+
+  alias StoicQuotes.Quotes.Quote
+  alias StoicQuotes.Quotes
+
+  require Logger
+
+  defp empty_form() do
+    to_form(%{"author" =&gt; "", "quote" =&gt; "", "source" =&gt; ""})
+  end
+
+  def mount(_params, _session, socket) do
+    {:ok,
+     socket
+     |&gt; assign(can_save?: false)
+     |&gt; assign(form: empty_form())}
+  end
+
+  def handle_event("validate", params, socket) do
+    changeset =
+      Quote.new(params)
+
+    form = to_form(params, errors: changeset.errors)
+
+    Logger.debug(form)
+
+    {:noreply,
+     socket
+     |&gt; assign(can_save?: changeset.valid?)
+     |&gt; assign(form: form)}
+  end
+
+  def handle_event("save", params, socket) do
+    changeset =
+      Quote.new(params)
+
+    form = to_form(params, errors: changeset.errors)
+
+    Logger.debug(form)
+
+    socket =
+      case changeset.valid? do
+        true -&gt;
+          case Quotes.create_quote(params) do
+            {:ok, result} -&gt;
+              Logger.debug("Insert completed")
+              Logger.debug(result)
+
+              socket
+              |&gt; assign(can_save?: false)
+              |&gt; assign(form: empty_form())
+              |&gt; put_flash(:info, "Created new Quote")
+
+            {:error, error} -&gt;
+              Logger.debug("Insert failed")
+              Logger.debug(error)
+
+              socket
+              |&gt; assign(form: form)
+              |&gt; put_flash(:error, "There was an error saving the Quote")
+
+            unknown -&gt;
+              Logger.debug("Insert operation with unknown state")
+              Logger.debug(unknown)
+
+              socket
+              |&gt; assign(form: form)
+              |&gt; put_flash(:error, "There was an error saving the Quote")
+          end
+
+        false -&gt;
+          Logger.debug("Changeset with errors can not be saved")
+          Logger.debug(changeset.errors)
+
+          socket
+          |&gt; assign(form: form)
+          |&gt; put_flash(:error, "There was an error saving the Quote")
+      end
+
+    {:noreply, socket}
+  end
+end</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div class="min-h-full"&gt;
+
+  &lt;header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10"&gt;
+    &lt;div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"&gt;
+      &lt;h1 class="text-3xl font-bold tracking-tight text-white"&gt;Stoic Quotes Form&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"&gt;
+
+    &lt;.form for={@form} phx-change="validate" phx-submit="save"&gt;
+      &lt;div class="space-y-12"&gt;
+
+        &lt;Layouts.flash_group flash={@flash} /&gt;
+
+        &lt;div class="border-b border-white/10 pb-12"&gt;
+
+          &lt;h2 class="text-base/7 font-semibold text-white"&gt;Stoic Quote Information&lt;/h2&gt;
+          &lt;p class="mt-1 text-sm/6 text-gray-400"&gt;Use this form to add a new Stoic Quote&lt;/p&gt;
+
+          &lt;div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"&gt;
+            &lt;div class="sm:col-span-3"&gt;
+              &lt;label for="author" class="block text-sm/6 font-medium text-white"&gt;
+              Author
+              &lt;/label&gt;
+              &lt;div class="mt-2"&gt;
+                &lt;.input
+                autofocus="true"
+                required="true"
+                placeholder="Marcus Aurelius"
+                phx-debounce="blur"
+                field={@form[:author]}
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="sm:col-span-3"&gt;
+              &lt;label for="source" class="block text-sm/6 font-medium text-white"&gt;
+              Source
+              &lt;/label&gt;
+              &lt;div class="mt-2"&gt;
+                &lt;.input
+                placeholder="Meditations"
+                required="true"
+                phx-debounce="blur"
+                field={@form[:source]}
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="col-span-full"&gt;
+
+              &lt;label
+                for="quote"
+                class="block text-sm/6 font-medium text-white"&gt;
+                Quote
+              &lt;/label&gt;
+
+              &lt;div class="mt-2"&gt;
+                &lt;.input
+                  type="textarea"
+                  required="true"
+                  rows="5"
+                  placeholder="Lorem Ipsum"
+                  phx-debounce="blur"
+                  field={@form[:quote]}
+                  class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                /&gt;
+
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+      &lt;div class="mt-6 flex items-center justify-end gap-x-6"&gt;
+        &lt;button type="reset" class="btn text-sm/6 font-semibold text-white"&gt;
+        Reset
+        &lt;/button&gt;
+
+        &lt;button
+          type="submit"
+          class="rounded-md btn btn-xl btn-wide bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          disabled={@can_save? == false}
+          &gt;
+        Save
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/.form&gt;
+
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
 </div>
 </div>
 </div>

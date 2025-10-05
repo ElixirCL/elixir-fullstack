@@ -11,23 +11,7 @@
     <.form for={@form} phx-change="validate" phx-submit="save">
       <div class="space-y-12">
 
-        <div :if={@alert}>
-          <%= if @alert[:type] == :error do %>
-              <div role="alert" class="alert alert-error">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>{@alert[:message]}</span>
-              </div>
-          <% else %>
-              <div role="alert" class="alert alert-success">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>{@alert[:message]}</span>
-              </div>
-          <% end %>
-        </div>
+        <Layouts.flash_group flash={@flash} />
 
         <div class="border-b border-white/10 pb-12">
 
@@ -98,9 +82,13 @@
         Reset
         </button>
 
-        <.button type="submit" class="rounded-md btn btn-xl btn-wide bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+        <button
+          type="submit"
+          class="rounded-md btn btn-xl btn-wide bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          disabled={@can_save? == false}
+          >
         Save
-        </.button>
+        </button>
       </div>
     </.form>
 

@@ -268,12 +268,16 @@ end
 ----
 
 También actualizamos el esquema para reflejar este nuevo índice y restricción.
-Añadiendo la siguiente línea al esquema (`lib/stoic_quotes/quotes/quote.ex`).
+Añadiendo las siguientes línea al esquema (`lib/stoic_quotes/quotes/quote.ex`).
 
 [source, elixir]
 ----
-|> unique_constraint(:quote, name: :index_for_duplicate_quotes)
+|> unsafe_validate_unique(:quote, StoicQuotes.Repo)
+|> unique_constraint(:quote)
 ----
+
+- `unsafe_validate_unique(:quote, StoicQuotes.Repo)`: Valida de forma rápida consultando a la base de datos, ideal para los formularios. Puede tener condiciones de carrera por lo que solo es recomendable para validaciones rápidas.
+- `unique_constraint(:quote)`: Intenta agregar un nuevo registro a la base de datos y arroja un error si la base de datos lo impide. Simplemente estamos diciendo a _Ecto_ que el campo `quote` tiene una restricción de valor único y que debe considerar el error de la bd como parte de las validaciones.
 
 Quedando como sigue 
 
@@ -296,7 +300,8 @@ defmodule StoicQuotes.Quotes.Quote do
     quote
     |> cast(attrs, [:quote, :author, :source])
     |> validate_required([:quote, :author, :source])
-    |> unique_constraint(:quote, name: :index_for_duplicate_quotes)
+    |> unsafe_validate_unique(:quote, StoicQuotes.Repo)
+    |> unique_constraint(:quote)
   end
 end
 ----
@@ -616,3 +621,8 @@ x-request-id: GGkFWTujtWGncGAAAAGC
 
 {"data":[{"author":"Marcus Aurelius","source":"Book II, Meditations","quote":"Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy."},{"author":"Marcus Aurelius","source":"Book XI, Meditations","quote":"Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil."},{"author":"Marcus Aurelius","source":"Book X, Meditations","quote":"Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all."}]}%
 ----
+
+== Paso 10: Siguientes Pasos
+
+Ahora se tiene una API Rest. En el siguiente tutorial se verá como crear un formulario 
+que permita añadir desde la web una nueva cita estóica utilizando _LiveView_.

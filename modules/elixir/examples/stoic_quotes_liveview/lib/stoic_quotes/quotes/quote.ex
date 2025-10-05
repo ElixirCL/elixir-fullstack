@@ -16,11 +16,15 @@ defmodule StoicQuotes.Quotes.Quote do
     quote
     |> cast(attrs, [:quote, :author, :source])
     |> validate_required([:quote, :author, :source])
-    |> unique_constraint(:quote, name: :index_for_duplicate_quotes)
+    |> unsafe_validate_unique(:quote, StoicQuotes.Repo)
+    |> unique_constraint(:quote)
   end
 
   @doc false
   def new(attrs \\ %{"author" => "", "quote" => "", "source" => ""}) do
-    changeset(%Quote{}, attrs)
+    case changeset(%Quote{}, attrs) do
+      {_, changeset} -> changeset
+      changeset -> changeset
+    end
   end
 end
