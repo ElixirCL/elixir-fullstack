@@ -2,5 +2,5 @@
 * xref:elixir.adoc[]
 * xref:apirest.adoc[]
 * xref:liveview.adoc[]
-// * xref:testing.adoc[]
+* xref:testing.adoc[]
 // * xref:commands.adoc[]

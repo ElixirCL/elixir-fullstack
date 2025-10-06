@@ -652,13 +652,25 @@ Por lo que siempre es recomendable tener entidades separadas para mayor mantenib
 
 Ahora modicamos el esquema para que tenga la función `new`.
 
+[source, elixir]
+----
+@doc false
+def new(attrs \\ %{"author" => "", "quote" => "", "source" => ""}) do
+  case changeset(%__MODULE__{}, attrs) do
+    {_, changeset} -> changeset
+    changeset -> changeset
+  end
+end
+----
+
 .lib/stoic_quotes/quotes/quote.ex
 [source, elixir]
 ----
 defmodule StoicQuotes.Quotes.Quote do
   use Ecto.Schema
   import Ecto.Changeset
-  alias __MODULE__
+
+  @optional_fields [:id, :inserted_at, :updated_at]
 
   schema "quotes" do
     field(:quote, :string)
@@ -668,27 +680,36 @@ defmodule StoicQuotes.Quotes.Quote do
     timestamps(type: :utc_datetime)
   end
 
+  def fields() do
+    __MODULE__.__schema__(:fields)
+  end
+
+  def required_fields() do
+    fields() -- @optional_fields
+  end
+
   @doc false
   def changeset(quote, attrs) do
     quote
-    |> cast(attrs, [:quote, :author, :source])
-    |> validate_required([:quote, :author, :source])
+    |> cast(attrs, fields())
+    |> validate_required(required_fields())
     |> unsafe_validate_unique(:quote, StoicQuotes.Repo)
     |> unique_constraint(:quote)
   end
 
   @doc false
   def new(attrs \\ %{"author" => "", "quote" => "", "source" => ""}) do
-    case changeset(%Quote{}, attrs) do
+    case changeset(%__MODULE__{}, attrs) do
       {_, changeset} -> changeset
       changeset -> changeset
     end
   end
 end
+
 ----
 
-- `alias __MODULE__`: Este elemento permite utilizar el módulo dentro del mismo.
-- `changeset(%Quote{}, attrs)`: Llamamos a la función existente pasando los parámetros adecuados.
+- `__MODULE__`: Este elemento permite utilizar el módulo dentro del mismo. Siempre apuntara al nombre del módulo, por lo que es buena práctica usarlo para reducir el acomplamiento.
+- `changeset(%__MODULE__{}, attrs)`: Llamamos a la función existente pasando los parámetros adecuados, como un nuevo struct del módulo.
 - `{_, changeset} -> changeset`: La validación `unique_constraint(:quote)` entrega una tupla `{:error, changeset}`, por lo cual debemos estandarizar para simplificar el manejo de errores.
 - `changeset -> changeset`: Si la validación entrega el formato estándar entonces la devolvemos tal cual es.
 
@@ -821,12 +842,6 @@ case Quotes.create_quote(params) do
     |> put_flash(:info, "Created new Quote")
 ...
 ----
-
-== Paso 9: Siguientes pasos
-
-Ahora se debería tener un formulario que realiza validaciones, muestra mensajes de éxito y error 
-y permite insertar registros en la base de datos. El siguiente tutorial verá cómo realizar 
-pruebas unitarias al código realizado.
 
 Se mostrará el código final de cada archivo.
 
@@ -1017,3 +1032,9 @@ end
   </main>
 </div>
 ----
+
+== Paso 9: Siguientes pasos
+
+Ahora se debería tener un formulario que realiza validaciones, muestra mensajes de éxito y error 
+y permite insertar registros en la base de datos. El siguiente tutorial verá cómo realizar 
+pruebas unitarias al código realizado.

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Testing: Stoic API :: Elixir Full-Stack</title>
     <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/elixir/testing.html">
+    <link rel="prev" href="liveview.html">
+    <link rel="next" href="../mobile/chapter.html">
     <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -181,6 +183,9 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="liveview.html">LiveView: Stoic API</a>
   </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing: Stoic API</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -239,6 +244,7 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Elixir</li>
     <li><a href="testing.html">Testing: Stoic API</a></li>
   </ul>
 </nav>
@@ -250,7 +256,266 @@
 </aside>
 <article class="doc">
 <h1 class="page">Testing: Stoic API</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este tutorial se verá como realizar pruebas tanto para la API Rest, los esquemas
+y el formulario creado en los tutoriales anteriores.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-1-verificación-del-ambiente-testing"><a class="anchor" href="#paso-1-verificación-del-ambiente-testing"></a>Paso 1: Verificación del Ambiente Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En el directorio <code>config/</code> se encuentra las distintas configuraciones
+para la conexión con la base de datos y otros elementos para distintos ambientes. <code>dev</code>, <code>prod</code> y <code>test</code>.
+Además de dos archivos especiales <code>config.exs</code> y <code>runtime.exs</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>dev</code>: Configuraciones para el ambiente de desarrollo local.</p>
+</li>
+<li>
+<p><code>prod</code>: Configuraciones para el ambiente en producción.</p>
+</li>
+<li>
+<p><code>test</code>: Configuraciones para el ambiente de pruebas locales.</p>
+</li>
+<li>
+<p><code>config.exs</code>: Configuraciones en tiempo de compilación. No puede acceder a variables de entorno en tiempo de ejecución. Además llamará a <code>dev</code>, <code>prod</code> y <code>test</code> respectivamente
+según la variable de entorno <a href="https://hexdocs.pm/elixir/1.18.4/introduction-to-mix.html#environments">MIX_ENV</a>.</p>
+</li>
+<li>
+<p><code>runtime.exs</code>: Configuraciones que pueden acceder a variables de entorno en tiempo de ejecución (antes de iniciar la aplicación).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Los archivos importantes son <code>config.exs</code> y <code>runtime.exs</code> los otros archivos pueden ser
+estructurados según sea conveniente para la aplicación, y se pueden importar con
+<a href="https://hexdocs.pm/elixir/1.18.4/Config.html#import_config/1">import_config/1</a> dentro de <code>config.exs</code>
+aunque no dentro de <code>runtime.exs</code> (limitaciones técnicas).</p>
+</div>
+<div class="paragraph">
+<p>Dentro del archivo <code>config/test.exs</code> podemos verificar que la conexión
+con la base de datos se esté realizando en una nueva base de datos de pruebas
+en modo <em>Sandbox</em> (que cualquier cambio sea efímero).</p>
+</div>
+<div class="listingblock">
+<div class="title">config/test.exs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">config :stoic_quotes, StoicQuotes.Repo,
+  database: Path.expand("../stoic_quotes_test.db", __DIR__),
+  pool_size: 5,
+  pool: Ecto.Adapters.SQL.Sandbox</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>También debemos borrar algunos archivos en la suit de pruebas debido
+a que solo son ejemplos predeterminados creados para probar la página de bienvenida.</p>
+</div>
+<div class="paragraph">
+<p>Se deben borrar los siguientes archivos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>stoic_quotes_web/controllers/error_html_test.exs</code></p>
+</li>
+<li>
+<p><code>stoic_quotes_web/controllers/error_json_test.exs</code></p>
+</li>
+<li>
+<p><code>stoic_quotes_web/controllers/page_controller_test.exs</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Podemos verificar que la suit de pruebas de ejecuta exitosamente con el comando</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mix test</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Y ver un resultado similar a lo siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">Compiling 23 files (.ex)
+Running ExUnit with seed: 93697, max_cases: 8
 
+.........
+Finished in 0.3 seconds (0.00s async, 0.3s sync)
+9 tests, 0 failures</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>¿Dónde están esas 9 pruebas?. Están en el archivo <code>test/stoic_quotes/quotes_test.exs</code>
+que fue creado por el generador del contexto (<code>mix phx.gen.context</code>) usado en el tutorial de
+la api rest.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-2-pruebas-de-ecto-schema"><a class="anchor" href="#paso-2-pruebas-de-ecto-schema"></a>Paso 2: Pruebas de Ecto Schema</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Se realizarán las pruebas de los esquemas creados. Se debe probar que los campos tengan
+su tipo de datos adecuado. Como recordatorio se muestra el esquema a probar.</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_quotes/quotes/quote.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Quotes.Quote do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  @optional_fields [:id, :inserted_at, :updated_at]
+
+  schema "quotes" do
+    field(:quote, :string)
+    field(:author, :string)
+    field(:source, :string)
+
+    timestamps(type: :utc_datetime)
+  end
+
+  def fields() do
+    __MODULE__.__schema__(:fields)
+  end
+
+  def required_fields() do
+    fields() -- @optional_fields
+  end
+
+  @doc false
+  def changeset(quote, attrs) do
+    quote
+    |&gt; cast(attrs, fields())
+    |&gt; validate_required(required_fields())
+    |&gt; unsafe_validate_unique(:quote, StoicQuotes.Repo)
+    |&gt; unique_constraint(:quote)
+  end
+
+  @doc false
+  def new(attrs \\ %{"author" =&gt; "", "quote" =&gt; "", "source" =&gt; ""}) do
+    case changeset(%__MODULE__{}, attrs) do
+      {_, changeset} -&gt; changeset
+      changeset -&gt; changeset
+    end
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Para crear la prueba se crea un nuevo archivo en <code>test/stoic_quotes/quotes/schema_test.exs</code></p>
+</div>
+<div class="listingblock">
+<div class="title">test/stoic_quotes/quotes/schema_test.exs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Tests.Schemas.Quotes.QuoteSchemaTest do
+  use ExUnit.Case
+  alias StoicQuotes.Quotes.Quote
+
+  describe "quote schema field and types tests" do
+    test "that schema has the correct fields and types" do
+      expected_fields_and_types = [
+        {:id, :id},
+        {:quote, :string},
+        {:author, :string},
+        {:source, :string},
+        {:inserted_at, :utc_datetime},
+        {:updated_at, :utc_datetime}
+      ]
+
+      actual_fields_and_types =
+        for field &lt;- Quote.fields() do
+          type = Quote.__schema__(:type, field)
+          {field, type}
+        end
+
+      assert MapSet.new(expected_fields_and_types) == MapSet.new(actual_fields_and_types)
+    end
+  end
+end</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>defmodule StoicQuotes.Tests.Schemas.Quotes.QuoteSchemaTest</code>: Nombre del módulo siempre debe terminar en <code>Test</code>.</p>
+</li>
+<li>
+<p><code>Quote.<em>schema</em>(:type, field)</code>: Devuelve el tipo de campo dentro del esquema.</p>
+</li>
+<li>
+<p><code>use ExUnit.Case</code>: Usamos las herramientas para crear pruebas unitarias las cuales vienen incluidas en <em>Phoenix</em>.</p>
+</li>
+<li>
+<p><code>alias StoicQuotes.Quotes.Quote</code>: Asignamos un alias al esquema para usarlo más fácilmente.</p>
+</li>
+<li>
+<p><code>describe "quote schema field and types tests"</code>: Crea un nuevo grupo para que varias pruebas estén cohesionadas en un mismo lugar.</p>
+</li>
+<li>
+<p><code>test "that schema has the correct fields and types"</code>: Se crea la prueba unitaria que deberá ser implementada.</p>
+</li>
+<li>
+<p><code>assert MapSet.new(expected_fields_and_types) == MapSet.new(actual_fields_and_types)</code>: El uso de <code>assert</code> permite informar el éxito o fracaso de una prueba, en este caso validamos que dos conjuntos sean iguales.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Para ejecutar la prueba solo debemos usar <code>mix test</code>,
+pero si se desea solamente probar un archivo se puede proporcionar en el comando.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mix test/stoic_quotes/quotes/schema_test.exs</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>O tambien puede ser utilizando la función <code>description</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mix test --only describe:"quote schema field and types tests" test/stoic_quotes/quotes/schema_test.exs</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-pruebas-de-ecto-changeset"><a class="anchor" href="#paso-pruebas-de-ecto-changeset"></a>Paso : Pruebas de Ecto Changeset</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-pruebas-de-contexto"><a class="anchor" href="#paso-pruebas-de-contexto"></a>Paso : Pruebas de Contexto</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-pruebas-de-endpoint-rest"><a class="anchor" href="#paso-pruebas-de-endpoint-rest"></a>Paso : Pruebas de Endpoint Rest</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-pruebas-de-liveview"><a class="anchor" href="#paso-pruebas-de-liveview"></a>Paso : Pruebas de LiveView</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="liveview.html">LiveView: Stoic API</a></span>
+  <span class="next"><a href="../mobile/chapter.html">Aplicaciones Móviles</a></span>
+</nav>
 </article>
   </div>
 </main>

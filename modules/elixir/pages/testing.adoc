@@ -1,1 +1,181 @@
 = Testing: Stoic API
+
+En este tutorial se verá como realizar pruebas tanto para la API Rest, los esquemas
+y el formulario creado en los tutoriales anteriores.
+
+== Paso 1: Verificación del Ambiente Testing
+
+En el directorio `config/` se encuentra las distintas configuraciones
+para la conexión con la base de datos y otros elementos para distintos ambientes. `dev`, `prod` y `test`.
+Además de dos archivos especiales `config.exs` y `runtime.exs`.
+
+- `dev`: Configuraciones para el ambiente de desarrollo local.
+- `prod`: Configuraciones para el ambiente en producción.
+- `test`: Configuraciones para el ambiente de pruebas locales.
+
+- `config.exs`: Configuraciones en tiempo de compilación. No puede acceder a variables de entorno en tiempo de ejecución. Además llamará a `dev`, `prod` y `test` respectivamente 
+según la variable de entorno https://hexdocs.pm/elixir/1.18.4/introduction-to-mix.html#environments[MIX_ENV].
+
+- `runtime.exs`: Configuraciones que pueden acceder a variables de entorno en tiempo de ejecución (antes de iniciar la aplicación).
+
+Los archivos importantes son `config.exs` y `runtime.exs` los otros archivos pueden ser
+estructurados según sea conveniente para la aplicación, y se pueden importar con 
+https://hexdocs.pm/elixir/1.18.4/Config.html#import_config/1[import_config/1] dentro de `config.exs`
+aunque no dentro de `runtime.exs` (limitaciones técnicas).
+
+Dentro del archivo `config/test.exs` podemos verificar que la conexión
+con la base de datos se esté realizando en una nueva base de datos de pruebas
+en modo _Sandbox_ (que cualquier cambio sea efímero).
+
+.config/test.exs
+[source, elixir]
+----
+config :stoic_quotes, StoicQuotes.Repo,
+  database: Path.expand("../stoic_quotes_test.db", __DIR__),
+  pool_size: 5,
+  pool: Ecto.Adapters.SQL.Sandbox
+----
+
+También debemos borrar algunos archivos en la suit de pruebas debido 
+a que solo son ejemplos predeterminados creados para probar la página de bienvenida.
+
+Se deben borrar los siguientes archivos:
+
+- `stoic_quotes_web/controllers/error_html_test.exs`
+- `stoic_quotes_web/controllers/error_json_test.exs`
+- `stoic_quotes_web/controllers/page_controller_test.exs`
+
+Podemos verificar que la suit de pruebas de ejecuta exitosamente con el comando
+
+[source, bash]
+----
+$ mix test
+----
+
+Y ver un resultado similar a lo siguiente:
+
+[source, text]
+----
+Compiling 23 files (.ex)
+Running ExUnit with seed: 93697, max_cases: 8
+
+.........
+Finished in 0.3 seconds (0.00s async, 0.3s sync)
+9 tests, 0 failures
+----
+
+¿Dónde están esas 9 pruebas?. Están en el archivo `test/stoic_quotes/quotes_test.exs`
+que fue creado por el generador del contexto (`mix phx.gen.context`) usado en el tutorial de
+la api rest.
+
+== Paso 2: Pruebas de Ecto Schema
+
+Se realizarán las pruebas de los esquemas creados. Se debe probar que los campos tengan
+su tipo de datos adecuado. Como recordatorio se muestra el esquema a probar.
+
+.lib/stoic_quotes/quotes/quote.ex
+[source, elixir]
+----
+defmodule StoicQuotes.Quotes.Quote do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  @optional_fields [:id, :inserted_at, :updated_at]
+
+  schema "quotes" do
+    field(:quote, :string)
+    field(:author, :string)
+    field(:source, :string)
+
+    timestamps(type: :utc_datetime)
+  end
+
+  def fields() do
+    __MODULE__.__schema__(:fields)
+  end
+
+  def required_fields() do
+    fields() -- @optional_fields
+  end
+
+  @doc false
+  def changeset(quote, attrs) do
+    quote
+    |> cast(attrs, fields())
+    |> validate_required(required_fields())
+    |> unsafe_validate_unique(:quote, StoicQuotes.Repo)
+    |> unique_constraint(:quote)
+  end
+
+  @doc false
+  def new(attrs \\ %{"author" => "", "quote" => "", "source" => ""}) do
+    case changeset(%__MODULE__{}, attrs) do
+      {_, changeset} -> changeset
+      changeset -> changeset
+    end
+  end
+end
+----
+
+Para crear la prueba se crea un nuevo archivo en `test/stoic_quotes/quotes/schema_test.exs`
+
+.test/stoic_quotes/quotes/schema_test.exs
+[source, elixir]
+----
+defmodule StoicQuotes.Tests.Schemas.Quotes.QuoteSchemaTest do
+  use ExUnit.Case
+  alias StoicQuotes.Quotes.Quote
+
+  describe "quote schema field and types tests" do
+    test "that schema has the correct fields and types" do
+      expected_fields_and_types = [
+        {:id, :id},
+        {:quote, :string},
+        {:author, :string},
+        {:source, :string},
+        {:inserted_at, :utc_datetime},
+        {:updated_at, :utc_datetime}
+      ]
+
+      actual_fields_and_types =
+        for field <- Quote.fields() do
+          type = Quote.__schema__(:type, field)
+          {field, type}
+        end
+
+      assert MapSet.new(expected_fields_and_types) == MapSet.new(actual_fields_and_types)
+    end
+  end
+end
+----
+
+- `defmodule StoicQuotes.Tests.Schemas.Quotes.QuoteSchemaTest`: Nombre del módulo siempre debe terminar en `Test`.
+- `Quote.__schema__(:type, field)`: Devuelve el tipo de campo dentro del esquema.
+- `use ExUnit.Case`: Usamos las herramientas para crear pruebas unitarias las cuales vienen incluidas en _Phoenix_.
+- `alias StoicQuotes.Quotes.Quote`: Asignamos un alias al esquema para usarlo más fácilmente.
+- `describe "quote schema field and types tests"`: Crea un nuevo grupo para que varias pruebas estén cohesionadas en un mismo lugar.
+- `test "that schema has the correct fields and types"`: Se crea la prueba unitaria que deberá ser implementada.
+- `assert MapSet.new(expected_fields_and_types) == MapSet.new(actual_fields_and_types)`: El uso de `assert` permite informar el éxito o fracaso de una prueba, en este caso validamos que dos conjuntos sean iguales.
+
+Para ejecutar la prueba solo debemos usar `mix test`, 
+pero si se desea solamente probar un archivo se puede proporcionar en el comando.
+
+[source, bash]
+----
+$ mix test/stoic_quotes/quotes/schema_test.exs
+----
+
+O tambien puede ser utilizando la función `describe`.
+
+[source, bash]
+----
+$ mix test --only describe:"quote schema field and types tests" test/stoic_quotes/quotes/schema_test.exs
+----
+
+== Paso : Pruebas de Ecto Changeset
+
+== Paso : Pruebas de Contexto
+
+== Paso : Pruebas de Endpoint Rest
+
+== Paso : Pruebas de LiveView

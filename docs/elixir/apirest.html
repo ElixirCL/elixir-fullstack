@@ -183,6 +183,9 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="liveview.html">LiveView: Stoic API</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing: Stoic API</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -333,10 +336,11 @@ end</code></pre>
 <div class="paragraph">
 <p>Y también un esquema ubicado en <code>lib/stoic_quotes/quotes/quote.ex</code>.
 Notemos la función <a href="https://hexdocs.pm/ecto/Ecto.Changeset.html">changeset</a>,
-la cual realiza las validaciones antes de permitir insertar un nuevo registro
+la cual realiza las <a href="https://hexdocs.pm/ecto/Ecto.Changeset.html#module-validations-and-constraints">validaciones</a> antes de permitir insertar un nuevo registro
 en la base de datos.</p>
 </div>
 <div class="listingblock">
+<div class="title">lib/stoic_quotes/quotes/quote.ex</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Quotes.Quote do
   use Ecto.Schema
@@ -355,6 +359,72 @@ en la base de datos.</p>
     quote
     |&gt; cast(attrs, [:quote, :author, :source])
     |&gt; validate_required([:quote, :author, :source])
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adicionalmente se puede mejorar el <em>changeset</em> ya que vemos que se repite los campos
+<code>[:quote, :author, :source]</code>. Para esto utilizaremos un attributo especial llamado <code><em>schema</em>(:fields)</code> dentro del módulo <code><em>MODULE</em></code>.
+Por lo que podremos utilizarlo en las funciones  <code>cast</code> y <code>validate_required</code>.</p>
+</div>
+<div class="paragraph">
+<p>Para esto definimos una nueva función que lo retorne:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">def fields() do
+  __MODULE__.__schema__(:fields)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Además necesitamos definir un atributo que permita saber que campos son opcionales.
+Para esto realizaremos la operación <code>fields()&#8201;&#8212;&#8201;@optional_fields</code> para obtener todos
+los campos requeridos.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">@optional_fields [:id, :inserted_at, :updated_at]
+
+def required_fields() do
+  fields() -- @optional_fields
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finalmente el archivo quedará como lo siguiente:</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_quotes/quotes/quote.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Quotes.Quote do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  @optional_fields [:id, :inserted_at, :updated_at]
+
+  schema "quotes" do
+    field :quote, :string
+    field :author, :string
+    field :source, :string
+
+    timestamps(type: :utc_datetime)
+  end
+
+  def fields() do
+    __MODULE__.__schema__(:fields)
+  end
+
+  def required_fields() do
+    fields() -- @optional_fields
+  end
+
+  @doc false
+  def changeset(quote, attrs) do
+    quote
+    |&gt; cast(attrs, fields())
+    |&gt; validate_required(required_fields())
   end
 end</code></pre>
 </div>
@@ -569,19 +639,29 @@ Añadiendo las siguientes línea al esquema (<code>lib/stoic_quotes/quotes/quote
   use Ecto.Schema
   import Ecto.Changeset
 
+  @optional_fields [:id, :inserted_at, :updated_at]
+
   schema "quotes" do
-    field :quote, :string
-    field :author, :string
-    field :source, :string
+    field(:quote, :string)
+    field(:author, :string)
+    field(:source, :string)
 
     timestamps(type: :utc_datetime)
+  end
+
+  def fields() do
+    __MODULE__.__schema__(:fields)
+  end
+
+  def required_fields() do
+    fields() -- @optional_fields
   end
 
   @doc false
   def changeset(quote, attrs) do
     quote
-    |&gt; cast(attrs, [:quote, :author, :source])
-    |&gt; validate_required([:quote, :author, :source])
+    |&gt; cast(attrs, fields())
+    |&gt; validate_required(required_fields())
     |&gt; unsafe_validate_unique(:quote, StoicQuotes.Repo)
     |&gt; unique_constraint(:quote)
   end

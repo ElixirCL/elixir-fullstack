@@ -6,7 +6,7 @@
     <title>LiveView: Stoic API :: Elixir Full-Stack</title>
     <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/elixir/liveview.html">
     <link rel="prev" href="apirest.html">
-    <link rel="next" href="../mobile/chapter.html">
+    <link rel="next" href="testing.html">
     <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -182,6 +182,9 @@
   </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="liveview.html">LiveView: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing: Stoic API</a>
   </li>
 </ul>
   </li>
@@ -990,12 +993,24 @@ Por lo que siempre es recomendable tener entidades separadas para mayor mantenib
 <p>Ahora modicamos el esquema para que tenga la función <code>new</code>.</p>
 </div>
 <div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">@doc false
+def new(attrs \\ %{"author" =&gt; "", "quote" =&gt; "", "source" =&gt; ""}) do
+  case changeset(%__MODULE__{}, attrs) do
+    {_, changeset} -&gt; changeset
+    changeset -&gt; changeset
+  end
+end</code></pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">lib/stoic_quotes/quotes/quote.ex</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Quotes.Quote do
   use Ecto.Schema
   import Ecto.Changeset
-  alias __MODULE__
+
+  @optional_fields [:id, :inserted_at, :updated_at]
 
   schema "quotes" do
     field(:quote, :string)
@@ -1005,18 +1020,26 @@ Por lo que siempre es recomendable tener entidades separadas para mayor mantenib
     timestamps(type: :utc_datetime)
   end
 
+  def fields() do
+    __MODULE__.__schema__(:fields)
+  end
+
+  def required_fields() do
+    fields() -- @optional_fields
+  end
+
   @doc false
   def changeset(quote, attrs) do
     quote
-    |&gt; cast(attrs, [:quote, :author, :source])
-    |&gt; validate_required([:quote, :author, :source])
+    |&gt; cast(attrs, fields())
+    |&gt; validate_required(required_fields())
     |&gt; unsafe_validate_unique(:quote, StoicQuotes.Repo)
     |&gt; unique_constraint(:quote)
   end
 
   @doc false
   def new(attrs \\ %{"author" =&gt; "", "quote" =&gt; "", "source" =&gt; ""}) do
-    case changeset(%Quote{}, attrs) do
+    case changeset(%__MODULE__{}, attrs) do
       {_, changeset} -&gt; changeset
       changeset -&gt; changeset
     end
@@ -1027,10 +1050,10 @@ end</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><code>alias <em>MODULE</em></code>: Este elemento permite utilizar el módulo dentro del mismo.</p>
+<p><code><em>MODULE</em></code>: Este elemento permite utilizar el módulo dentro del mismo. Siempre apuntara al nombre del módulo, por lo que es buena práctica usarlo para reducir el acomplamiento.</p>
 </li>
 <li>
-<p><code>changeset(%Quote{}, attrs)</code>: Llamamos a la función existente pasando los parámetros adecuados.</p>
+<p><code>changeset(%<em>MODULE</em>{}, attrs)</code>: Llamamos a la función existente pasando los parámetros adecuados, como un nuevo struct del módulo.</p>
 </li>
 <li>
 <p><code>{_, changeset} &#8594; changeset</code>: La validación <code>unique_constraint(:quote)</code> entrega una tupla <code>{:error, changeset}</code>, por lo cual debemos estandarizar para simplificar el manejo de errores.</p>
@@ -1179,16 +1202,6 @@ case Quotes.create_quote(params) do
     |&gt; put_flash(:info, "Created new Quote")
 ...</code></pre>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="paso-9-siguientes-pasos"><a class="anchor" href="#paso-9-siguientes-pasos"></a>Paso 9: Siguientes pasos</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Ahora se debería tener un formulario que realiza validaciones, muestra mensajes de éxito y error
-y permite insertar registros en la base de datos. El siguiente tutorial verá cómo realizar
-pruebas unitarias al código realizado.</p>
 </div>
 <div class="paragraph">
 <p>Se mostrará el código final de cada archivo.</p>
@@ -1383,9 +1396,19 @@ end</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="paso-9-siguientes-pasos"><a class="anchor" href="#paso-9-siguientes-pasos"></a>Paso 9: Siguientes pasos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora se debería tener un formulario que realiza validaciones, muestra mensajes de éxito y error
+y permite insertar registros en la base de datos. El siguiente tutorial verá cómo realizar
+pruebas unitarias al código realizado.</p>
+</div>
+</div>
+</div>
 <nav class="pagination">
   <span class="prev"><a href="apirest.html">REST: Stoic API</a></span>
-  <span class="next"><a href="../mobile/chapter.html">Aplicaciones Móviles</a></span>
+  <span class="next"><a href="testing.html">Testing: Stoic API</a></span>
 </nav>
 </article>
   </div>

@@ -71,9 +71,10 @@ end
 
 Y también un esquema ubicado en `lib/stoic_quotes/quotes/quote.ex`.
 Notemos la función https://hexdocs.pm/ecto/Ecto.Changeset.html[changeset], 
-la cual realiza las validaciones antes de permitir insertar un nuevo registro
+la cual realiza las https://hexdocs.pm/ecto/Ecto.Changeset.html#module-validations-and-constraints[validaciones] antes de permitir insertar un nuevo registro
 en la base de datos.
 
+.lib/stoic_quotes/quotes/quote.ex
 [source, elixir]
 ----
 defmodule StoicQuotes.Quotes.Quote do
@@ -93,6 +94,68 @@ defmodule StoicQuotes.Quotes.Quote do
     quote
     |> cast(attrs, [:quote, :author, :source])
     |> validate_required([:quote, :author, :source])
+  end
+end
+----
+
+Adicionalmente se puede mejorar el _changeset_ ya que vemos que se repite los campos
+`[:quote, :author, :source]`. Para esto utilizaremos un attributo especial llamado `__schema__(:fields)` dentro del módulo `__MODULE__`.
+Por lo que podremos utilizarlo en las funciones  `cast` y `validate_required`.
+
+Para esto definimos una nueva función que lo retorne:
+
+[source, elixir]
+----
+def fields() do
+  __MODULE__.__schema__(:fields)
+end
+----
+
+Además necesitamos definir un atributo que permita saber que campos son opcionales.
+Para esto realizaremos la operación `fields() -- @optional_fields` para obtener todos 
+los campos requeridos.
+
+[source, elixir]
+----
+@optional_fields [:id, :inserted_at, :updated_at]
+
+def required_fields() do
+  fields() -- @optional_fields
+end
+----
+
+Finalmente el archivo quedará como lo siguiente:
+
+.lib/stoic_quotes/quotes/quote.ex
+[source, elixir]
+----
+defmodule StoicQuotes.Quotes.Quote do
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  @optional_fields [:id, :inserted_at, :updated_at]
+  
+  schema "quotes" do
+    field :quote, :string
+    field :author, :string
+    field :source, :string
+
+    timestamps(type: :utc_datetime)
+  end
+  
+  def fields() do
+    __MODULE__.__schema__(:fields)
+  end
+  
+  def required_fields() do
+    fields() -- @optional_fields
+  end
+
+  @doc false
+  def changeset(quote, attrs) do
+    quote
+    |> cast(attrs, fields())
+    |> validate_required(required_fields())
   end
 end
 ----
@@ -287,19 +350,29 @@ defmodule StoicQuotes.Quotes.Quote do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @optional_fields [:id, :inserted_at, :updated_at]
+
   schema "quotes" do
-    field :quote, :string
-    field :author, :string
-    field :source, :string
+    field(:quote, :string)
+    field(:author, :string)
+    field(:source, :string)
 
     timestamps(type: :utc_datetime)
+  end
+
+  def fields() do
+    __MODULE__.__schema__(:fields)
+  end
+  
+  def required_fields() do
+    fields() -- @optional_fields
   end
 
   @doc false
   def changeset(quote, attrs) do
     quote
-    |> cast(attrs, [:quote, :author, :source])
-    |> validate_required([:quote, :author, :source])
+    |> cast(attrs, fields())
+    |> validate_required(required_fields())
     |> unsafe_validate_unique(:quote, StoicQuotes.Repo)
     |> unique_constraint(:quote)
   end
