@@ -123,7 +123,7 @@ Para crear la prueba se crea un nuevo archivo en `test/stoic_quotes/quotes/schem
 [source, elixir]
 ----
 defmodule StoicQuotes.Tests.Schemas.Quotes.QuoteSchemaTest do
-  use ExUnit.Case
+  use StoicQuotes.DataCase
   alias StoicQuotes.Quotes.Quote
 
   describe "quote schema field and types tests" do
@@ -138,24 +138,25 @@ defmodule StoicQuotes.Tests.Schemas.Quotes.QuoteSchemaTest do
       ]
 
       actual_fields_and_types =
-        for field <- Quote.fields() do
+        for field <- Quote.__schema__(:fields) do
           type = Quote.__schema__(:type, field)
           {field, type}
         end
 
-      assert MapSet.new(expected_fields_and_types) == MapSet.new(actual_fields_and_types)
+      assert MapSet.new(expected_fields_and_types) == MapSet.new(actual_fields_and_types) 
     end
   end
 end
 ----
 
 - `defmodule StoicQuotes.Tests.Schemas.Quotes.QuoteSchemaTest`: Nombre del módulo siempre debe terminar en `Test`.
-- `Quote.__schema__(:type, field)`: Devuelve el tipo de campo dentro del esquema.
-- `use ExUnit.Case`: Usamos las herramientas para crear pruebas unitarias las cuales vienen incluidas en _Phoenix_.
+- `use StoicQuotes.DataCase`: Usamos las herramientas para crear pruebas unitarias las cuales vienen incluidas en _Phoenix_. En este caso es una prueba unitaria que utilizará la base de datos. Este módulo esta definido en el archivo `test/support/data_case.ex`.
 - `alias StoicQuotes.Quotes.Quote`: Asignamos un alias al esquema para usarlo más fácilmente.
 - `describe "quote schema field and types tests"`: Crea un nuevo grupo para que varias pruebas estén cohesionadas en un mismo lugar.
 - `test "that schema has the correct fields and types"`: Se crea la prueba unitaria que deberá ser implementada.
 - `assert MapSet.new(expected_fields_and_types) == MapSet.new(actual_fields_and_types)`: El uso de `assert` permite informar el éxito o fracaso de una prueba, en este caso validamos que dos conjuntos sean iguales.
+- `Quote.__schema__(:type, field)`: Devuelve el tipo de campo dentro del esquema.
+
 
 Para ejecutar la prueba solo debemos usar `mix test`, 
 pero si se desea solamente probar un archivo se puede proporcionar en el comando.
@@ -172,10 +173,361 @@ O tambien puede ser utilizando la función `describe`.
 $ mix test --only describe:"quote schema field and types tests" test/stoic_quotes/quotes/schema_test.exs
 ----
 
-== Paso : Pruebas de Ecto Changeset
+== Paso 3: Pruebas de Ecto Changeset
 
-== Paso : Pruebas de Contexto
+Ahora se realizarán las pruebas de las validaciones, esto permitirá determinar 
+si las validaciones están correctamente establecidas y detectar cualquier problema con ellas.
 
-== Paso : Pruebas de Endpoint Rest
+.test/stoic_quotes/quotes/schema_test.exs
+[source, elixir]
+----
+describe "changeset/2" do
+  test "that changeset with valid params is valid" do
+    params = %{
+      "author" => "Marcus Aurelius",
+      "source" => "Meditations",
+      "quote" =>
+        "You have power over your mind — not outside events. Realize this, and you will find strength."
+    }
 
-== Paso : Pruebas de LiveView
+    changeset = Quote.changeset(%Quote{}, params)
+
+    assert %Ecto.Changeset{valid?: true, changes: _} = changeset
+  end
+
+  test "that changeset with invalid params is invalid" do
+    params = %{
+      "author" => "",
+      "source" => "Meditations",
+      "quote" =>
+        "You have power over your mind — not outside events. Realize this, and you will find strength."
+    }
+
+    changeset = Quote.changeset(%Quote{}, params)
+
+    assert %Ecto.Changeset{
+             valid?: false,
+             errors: [{:author, {"can't be blank", [validation: :required]}}]
+           } =
+             changeset
+
+    params = %{
+      "author" => "Marcus Aurelius",
+      "source" => "",
+      "quote" =>
+        "You have power over your mind — not outside events. Realize this, and you will find strength."
+    }
+
+    changeset = Quote.changeset(%Quote{}, params)
+
+    assert %Ecto.Changeset{
+             valid?: false,
+             errors: [{:source, {"can't be blank", [validation: :required]}}]
+           } =
+             changeset
+
+    params = %{
+      "author" => "Marcus Aurelius",
+      "source" => "Meditations",
+      "quote" => ""
+    }
+
+    changeset = Quote.changeset(%Quote{}, params)
+
+    assert %Ecto.Changeset{
+             valid?: false,
+             errors: [{:quote, {"can't be blank", [validation: :required]}}]
+           } =
+             changeset
+  end
+end
+----
+
+También añadimos una validación para la función `new/1` donde comprobaremos
+que siempre devuelva un _changeset_.
+
+.test/stoic_quotes/quotes/schema_test.exs
+[source, elixir]
+----
+describe "new/1" do
+  test "that returns a changeset" do
+    params = %{
+      "author" => "Marcus Aurelius",
+      "source" => "Meditations",
+      "quote" =>
+        "You have power over your mind — not outside events. Realize this, and you will find strength."
+    }
+
+    changeset = Quote.new(params)
+
+    assert %Ecto.Changeset{valid?: true, changes: _} = changeset
+  end
+end
+----
+
+== Paso 4: Pruebas de Contexto
+
+Las pruebas de contexto fueron creadas automáticamente por el generador `phx.gen.context`.
+Se pueden ver dentro del archivo `test/stoic_quotes/quotes_test.exs`, pero se recomienda 
+mover el archivo al directorio `test/stoic_quotes/quotes/quotes_test.exs` para que tenga cohesión
+con las pruebas del esquema `test/stoic_quotes/quotes/schema_test.exs`.
+
+.test/stoic_quotes/quotes_test.exs
+[source, elixir]
+----
+defmodule StoicQuotes.Tests.Contexts.QuotesContextTest do
+  use StoicQuotes.DataCase
+
+  alias StoicQuotes.Quotes
+
+  describe "quotes" do
+    alias StoicQuotes.Quotes.Quote
+
+    import StoicQuotes.QuotesFixtures
+
+    @invalid_attrs %{author: nil, source: nil, quote: nil}
+
+    test "list_quotes/0 returns all quotes" do
+      quote = quote_fixture()
+      assert Quotes.list_quotes() == [quote]
+    end
+# ...
+----
+
+Lo que se puede destacar es el uso de `Fixtures` (`import StoicQuotes.QuotesFixtures`).
+Esto es una herramienta de pruebas que permite tener un entorno predefinido por ejemplo 
+archivos o valores de base de datos que facilitan la creación de pruebas.
+
+Si vamos al archivo `test/support/fixtures/quotes_fixtures.ex` 
+veremos que simplemente genera un nuevo registro en la base de datos
+y es utilizado en las pruebas de contexto como `quote = quote_fixture()`.
+
+.test/support/fixtures/quotes_fixtures.ex
+[source, elixir]
+----
+defmodule StoicQuotes.QuotesFixtures do
+  @moduledoc """
+  This module defines test helpers for creating
+  entities via the `StoicQuotes.Quotes` context.
+  """
+
+  @doc """
+  Generate a quote.
+  """
+  def quote_fixture(attrs \\ %{}) do
+    {:ok, quote} =
+      attrs
+      |> Enum.into(%{
+        author: "some author",
+        quote: "some quote",
+        source: "some source"
+      })
+      |> StoicQuotes.Quotes.create_quote()
+
+    quote
+  end
+end
+----
+
+== Paso 5: Pruebas de Endpoint Rest
+
+Para probar los endpoints rest debemos crear un nuevo archivo
+en `test/stoic_quotes_web/controllers/quotes_controller_test.exs`.
+
+Para esto probaremos los endpoints definidos en el router
+
+.router.ex
+[source, elixir]
+----
+scope "/api", StoicQuotesWeb do
+  pipe_through(:api)
+  get("/quotes", QuotesController, :index)
+  get("/quotes/random", QuotesController, :show)
+end
+----
+
+.test/stoic_quotes_web/controllers/quotes_controller_test.exs
+[source, elixir]
+----
+defmodule StoicQuotesWeb.Tests.Controllers.QuotesControllerTest do
+  use StoicQuotesWeb.ConnCase
+  import StoicQuotes.QuotesFixtures
+
+  describe "/api/quotes" do
+    test "GET /api/quotes", %{conn: conn} do
+      quote_fixture(%{quote: "1"})
+      quote_fixture(%{quote: "2"})
+
+      conn = get(conn, ~p"/api/quotes")
+
+      assert [
+               %{
+                 "author" => "some author",
+                 "quote" => "1",
+                 "source" => "some source"
+               },
+               %{
+                 "author" => "some author",
+                 "quote" => "2",
+                 "source" => "some source"
+               }
+             ] = json_response(conn, 200)["data"]
+    end
+
+    test "GET /api/quotes/random", %{conn: conn} do
+      quote_fixture()
+      conn = get(conn, ~p"/api/quotes/random")
+
+      assert %{
+               "author" => "some author",
+               "quote" => "some quote",
+               "source" => "some source"
+             } = json_response(conn, 200)["data"]
+    end
+  end
+end
+----
+
+- `use StoicQuotesWeb.ConnCase`: Debemos usar el tipo de prueba _ConnCase_ para poder acceder a levantar el servidor y realizar pruebas. Este módulo esta definido en el archivo `test/support/conn_case.ex`.
+- `conn = get(conn, ~p"/api/quotes")`: Obtenemos el resultado de llamar al endpoint `/api/quotes`.
+- `json_response(conn, 200)["data"]`: Obtenemos la respuesta en formato json y el contenido de la propiedad "data" para realizar la comparación.
+- `~p"/api/quotes"`: `~p` es un sigilo (macro) de _Phoenix_ que permite verificar que la ruta ingresada existe en el router, lo cual es muy recomendable. Es parte de lo que se conoce como https://hexdocs.pm/phoenix/routing.html#verified-routes[verified routes].
+
+== Paso 6: Pruebas de LiveView
+
+Ahora se realizarán las pruebas del formulario hecho con _LiveView_.
+El cual se muestra en la siguiente ruta.
+
+.router.ex
+[source, elixir]
+----
+scope "/", StoicQuotesWeb do
+  pipe_through(:browser)
+
+  live("/", Live.QuotesForm, :live)
+end
+----
+
+.test/stoic_quotes_web/live/quotes_form_test.exs
+[source, elixir]
+----
+defmodule StoicQuotesWeb.Tests.Live.QuotesFormTest do
+  use StoicQuotesWeb.ConnCase
+  import Phoenix.LiveViewTest
+
+  describe "LiveView quotes form page tests" do
+    test "that valid form saving is done", %{conn: conn} do
+      {:ok, lv, _html} =
+        live(
+          conn,
+          ~p"/"
+        )
+
+      lv
+      |> form("form", %{
+        "author" => "some author",
+        "source" => "some source",
+        "quote" => "some quote"
+      })
+      |> render_submit()
+
+      conn = get(conn, ~p"/api/quotes")
+
+      assert [
+               %{
+                 "author" => "some author",
+                 "quote" => "some quote",
+                 "source" => "some source"
+               }
+             ] = json_response(conn, 200)["data"]
+    end
+
+    test "that invalid form shows errors", %{conn: conn} do
+      {:ok, lv, _html} =
+        live(
+          conn,
+          ~p"/"
+        )
+
+      result =
+        lv
+        |> form("form", %{
+          "author" => "",
+          "source" => "",
+          "quote" => ""
+        })
+        |> render_submit()
+
+      assert result =~ "can&#39;t be blank"
+    end
+
+    test "that valid form cannot save duplicates", %{conn: conn} do
+      {:ok, lv, _html} =
+        live(
+          conn,
+          ~p"/"
+        )
+
+      lv
+      |> form("form", %{
+        "author" => "some author",
+        "source" => "some source",
+        "quote" => "some quote"
+      })
+      |> render_submit()
+
+      result =
+        lv
+        |> form("form", %{
+          "author" => "some author",
+          "source" => "some source",
+          "quote" => "some quote"
+        })
+        |> render_submit()
+
+      assert result =~ "There was an error saving the Quote"
+    end
+  end
+end
+----
+
+Podemos ver que realizar pruebas con _LiveView_ es muy similar a realizar pruebas con endpoints json.
+Sin embargo hay algunos códigos que se deben explicar como los siguientes:
+
+El siguiente código inicializa la estructura de `lv` que puede ser usada por otras funciones
+para renderizar la página.
+
+[source, elixir]
+----
+{:ok, lv, _html} =
+  live(
+    conn,
+    ~p"/"
+  )
+----
+
+En el siguiente código se llama a funciones especiales de _LiveView_ como `form("elemento html", parametros)` y `render_submit()`
+que permiten realizar el envío de un formulario.
+
+[source, elixir]
+----
+lv
+|> form("form", %{
+  "author" => "",
+  "source" => "",
+  "quote" => ""
+})
+|> render_submit()
+----
+
+== Pasos Finales
+
+Se ha realizado una aplicación completa con _Phoenix_ y _LiveView_ 
+desde una simple API Rest a una suite de pruebas unitarias.
+
+Se pueden ver los siguientes conceptos para profundizar:
+
+- https://www.tddphoenix.com/[Desarrollo con TDD (Test Driven Development)].
+- https://hexdocs.pm/ecto/testing-with-ecto.html[Testing Ecto].
+- https://hexdocs.pm/propcheck/readme.html[Property Testing].
+- https://fly.io/phoenix-files/forms-testing/[Testing LiveView].

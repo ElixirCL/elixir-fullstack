@@ -6,7 +6,7 @@
     <title>Testing: Stoic API :: Elixir Full-Stack</title>
     <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/elixir/testing.html">
     <link rel="prev" href="liveview.html">
-    <link rel="next" href="../mobile/chapter.html">
+    <link rel="next" href="commands.html">
     <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -185,6 +185,9 @@
   </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="testing.html">Testing: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="commands.html">Makefiles</a>
   </li>
 </ul>
   </li>
@@ -418,7 +421,7 @@ end</code></pre>
 <div class="title">test/stoic_quotes/quotes/schema_test.exs</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Tests.Schemas.Quotes.QuoteSchemaTest do
-  use ExUnit.Case
+  use StoicQuotes.DataCase
   alias StoicQuotes.Quotes.Quote
 
   describe "quote schema field and types tests" do
@@ -433,7 +436,7 @@ end</code></pre>
       ]
 
       actual_fields_and_types =
-        for field &lt;- Quote.fields() do
+        for field &lt;- Quote.__schema__(:fields) do
           type = Quote.__schema__(:type, field)
           {field, type}
         end
@@ -450,10 +453,7 @@ end</code></pre>
 <p><code>defmodule StoicQuotes.Tests.Schemas.Quotes.QuoteSchemaTest</code>: Nombre del módulo siempre debe terminar en <code>Test</code>.</p>
 </li>
 <li>
-<p><code>Quote.<em>schema</em>(:type, field)</code>: Devuelve el tipo de campo dentro del esquema.</p>
-</li>
-<li>
-<p><code>use ExUnit.Case</code>: Usamos las herramientas para crear pruebas unitarias las cuales vienen incluidas en <em>Phoenix</em>.</p>
+<p><code>use StoicQuotes.DataCase</code>: Usamos las herramientas para crear pruebas unitarias las cuales vienen incluidas en <em>Phoenix</em>. En este caso es una prueba unitaria que utilizará la base de datos. Este módulo esta definido en el archivo <code>test/support/data_case.ex</code>.</p>
 </li>
 <li>
 <p><code>alias StoicQuotes.Quotes.Quote</code>: Asignamos un alias al esquema para usarlo más fácilmente.</p>
@@ -467,6 +467,9 @@ end</code></pre>
 <li>
 <p><code>assert MapSet.new(expected_fields_and_types) == MapSet.new(actual_fields_and_types)</code>: El uso de <code>assert</code> permite informar el éxito o fracaso de una prueba, en este caso validamos que dos conjuntos sean iguales.</p>
 </li>
+<li>
+<p><code>Quote.<em>schema</em>(:type, field)</code>: Devuelve el tipo de campo dentro del esquema.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -479,7 +482,7 @@ pero si se desea solamente probar un archivo se puede proporcionar en el comando
 </div>
 </div>
 <div class="paragraph">
-<p>O tambien puede ser utilizando la función <code>description</code>.</p>
+<p>O tambien puede ser utilizando la función <code>describe</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -489,32 +492,417 @@ pero si se desea solamente probar un archivo se puede proporcionar en el comando
 </div>
 </div>
 <div class="sect1">
-<h2 id="paso-pruebas-de-ecto-changeset"><a class="anchor" href="#paso-pruebas-de-ecto-changeset"></a>Paso : Pruebas de Ecto Changeset</h2>
+<h2 id="paso-3-pruebas-de-ecto-changeset"><a class="anchor" href="#paso-3-pruebas-de-ecto-changeset"></a>Paso 3: Pruebas de Ecto Changeset</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Ahora se realizarán las pruebas de las validaciones, esto permitirá determinar
+si las validaciones están correctamente establecidas y detectar cualquier problema con ellas.</p>
+</div>
+<div class="listingblock">
+<div class="title">test/stoic_quotes/quotes/schema_test.exs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">describe "changeset/2" do
+  test "that changeset with valid params is valid" do
+    params = %{
+      "author" =&gt; "Marcus Aurelius",
+      "source" =&gt; "Meditations",
+      "quote" =&gt;
+        "You have power over your mind — not outside events. Realize this, and you will find strength."
+    }
 
+    changeset = Quote.changeset(%Quote{}, params)
+
+    assert %Ecto.Changeset{valid?: true, changes: _} = changeset
+  end
+
+  test "that changeset with invalid params is invalid" do
+    params = %{
+      "author" =&gt; "",
+      "source" =&gt; "Meditations",
+      "quote" =&gt;
+        "You have power over your mind — not outside events. Realize this, and you will find strength."
+    }
+
+    changeset = Quote.changeset(%Quote{}, params)
+
+    assert %Ecto.Changeset{
+             valid?: false,
+             errors: [{:author, {"can't be blank", [validation: :required]}}]
+           } =
+             changeset
+
+    params = %{
+      "author" =&gt; "Marcus Aurelius",
+      "source" =&gt; "",
+      "quote" =&gt;
+        "You have power over your mind — not outside events. Realize this, and you will find strength."
+    }
+
+    changeset = Quote.changeset(%Quote{}, params)
+
+    assert %Ecto.Changeset{
+             valid?: false,
+             errors: [{:source, {"can't be blank", [validation: :required]}}]
+           } =
+             changeset
+
+    params = %{
+      "author" =&gt; "Marcus Aurelius",
+      "source" =&gt; "Meditations",
+      "quote" =&gt; ""
+    }
+
+    changeset = Quote.changeset(%Quote{}, params)
+
+    assert %Ecto.Changeset{
+             valid?: false,
+             errors: [{:quote, {"can't be blank", [validation: :required]}}]
+           } =
+             changeset
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>También añadimos una validación para la función <code>new/1</code> donde comprobaremos
+que siempre devuelva un <em>changeset</em>.</p>
+</div>
+<div class="listingblock">
+<div class="title">test/stoic_quotes/quotes/schema_test.exs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">describe "new/1" do
+  test "that returns a changeset" do
+    params = %{
+      "author" =&gt; "Marcus Aurelius",
+      "source" =&gt; "Meditations",
+      "quote" =&gt;
+        "You have power over your mind — not outside events. Realize this, and you will find strength."
+    }
+
+    changeset = Quote.new(params)
+
+    assert %Ecto.Changeset{valid?: true, changes: _} = changeset
+  end
+end</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="paso-pruebas-de-contexto"><a class="anchor" href="#paso-pruebas-de-contexto"></a>Paso : Pruebas de Contexto</h2>
+<h2 id="paso-4-pruebas-de-contexto"><a class="anchor" href="#paso-4-pruebas-de-contexto"></a>Paso 4: Pruebas de Contexto</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Las pruebas de contexto fueron creadas automáticamente por el generador <code>phx.gen.context</code>.
+Se pueden ver dentro del archivo <code>test/stoic_quotes/quotes_test.exs</code>, pero se recomienda
+mover el archivo al directorio <code>test/stoic_quotes/quotes/quotes_test.exs</code> para que tenga cohesión
+con las pruebas del esquema <code>test/stoic_quotes/quotes/schema_test.exs</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">test/stoic_quotes/quotes_test.exs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Tests.Contexts.QuotesContextTest do
+  use StoicQuotes.DataCase
 
+  alias StoicQuotes.Quotes
+
+  describe "quotes" do
+    alias StoicQuotes.Quotes.Quote
+
+    import StoicQuotes.QuotesFixtures
+
+    @invalid_attrs %{author: nil, source: nil, quote: nil}
+
+    test "list_quotes/0 returns all quotes" do
+      quote = quote_fixture()
+      assert Quotes.list_quotes() == [quote]
+    end
+# ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lo que se puede destacar es el uso de <code>Fixtures</code> (<code>import StoicQuotes.QuotesFixtures</code>).
+Esto es una herramienta de pruebas que permite tener un entorno predefinido por ejemplo
+archivos o valores de base de datos que facilitan la creación de pruebas.</p>
+</div>
+<div class="paragraph">
+<p>Si vamos al archivo <code>test/support/fixtures/quotes_fixtures.ex</code>
+veremos que simplemente genera un nuevo registro en la base de datos
+y es utilizado en las pruebas de contexto como <code>quote = quote_fixture()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">test/support/fixtures/quotes_fixtures.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.QuotesFixtures do
+  @moduledoc """
+  This module defines test helpers for creating
+  entities via the `StoicQuotes.Quotes` context.
+  """
+
+  @doc """
+  Generate a quote.
+  """
+  def quote_fixture(attrs \\ %{}) do
+    {:ok, quote} =
+      attrs
+      |&gt; Enum.into(%{
+        author: "some author",
+        quote: "some quote",
+        source: "some source"
+      })
+      |&gt; StoicQuotes.Quotes.create_quote()
+
+    quote
+  end
+end</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="paso-pruebas-de-endpoint-rest"><a class="anchor" href="#paso-pruebas-de-endpoint-rest"></a>Paso : Pruebas de Endpoint Rest</h2>
+<h2 id="paso-5-pruebas-de-endpoint-rest"><a class="anchor" href="#paso-5-pruebas-de-endpoint-rest"></a>Paso 5: Pruebas de Endpoint Rest</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Para probar los endpoints rest debemos crear un nuevo archivo
+en <code>test/stoic_quotes_web/controllers/quotes_controller_test.exs</code>.</p>
+</div>
+<div class="paragraph">
+<p>Para esto probaremos los endpoints definidos en el router</p>
+</div>
+<div class="listingblock">
+<div class="title">router.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">scope "/api", StoicQuotesWeb do
+  pipe_through(:api)
+  get("/quotes", QuotesController, :index)
+  get("/quotes/random", QuotesController, :show)
+end</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">test/stoic_quotes_web/controllers/quotes_controller_test.exs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.Tests.Controllers.QuotesControllerTest do
+  use StoicQuotesWeb.ConnCase
+  import StoicQuotes.QuotesFixtures
 
+  describe "/api/quotes" do
+    test "GET /api/quotes", %{conn: conn} do
+      quote_fixture(%{quote: "1"})
+      quote_fixture(%{quote: "2"})
+
+      conn = get(conn, ~p"/api/quotes")
+
+      assert [
+               %{
+                 "author" =&gt; "some author",
+                 "quote" =&gt; "1",
+                 "source" =&gt; "some source"
+               },
+               %{
+                 "author" =&gt; "some author",
+                 "quote" =&gt; "2",
+                 "source" =&gt; "some source"
+               }
+             ] = json_response(conn, 200)["data"]
+    end
+
+    test "GET /api/quotes/random", %{conn: conn} do
+      quote_fixture()
+      conn = get(conn, ~p"/api/quotes/random")
+
+      assert %{
+               "author" =&gt; "some author",
+               "quote" =&gt; "some quote",
+               "source" =&gt; "some source"
+             } = json_response(conn, 200)["data"]
+    end
+  end
+end</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>use StoicQuotesWeb.ConnCase</code>: Debemos usar el tipo de prueba <em>ConnCase</em> para poder acceder a levantar el servidor y realizar pruebas. Este módulo esta definido en el archivo <code>test/support/conn_case.ex</code>.</p>
+</li>
+<li>
+<p><code>conn = get(conn, ~p"/api/quotes")</code>: Obtenemos el resultado de llamar al endpoint <code>/api/quotes</code>.</p>
+</li>
+<li>
+<p><code>json_response(conn, 200)["data"]</code>: Obtenemos la respuesta en formato json y el contenido de la propiedad "data" para realizar la comparación.</p>
+</li>
+<li>
+<p><code>~p"/api/quotes"</code>: <code>~p</code> es un sigilo (macro) de <em>Phoenix</em> que permite verificar que la ruta ingresada existe en el router, lo cual es muy recomendable. Es parte de lo que se conoce como <a href="https://hexdocs.pm/phoenix/routing.html#verified-routes">verified routes</a>.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="paso-pruebas-de-liveview"><a class="anchor" href="#paso-pruebas-de-liveview"></a>Paso : Pruebas de LiveView</h2>
+<h2 id="paso-6-pruebas-de-liveview"><a class="anchor" href="#paso-6-pruebas-de-liveview"></a>Paso 6: Pruebas de LiveView</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Ahora se realizarán las pruebas del formulario hecho con <em>LiveView</em>.
+El cual se muestra en la siguiente ruta.</p>
+</div>
+<div class="listingblock">
+<div class="title">router.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">scope "/", StoicQuotesWeb do
+  pipe_through(:browser)
 
+  live("/", Live.QuotesForm, :live)
+end</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">test/stoic_quotes_web/live/quotes_form_test.exs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotesWeb.Tests.Live.QuotesFormTest do
+  use StoicQuotesWeb.ConnCase
+  import Phoenix.LiveViewTest
+
+  describe "LiveView quotes form page tests" do
+    test "that valid form saving is done", %{conn: conn} do
+      {:ok, lv, _html} =
+        live(
+          conn,
+          ~p"/"
+        )
+
+      lv
+      |&gt; form("form", %{
+        "author" =&gt; "some author",
+        "source" =&gt; "some source",
+        "quote" =&gt; "some quote"
+      })
+      |&gt; render_submit()
+
+      conn = get(conn, ~p"/api/quotes")
+
+      assert [
+               %{
+                 "author" =&gt; "some author",
+                 "quote" =&gt; "some quote",
+                 "source" =&gt; "some source"
+               }
+             ] = json_response(conn, 200)["data"]
+    end
+
+    test "that invalid form shows errors", %{conn: conn} do
+      {:ok, lv, _html} =
+        live(
+          conn,
+          ~p"/"
+        )
+
+      result =
+        lv
+        |&gt; form("form", %{
+          "author" =&gt; "",
+          "source" =&gt; "",
+          "quote" =&gt; ""
+        })
+        |&gt; render_submit()
+
+      assert result =~ "can&amp;#39;t be blank"
+    end
+
+    test "that valid form cannot save duplicates", %{conn: conn} do
+      {:ok, lv, _html} =
+        live(
+          conn,
+          ~p"/"
+        )
+
+      lv
+      |&gt; form("form", %{
+        "author" =&gt; "some author",
+        "source" =&gt; "some source",
+        "quote" =&gt; "some quote"
+      })
+      |&gt; render_submit()
+
+      result =
+        lv
+        |&gt; form("form", %{
+          "author" =&gt; "some author",
+          "source" =&gt; "some source",
+          "quote" =&gt; "some quote"
+        })
+        |&gt; render_submit()
+
+      assert result =~ "There was an error saving the Quote"
+    end
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Podemos ver que realizar pruebas con <em>LiveView</em> es muy similar a realizar pruebas con endpoints json.
+Sin embargo hay algunos códigos que se deben explicar como los siguientes:</p>
+</div>
+<div class="paragraph">
+<p>El siguiente código inicializa la estructura de <code>lv</code> que puede ser usada por otras funciones
+para renderizar la página.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">{:ok, lv, _html} =
+  live(
+    conn,
+    ~p"/"
+  )</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En el siguiente código se llama a funciones especiales de <em>LiveView</em> como <code>form("elemento html", parametros)</code> y <code>render_submit()</code>
+que permiten realizar el envío de un formulario.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">lv
+|&gt; form("form", %{
+  "author" =&gt; "",
+  "source" =&gt; "",
+  "quote" =&gt; ""
+})
+|&gt; render_submit()</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pasos-finales"><a class="anchor" href="#pasos-finales"></a>Pasos Finales</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Se ha realizado una aplicación completa con <em>Phoenix</em> y <em>LiveView</em>
+desde una simple API Rest a una suite de pruebas unitarias.</p>
+</div>
+<div class="paragraph">
+<p>Se pueden ver los siguientes conceptos para profundizar:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.tddphoenix.com/">Desarrollo con TDD (Test Driven Development)</a>.</p>
+</li>
+<li>
+<p><a href="https://hexdocs.pm/ecto/testing-with-ecto.html">Testing Ecto</a>.</p>
+</li>
+<li>
+<p><a href="https://hexdocs.pm/propcheck/readme.html">Property Testing</a>.</p>
+</li>
+<li>
+<p><a href="https://fly.io/phoenix-files/forms-testing/">Testing LiveView</a>.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="liveview.html">LiveView: Stoic API</a></span>
-  <span class="next"><a href="../mobile/chapter.html">Aplicaciones Móviles</a></span>
+  <span class="next"><a href="commands.html">Makefiles</a></span>
 </nav>
 </article>
   </div>
