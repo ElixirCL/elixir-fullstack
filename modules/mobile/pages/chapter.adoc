@@ -64,6 +64,7 @@ prototipos rápidos.
 En ésta categoría están.
 
 - Onsen
+- Framework7
 - Ionic
 - Elixir Desktop
 - Jasonelle
@@ -98,6 +99,7 @@ los componentes necesarios para tener una aplicación móvil robusta y preparada
 | Framework | Web | Categoría | Comentario
 | Jasonelle | https://jasonelle.com[https://jasonelle.com] | WebView + Javascript | Es un envoltorio (wrapper) para una url y convertirla a aplicación.
 | Onsen | https://onsen.io/[https://onsen.io/] | WebView + Javascript | Puedes generar tu aplicación con HTML, CSS y JS. Alternativa a _IONIC_.
+| Framework7 | https://framework7.io/[https://framework7.io/] | WebView + Javascript | Similar a Onsen, tiene más popularidad.
 | Elixir Desktop | https://github.com/elixir-desktop/desktop[https://github.com/elixir-desktop/desktop] | WebView + Elixir | Ejecuta un servidor web local con el framework https://www.phoenixframework.org/[Phoenix].
 | Native Script | https://nativescript.org/[https://nativescript.org/] | Nativo + Typescript | Permite crear aplicaciones nativas usando Typescript y ser un puente para otras tecnologías.
 | React Native | https://reactnative.dev/[https://reactnative.dev/] | Nativo + Javascript | Enfocado en generar aplicaciones para iOS y Android usando Javascript y el frontend framework _React_.

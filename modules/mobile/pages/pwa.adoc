@@ -1,0 +1,101 @@
+= Progresive Web Apps
+
+Una forma de crear aplicaciones y prototipos es utilizando las _Progresive Web Apps_ (PWA).
+Esta es una tecnología que permite que las aplicaciones web sean "instaladas" en el smartphone como si fuesen
+una aplicación nativa. El principal beneficio es que son de rápida creación con las tecnologías
+web tradicionales y si se utilizan las herramientas adecuadas se puede lograr una experiencia
+de usuario muy similar a los elementos nativos. No necesitan pasar por el proceso de subir
+la aplicación al _Appstore_ o _Playstore_, por lo que también permite mayor flexibilidad
+en los contenidos permitidos.
+
+*Beneficios*
+
+- Permiten mayor rapidez y flexibilidad en contenidos y estructura de la aplicación.
+- Utilizan tecnologías web tradicionales como Javascript, CSS y HTML.
+
+*Dificultades*
+
+- No dan acceso a características nativas sin un Wrapper (Jasonelle, Cordova, Capacitor).
+- Pueden ser más inconsistentes y requerir configuraciones especiales para las diferencias entre cada plataforma (Android, iOS).
+
+== ¿PWA o Nativo?
+
+La respuesta depende de muchos factores, pero la gran mayoría de proyectos puede partir como
+una aplicación web en formato _PWA_ y luego pasar a nativo. Se recomienda optar por nativo
+solo si se dispone del suficiente capital humano y expertise, o que la solución requiera
+de tecnologías solamente disponibles para las aplicaciones nativas.
+
+== Framework7
+
+https://framework7.io/[Framework7] es una de las alternativas más populares para crear _PWA_, ya que a diferencia
+de https://onsen.io/[Onsen], https://ionicframework.com/[Ionic], https://nativescript.org/[NativeScript] o https://reactnative.dev/[ReactNative] 
+que son pensados como una aplicación completa, _Framework7_ es simplemente una serie de 
+componentes de _Javascript_, _HTML_ y _CSS_ que permiten elaborar una aplicación web con la experiencia de usuario
+de una aplicación móvil _Android_ o _iOS_. Además de que _Framework7_ tiene distintas plantillas de aplicaciones y componentes
+ya disponibles para crear una aplicación como base en https://themeforest.net/search/framework7[Theme Forest].
+
+.Framework7 en ThemeForest
+image::themeforest.png[]
+
+_Framework7_ cuenta con dos versiones. La primera es la versión completa con todos sus componentes
+como el "router" y la versión ligera (lite) que solo cuenta con lo básico y los demás componentes 
+como el "router" son proporcionados por otro framework de frontend como React, Vue, Svelte o incluso
+_Phoenix_.
+
+== Manifest
+
+El archivo https://developer.mozilla.org/es/docs/Mozilla/Add-ons/WebExtensions/manifest.json[manifest.json] 
+es el encargado de configurar la _PWA_, por ejemplo su 
+nombre, íconos, colores, entre otras configuraciones. Para esto se debe seguir un formato
+específico y tenerlo en la misma ubicación del archivo `index.html`.
+
+Su extensión oficial es `.webmanifest`, 
+por lo que podrías nombrar tu manifiesto como `app.webmanifest`.
+
+Si bien la extensión recomendada es `.webmanifest`, 
+cualquier nombre de archivo funcionará siempre y cuando se entregue con el tipo de 
+contenido `application/manifest+json` o con otro tipo de contenido válido para JSON, 
+como `text/json`. Por lo tanto, muchas _PWA_, en especial las más antiguas, usan `manifest.json`.
+
+Existen herramientas para facilitar la creación de un manifest como: https://progressier.com/pwa-manifest-generator
+
+.Ejemplo de manifest.json
+[source, json]
+----
+{
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "icons": [
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "AppIcon.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "AppIcon_rounded.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "src": "AppIcon@2x.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "es-ES",
+  "name": "Mi App",
+  "short_name": "Mi App",
+  "description": "Descripción",
+  "start_url": "https://myweb.example",
+  "scope": "https://myweb.example/"
+}
+----
+
+== Referencias
+
+- https://web.dev/learn/pwa/web-app-manifest?hl=es-419

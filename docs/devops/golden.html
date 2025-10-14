@@ -197,6 +197,9 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/pwa.html">Progresive Web Apps</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -407,11 +410,17 @@ Para ésto se utiliza la herramienta de plantillas <a href="https://hexdocs.pm/e
 <div class="paragraph">
 <p>La relación entre los datos, plantillas, script y alertas se puede diagramar de la siguiente manera.</p>
 </div>
-<div class="imageblock kroki">
+<div class="listingblock kroki-error">
+<div class="title">Diagrama de Relación Datos, Script, Plantillas y Alertas</div>
 <div class="content">
-<img src="_images/diag-13316cc615e93f43883d8239ac851850a0225cdf.svg" alt="Diagrama de Relación Datos, Script, Plantillas y Alertas">
+<pre>@startuml
+
+[MetaData] ..&gt; [Script] : alimenta
+[Script] ..&gt; [Plantillas] : usa
+[Alertas] &lt;.. [Script]: genera
+
+@enduml</pre>
 </div>
-<div class="title">Figure 1. Diagrama de Relación Datos, Script, Plantillas y Alertas</div>
 </div>
 <div class="paragraph">
 <p>Además de estandarizar y automatizar la generación de alertas, se recomienda automatizar el proceso de deployment de las mismas, utilizando algún workflow de Github actions por ejemplo.</p>

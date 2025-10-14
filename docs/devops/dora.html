@@ -198,6 +198,9 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/pwa.html">Progresive Web Apps</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -411,17 +414,237 @@
 </li>
 </ul>
 </div>
-<div class="imageblock kroki">
+<div class="listingblock kroki-error">
+<div class="title">Histograma de Development Cycle Time (Tech Lead)</div>
 <div class="content">
-<img src="_images/diag-513c05d3d188e70777c53f1e7251005509ded0d1.png" alt="Histograma de Development Cycle Time (Tech Lead)">
+<pre>{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Development Cycle Time: 38 días 12 horas 24 min",
+  "height": 400,
+  "width": 550,
+  "layer": [
+    {
+      "mark": {"type":"bar"},
+      "data": {
+        "values": "label,count,period\nIn Progress,0,8 Julio - 14 Julio\nMerge,0,8 Julio - 14 Julio\nReview,0,8 Julio - 14 Julio\nDeploy,0,8 Julio - 14 Julio\nIn Progress,0,15 Julio - 21 Julio\nMerge,0,15 Julio - 21 Julio\nReview,0,15 Julio - 21 Julio\nDeploy,0,15 Julio - 21 Julio\nIn Progress,0,22 Julio - 28 Julio\nMerge,0,22 Julio - 28 Julio\nReview,0,22 Julio - 28 Julio\nDeploy,0,22 Julio - 28 Julio\nIn Progress,0,5 Agosto - 11 Agosto\nMerge,0,5 Agosto - 11 Agosto\nReview,0,5 Agosto - 11 Agosto\nDeploy,0,5 Agosto - 11 Agosto\nIn Progress,0,12 Agosto - 18 Agosto\nMerge,0,12 Agosto - 18 Agosto\nReview,0,12 Agosto - 18 Agosto\nDeploy,0,12 Agosto - 18 Agosto\nIn Progress,0,19 Agosto - 25 Agosto\nMerge,0,19 Agosto - 25 Agosto\nReview,0,19 Agosto - 25 Agosto\nDeploy,0,19 Agosto - 25 Agosto\nIn Progress,0.03,26 Agosto - 1 Septiembre\nMerge,0.2,26 Agosto - 1 Septiembre\nReview,0,26 Agosto - 1 Septiembre\nDeploy,0.75,26 Agosto - 1 Septiembre\nIn Progress,611.01,2 Septiembre - 8 Septiembre\nMerge,5.68,2 Septiembre - 8 Septiembre\nReview,0,2 Septiembre - 8 Septiembre\nDeploy,6.55,2 Septiembre - 8 Septiembre\nIn Progress,934.43,9 Septiembre - 15 Septiembre\nMerge,1.04,9 Septiembre - 15 Septiembre\nReview,0,9 Septiembre - 15 Septiembre\nDeploy,0.86,9 Septiembre - 15 Septiembre\nIn Progress,0,16 Septiembre - 22 Septiembre\nMerge,0,16 Septiembre - 22 Septiembre\nReview,0,16 Septiembre - 22 Septiembre\nDeploy,0,16 Septiembre - 22 Septiembre\nIn Progress,0,23 Septiembre - 29 Septiembre\nMerge,0,23 Septiembre - 29 Septiembre\nReview,0,23 Septiembre - 29 Septiembre\nDeploy,0,23 Septiembre - 29 Septiembre\nIn Progress,0,30 Septiembre - 6 Octubre\nMerge,0,30 Septiembre - 6 Octubre\nReview,0,30 Septiembre - 6 Octubre\nDeploy,0,30 Septiembre - 6 Octubre\nIn Progress,1678.18,7 Octubre - 13 Octubre\nMerge,195.12,7 Octubre - 13 Octubre\nReview,0,7 Octubre - 13 Octubre\nDeploy,0.99,7 Octubre - 13 Octubre\n",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,2000]
+          }
+        },
+        "color": {
+          "field": "label",
+          "type": "nominal",
+          "title": "Tipo"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color":"rebeccapurple",
+        "strokeDash": [8, 1],
+        "point": true,
+        "interpolate": "monotone"
+      },
+      "data": {
+        "values": "label,count,period\nIn Progress,0,8 Julio - 14 Julio\nMerge,0,8 Julio - 14 Julio\nReview,0,8 Julio - 14 Julio\nDeploy,0,8 Julio - 14 Julio\nIn Progress,0,15 Julio - 21 Julio\nMerge,0,15 Julio - 21 Julio\nReview,0,15 Julio - 21 Julio\nDeploy,0,15 Julio - 21 Julio\nIn Progress,0,22 Julio - 28 Julio\nMerge,0,22 Julio - 28 Julio\nReview,0,22 Julio - 28 Julio\nDeploy,0,22 Julio - 28 Julio\nIn Progress,0,5 Agosto - 11 Agosto\nMerge,0,5 Agosto - 11 Agosto\nReview,0,5 Agosto - 11 Agosto\nDeploy,0,5 Agosto - 11 Agosto\nIn Progress,0,12 Agosto - 18 Agosto\nMerge,0,12 Agosto - 18 Agosto\nReview,0,12 Agosto - 18 Agosto\nDeploy,0,12 Agosto - 18 Agosto\nIn Progress,0,19 Agosto - 25 Agosto\nMerge,0,19 Agosto - 25 Agosto\nReview,0,19 Agosto - 25 Agosto\nDeploy,0,19 Agosto - 25 Agosto\nIn Progress,0.03,26 Agosto - 1 Septiembre\nMerge,0.2,26 Agosto - 1 Septiembre\nReview,0,26 Agosto - 1 Septiembre\nDeploy,0.75,26 Agosto - 1 Septiembre\nIn Progress,611.01,2 Septiembre - 8 Septiembre\nMerge,5.68,2 Septiembre - 8 Septiembre\nReview,0,2 Septiembre - 8 Septiembre\nDeploy,6.55,2 Septiembre - 8 Septiembre\nIn Progress,934.43,9 Septiembre - 15 Septiembre\nMerge,1.04,9 Septiembre - 15 Septiembre\nReview,0,9 Septiembre - 15 Septiembre\nDeploy,0.86,9 Septiembre - 15 Septiembre\nIn Progress,0,16 Septiembre - 22 Septiembre\nMerge,0,16 Septiembre - 22 Septiembre\nReview,0,16 Septiembre - 22 Septiembre\nDeploy,0,16 Septiembre - 22 Septiembre\nIn Progress,0,23 Septiembre - 29 Septiembre\nMerge,0,23 Septiembre - 29 Septiembre\nReview,0,23 Septiembre - 29 Septiembre\nDeploy,0,23 Septiembre - 29 Septiembre\nIn Progress,0,30 Septiembre - 6 Octubre\nMerge,0,30 Septiembre - 6 Octubre\nReview,0,30 Septiembre - 6 Octubre\nDeploy,0,30 Septiembre - 6 Octubre\nIn Progress,1678.18,7 Octubre - 13 Octubre\nMerge,195.12,7 Octubre - 13 Octubre\nReview,0,7 Octubre - 13 Octubre\nDeploy,0.99,7 Octubre - 13 Octubre\n",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,2000]
+          }
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "strokeDash": [6, 3]},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 24},
+          {"period": "15 Julio - 21 Julio", "count": 24},
+          {"period": "22 Julio - 28 Julio", "count": 24},
+          {"period": "5 Agosto - 11 Agosto", "count": 24},
+          {"period": "12 Agosto - 18 Agosto", "count": 24},
+          {"period": "19 Agosto - 25 Agosto", "count": 24},
+          {"period": "26 Agosto - 1 Septiembre", "count": 24},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 24},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 24},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 24},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 24},
+          {"period": "30 Septiembre - 6 Octubre", "count": 24},
+          {"period": "7 Octubre - 13 Octubre", "count": 24}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,2000]
+          }
+        }
+      }
+    }
+  ]
+}</pre>
 </div>
-<div class="title">Figure 1. Histograma de Development Cycle Time (Tech Lead)</div>
 </div>
-<div class="imageblock kroki">
+<div class="listingblock kroki-error">
+<div class="title">Histograma de Development Cycle Time (Engineer Manager)</div>
 <div class="content">
-<img src="_images/diag-513c05d3d188e70777c53f1e7251005509ded0d1.png" alt="Histograma de Development Cycle Time (Engineer Manager)">
+<pre>{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Development Cycle Time: 38 días 12 horas 24 min",
+  "height": 400,
+  "width": 550,
+  "layer": [
+    {
+      "mark": {"type":"bar"},
+      "data": {
+        "values": "label,count,period\nIn Progress,0,8 Julio - 14 Julio\nMerge,0,8 Julio - 14 Julio\nReview,0,8 Julio - 14 Julio\nDeploy,0,8 Julio - 14 Julio\nIn Progress,0,15 Julio - 21 Julio\nMerge,0,15 Julio - 21 Julio\nReview,0,15 Julio - 21 Julio\nDeploy,0,15 Julio - 21 Julio\nIn Progress,0,22 Julio - 28 Julio\nMerge,0,22 Julio - 28 Julio\nReview,0,22 Julio - 28 Julio\nDeploy,0,22 Julio - 28 Julio\nIn Progress,0,5 Agosto - 11 Agosto\nMerge,0,5 Agosto - 11 Agosto\nReview,0,5 Agosto - 11 Agosto\nDeploy,0,5 Agosto - 11 Agosto\nIn Progress,0,12 Agosto - 18 Agosto\nMerge,0,12 Agosto - 18 Agosto\nReview,0,12 Agosto - 18 Agosto\nDeploy,0,12 Agosto - 18 Agosto\nIn Progress,0,19 Agosto - 25 Agosto\nMerge,0,19 Agosto - 25 Agosto\nReview,0,19 Agosto - 25 Agosto\nDeploy,0,19 Agosto - 25 Agosto\nIn Progress,0.03,26 Agosto - 1 Septiembre\nMerge,0.2,26 Agosto - 1 Septiembre\nReview,0,26 Agosto - 1 Septiembre\nDeploy,0.75,26 Agosto - 1 Septiembre\nIn Progress,611.01,2 Septiembre - 8 Septiembre\nMerge,5.68,2 Septiembre - 8 Septiembre\nReview,0,2 Septiembre - 8 Septiembre\nDeploy,6.55,2 Septiembre - 8 Septiembre\nIn Progress,934.43,9 Septiembre - 15 Septiembre\nMerge,1.04,9 Septiembre - 15 Septiembre\nReview,0,9 Septiembre - 15 Septiembre\nDeploy,0.86,9 Septiembre - 15 Septiembre\nIn Progress,0,16 Septiembre - 22 Septiembre\nMerge,0,16 Septiembre - 22 Septiembre\nReview,0,16 Septiembre - 22 Septiembre\nDeploy,0,16 Septiembre - 22 Septiembre\nIn Progress,0,23 Septiembre - 29 Septiembre\nMerge,0,23 Septiembre - 29 Septiembre\nReview,0,23 Septiembre - 29 Septiembre\nDeploy,0,23 Septiembre - 29 Septiembre\nIn Progress,0,30 Septiembre - 6 Octubre\nMerge,0,30 Septiembre - 6 Octubre\nReview,0,30 Septiembre - 6 Octubre\nDeploy,0,30 Septiembre - 6 Octubre\nIn Progress,1678.18,7 Octubre - 13 Octubre\nMerge,195.12,7 Octubre - 13 Octubre\nReview,0,7 Octubre - 13 Octubre\nDeploy,0.99,7 Octubre - 13 Octubre\n",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,2000]
+          }
+        },
+        "color": {
+          "field": "label",
+          "type": "nominal",
+          "title": "Tipo"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color":"rebeccapurple",
+        "strokeDash": [8, 1],
+        "point": true,
+        "interpolate": "monotone"
+      },
+      "data": {
+        "values": "label,count,period\nIn Progress,0,8 Julio - 14 Julio\nMerge,0,8 Julio - 14 Julio\nReview,0,8 Julio - 14 Julio\nDeploy,0,8 Julio - 14 Julio\nIn Progress,0,15 Julio - 21 Julio\nMerge,0,15 Julio - 21 Julio\nReview,0,15 Julio - 21 Julio\nDeploy,0,15 Julio - 21 Julio\nIn Progress,0,22 Julio - 28 Julio\nMerge,0,22 Julio - 28 Julio\nReview,0,22 Julio - 28 Julio\nDeploy,0,22 Julio - 28 Julio\nIn Progress,0,5 Agosto - 11 Agosto\nMerge,0,5 Agosto - 11 Agosto\nReview,0,5 Agosto - 11 Agosto\nDeploy,0,5 Agosto - 11 Agosto\nIn Progress,0,12 Agosto - 18 Agosto\nMerge,0,12 Agosto - 18 Agosto\nReview,0,12 Agosto - 18 Agosto\nDeploy,0,12 Agosto - 18 Agosto\nIn Progress,0,19 Agosto - 25 Agosto\nMerge,0,19 Agosto - 25 Agosto\nReview,0,19 Agosto - 25 Agosto\nDeploy,0,19 Agosto - 25 Agosto\nIn Progress,0.03,26 Agosto - 1 Septiembre\nMerge,0.2,26 Agosto - 1 Septiembre\nReview,0,26 Agosto - 1 Septiembre\nDeploy,0.75,26 Agosto - 1 Septiembre\nIn Progress,611.01,2 Septiembre - 8 Septiembre\nMerge,5.68,2 Septiembre - 8 Septiembre\nReview,0,2 Septiembre - 8 Septiembre\nDeploy,6.55,2 Septiembre - 8 Septiembre\nIn Progress,934.43,9 Septiembre - 15 Septiembre\nMerge,1.04,9 Septiembre - 15 Septiembre\nReview,0,9 Septiembre - 15 Septiembre\nDeploy,0.86,9 Septiembre - 15 Septiembre\nIn Progress,0,16 Septiembre - 22 Septiembre\nMerge,0,16 Septiembre - 22 Septiembre\nReview,0,16 Septiembre - 22 Septiembre\nDeploy,0,16 Septiembre - 22 Septiembre\nIn Progress,0,23 Septiembre - 29 Septiembre\nMerge,0,23 Septiembre - 29 Septiembre\nReview,0,23 Septiembre - 29 Septiembre\nDeploy,0,23 Septiembre - 29 Septiembre\nIn Progress,0,30 Septiembre - 6 Octubre\nMerge,0,30 Septiembre - 6 Octubre\nReview,0,30 Septiembre - 6 Octubre\nDeploy,0,30 Septiembre - 6 Octubre\nIn Progress,1678.18,7 Octubre - 13 Octubre\nMerge,195.12,7 Octubre - 13 Octubre\nReview,0,7 Octubre - 13 Octubre\nDeploy,0.99,7 Octubre - 13 Octubre\n",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,2000]
+          }
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "strokeDash": [6, 3]},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 24},
+          {"period": "15 Julio - 21 Julio", "count": 24},
+          {"period": "22 Julio - 28 Julio", "count": 24},
+          {"period": "5 Agosto - 11 Agosto", "count": 24},
+          {"period": "12 Agosto - 18 Agosto", "count": 24},
+          {"period": "19 Agosto - 25 Agosto", "count": 24},
+          {"period": "26 Agosto - 1 Septiembre", "count": 24},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 24},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 24},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 24},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 24},
+          {"period": "30 Septiembre - 6 Octubre", "count": 24},
+          {"period": "7 Octubre - 13 Octubre", "count": 24}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,2000]
+          }
+        }
+      }
+    }
+  ]
+}</pre>
 </div>
-<div class="title">Figure 2. Histograma de Development Cycle Time (Engineer Manager)</div>
 </div>
 </div>
 </div>
@@ -503,11 +726,138 @@ cada deployment.</p>
 </li>
 </ul>
 </div>
-<div class="imageblock kroki">
+<div class="listingblock kroki-error">
+<div class="title">Histograma de Deploy Frequency</div>
 <div class="content">
-<img src="_images/diag-8804eee413f3a408b4cf7288be92748215497d2c.png" alt="Histograma de Deploy Frequency">
+<pre>{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Deploy Frequency: 0.87 /week",
+  "height": 400,
+  "width": 550,
+  "layer": [
+    {
+      "mark": {"type":"bar", "color":"skyblue"},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 0},
+          {"period": "15 Julio - 21 Julio", "count": 0},
+          {"period": "22 Julio - 28 Julio", "count": 0},
+          {"period": "5 Agosto - 11 Agosto", "count": 0},
+          {"period": "12 Agosto - 18 Agosto", "count": 0},
+          {"period": "19 Agosto - 25 Agosto", "count": 2},
+          {"period": "26 Agosto - 1 Septiembre", "count": 4},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 3},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 0},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 0},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 0},
+          {"period": "30 Septiembre - 6 Octubre", "count": 0},
+          {"period": "7 Octubre - 13 Octubre", "count": 4}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Cantidad",
+          "scale": {
+            "domain": [0,6]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color":"rebeccapurple",
+        "strokeDash": [8, 1],
+        "point": true,
+        "interpolate": "monotone"
+      },
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 0},
+          {"period": "15 Julio - 21 Julio", "count": 0},
+          {"period": "22 Julio - 28 Julio", "count": 0},
+          {"period": "5 Agosto - 11 Agosto", "count": 0},
+          {"period": "12 Agosto - 18 Agosto", "count": 0},
+          {"period": "19 Agosto - 25 Agosto", "count": 2},
+          {"period": "26 Agosto - 1 Septiembre", "count": 4},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 3},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 0},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 0},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 0},
+          {"period": "30 Septiembre - 6 Octubre", "count": 0},
+          {"period": "7 Octubre - 13 Octubre", "count": 4}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Cantidad",
+          "scale": {
+            "domain": [0,6]
+          }
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "strokeDash": [6, 3], "color":"violet"},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 5},
+          {"period": "15 Julio - 21 Julio", "count": 5},
+          {"period": "22 Julio - 28 Julio", "count": 5},
+          {"period": "5 Agosto - 11 Agosto", "count": 5},
+          {"period": "12 Agosto - 18 Agosto", "count": 5},
+          {"period": "19 Agosto - 25 Agosto", "count": 5},
+          {"period": "26 Agosto - 1 Septiembre", "count": 5},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 5},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 5},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 5},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 5},
+          {"period": "30 Septiembre - 6 Octubre", "count": 5},
+          {"period": "7 Octubre - 13 Octubre", "count": 5}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Cantidad",
+          "scale": {
+            "domain": [0,6]
+          }
+        }
+      }
+    }
+  ]
+}</pre>
 </div>
-<div class="title">Figure 3. Histograma de Deploy Frequency</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -601,11 +951,138 @@ es <strong>0.87</strong> por semana.
 </li>
 </ul>
 </div>
-<div class="imageblock kroki">
+<div class="listingblock kroki-error">
+<div class="title">Histograma de MTTR</div>
 <div class="content">
-<img src="_images/diag-55e0cdcb3df70fbaa23cdf871169b9641ea9f0d0.png" alt="Histograma de MTTR">
+<pre>{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Mean Time To Restore: 3 dias 4 horas 38 min",
+  "height": 400,
+  "width": 550,
+  "layer": [
+    {
+      "mark": {"type":"bar", "color":"skyblue"},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 17.99},
+          {"period": "15 Julio - 21 Julio", "count": 72.98},
+          {"period": "22 Julio - 28 Julio", "count": 111.47},
+          {"period": "5 Agosto - 11 Agosto", "count": 62.81},
+          {"period": "12 Agosto - 18 Agosto", "count": 32.05},
+          {"period": "19 Agosto - 25 Agosto", "count": 304.52},
+          {"period": "26 Agosto - 1 Septiembre", "count": 88},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 33.72},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 47.84},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 71.41},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 59.88},
+          {"period": "30 Septiembre - 6 Octubre", "count": 60.62},
+          {"period": "7 Octubre - 13 Octubre", "count": 57.92}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,400]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color":"rebeccapurple",
+        "strokeDash": [8, 1],
+        "point": true,
+        "interpolate": "monotone"
+      },
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 17.99},
+          {"period": "15 Julio - 21 Julio", "count": 72.98},
+          {"period": "22 Julio - 28 Julio", "count": 111.47},
+          {"period": "5 Agosto - 11 Agosto", "count": 62.81},
+          {"period": "12 Agosto - 18 Agosto", "count": 32.05},
+          {"period": "19 Agosto - 25 Agosto", "count": 304.52},
+          {"period": "26 Agosto - 1 Septiembre", "count": 88},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 33.72},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 47.84},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 71.41},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 59.88},
+          {"period": "30 Septiembre - 6 Octubre", "count": 60.62},
+          {"period": "7 Octubre - 13 Octubre", "count": 57.92}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,400]
+          }
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "strokeDash": [6, 3], "color":"violet"},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 1},
+          {"period": "15 Julio - 21 Julio", "count": 1},
+          {"period": "22 Julio - 28 Julio", "count": 1},
+          {"period": "5 Agosto - 11 Agosto", "count": 1},
+          {"period": "12 Agosto - 18 Agosto", "count": 1},
+          {"period": "19 Agosto - 25 Agosto", "count": 1},
+          {"period": "26 Agosto - 1 Septiembre", "count": 1},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 1},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 1},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 1},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 1},
+          {"period": "30 Septiembre - 6 Octubre", "count": 1},
+          {"period": "7 Octubre - 13 Octubre", "count": 1}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Horas",
+          "scale": {
+            "domain": [0,400]
+          }
+        }
+      }
+    }
+  ]
+}</pre>
 </div>
-<div class="title">Figure 4. Histograma de MTTR</div>
 </div>
 </div>
 </div>
@@ -669,11 +1146,138 @@ es <strong>0.87</strong> por semana.
 </li>
 </ul>
 </div>
-<div class="imageblock kroki">
+<div class="listingblock kroki-error">
+<div class="title">Histograma de Change Failure Rate</div>
 <div class="content">
-<img src="_images/diag-58fe2b22ba390ac340127f1812c68e21f09d7519.png" alt="Histograma de Change Failure Rate">
+<pre>{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Change Failure Rate: 1.94% /week",
+  "height": 400,
+  "width": 550,
+  "layer": [
+    {
+      "mark": {"type":"bar", "color":"skyblue"},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 5},
+          {"period": "15 Julio - 21 Julio", "count": 0},
+          {"period": "22 Julio - 28 Julio", "count": 0},
+          {"period": "5 Agosto - 11 Agosto", "count": 0},
+          {"period": "12 Agosto - 18 Agosto", "count": 0},
+          {"period": "19 Agosto - 25 Agosto", "count": 0},
+          {"period": "26 Agosto - 1 Septiembre", "count": 13.3},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 0},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 0},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 0},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 10},
+          {"period": "30 Septiembre - 6 Octubre", "count": 0},
+          {"period": "7 Octubre - 13 Octubre", "count": 0}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Porcentaje",
+          "scale": {
+            "domain": [0,20]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color":"rebeccapurple",
+        "strokeDash": [8, 1],
+        "point": true,
+        "interpolate": "monotone"
+      },
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 5},
+          {"period": "15 Julio - 21 Julio", "count": 0},
+          {"period": "22 Julio - 28 Julio", "count": 0},
+          {"period": "5 Agosto - 11 Agosto", "count": 0},
+          {"period": "12 Agosto - 18 Agosto", "count": 0},
+          {"period": "19 Agosto - 25 Agosto", "count": 0},
+          {"period": "26 Agosto - 1 Septiembre", "count": 13.3},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 0},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 0},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 0},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 10},
+          {"period": "30 Septiembre - 6 Octubre", "count": 0},
+          {"period": "7 Octubre - 13 Octubre", "count": 0}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Porcentaje",
+          "scale": {
+            "domain": [0,20]
+          }
+        }
+      }
+    },
+    {
+      "mark": {"type": "line", "strokeDash": [6, 3], "color":"violet"},
+      "data": {
+        "values": [
+          {"period": "8 Julio - 14 Julio", "count": 15},
+          {"period": "15 Julio - 21 Julio", "count": 15},
+          {"period": "22 Julio - 28 Julio", "count": 15},
+          {"period": "5 Agosto - 11 Agosto", "count": 15},
+          {"period": "12 Agosto - 18 Agosto", "count": 15},
+          {"period": "19 Agosto - 25 Agosto", "count": 15},
+          {"period": "26 Agosto - 1 Septiembre", "count": 15},
+          {"period": "2 Septiembre - 8 Septiembre", "count": 15},
+          {"period": "9 Septiembre - 15 Septiembre", "count": 15},
+          {"period": "16 Septiembre - 22 Septiembre", "count": 15},
+          {"period": "23 Septiembre - 29 Septiembre", "count": 15},
+          {"period": "30 Septiembre - 6 Octubre", "count": 15},
+          {"period": "7 Octubre - 13 Octubre", "count": 15}
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "title": "Período",
+          "sort": {
+            "order": null
+          }
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Porcentaje",
+          "scale": {
+            "domain": [0,20]
+          }
+        }
+      }
+    }
+  ]
+}</pre>
 </div>
-<div class="title">Figure 5. Histograma de Change Failure Rate</div>
 </div>
 </div>
 </div>

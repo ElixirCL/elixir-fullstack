@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Frontend con Javascript :: Elixir Full-Stack</title>
-    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/javascript/chapter.html">
-    <link rel="prev" href="../html/chapter.html">
-    <link rel="next" href="../elixir/elixir.html">
+    <title>Progresive Web Apps :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/mobile/pwa.html">
+    <link rel="prev" href="chapter.html">
+    <link rel="next" href="../devops/devenvs.html">
     <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -165,8 +165,8 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Javascript</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="chapter.html">Frontend con Javascript</a>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
   </li>
 </ul>
   </li>
@@ -196,10 +196,10 @@
     <span class="nav-text">Aplicaciones Móviles</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+    <a class="nav-link" href="chapter.html">Aplicaciones Móviles</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../mobile/pwa.html">Progresive Web Apps</a>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="pwa.html">Progresive Web Apps</a>
   </li>
 </ul>
   </li>
@@ -250,224 +250,169 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Elixir Full-Stack</a></li>
-    <li>Javascript</li>
-    <li><a href="chapter.html">Frontend con Javascript</a></li>
+    <li>Aplicaciones Móviles</li>
+    <li><a href="pwa.html">Progresive Web Apps</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="file:///antora/./modules/javascript/pages/chapter.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///antora/./modules/mobile/pages/pwa.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Frontend con Javascript</h1>
+<h1 class="page">Progresive Web Apps</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Las siglas DOM significan Document Object Model, o lo que es lo mismo, la estructura del documento HTML. Una página HTML está formada por múltiples etiquetas HTML, anidadas una dentro de otra, formando un árbol de etiquetas relacionadas entre sí, que se denomina árbol DOM (o simplemente DOM).</p>
+<p>Una forma de crear aplicaciones y prototipos es utilizando las <em>Progresive Web Apps</em> (PWA).
+Esta es una tecnología que permite que las aplicaciones web sean "instaladas" en el smartphone como si fuesen
+una aplicación nativa. El principal beneficio es que son de rápida creación con las tecnologías
+web tradicionales y si se utilizan las herramientas adecuadas se puede lograr una experiencia
+de usuario muy similar a los elementos nativos. No necesitan pasar por el proceso de subir
+la aplicación al <em>Appstore</em> o <em>Playstore</em>, por lo que también permite mayor flexibilidad
+en los contenidos permitidos.</p>
+</div>
+<div class="paragraph">
+<p><strong>Beneficios</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Permiten mayor rapidez y flexibilidad en contenidos y estructura de la aplicación.</p>
+</li>
+<li>
+<p>Utilizan tecnologías web tradicionales como Javascript, CSS y HTML.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Dificultades</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No dan acceso a características nativas sin un Wrapper (Jasonelle, Cordova, Capacitor).</p>
+</li>
+<li>
+<p>Pueden ser más inconsistentes y requerir configuraciones especiales para las diferencias entre cada plataforma (Android, iOS).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pwa-o-nativo"><a class="anchor" href="#pwa-o-nativo"></a>¿PWA o Nativo?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La respuesta depende de muchos factores, pero la gran mayoría de proyectos puede partir como
+una aplicación web en formato <em>PWA</em> y luego pasar a nativo. Se recomienda optar por nativo
+solo si se dispone del suficiente capital humano y expertise, o que la solución requiera
+de tecnologías solamente disponibles para las aplicaciones nativas.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="framework7"><a class="anchor" href="#framework7"></a>Framework7</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://framework7.io/">Framework7</a> es una de las alternativas más populares para crear <em>PWA</em>, ya que a diferencia
+de <a href="https://onsen.io/">Onsen</a>, <a href="https://ionicframework.com/">Ionic</a>, <a href="https://nativescript.org/">NativeScript</a> o <a href="https://reactnative.dev/">ReactNative</a>
+que son pensados como una aplicación completa, <em>Framework7</em> es simplemente una serie de
+componentes de <em>Javascript</em>, <em>HTML</em> y <em>CSS</em> que permiten elaborar una aplicación web con la experiencia de usuario
+de una aplicación móvil <em>Android</em> o <em>iOS</em>. Además de que <em>Framework7</em> tiene distintas plantillas de aplicaciones y componentes
+ya disponibles para crear una aplicación como base en <a href="https://themeforest.net/search/framework7">Theme Forest</a>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/que-es-dom.png" alt="que es dom">
+<img src="_images/themeforest.png" alt="themeforest">
 </div>
-</div>
-<div class="paragraph">
-<p>En Javascript, cuando nos referimos al DOM nos referimos a esta estructura de árbol, mediante la cuál podemos acceder a ella y modificar los elementos del HTML desde Javascript, añadiendo nuevas etiquetas, modificando o eliminando otras, cambiando sus atributos HTML, añadiendo clases, cambiando el contenido de texto, etc.</p>
+<div class="title">Figure 1. Framework7 en ThemeForest</div>
 </div>
 <div class="paragraph">
-<p>Si únicamente utilizamos HTML/CSS, solo podremos crear páginas «estáticas», es decir, páginas que no pueden mostrarse de una forma diferente dependiendo de acciones del usuario. Si añadimos Javascript, podremos crear páginas «dinámicas», es decir, aprovechar la potencia y flexibilidad que nos da un lenguaje de programación para crear documentos y páginas mucho más ricas, con una experiencia más completa y con las que se pueden automatizar un gran abanico de tareas y acciones.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://lenguajejs.com/javascript/dom/que-es/" class="bare">https://lenguajejs.com/javascript/dom/que-es/</a></p>
-</li>
-</ul>
+<p><em>Framework7</em> cuenta con dos versiones. La primera es la versión completa con todos sus componentes
+como el "router" y la versión ligera (lite) que solo cuenta con lo básico y los demás componentes
+como el "router" son proporcionados por otro framework de frontend como React, Vue, Svelte o incluso
+<em>Phoenix</em>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="sintaxis-básica"><a class="anchor" href="#sintaxis-básica"></a>Sintaxis Básica</h2>
+<h2 id="manifest"><a class="anchor" href="#manifest"></a>Manifest</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>El archivo <a href="https://developer.mozilla.org/es/docs/Mozilla/Add-ons/WebExtensions/manifest.json">manifest.json</a>
+es el encargado de configurar la <em>PWA</em>, por ejemplo su
+nombre, íconos, colores, entre otras configuraciones. Para esto se debe seguir un formato
+específico y tenerlo en la misma ubicación del archivo <code>index.html</code>.</p>
+</div>
+<div class="paragraph">
+<p>Su extensión oficial es <code>.webmanifest</code>,
+por lo que podrías nombrar tu manifiesto como <code>app.webmanifest</code>.</p>
+</div>
+<div class="paragraph">
+<p>Si bien la extensión recomendada es <code>.webmanifest</code>,
+cualquier nombre de archivo funcionará siempre y cuando se entregue con el tipo de
+contenido <code>application/manifest+json</code> o con otro tipo de contenido válido para JSON,
+como <code>text/json</code>. Por lo tanto, muchas <em>PWA</em>, en especial las más antiguas, usan <code>manifest.json</code>.</p>
+</div>
+<div class="paragraph">
+<p>Existen herramientas para facilitar la creación de un manifest como: <a href="https://progressier.com/pwa-manifest-generator" class="bare">https://progressier.com/pwa-manifest-generator</a></p>
+</div>
 <div class="listingblock">
+<div class="title">Ejemplo de manifest.json</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">(() =&gt; {
-    // Variables
-    let mivar = 1313;
-
-    // Constantes
-    const constante = 42;
-    const funcion = () =&gt; 42;
-    const funcion2 = function(parametro) {
-        return parametro;
-    };
-
-    console.log(constante);
-    console.log(funcion());
-    console.log(funcion2(42))
-
-    // Objetos
-    const objeto = {
-        valor: "este es otro valor",
-        funcion: (parametro) =&gt; {
-            return parametro;
-        }
-    };
-
-    objeto.clave = "Una nueva clave";
-
-    console.log(JSON.stringify(objeto));
-
-    // Transformacion de un String Json a Objeto
-    const json = JSON.parse(`
-        {"clave": "este es un valor"}
-    `);
-
-    console.log(json["clave"]);
-
-    // Creación de una clase
-    class Clase {
-        metodo(parametro) {
-            return parametro;
-        }
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "icons": [
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "AppIcon.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "AppIcon_rounded.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "src": "AppIcon@2x.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
     }
-
-    console.log((new Clase()).metodo(42));
-})();</code></pre>
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "es-ES",
+  "name": "Mi App",
+  "short_name": "Mi App",
+  "description": "Descripción",
+  "start_url": "https://myweb.example",
+  "scope": "https://myweb.example/"
+}</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="función-auto-ejecutable"><a class="anchor" href="#función-auto-ejecutable"></a>Función Auto ejecutable</h2>
+<h2 id="referencias"><a class="anchor" href="#referencias"></a>Referencias</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Cuando necesitamos manipular el DOM desde la consola del navegador
-u otros contextos, se recomienda encapsular el código
-dentro de una función para evitar conflictos.</p>
-</div>
-<div class="paragraph">
-<p>Una forma de realizar esto es utilizar una <strong>Función Auto Ejecutable</strong> que
-es invocada automáticamente luego de ser definida.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">(() =&gt; {
- // Código
-})();</code></pre>
-</div>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://keepcoding.io/blog/funciones-autoejecutables-en-javascript/" class="bare">https://keepcoding.io/blog/funciones-autoejecutables-en-javascript/</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="funcional"><a class="anchor" href="#funcional"></a>Funcional</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">(() =&gt; {
-    [1, 2, 3].forEach(item =&gt; console.log(item + 1));
-
-    console.log(
-        [3, 4, 5].map(item =&gt; item + 1)
-    );
-
-    console.log(
-        [6, 7, 8].reduce((acc, valor) =&gt; acc + valor, 0)
-    );
-
-    console.log(
-        [10, 11, 12].filter(number =&gt; number % 2 = 0)
-    );
-})();</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="manipulación-del-dom"><a class="anchor" href="#manipulación-del-dom"></a>Manipulación del DOM</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>El DOM puede ser manipulado al buscar elementos
-utilizando los atributos <code>id</code> y  <code>class</code> (entre otros) del HTML.</p>
-</div>
-<div class="paragraph">
-<p><strong>Ejemplo buscando por id</strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div id="mi-elemento"&gt;Cambiame&lt;/div&gt;</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">(() =&gt; {
-    const elemento = document.getElementById("mi-elemento");
-    elemento.innerHTML = '&lt;p&gt;Nuevo HTML&lt;/p&gt;';
-})();</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Ejemplo buscando por tipo de elemento</strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div id="imagenes"&gt;
-    &lt;img class="imagen" src="https://place-hold.it/300x200"&gt;
-    &lt;img class="imagen" src="https://place-hold.it/300x300"&gt;
-&lt;/div&gt;</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">(() =&gt; {
-    const elementos = document.getElementsByTagName("img");
-    Array.from(elementos).forEach(elemento =&gt; {
-       elemento.src = "https://place-hold.it/400x400"
-    });
-})();</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://developer.mozilla.org/es/docs/Web/API/Document/getElementById" class="bare">https://developer.mozilla.org/es/docs/Web/API/Document/getElementById</a></p>
-</li>
-<li>
-<p><a href="https://developer.mozilla.org/es/docs/Web/API/Document/getElementsByClassName" class="bare">https://developer.mozilla.org/es/docs/Web/API/Document/getElementsByClassName</a></p>
-</li>
-<li>
-<p><a href="https://developer.mozilla.org/es/docs/Web/API/Document/getElementsByTagName" class="bare">https://developer.mozilla.org/es/docs/Web/API/Document/getElementsByTagName</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="inspector-del-navegador"><a class="anchor" href="#inspector-del-navegador"></a>Inspector del Navegador</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Inspeccionar elementos es una característica de los navegadores web que permite ver y editar el código fuente de un sitio web, incluidos sus archivos HTML, CSS, JavaScript y multimedia. Cuando modificas el código fuente con la herramienta de inspección, los cambios se muestran en vivo dentro de la ventana del navegador.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/open_the_inspector/index.html" class="bare">https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/open_the_inspector/index.html</a></p>
+<p><a href="https://web.dev/learn/pwa/web-app-manifest?hl=es-419" class="bare">https://web.dev/learn/pwa/web-app-manifest?hl=es-419</a></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../html/chapter.html">HTML, CSS y GIT</a></span>
-  <span class="next"><a href="../elixir/elixir.html">El Lenguaje Elixir</a></span>
+  <span class="prev"><a href="chapter.html">Aplicaciones Móviles</a></span>
+  <span class="next"><a href="../devops/devenvs.html">Ambientes de Desarrollo</a></span>
 </nav>
 </article>
   </div>

@@ -198,6 +198,9 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/pwa.html">Progresive Web Apps</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -306,9 +309,16 @@ y sirven para simplificar tareas comunes y recurrentes como crear recursos.</p>
 <div class="paragraph">
 <p>La tabla a crear es la siguiente:</p>
 </div>
-<div class="imageblock kroki">
+<div class="listingblock kroki-error">
 <div class="content">
-<img src="_images/diag-0c0cacf977b2574b58d8c657d73b91b2339f6b60.svg" alt="Diagram">
+<pre>Table quotes {
+  id integer [primary key]
+  quote text
+  author string
+  source string
+  inserted_at timestamp
+  updated_at timestamp
+}</pre>
 </div>
 </div>
 <div class="listingblock">
