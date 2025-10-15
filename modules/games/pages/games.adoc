@@ -38,10 +38,14 @@ incluyendo Windows, macOS, Linux, Android y Raspberry Pi.
 
 - Interfaz de línea de comandos: Permite ejecutar comandos para gestionar los proyectos directamente desde el entorno.
 
+El siguiente es una introducción a _TIC-80_
+
 .Introducción a TIC-80
 ++++
 <iframe width="100%" height="515" src="https://www.youtube.com/embed/Pw1AXeVfZW8?si=vOyejE48inoEkZIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ++++
+
+Y acá cómo crear un clon del juego _Pong_.
 
 .Pong en TIC-80
 ++++
