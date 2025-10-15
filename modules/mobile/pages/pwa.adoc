@@ -27,7 +27,7 @@ de tecnologías solamente disponibles para las aplicaciones nativas.
 
 == Framework7
 
-https://framework7.io/[Framework7] es una de las alternativas más populares para crear _PWA_, ya que a diferencia
+https://framework7.io/[Framework7] era una de las alternativas más populares para crear _PWA_, ya que a diferencia
 de https://onsen.io/[Onsen], https://ionicframework.com/[Ionic], https://nativescript.org/[NativeScript] o https://reactnative.dev/[ReactNative] 
 que son pensados como una aplicación completa, _Framework7_ es simplemente una serie de 
 componentes de _Javascript_, _HTML_ y _CSS_ que permiten elaborar una aplicación web con la experiencia de usuario
@@ -41,6 +41,19 @@ _Framework7_ cuenta con dos versiones. La primera es la versión completa con to
 como el "router" y la versión ligera (lite) que solo cuenta con lo básico y los demás componentes 
 como el "router" son proporcionados por otro framework de frontend como React, Vue, Svelte o incluso
 _Phoenix_.
+
+Sin embargo _Framework7_ no ha sido actualizado en un tiempo. La última versión fue liberada el https://github.com/framework7io/framework7/releases/tag/v8.3.2[2024]
+y actualmente presenta algunos bugs con los nuevos modelos de dispositivos. Todavía puede ser usado
+para prototipos rápidos, pero es mejor optar por opciones más modernas.
+
+En el desarrollo de aplicaciones móviles, contar con el framework adecuado puede marcar la 
+diferencia. Existen muchas otras opciones 
+disponibles que podrían adaptarse mejor a las necesidades del proyecto.
+
+*Alternativas*
+
+- https://github.com/konstaui/konsta[KonstaUI]: Por los creadores de _Framework7_, son componentes basados en _Tailwind_ pensados para la navegación móvil.
+- https://github.com/tabler/tabler[Tabler]: Un dashboard hecho en Bootstrap para las aplicaciones administrativas.
 
 == Manifest
 
