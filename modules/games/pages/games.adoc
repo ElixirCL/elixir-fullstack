@@ -1,0 +1,49 @@
+= Videojuegos
+
+Los videojuegos son una parte muy importante de la industria tecnológica
+y _Elixir_/_Erlang_ tienen grandes capacidades para elaborar backends
+para los servidores de los juegos.
+
+En este capítulo se verá la creación de un videojuego simple con https://github.com/nesbox/TIC-80[TIC-80]
+y luego será compilado para Web, Android e iOS, como forma de comprender
+mejor este aspecto de la industria y cómo se aplica el proceso de compilación
+multiplataforma.
+
+== TIC-80
+
+https://github.com/nesbox/TIC-80[TIC-80] es una computadora de fantasía gratuita y de código abierto que simula un 
+sistema de 8 bits de la década de 1980, diseñada para crear, jugar y compartir microjuegos. 
+Incluye editores integrados para código, gráficos, mapas y sonido, y soporta múltiples 
+lenguajes como Lua y JavaScript (entre otros).
+
+*Características principales*
+
+- Computadora de fantasía: Emula un hardware de 8 bits con limitaciones como una paleta de 16 colores, 
+una resolución de _240x136_ píxeles y sonido de 4 canales.
+
+- Herramientas integradas: Ofrece editores para desarrollar juegos de manera integral.
+
+- Código: Editores para escribir el código del juego. Se pueden usar lenguajes como Lua, JavaScript, Lisp, Python, Ruby, Wren, entre otros.
+
+- Gráficos: Un editor de sprites para crear elementos visuales.
+
+- Mapas: Un editor de mapas para diseñar los niveles.
+
+- Sonido: Herramientas para crear música y efectos de sonido.
+
+- Código abierto: Es gratuita y de código abierto, lo que permite a los usuarios crear y modificar juegos libremente.
+
+- Portabilidad: Los juegos creados se pueden exportar como "cartuchos" y ejecutarse en diferentes plataformas, 
+incluyendo Windows, macOS, Linux, Android y Raspberry Pi.
+
+- Interfaz de línea de comandos: Permite ejecutar comandos para gestionar los proyectos directamente desde el entorno.
+
+.Introducción a TIC-80
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/Pw1AXeVfZW8?si=vOyejE48inoEkZIP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
+
+.Pong en TIC-80
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/vktZRMRSWns?si=79Hb3Kr6UqP8gbJb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++

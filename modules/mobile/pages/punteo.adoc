@@ -1,7 +1,7 @@
-== Aplicaciones Móviles
+// == Aplicaciones Móviles
 
-- Ecosistema Móvil
-- Tecnologías para crear Apps Móviles
-- Precios y valores
-- ¿Qué usar Android o iOS?
-- ¿Cómo crear una app Android?.
+// - Ecosistema Móvil
+// - Tecnologías para crear Apps Móviles
+// - Precios y valores
+// - ¿Qué usar Android o iOS?
+// - ¿Cómo crear una app Android?.

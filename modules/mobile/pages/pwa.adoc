@@ -96,6 +96,8 @@ Existen herramientas para facilitar la creación de un manifest como: https://pr
 }
 ----
 
+// TODO: Tutorial de creación de una app simple con Framework7
+
 == Referencias
 
 - https://web.dev/learn/pwa/web-app-manifest?hl=es-419

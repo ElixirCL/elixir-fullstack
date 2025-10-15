@@ -20,4 +20,5 @@ nav:
   - modules/javascript/nav.adoc
   - modules/elixir/nav.adoc
   - modules/mobile/nav.adoc
+  - modules/games/nav.adoc
   - modules/devops/nav.adoc

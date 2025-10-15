@@ -1,0 +1,2 @@
+.Videojuegos
+* xref:games.adoc[]
