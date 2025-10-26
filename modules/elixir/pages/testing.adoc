@@ -520,6 +520,16 @@ lv
 |> render_submit()
 ----
 
+=== Más funciones de testing para _LiveView_
+
+_LiveView_ no está solamente asociado a crear pruebas para formularios, 
+se puede probar completamente todo el sitio. 
+En la siguiente fotografía se muestra un ejemplo de prueba aún más completo. 
+
+.https://www.linkedin.com/posts/fredrik-teschke_elixirlang-activity-7387032626471055360-Osrw?utm_source=share&utm_medium=member_desktop&rcm=ACoAACb3tRAB-yqMRjw8NsO_Gbub8fs4WXDtXtg[por Fredrik Teschke]
+image::liveviewtest.png[]
+
+
 == Pasos Finales
 
 Se ha realizado una aplicación completa con _Phoenix_ y _LiveView_ 

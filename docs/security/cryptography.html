@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Documento de Requerimiento de Producto (Product Requirement Document - PRD) :: Elixir Full-Stack</title>
-    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/swe/prd.html">
-    <link rel="prev" href="adr.html">
-    <link rel="next" href="wow.html">
+    <title>Criptografía :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/security/cryptography.html">
+    <link rel="prev" href="security.html">
+    <link rel="next" href="../html/chapter.html">
     <meta name="generator" content="Antora 3.1.12">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -94,25 +94,25 @@
     <span class="nav-text">Ingeniería en Software</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="stages.html">Etapas del Desarrollo de un Producto de Software</a>
+    <a class="nav-link" href="../swe/stages.html">Etapas del Desarrollo de un Producto de Software</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="patterns.html">Patrones y Arquitecturas de Software</a>
+    <a class="nav-link" href="../swe/patterns.html">Patrones y Arquitecturas de Software</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="adr.html">Arquitecture Decision Records</a>
-  </li>
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+    <a class="nav-link" href="../swe/adr.html">Arquitecture Decision Records</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="wow.html">Way of Work</a>
+    <a class="nav-link" href="../swe/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+    <a class="nav-link" href="../swe/wow.html">Way of Work</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+    <a class="nav-link" href="../swe/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
   </li>
 </ul>
   </li>
@@ -157,10 +157,10 @@
     <span class="nav-text">Seguridad</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../security/security.html">Seguridad de las Aplicaciones</a>
+    <a class="nav-link" href="security.html">Seguridad de las Aplicaciones</a>
   </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../security/cryptography.html">Criptografía</a>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="cryptography.html">Criptografía</a>
   </li>
 </ul>
   </li>
@@ -271,151 +271,125 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Elixir Full-Stack</a></li>
-    <li>Ingeniería en Software</li>
-    <li><a href="prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a></li>
+    <li>Seguridad</li>
+    <li><a href="cryptography.html">Criptografía</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="file:///antora/./modules/swe/pages/prd.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="file:///antora/./modules/security/pages/cryptography.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</h1>
+<h1 class="page">Criptografía</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Es un documento que brinda contexto sobre las condiciones necesarias antes de elaborar un producto o solución.</p>
+<p>La criptografía juega un papel fundamental en la seguridad de aplicaciones web y móviles.
+Permite transmitir información de forma que solo pueda ser vista y comprendida
+por el emisor y el receptor designado, ayudando a que terceros no puedan visualizar
+o adulterar el contenido original.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hash"><a class="anchor" href="#hash"></a>Hash</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El hash es una forma de codificar un dato para detectar cualquier cambio de forma sencilla.
+El menor cambio mostrará una secuencia de caracteres totalmente distinta.
+El hash tiene la característica que es solo de una vía, un contenido no puede volver a
+su versión original si pasa por una función de hash.</p>
 </div>
 <div class="paragraph">
-<p>La siguiente es una plantilla que permite elaborar un <em>PRD</em> (<em>Product Requirement Document</em>).</p>
+<p>Los hash son usados, por ejemplo, por las criptomonedas
+al momento de verificar los bloques utilizando técnicas
+como el <a href="https://es.wikipedia.org/wiki/%C3%81rbol_de_Merkle">Árbol de Merkle</a>.</p>
+</div>
+<div class="paragraph">
+<p>También son usados para verificar si un archivo ha sido descargado
+correctamente y no ha sido adulterado al verificar su hash.</p>
+</div>
+<div class="sect2">
+<h3 id="md5"><a class="anchor" href="#md5"></a>MD5</h3>
+<div class="paragraph">
+<p><a href="https://es.wikipedia.org/wiki/MD5">MD5</a> es un hash creado en 1991 que fue muy popular
+en las aplicaciones webs de los 90s y principios del 2000. Hoy en día no es recomendado
+para nada más que verificar la integridad de datos. Ya que con el avance tecnológico
+el poder de cómputo avanza hasta lograr quebrar este algoritmo, provocando que pueda
+ser descubierto el dato original (usando tablas de palabras) o existan colisiones,
+es decir dos o más datos con el mismo hash.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="contexto"><a class="anchor" href="#contexto"></a>Contexto</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Problema</strong>: ¿Qué problema o necesidad de cliente y negocio se debe resolver?.</p>
-</li>
-<li>
-<p><strong>Hipótesis y supuestos</strong>: ¿Qué se espera resolver?, ¿Cuáles son los supuestos en los que la solución se basa?. ¿Qué es el proyecto?, ¿Qué no es el proyecto?, ¿Qué hace el proyecto?, ¿Qué no hace el proyecto?.</p>
-</li>
-<li>
-<p><strong>Objetivos</strong>: ¿Qué se desea lograr?, ¿Cuáles son los beneficios obtenidos una vez implementada la solución?.</p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="sha"><a class="anchor" href="#sha"></a>SHA</h3>
+<div class="paragraph">
+<p>Es un hash muy popular originado en 1993, su versión <a href="https://es.wikipedia.org/wiki/Secure_Hash_Algorithm">SHA-256</a> es utilizado por criptomonedas
+como <a href="https://es.wikipedia.org/wiki/Bitcoin">Bitcoin</a> para verificar los bloques del blockchain.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="bcrypt"><a class="anchor" href="#bcrypt"></a>Bcrypt</h3>
+<div class="paragraph">
+<p><a href="https://en.wikipedia.org/wiki/Bcrypt">Bcrypt</a> es un hash originado en 1999, recomendado para ocultar contraseñas en las bases de datos.
+Tiene la característica de ser resistente a ataques de tablas de palabras (rainbow tables) y fuerza bruta, por lo que no se ve afectado
+por el aumento del poder de cómputo en el tiempo.</p>
 </div>
-<div class="sect1">
-<h2 id="métricas-e-impacto"><a class="anchor" href="#métricas-e-impacto"></a>Métricas e impacto</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Metas y KPI</strong>: ¿Cómo se mide el éxito?, ¿Cuál es el valor esperado que generará la funcionalidad cuando esté disponible a clientes y usuarios?, ¿De dónde se obtiene la información y cómo se hace disponible?.</p>
-</li>
-<li>
-<p><strong>DND metrics</strong>: ¿Qué indicadores no se debe afectar negativamente? (Do not disturb metrics).</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="usuarios-y-clientes"><a class="anchor" href="#usuarios-y-clientes"></a>Usuarios y clientes</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>User personas y storybords</strong>: ¿Quiénes son los usuarios?, ¿Quiénes no son los usuarios?, ¿Qué comportamiento tienen?. Usar las herramientas de "personas" e historias de usuario o <em>storyboards</em> para detallar.</p>
-</li>
-<li>
-<p><strong>Flujos de negocio y operacionales</strong>: ¿Cuáles son los procesos involucrados o que son dependencia de la funcionalidad?, ¿Cuáles son las reglas de negocio y operacionales?.</p>
-</li>
-<li>
-<p><strong>Info de investigación</strong>: ¿Qué conocimiento (<em>insights</em>) se tiene de los clientes?.</p>
-</li>
-</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="solución"><a class="anchor" href="#solución"></a>Solución</h2>
+<h2 id="base64"><a class="anchor" href="#base64"></a>Base64</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Resumen de la solución</strong>: ¿Cómo se resuelve la necesidad de clientes y/o negocio?, ¿Cuál es el alcance de la solución?.</p>
-</li>
-<li>
-<p><strong>Requisitos funcionales</strong>: ¿Qué funcionalidades específicas debe tener la solución tecnológica para satisfacer las necesidades descritas en el contexto y objetivos?. Incluir comportamientos, operaciones y tareas que la solución debe poder realizar.</p>
-</li>
-<li>
-<p><strong>Restricciones y dependencias</strong>: Limitaciones bajo las cuales debe operar la solución, incluyendo tecnologías existentes, regulaciones y dependencias con otros sitemas o proyectos. ¿Qué restricciones presupuestarias, legales u anexas tiene la solución u organización?.</p>
-</li>
-<li>
-<p><strong>Criterios de aceptación</strong>: Listado de condiciones que la solución debe cumplir para ser considerada completa y lista para su paso a producción, desde la perspectiva del usuario final y del negocio. Estas pruebas son la base del proceso de aceptación (User Acceptance Testing - UAT).</p>
-</li>
-<li>
-<p><strong>Diagramas de flujo, secuencia, estado y C4, entre otros</strong>: Representación de procesos de usuario, operación y negocio implementados en la solución.</p>
-</li>
-<li>
-<p><strong>Recursos (wireframes, diseño, interacciones, UI)</strong>: Material de referencia de <em>UX</em> que definen la apariencia y la interacción del usuario con la solución, como pantallas, <em>wireframes</em>, prototipos, guías de estilo y especificaciones de diseño.</p>
-</li>
-<li>
-<p><strong>Casos borde</strong>: ¿Existe escenarios poco comunes que deben ser considerados en el diseño y pruebas para asegurar una experiencia de usuario completa y sin errores?.</p>
-</li>
-<li>
-<p><strong>Dependencias de negocio</strong>: Decisiones, aprobaciones, coordinaciones, apoyo e iniciativas de otras áreas necesarias para el éxito de la solución.</p>
-</li>
-<li>
-<p><strong>Dependencias técnicas</strong>: Productos, plataformas, o servicios externos necesarios para el desarrollo, implementación y operación del producto.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><a href="https://datatracker.ietf.org/doc/html/rfc4648">Base64</a> es una forma de codificar binario en texto plano. Sirve por ejemplo para incrustrar imágenes en sitios web
+dentro del mismo archivo html.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO/Mn/m8R+h6rYSUb3ekokRY6f/YukArN979jcW+V/S8g0eT/N3VN3kTqWbQ428m9/8k0P/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4/MNCFwg59oWVeYhkzgN/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW/n+uMPFiRwHB2I7ih8ciHFxIkd/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3/zMDz8usXC3ddaHBj1GHj/As08fwTS7Kt1HBTmyN29vdwAw+/wbwLVOJ3uAD1wi/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII="
+&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Hay que tener en cuenta de que algunos caracteres de Base64 no son compatibles con las URL,
+por lo que se debe ver una variante que no tenga los caracteres como <code>/</code> si se usará para enviar
+datos por url (URL Safe Base64).</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="puesta-en-marcha-y-lanzamiento"><a class="anchor" href="#puesta-en-marcha-y-lanzamiento"></a>Puesta en marcha y lanzamiento</h2>
+<h2 id="hmac"><a class="anchor" href="#hmac"></a>HMAC</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Estratégia de lanzamiento (release)</strong>: Plan de cómo y cuándo se hará disponible la solución o funcionalidad a los usuarios, incluyendo fases de lanzamiento, comunicación y alineamiento, y manejo de versiones existentes o anteriores.</p>
-</li>
-<li>
-<p><strong>Áreas impactadas para coodinación</strong>: Listado de equipos, áreas, o procesos de negocio que necesitan ser involucrados o informados sobre el lanzamiento para asegurar una puesta en marcha correcta, asegurando la continuidad operacional.</p>
-</li>
-<li>
-<p><strong>Fechas y estimados</strong>: Planificación que detalla hitos clave, fechas de entrega esperada y estimaciones a grandes rasgos y generales del esfuerzo necesario para completar el desarrollo.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><a href="https://en.wikipedia.org/wiki/HMAC">HMAC</a> son las siglas de Código de Autenticación de Mensajes basado en Hash
+(por sus siglas en inglés, Hash-based Message Authentication Code). Se trata de un método de
+seguridad que utiliza una función hash criptográfica y una clave secreta compartida para verificar
+la integridad y la autenticidad de un mensaje. Esto significa que garantiza que el mensaje
+no ha sido alterado durante la transmisión y que proviene de la fuente esperada.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="preguntas-y-respuestas"><a class="anchor" href="#preguntas-y-respuestas"></a>Preguntas y respuestas</h2>
+<h2 id="diffie-hellman"><a class="anchor" href="#diffie-hellman"></a>Diffie-Hellman</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Preguntas abiertas</strong>: Lista de interrogantes o definiciones pendientes para el avance del desarrollo.</p>
-</li>
-<li>
-<p><strong>Preguntas frecuentes (FAQ)</strong>: Preguntas frecuentes acerca de contexto de la iniciativa, reglas de negocio, detalles de la solución, entre otras.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>El intercambio de claves <a href="https://es.wikipedia.org/wiki/Intercambio_de_claves_de_Diffie-Hellman">Diffie-Hellman</a> es un protocolo criptográfico que permite a dos
+partes crear de forma segura una clave secreta compartida sobre un canal público e inseguro,
+sin que esa clave viaje nunca por la red. Este método se basa en la matemática de las funciones de un solo sentido y es fundamental
+para el cifrado de comunicaciones, ya que las claves resultantes se usan para asegurar la
+comunicación posterior.</p>
+</div>
+<div class="paragraph">
+<p>Es muy común verlo utilizado para verificar conexiones ssh y generar llaves únicas
+para las criptomonedas.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="adr.html">Arquitecture Decision Records</a></span>
-  <span class="next"><a href="wow.html">Way of Work</a></span>
+  <span class="prev"><a href="security.html">Seguridad de las Aplicaciones</a></span>
+  <span class="next"><a href="../html/chapter.html">HTML, CSS y GIT</a></span>
 </nav>
 </article>
   </div>
