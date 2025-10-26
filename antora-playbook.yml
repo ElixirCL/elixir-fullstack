@@ -5,13 +5,13 @@ site:
 
 content:
   sources:
-  - url: .
-    branches: HEAD
-    start_path: .
+    - url: .
+      branches: HEAD
+      start_path: .
 
 antora:
   extensions:
-    - require: '@antora/lunr-extension'
+    - require: "@antora/lunr-extension"
 
 asciidoc:
   extensions:
@@ -19,13 +19,13 @@ asciidoc:
     - asciidoctor-kroki
   attributes:
     kroki-fetch-diagram: true
-    experimental: ''
-    idprefix: ''
-    idseparator: '-'
-    page-pagination: ''
+    experimental: ""
+    idprefix: ""
+    idseparator: "-"
+    page-pagination: ""
     highlightjs-theme: monokai
-    highlightjs-languages: js, elixir, sql, yaml, html, css
-    
+    highlightjs-languages: js, elixir, sql, yaml, html, css, php
+
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable

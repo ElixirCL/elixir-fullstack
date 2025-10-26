@@ -1,0 +1,74 @@
+= Criptografía
+
+La criptografía juega un papel fundamental en la seguridad de aplicaciones web y móviles.
+Permite transmitir información de forma que solo pueda ser vista y comprendida
+por el emisor y el receptor designado, ayudando a que terceros no puedan visualizar
+o adulterar el contenido original.
+
+== Hash
+
+El hash es una forma de codificar un dato para detectar cualquier cambio de forma sencilla.
+El menor cambio mostrará una secuencia de caracteres totalmente distinta.
+El hash tiene la característica que es solo de una vía, un contenido no puede volver a
+su versión original si pasa por una función de hash.
+
+Los hash son usados, por ejemplo, por las criptomonedas 
+al momento de verificar los bloques utilizando técnicas
+como el https://es.wikipedia.org/wiki/%C3%81rbol_de_Merkle[Árbol de Merkle].
+
+También son usados para verificar si un archivo ha sido descargado
+correctamente y no ha sido adulterado al verificar su hash.
+
+=== MD5
+
+https://es.wikipedia.org/wiki/MD5[MD5] es un hash creado en 1991 que fue muy popular
+en las aplicaciones webs de los 90s y principios del 2000. Hoy en día no es recomendado
+para nada más que verificar la integridad de datos. Ya que con el avance tecnológico
+el poder de cómputo avanza hasta lograr quebrar este algoritmo, provocando que pueda
+ser descubierto el dato original (usando tablas de palabras) o existan colisiones, 
+es decir dos o más datos con el mismo hash.
+
+=== SHA
+
+Es un hash muy popular originado en 1993, su versión https://es.wikipedia.org/wiki/Secure_Hash_Algorithm[SHA-256] es utilizado por criptomonedas
+como https://es.wikipedia.org/wiki/Bitcoin[Bitcoin] para verificar los bloques del blockchain.
+
+=== Bcrypt
+
+https://en.wikipedia.org/wiki/Bcrypt[Bcrypt] es un hash originado en 1999, recomendado para ocultar contraseñas en las bases de datos.
+Tiene la característica de ser resistente a ataques de tablas de palabras (rainbow tables) y fuerza bruta, por lo que no se ve afectado
+por el aumento del poder de cómputo en el tiempo.
+
+== Base64
+
+https://datatracker.ietf.org/doc/html/rfc4648[Base64] es una forma de codificar binario en texto plano. Sirve por ejemplo para incrustrar imágenes en sitios web 
+dentro del mismo archivo html.
+
+[source, html]
+----
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO/Mn/m8R+h6rYSUb3ekokRY6f/YukArN979jcW+V/S8g0eT/N3VN3kTqWbQ428m9/8k0P/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4/MNCFwg59oWVeYhkzgN/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW/n+uMPFiRwHB2I7ih8ciHFxIkd/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3/zMDz8usXC3ddaHBj1GHj/As08fwTS7Kt1HBTmyN29vdwAw+/wbwLVOJ3uAD1wi/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII="
+>
+----
+
+Hay que tener en cuenta de que algunos caracteres de Base64 no son compatibles con las URL, 
+por lo que se debe ver una variante que no tenga los caracteres como `/` si se usará para enviar
+datos por url (URL Safe Base64).
+
+== HMAC
+
+https://en.wikipedia.org/wiki/HMAC[HMAC] son las siglas de Código de Autenticación de Mensajes basado en Hash 
+(por sus siglas en inglés, Hash-based Message Authentication Code). Se trata de un método de 
+seguridad que utiliza una función hash criptográfica y una clave secreta compartida para verificar 
+la integridad y la autenticidad de un mensaje. Esto significa que garantiza que el mensaje 
+no ha sido alterado durante la transmisión y que proviene de la fuente esperada. 
+
+== Diffie-Hellman
+
+El intercambio de claves https://es.wikipedia.org/wiki/Intercambio_de_claves_de_Diffie-Hellman[Diffie-Hellman] es un protocolo criptográfico que permite a dos 
+partes crear de forma segura una clave secreta compartida sobre un canal público e inseguro, 
+sin que esa clave viaje nunca por la red. Este método se basa en la matemática de las funciones de un solo sentido y es fundamental 
+para el cifrado de comunicaciones, ya que las claves resultantes se usan para asegurar la 
+comunicación posterior. 
+
+Es muy común verlo utilizado para verificar conexiones ssh y generar llaves únicas
+para las criptomonedas.

@@ -1,0 +1,167 @@
+= Seguridad de las Aplicaciones
+
+En el ciclo de desarrollo se debe resolver tempranamente los requerimientos de seguridad, regulaciones, cumplimiento y riesgos asociados. 
+Por lo que se deben considerar en las primeras etapas de planificación del proyecto. Es adecuado seguir las recomendaciones 
+de seguridad de la última versión del https://owasp.org/Top10/[Owasp Top 10].
+
+**Beneficios de considerar**
+
+- Reducir la probabilidad de una falla de seguridad y sus consecuencias, como pérdida de reputación comercial o multas.
+- Evitar fisuras que permitan liberar información delicada que pueden costar millones de dólares por incidente.
+
+Para mayor información se recomiendan los siguientes recursos:
+
+- https://github.com/mirego/elixir-security-advisories
+- https://softwarepatternslexicon.com/patterns-elixir/23/2/
+- https://hacksplaining.com/lessons
+- https://www.manning.com/books/grokking-web-application-security
+
+== Actores
+
+Entre los actores de la seguridad se encuentran principalmente tres y se diferencian
+con un "color de sombrero".
+
+=== Black Hat Hackers 
+
+Los hackers de sobrero negro. Son los actores maliosos, también conocidos como crackers. 
+Trabajan para fines no éticos y crean virus, troyanos, backdoors, keyloggers, entre otras
+herramientas para obtener beneficios económicos o mandar mensajes políticos. Son los criminales
+de la ciber seguridad. Algunos contratados por organizaciones criminales e individuos de baja fibra moral.
+
+=== Grey Hat Hackers
+
+Los hackers de sombrero gris son aquellos que intentan vulnerar los sistemas pero sin el conocimiento
+de las organizaciones, aunque pueden ofrecerlo sus descubrimientos a la organización o al mejor postor.
+Están en una zona gris donde depende de la moralidad de la persona en qué área moverse. Podrían
+ser actores contratados por el gobierno para realizar ataques de ciber guerra.
+
+=== White Hat Hackers
+
+Los hackers de sombrero blanco. Son investigadores de la ciber seguridad contratados por las empresas 
+para intentar vulnerar a los sistemas antes de que los actores maliciosos
+descubran vulnerabilidades. Utilizan las mismas herramientas y metodologías
+de los atacantes, pero siempre en pos de mejorar la seguridad de la organización
+para la cual trabajan.
+
+
+== Problemas de Seguridad Comunes 
+
+La seguridad es un tema amplio, por lo que se mostrará solo un pequeño punteo
+de los problemas más comunes que pueden aparecer en aplicaciones web y móviles.
+Se recomienda la lectura de libros especializados en el tema, como Grokking Web Application Security 
+para profundizar.
+
+=== XSS
+
+Los ataques de Cross Site Scripting (XSS) consisten en lograr subir un script ejecutable
+como _Javascript_ o _PHP_ al sitio web, debido a que los formularios no son adecuadamente protegidos, 
+validados ni verificados en el frontend o en el backend. Por lo que un atacante puede subir código ejecutable que permita
+obtener acceso a datos valiosos como las contraseñas, cookies o incluso acceso al servidor
+al instalar puertas traseras (backdoors) dentro del código ejecutable.
+
+=== SQLInjections
+
+Los ataques de SQLInjections son similares a los XSS, pero están más orientados a ejecutar
+consultas SQL y realizar operaciones para obtener la base de datos o dañar la información 
+almacenada.
+
+=== MITM
+
+El ataque Man in The Middle (Hombre en el medio). Consiste en escuchar las comunicaciones
+entre un dispositivo y el internet. Esto es posible con que el dispositivo se conecte a una red
+no segura o que este utilizando un proxy que desvié las comunicaciones al computador de un tercero 
+antes de llegar a internet. Normalmente las comunicaciones deben estar encriptadas con SSL pero 
+no todos los sitios web y aplicaciones están correctamente configuradas.
+
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/5au8NIucHYc?si=Xf1mKfFt2Mkq35QX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
+
+En las aplicaciones móviles para proteger de un MITM se utiliza la técnica de fijación de SSL o SSL Pinning
+el cual consiste en tener un certificado de SSL almacenado en la aplicación, por lo que siempre se podrá verificar 
+la autenticidad de un certificado y no podrá ser adulterado por un proxy atacante.
+
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/efIPpIYBNTc?si=16xShWVDzPIdYMBZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
+
+=== Dependency Chain Abuse
+
+El envenenamiento de las dependencias o abuso de la cadena de dependencias, consiste en que las dependencias de una aplicación son adulteradas por un tercero en la fuente 
+original. Por lo que es un ataque masivo a todas las aplicaciones que utilicen la dependencia.
+
+Esto ocurre por problemas de seguridad en el origen de las dependencias o por que los autores originales
+de la misma fueron atacados para robar sus contraseñas o dispositivos. 
+
+Para evitar estos ataques se debe estar pendiente de cualquier vulnerabilidad
+en los canales oficiales y seguir las recomendaciones de seguridad del framework 
+usado.
+
+https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-03-Dependency-Chain-Abuse[Más Info].
+
+=== Phishing
+
+Es el envío de emails o links que simulan ser una página oficial como un banco
+o tienda. Solicita a la persona datos privados usando formularios adulterados 
+con urls sospechosas similares a una página oficial.
+
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/GIxWzwxdH48?si=CHLsJwkylrEu5QPp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
+
+==== Developer Phishing
+
+Hay una nueva modalidad de ataque a los desarrolladores, sobre todo los que buscan trabajo
+de enviar un proyecto para ser mejorado dentro del contexto de reclutamiento para una posición de trabajo.
+Este proyecto tiene dependencias o código malicioso que puede robar contraseñas u otras cosas 
+importantes, como acceso a código de proyectos empresariales.
+
+Se recomienda siempre utilizar una máquina virtual con Linux (recomendanción Debian)
+antes de ejecutar cualquier código para un tercero, sobre todo 
+para cuando se tenga estos procesos de reclutamiento. Desconfiar
+si el reclutador es de países sospechosos o insiste en ejecutar el código antes de
+comenzar cualquier formalidad en el proceso de reclutamiento. 
+
+=== CSRF
+
+Cross Site Request Forgery (Falsificación de Peticiones de Sitio Cruzado)
+Los formularios pueden ser incrustrados en otras páginas que simulan ser la original.
+Si el sitio no protege sus formularios contra este ataque puede hacer que sus usuarios
+sean víctima de ataques _MITM_ o clonación de datos, también el sitio puede ser 
+sobrepasado con envíos masivos de peticiones (DDoS) o utilización de recursos para envío de SPAM
+y otras prácticas nocivas.
+
+Los stacks tecnológicos actuales proveen protección contra este ataque al generar un token
+único que se incrusta en el formulario. Este token solo puede ser validado por el backend, 
+por lo que un atacante no podrá adulterar el formulario.
+
+El siguiente es un ejemplo utilizando el framework https://processwire.com/api/ref/session/c-s-r-f/[ProcessWire] de PHP.
+
+.frontend
+[source, php]
+----
+// Incluir en los campos del formulario
+<input type="hidden" name="token" value="<?php echo $session->CSRF->renderInput(); ?>">
+----
+
+.backend
+[source, php]
+----
+// verificar si el token es válido
+if($session->CSRF->hasValidToken()) {
+  // se puede continuar
+} else {
+  // el formulario es sospechoso
+  throw new WireException('CSRF check failed!');
+}
+----
+
+=== Social Engineering
+
+Es la práctica de convencer a personas para que liberen información privada 
+a través de engaños o manipulación emocional. Es una técnica usada normalmente
+por estafadores de teléfono para acceder a dineros o claves de tarjeta de crédito.
+
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/UBaVek2oTtc?si=eFQK2wcan7KTnRdf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++

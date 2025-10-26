@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Seguridad de las Aplicaciones :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/security/security.html">
+    <link rel="prev" href="../http/chapter.html">
+    <link rel="next" href="cryptography.html">
+    <meta name="generator" content="Antora 3.1.12">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ecosistema Tecnológico y Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/jobs.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/web.html">Ecosistema Web</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/llm.html">Large Language Models (LLM)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Seguridad</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="security.html">Seguridad de las Aplicaciones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="cryptography.html">Criptografía</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/elixir.html">El Lenguaje Elixir</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/apirest.html">REST: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/liveview.html">LiveView: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/testing.html">Testing: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../elixir/commands.html">Makefiles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/pwa.html">Progresive Web Apps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Videojuegos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../games/games.html">Videojuegos</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/devenvs.html">Ambientes de Desarrollo</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Seguridad</li>
+    <li><a href="security.html">Seguridad de las Aplicaciones</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/security/pages/security.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Seguridad de las Aplicaciones</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En el ciclo de desarrollo se debe resolver tempranamente los requerimientos de seguridad, regulaciones, cumplimiento y riesgos asociados.
+Por lo que se deben considerar en las primeras etapas de planificación del proyecto. Es adecuado seguir las recomendaciones
+de seguridad de la última versión del <a href="https://owasp.org/Top10/">Owasp Top 10</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Beneficios de considerar</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reducir la probabilidad de una falla de seguridad y sus consecuencias, como pérdida de reputación comercial o multas.</p>
+</li>
+<li>
+<p>Evitar fisuras que permitan liberar información delicada que pueden costar millones de dólares por incidente.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Para mayor información se recomiendan los siguientes recursos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/mirego/elixir-security-advisories" class="bare">https://github.com/mirego/elixir-security-advisories</a></p>
+</li>
+<li>
+<p><a href="https://softwarepatternslexicon.com/patterns-elixir/23/2/" class="bare">https://softwarepatternslexicon.com/patterns-elixir/23/2/</a></p>
+</li>
+<li>
+<p><a href="https://hacksplaining.com/lessons" class="bare">https://hacksplaining.com/lessons</a></p>
+</li>
+<li>
+<p><a href="https://www.manning.com/books/grokking-web-application-security" class="bare">https://www.manning.com/books/grokking-web-application-security</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="actores"><a class="anchor" href="#actores"></a>Actores</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Entre los actores de la seguridad se encuentran principalmente tres y se diferencian
+con un "color de sombrero".</p>
+</div>
+<div class="sect2">
+<h3 id="black-hat-hackers"><a class="anchor" href="#black-hat-hackers"></a>Black Hat Hackers</h3>
+<div class="paragraph">
+<p>Los hackers de sobrero negro. Son los actores maliosos, también conocidos como crackers.
+Trabajan para fines no éticos y crean virus, troyanos, backdoors, keyloggers, entre otras
+herramientas para obtener beneficios económicos o mandar mensajes políticos. Son los criminales
+de la ciber seguridad. Algunos contratados por organizaciones criminales e individuos de baja fibra moral.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="grey-hat-hackers"><a class="anchor" href="#grey-hat-hackers"></a>Grey Hat Hackers</h3>
+<div class="paragraph">
+<p>Los hackers de sombrero gris son aquellos que intentan vulnerar los sistemas pero sin el conocimiento
+de las organizaciones, aunque pueden ofrecerlo sus descubrimientos a la organización o al mejor postor.
+Están en una zona gris donde depende de la moralidad de la persona en qué área moverse. Podrían
+ser actores contratados por el gobierno para realizar ataques de ciber guerra.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="white-hat-hackers"><a class="anchor" href="#white-hat-hackers"></a>White Hat Hackers</h3>
+<div class="paragraph">
+<p>Los hackers de sombrero blanco. Son investigadores de la ciber seguridad contratados por las empresas
+para intentar vulnerar a los sistemas antes de que los actores maliciosos
+descubran vulnerabilidades. Utilizan las mismas herramientas y metodologías
+de los atacantes, pero siempre en pos de mejorar la seguridad de la organización
+para la cual trabajan.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="problemas-de-seguridad-comunes"><a class="anchor" href="#problemas-de-seguridad-comunes"></a>Problemas de Seguridad Comunes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La seguridad es un tema amplio, por lo que se mostrará solo un pequeño punteo
+de los problemas más comunes que pueden aparecer en aplicaciones web y móviles.
+Se recomienda la lectura de libros especializados en el tema, como Grokking Web Application Security
+para profundizar.</p>
+</div>
+<div class="sect2">
+<h3 id="xss"><a class="anchor" href="#xss"></a>XSS</h3>
+<div class="paragraph">
+<p>Los ataques de Cross Site Scripting (XSS) consisten en lograr subir un script ejecutable
+como <em>Javascript</em> o <em>PHP</em> al sitio web, debido a que los formularios no son adecuadamente protegidos,
+validados ni verificados en el frontend o en el backend. Por lo que un atacante puede subir código ejecutable que permita
+obtener acceso a datos valiosos como las contraseñas, cookies o incluso acceso al servidor
+al instalar puertas traseras (backdoors) dentro del código ejecutable.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sqlinjections"><a class="anchor" href="#sqlinjections"></a>SQLInjections</h3>
+<div class="paragraph">
+<p>Los ataques de SQLInjections son similares a los XSS, pero están más orientados a ejecutar
+consultas SQL y realizar operaciones para obtener la base de datos o dañar la información
+almacenada.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mitm"><a class="anchor" href="#mitm"></a>MITM</h3>
+<div class="paragraph">
+<p>El ataque Man in The Middle (Hombre en el medio). Consiste en escuchar las comunicaciones
+entre un dispositivo y el internet. Esto es posible con que el dispositivo se conecte a una red
+no segura o que este utilizando un proxy que desvié las comunicaciones al computador de un tercero
+antes de llegar a internet. Normalmente las comunicaciones deben estar encriptadas con SSL pero
+no todos los sitios web y aplicaciones están correctamente configuradas.</p>
+</div>
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/5au8NIucHYc?si=Xf1mKfFt2Mkq35QX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="paragraph">
+<p>En las aplicaciones móviles para proteger de un MITM se utiliza la técnica de fijación de SSL o SSL Pinning
+el cual consiste en tener un certificado de SSL almacenado en la aplicación, por lo que siempre se podrá verificar
+la autenticidad de un certificado y no podrá ser adulterado por un proxy atacante.</p>
+</div>
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/efIPpIYBNTc?si=16xShWVDzPIdYMBZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="sect2">
+<h3 id="dependency-chain-abuse"><a class="anchor" href="#dependency-chain-abuse"></a>Dependency Chain Abuse</h3>
+<div class="paragraph">
+<p>El envenenamiento de las dependencias o abuso de la cadena de dependencias, consiste en que las dependencias de una aplicación son adulteradas por un tercero en la fuente
+original. Por lo que es un ataque masivo a todas las aplicaciones que utilicen la dependencia.</p>
+</div>
+<div class="paragraph">
+<p>Esto ocurre por problemas de seguridad en el origen de las dependencias o por que los autores originales
+de la misma fueron atacados para robar sus contraseñas o dispositivos.</p>
+</div>
+<div class="paragraph">
+<p>Para evitar estos ataques se debe estar pendiente de cualquier vulnerabilidad
+en los canales oficiales y seguir las recomendaciones de seguridad del framework
+usado.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-03-Dependency-Chain-Abuse">Más Info</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="phishing"><a class="anchor" href="#phishing"></a>Phishing</h3>
+<div class="paragraph">
+<p>Es el envío de emails o links que simulan ser una página oficial como un banco
+o tienda. Solicita a la persona datos privados usando formularios adulterados
+con urls sospechosas similares a una página oficial.</p>
+</div>
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/GIxWzwxdH48?si=CHLsJwkylrEu5QPp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="sect3">
+<h4 id="developer-phishing"><a class="anchor" href="#developer-phishing"></a>Developer Phishing</h4>
+<div class="paragraph">
+<p>Hay una nueva modalidad de ataque a los desarrolladores, sobre todo los que buscan trabajo
+de enviar un proyecto para ser mejorado dentro del contexto de reclutamiento para una posición de trabajo.
+Este proyecto tiene dependencias o código malicioso que puede robar contraseñas u otras cosas
+importantes, como acceso a código de proyectos empresariales.</p>
+</div>
+<div class="paragraph">
+<p>Se recomienda siempre utilizar una máquina virtual con Linux (recomendanción Debian)
+antes de ejecutar cualquier código para un tercero, sobre todo
+para cuando se tenga estos procesos de reclutamiento. Desconfiar
+si el reclutador es de países sospechosos o insiste en ejecutar el código antes de
+comenzar cualquier formalidad en el proceso de reclutamiento.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="csrf"><a class="anchor" href="#csrf"></a>CSRF</h3>
+<div class="paragraph">
+<p>Cross Site Request Forgery (Falsificación de Peticiones de Sitio Cruzado)
+Los formularios pueden ser incrustrados en otras páginas que simulan ser la original.
+Si el sitio no protege sus formularios contra este ataque puede hacer que sus usuarios
+sean víctima de ataques <em>MITM</em> o clonación de datos, también el sitio puede ser
+sobrepasado con envíos masivos de peticiones (DDoS) o utilización de recursos para envío de SPAM
+y otras prácticas nocivas.</p>
+</div>
+<div class="paragraph">
+<p>Los stacks tecnológicos actuales proveen protección contra este ataque al generar un token
+único que se incrusta en el formulario. Este token solo puede ser validado por el backend,
+por lo que un atacante no podrá adulterar el formulario.</p>
+</div>
+<div class="paragraph">
+<p>El siguiente es un ejemplo utilizando el framework <a href="https://processwire.com/api/ref/session/c-s-r-f/">ProcessWire</a> de PHP.</p>
+</div>
+<div class="listingblock">
+<div class="title">frontend</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php">// Incluir en los campos del formulario
+&lt;input type="hidden" name="token" value="&lt;?php echo $session-&gt;CSRF-&gt;renderInput(); ?&gt;"&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">backend</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php">// verificar si el token es válido
+if($session-&gt;CSRF-&gt;hasValidToken()) {
+  // se puede continuar
+} else {
+  // el formulario es sospechoso
+  throw new WireException('CSRF check failed!');
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="social-engineering"><a class="anchor" href="#social-engineering"></a>Social Engineering</h3>
+<div class="paragraph">
+<p>Es la práctica de convencer a personas para que liberen información privada
+a través de engaños o manipulación emocional. Es una técnica usada normalmente
+por estafadores de teléfono para acceder a dineros o claves de tarjeta de crédito.</p>
+</div>
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/UBaVek2oTtc?si=eFQK2wcan7KTnRdf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../http/chapter.html">HTTP, JSON y APIS</a></span>
+  <span class="next"><a href="cryptography.html">Criptografía</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>
