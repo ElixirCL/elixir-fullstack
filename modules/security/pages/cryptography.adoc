@@ -1,4 +1,4 @@
-= Criptografía
+= Criptografía y Autenticación
 
 La criptografía juega un papel fundamental en la seguridad de aplicaciones web y móviles.
 Permite transmitir información de forma que solo pueda ser vista y comprendida
@@ -31,13 +31,18 @@ es decir dos o más datos con el mismo hash.
 === SHA
 
 Es un hash muy popular originado en 1993, su versión https://es.wikipedia.org/wiki/Secure_Hash_Algorithm[SHA-256] es utilizado por criptomonedas
-como https://es.wikipedia.org/wiki/Bitcoin[Bitcoin] para verificar los bloques del blockchain.
+como https://es.wikipedia.org/wiki/Bitcoin[Bitcoin] para verificar los bloques del blockchain. Sin enmbargo no es recomendable para almacenar contraseñas, 
+debido a que el SHA está optimizado para velocidad.
 
 === Bcrypt
 
 https://en.wikipedia.org/wiki/Bcrypt[Bcrypt] es un hash originado en 1999, recomendado para ocultar contraseñas en las bases de datos.
 Tiene la característica de ser resistente a ataques de tablas de palabras (rainbow tables) y fuerza bruta, por lo que no se ve afectado
 por el aumento del poder de cómputo en el tiempo.
+
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/qgpsIBLvrGY?si=pi3LowPkLh2ke1Fe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
 
 == Base64
 
@@ -62,6 +67,54 @@ seguridad que utiliza una función hash criptográfica y una clave secreta compa
 la integridad y la autenticidad de un mensaje. Esto significa que garantiza que el mensaje 
 no ha sido alterado durante la transmisión y que proviene de la fuente esperada. 
 
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/wlSG3pEiQdc?si=9gNAtcQKr0ANO1al" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
+
+== JWT
+
+Un https://www.jwt.io/[JWT (JSON Web Token)] es un estándar abierto para transmitir de forma segura 
+información entre partes como un objeto JSON. Se utiliza comúnmente para la autenticación, 
+permitiendo que el servidor verifique la identidad del usuario en cada solicitud posterior 
+sin necesidad de consultar la base de datos repetidamente. Está compuesto por tres partes 
+separadas por puntos: un encabezado (metadata), una carga útil (claims de datos) y una 
+firma (para verificar la integridad del token). 
+
+.Ejemplode JWT
+[source, text]
+----
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30
+----
+
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/tWQobKFQLG0?si=T4MlUbz2_hsTanGM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
+
+== Sesiones, Tokens y Cookies
+
+Las cookies son
+pequeños archivos de texto que los sitios web envían a tu navegador y que se almacenan en 
+tu dispositivo (computadora, tablet, etc.). Se utilizan para que los sitios web "recuerden" 
+información sobre tu visita, como el inicio de sesión, preferencias y actividad, para ofrecerte una 
+experiencia más personalizada y útil. También pueden servir para registrar cómo interactúas 
+con un sitio, lo que permite a los desarrolladores y anunciantes entender mejor a los usuarios.
+
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/au6WgLSuwLw?si=FH0QYxetYjl1l9S0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
+
+Una alternativa a las cookies de sesión es el uso de tokens de autenticación, el cual 
+es más popular en situaciones de comunicación via _API REST_.
+
+Un token de autenticación es un dato que verifica la identidad de un usuario o dispositivo 
+para permitirle acceder a aplicaciones, servicios o APIs sin necesidad de ingresar credenciales 
+cada vez. Funciona como un "pase" digital que se genera después de un inicio de sesión 
+exitoso y se envía en solicitudes posteriores para mantener la sesión activa. Los tokens 
+pueden ser digitales, como los tokens web (JWT), o físicos, como los que se conectan a través 
+de USB o se reciben en un smartphone.
+
+- https://www.cloudflare.com/es-es/learning/privacy/what-are-cookies/
+
 == Diffie-Hellman
 
 El intercambio de claves https://es.wikipedia.org/wiki/Intercambio_de_claves_de_Diffie-Hellman[Diffie-Hellman] es un protocolo criptográfico que permite a dos 
@@ -71,4 +124,11 @@ para el cifrado de comunicaciones, ya que las claves resultantes se usan para as
 comunicación posterior. 
 
 Es muy común verlo utilizado para verificar conexiones ssh y generar llaves únicas
-para las criptomonedas.
+para las criptomonedas. En términos simples existe una llave privada que será solo conocida
+por el autor y una llave pública que será divulgada públicamente. Lo que se encripta con la llave privada 
+puede ser decodificado solamente por la llave pública, lo que se encripta con la llave pública puede solamente 
+ser decodificado por la llave privada. Esto se conoce como encriptación asimétrica.
+
+++++
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/NmM9HA2MQGI?si=lZMxirkg08DuA7Sm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+++++
