@@ -71,7 +71,23 @@ Las labores se deben realizar en los siguientes horarios:
 - Lunes a Jueves: 9:30 AM - 18:00 PM (Hora de Almuerzo 13:00 - 14:00 PM). 
 - Viernes: 9:30 AM - 13:00 PM.
 - Zona Horaria: Hora de Santiago, Chile (UTC - 3).
-- Nota: Las horas laborales es recomendable que se ajuste a cada país del colaborador (9 a 18 de cada país), siempre y cuando el colaborador tenga al menos 5 horas de solapamiento con America/Santiago para la coordinación con miembros de otras zonas horarias.
+- Nota: Las horas laborales es recomendable que se ajuste a cada zona horaria del colaborador (9 a 18 de cada país u zona horaria), siempre y cuando el colaborador tenga al menos 5 horas de solapamiento con America/Santiago para la coordinación con miembros de otras zonas horarias. Es decir, que hay un margen de al menos 3 horas de diferencia. Por lo que algunas zonas horarias que pueden ser compatibles son todas las que estén entre el rango entre UTC-0 a UTC-6.
+
+== Trabajo Remoto
+
+Gracias a una buena coordinación de zonas horarias y herramientas de comunicación asíncronas como Email, Zoom, Slack, Teams, Telegram, Meet, Signal u otro.
+El trabajo remoto es totalmente posible y recomendado. Obligar a las personas asistir a una oficina
+es un sin sentido retrógrado y limitante en una época de comunicación via internet para labores relacionadas a proyectos de software.
+Por lo que las alternativas "híbridas" (obligar asistir a la oficina un día a la semana o mes) solo son un gasto de tiempo y dinero para tanto colaboradores como la empresa.
+
+La empresa puede destinar un bono para permitir facilitar el trabajo remoto 
+que cubra gastos de internet o arriendo de espacios de coworking si el colaborador desea ir a un lugar físico distinto a su hogar.
+
+Es muy poco probable que una empresa pueda lograr un entorno personalizado
+para cada necesidad de cada colaborador, por lo que el dinero que se ahorra
+en no pagar oficinas para "trabajo" estandarizadas, puede destinarlo a realizar actividades 
+presenciales esporádicas (opcionales) o invertirlas en mejorar la calidad de vida de sus colaboradores (gym, salud, muebles ergonómicos)
+o facilitar equipos tecnológicos actualizados.
 
 == Sherpa
 
@@ -92,7 +108,8 @@ asignados a una labor de Sherpa para abordar situaciones de emergencia.
 === Días Viernes
 Los viernes no está permitido enviar cambios a producción (salvo excepciones autorizadas), esto con el fin de evitar “sorpresas” durante el fin de semana donde hay menor capacidad de respuesta.  Si en la semana se da el caso de un feriado del día viernes. No se podrá pasar a producción el día jueves. Es decir, el congelamiento de los pasos a producción depende de la proximidad del día hábil siguiente.
 Los días viernes se otorga la facilidad de salir temprano para permitir un mejor descanso de los colaboradores, así como brindar flexibilidad para realizar trámites como visitas al médico u otros menesteres. Esto permite una mejor organización de los calendarios ya que los colaboradores pedirán menor cantidad de días de ausencia justificada dentro de la semana, lo cual puede afectar al flujo del equipo.
-Días Feriados Nacionales
+
+=== Días Feriados Nacionales
 Se respetarán los días feriados nacionales del país de cada colaborador. Ya que es una oportunidad para reunirse con familiares y amigos que normalmente no se tiene tiempo en un día tradicional. Esto permite mejorar la moral y la calidad de vida de los colaboradores.
 
 Para evitar conflictos en los calendarios, la lista de feriados debe ser considerada en la calendarización respectiva y ser de público conocimiento por los miembros del equipo. Solamente las personas que habiten dentro del país podrán acceder a estos feriados. Como cualquier día feriado, se considera como un día trabajado. Si es necesario que el colaborador trabaje ese día de forma extraordinaria, se debe compensar como horas extras y coordinar previamente con el equipo, exceptuando casos de feriados “irrenunciables”.
@@ -149,9 +166,88 @@ Los tableros recomendados son:
 - Backlog: Tareas sin prioridad (bajo, normal, alto, crítico) y sin procesar (añadir detalles), del tipo investigaciones (spikes), fallos (bugs), nuevas características (features), documentación (docs)  o mejoras (refactoring).
 - Refinados: Tareas con prioridad ya procesadas (mayor cantidad de detalles), pero sin asignar una épica o persona responsable.
 - Por hacer (To-Do): Tareas pendientes que fueron asignadas a una épica, pero sin persona responsable.
-- Doing: Tareas en To-Do que fueron asignadas a una persona responsable dentro de una épica y dentro de un mes específico.
-- Testing: Tareas después de ser implementadas, pasan a pruebas para ser aceptadas. Si no son aceptadas pasan a estado Doing. Si son aceptadas pasan a estado Done.
-- Done: La tarea se ha entregado y aceptado. Este estado es final, si se descubren correcciones posteriores debe ser creada una nueva tarea que hace referencia a la anterior.
+- En Desarrollo (Doing): Tareas en To-Do que fueron asignadas a una persona responsable dentro de una épica y dentro de un mes específico.
+- Congeladas (Freeze): Tareas que debieron ser pausadas debido alguna emergencia o que requieren esperar el resultado de otra tarea. Se pausan para evitar afectar las métricas del equipo. Como alternativa a un nuevo tablero, también pueden ser marcadas con una bandera (flagged) y un comentario para la trazabilidad del ciclo de vida. Una vez descongeladas las tareas pueden pasar a Doing o Done (si es que no se continuará con la tarea).
+- En Revisión y Pruebas (Testing/In Review): Tareas después de ser implementadas, pasan a pruebas para ser aceptadas. Si no son aceptadas pasan a estado Doing o Freeze. Si son aceptadas pasan a estado Done.
+- Terminadas (Done): La tarea se ha entregado y aceptado. Este estado es final, si se descubren correcciones posteriores debe ser creada una nueva tarea que hace referencia a la anterior. Este estado puede tener categorías como: aceptado, wontfix, rechazado, reemplazado.
+
+==== Prioridad de Tareas
+
+- Bajo: La tarea no es prioritaria, puede ser asignada en cualquier momento según estime el equipo de desarrollo.
+- Normal: La tarea debe ser realizada dentro de este año _Q1_ al _Q4_ (12 meses).
+- Alto: La tarea debe ser realizada en el cuatrimestre actual (3 meses).
+- Crítico: La tarea debe ser realizada en el mes actual (1 mes).
+
+==== Tipos de Tareas
+
+- Spike: La tarea es una investigación para determinar o detallar algo. Normalmente asociados a tareas para descubrir por qué sucede alguna situación, encontrar soluciones técnicas o simplemente una forma de investigación general.
+- Bug: La tarea consiste en reparar un fallo encontrado, corregir un comportamiento erróneo, problemas de seguridad o cualquier reparación necesaria que se ha detectado durante el uso y funcionamiento del sistema.
+- Feature: La tarea consiste en añadir una nueva característica o funcionalidad a la solución. Algo que no existía previamente.
+- Docs: La tarea consiste en la elaboración de documentación tanto técnica como de nivel usuario, puede ser desde la creación de documentos como de la mejora de documentos existentes.
+- Refactoring: La tarea consiste en mejorar el funcionamiento de una característica ya existente. Se diferencia del bug por que el comportamiento se mantiene, por ejemplo mejoras de rendimiento, simplificación del código, reemplazo u eliminación de componentes.
+- Performance: Esta es una subcategoría opcional de refactoring, consiste en tareas relacionadas a mejorar el desempeño y rendimiento de la solución.
+- Tests: La tarea consiste en la elaboración de pruebas o implementación de herramientas de CI/CD o relacionados al aseguramiento de calidad.
+
+Para más detalles se puede consultar el estándar de https://www.conventionalcommits.org/en/v1.0.0/#specification[Conventional Commits].
+
+==== Categorías de Done
+
+El estado de "Done" o terminado puede tener distintas categorías.
+
+- Completed: La tarea fue completada exitosamente y cumplió todos los criterios de aceptación.
+- Wontdo: La tarea no fue realizada por alguna razón de negocio o técnica. Normalmente puede ocurrir cuando la tarea es reemplazada por otra, si es que se detectó que la tarea es demasiado grande como para cumplir el tamaño máximo de 2 semanas.
+
+==== Diagrama de Flujo
+
+El siguiente diagrama de flujo muestra como una tarea comienza su ciclo de vida desde el Backlog, 
+hasta su aceptación o rechazo final. Si una tarea está congelada más de dos semanas (10 días), 
+se recomienda rechazarla y crear una nueva que la reemplace para cuando se tenga el evento que la descongele.
+
+Tareas que se salgan del ciclo de dos semanas deben ser rechazadas y crear una nueva tarea que las reemplace, 
+con una estimación nueva, probablemente su dificultad fue superior a lo previsto y requieran una mayor granularidad.
+
+El principal objetivo es crear una cadencia dentro del equipo donde se pueda 
+conocer y mejorar la velocidad y las estimaciones de dificultad de forma progresiva, 
+predecible y sostenible en el tiempo.
+
+[plantuml]
+----
+@startuml
+!theme plain
+
+' Dirección del flujo (de arriba hacia abajo)
+top to bottom direction
+
+' Nodos
+A : Tareas en Backlog
+B : Tareas con Épica (Qn) y Prioridad Asignada
+C : Tareas de la Épica Actual con un Mes Asignado y Mayor Cantidad de Detalles
+D : Tareas en Estado To - Do
+E : Tareas Asignadas para la Semana para cada Colaborador
+F : En Desarrollo (Doing)
+G : Testing/In Review
+H : Done Completed
+I : Done Wontdo
+J : Esperando un Evento
+
+' Conexiones con etiquetas
+A --> B : Aseo de Backlog (Reunión mensual Epic Grooming)
+B --> C : Refinamiento (Reunión Semanal de Refinement)
+C --> D
+D --> E : Reunión Team Alignment
+E --> F : Selección de Tarea Asignada
+F --> G : Lista para Revisión
+G --> H : Aceptada
+G --> I : Rechazada
+G --> F : Necesita Correcciones
+F --> J : Tarea Congelada
+J --> F : Evento Ocurrió
+J --> I : 10 días congelada sin eventos
+G --> J : Tarea Congelada
+
+@enduml
+----
+
 
 === Pasos a producción
 
