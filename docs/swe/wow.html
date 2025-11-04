@@ -349,10 +349,10 @@ o facilitar equipos tecnológicos actualizados.</p>
 <h2 id="sherpa"><a class="anchor" href="#sherpa"></a>Sherpa</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Existe un rol de "Sherpa" que se encarga de monitorear los sistemas y resolver problemas en
+<p>Existe un rol de "<a href="https://es.wikipedia.org/wiki/Sherpa">Sherpa</a>" que se encarga de monitorear los sistemas y resolver problemas en
 horarios extraordinarios. Los cuales deben ser adecuadamente compensados según acuerdo entre
 empleador y Sherpa. Referencia: Algunas empresas pagan un bono de 80 USD por semana de sherpaje.
-La semana es distribuida entre un equipo de 4 personas.
+La carga laboral mensual es distribuida entre un equipo de 4 personas, es decir un Sherpa por semana.
 El rol de Sherpa es necesario para brindar un aseguramiento de la calidad de las soluciones,
 además de que puede asistir para resolver dudas o problemas de todos los sistemas que esté
 monitoreando. El Sherpa necesariamente debe ser de un miembro del equipo técnico capacitado para
@@ -877,6 +877,145 @@ predecible y sostenible en el tiempo.</p>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="estrategia-comunicacional"><a class="anchor" href="#estrategia-comunicacional"></a>Estrategia Comunicacional</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para permitir una mejor comunicación entre los miembros del equipo y todos los interesados.
+Se recomiendan los siguientes canales, los cuales pueden ser implementados dentro de cualquier
+plataforma de colaboración como Slack, Teams, Zulip, Mattermost, entre otras.</p>
+</div>
+<div class="paragraph">
+<p>Adicionalmente se recomienda la presencia de un chatbot que permita automatizar ciertas
+operaciones, tanto de gestión del canal como de facilidad para realizar tareas rutinarias.</p>
+</div>
+<div class="paragraph">
+<p>Para permitir mejor la separación de los canales, se definirán los siguientes conceptos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Proyecto: El proyecto es una solución compuesta por uno o más productos de software.</p>
+</li>
+<li>
+<p>Producto: El producto de software es un elemento específico como backend, frontend o varios subproductos combinados. Esto depende de la organización y el equipo de desarrollo que elementos son considerados como un producto.</p>
+</li>
+<li>
+<p>Artefacto: El artefacto es un componente del producto, puede ser código, documentación o herramienta asociada.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="canales-convesacionales"><a class="anchor" href="#canales-convesacionales"></a>Canales Convesacionales</h3>
+<div class="paragraph">
+<p>Los canales conversacionales son necesarios para ayudar en la coordinación de distintos colaboradores e interesados.
+Queda a criterio de la empresa determinar si se necesita otros adicionales, pero como mínimo se recomiendan los siguientes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Canal General del Proyecto (#&lt;proyecto&gt;): En este canal estarán los EM, los PO, los Stakeholders y si es viable también un representante directo del cliente.
+Este es un canal para discutir eventos relacionados al proyecto como hitos, reuniones o detalles necesarios que afecten a todos los equipos del proyecto.</p>
+</li>
+<li>
+<p>Canal de Todos los Equipos de Desarrollo del Proyecto (#&lt;proyecto&gt;-devs): Este canal estarán solamente los equipos asociados al desarrollo del proyecto, los stakeholders y los PO. Puede haber miembros de equipos distintos para backend, frontend, qa, etc.
+Normalmente utilizado para compartir novedades y lineamientos pertinentes a todos los equipos relacionados al proyecto en específico. Son todos los equipos asociados a varios productos. Por lo que también sirve como contacto principal entre los distintos equipos
+para solicitar información adicional.</p>
+</li>
+<li>
+<p>Canal de Un Equipo en Específico (#&lt;teamNN&gt;): Este canal solo estarán los miembros del equipo de desarrollo y su EM respectivo. Ideal para reuniones y coordinación interna.
+Se recomienda que cada equipo contribuya para tener un nombre común (Los Cóndores, Los Huemules, etc) y generar un sentido de identidad y pertenencia. Un equipo puede tener uno o más productos a su cargo y estar asociado a uno o más proyectos.</p>
+</li>
+<li>
+<p>Canal de un Producto Específico (#&lt;proyecto&gt;-&lt;producto&gt;): En este canal están presentes el PO, El EM y el Equipo de Desarollo asociado al producto.
+También puede ser usado como principal fuente de resolver dudas acerca del producto que miembros de otros equipos necesiten.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="canales-de-notificaciones"><a class="anchor" href="#canales-de-notificaciones"></a>Canales de Notificaciones</h3>
+<div class="paragraph">
+<p>Adicionalmente a los canales conversacionales donde los colaboradores interactúan entre sí,
+debe existir canales de notificaciones pensados para enviar alertas y mensajes asociados
+a un proyecto y producto en específico. Estas alertas son enviadas por los procesos de monitoreo y herramientas de CI/CD.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>#&lt;proyecto&gt;-&lt;producto&gt;-deployments: Notificaciones relacionadas a un producto específico. Puede ser un backend o un frontend o la combinación de varios subproductos en uno solo. La idea es recibir todo lo relativo a los despliegues (dev, staging, prod) y poder tener una trazabilidad de su estado o autorizar los pasos a producción.</p>
+</li>
+<li>
+<p>#&lt;proyecto&gt;-&lt;producto&gt;-warnings: Notificaciones relacionadas a un producto específico. Son advertencias que deben ser monitoreadas por el Sherpa asociada al estado de servidores o servicios. Por ejemplo puede salir un alerta de que el CPU esta pasando el 70% de saturación. No son críticas, pero se debe prestar atención.</p>
+</li>
+<li>
+<p>#&lt;proyecto&gt;-&lt;producto&gt;-alerts: Notificaciones Críticas. Se ha detectado un fallo que debe ser reparado lo más pronto posible. Se ha notificado al Sherpa y al EM.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="despliegues"><a class="anchor" href="#despliegues"></a>Despliegues</h4>
+<div class="paragraph">
+<p>Para comprender mejor los despliegues y sus notificaciones se definirán a continuación:</p>
+</div>
+<div class="sect4">
+<h5 id="local"><a class="anchor" href="#local"></a>local</h5>
+<div class="paragraph">
+<p>No se realiza despliegue, por lo que no hay notificaciones,
+ya que solo son cambios en el computador local del colaborador.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="dev"><a class="anchor" href="#dev"></a>dev</h5>
+<div class="paragraph">
+<p>Se realiza un despliegue al servidor <code>develop</code> cada vez que se crea un nuevo Pull
+Request en Github. Se realizan las pruebas automáticas y si son válidas, se crea una nueva instancia de servidor con recursos limitados y mínimos (URL única, dura 1 hora) que
+permite validar los cambios por los interesados. Una vez aprobado el estado de <code>dev</code>,
+puede ser pasado a <code>staging</code> según resultados de la revisión (utilizando un Squash Merge a main,
+pasando todas las pruebas automáticas y code reviews). La notificación de
+"Nuevo Servidor de Dev para PR #1234" se envía al canal deployments.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="staging"><a class="anchor" href="#staging"></a>staging</h5>
+<div class="paragraph">
+<p>Los cambios pasan a un ambiente de <code>staging</code> donde se pueden validar en conjunción con otros
+cambios de otros miembros del equipo. Una vez aprobado el estado de <code>staging</code> debe ser
+pasado a <code>prod</code>. Solamente el código de la rama <code>main</code> que ha pasado todas las pruebas automaticas
+puede pasar cambios a <code>staging</code>, es decir cada vez que se haga un cambio en la rama main se
+despliega a <code>staging</code> y se envía una notificación.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="prod"><a class="anchor" href="#prod"></a>prod</h5>
+<div class="paragraph">
+<p>Es el estado productivo donde el cliente final puede usar el sistema.
+Solo puede ser modificado mediante un despliegue desde <code>staging</code> y una aprobación manual por
+alguien con la autorización necesaria. La notificación anterior de despliegue a <code>staging</code>
+puede contener un botón para "Promover a Producción". Lo que gatillará una nueva
+notificación con la trazabilidad del despliegue. También considerar que se puede realizar
+un "Rollback" de los despliegues a una versión estable anterior en el caso de que una versión de producción cause
+conflictos o se detecte problemas graves.</p>
+</div>
+<div class="paragraph">
+<p>Considerar que los despliegues a producción pueden ser "congelados" por un periodo de tiempo
+determinado según los criterios de la organización y el equipo de desarrollo estimen convenientes.</p>
+</div>
+<div class="paragraph">
+<p>También considerar la estrategia de despliegue, por ejemplo en una estrategia de despliegue
+del tipo "Canary" los servidores productivos son desplegados en partes pequeñas (nodos) y si se detecta
+un margen de error considerable se realiza un rollback automático.</p>
+</div>
+<div class="paragraph">
+<p>El despliegue a <code>prod</code>, crea un nuevo tag en los repositorios de los artefactos relacionados.
+Lo que permite volver a una versión anterior si es necesario. La versión utiliza <code>SemVer</code>
+con un número final incrementado automáticamente por cada commit a <code>main</code>.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <nav class="pagination">
