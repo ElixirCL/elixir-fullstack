@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ash: Stoic API :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/elixir/ash.html">
+    <link rel="prev" href="testing.html">
+    <link rel="next" href="commands.html">
+    <meta name="generator" content="Antora 3.1.12">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ecosistema Tecnológico y Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/jobs.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/web.html">Ecosistema Web</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/llm.html">Large Language Models (LLM)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Seguridad</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../security/security.html">Seguridad de las Aplicaciones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../security/cryptography.html">Criptografía y Autenticación</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/chapter.html">Frontend con Javascript</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="elixir.html">El Lenguaje Elixir</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="apirest.html">REST: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="liveview.html">LiveView: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing: Stoic API</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="ash.html">Ash: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="commands.html">Makefiles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/pwa.html">Progresive Web Apps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Videojuegos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../games/games.html">Videojuegos</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/devenvs.html">Ambientes de Desarrollo</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Elixir</li>
+    <li><a href="ash.html">Ash: Stoic API</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/elixir/pages/ash.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Ash: Stoic API</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ash es un framework que simplifica el proceso de modelar la lógica de dominio. Con Ash defines los Recursos que quieres utilizar y luego el framework se encarga de generar todo lo necesario (migraciones, contratos de API, etc.). Está diseñado pensando en la construcción de aplicaciones web, APIs y servicios, pero se puede utilizar para cualquier tipo de aplicación Elixir.</p>
+</div>
+<div class="paragraph">
+<p>Entre las ventajas de esta abstracción unificada está la facilidad de extender las funcionalidades de la aplicación. Se pueden agregar cosas como autorización, panel de admin o encriptación, escribiendo solo un par de líneas en la definición de un Recurso.</p>
+</div>
+<div class="paragraph">
+<p>En este capítulo, usaremos Ash para extender Stoic API con una API GraphQL.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-1-instalación-y-creación-de-un-nuevo-proyecto"><a class="anchor" href="#paso-1-instalación-y-creación-de-un-nuevo-proyecto"></a>Paso 1: Instalación y creación de un nuevo proyecto</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Primero necesitamos las herramientas e instalaciones básicas:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># instalar phx_new para Phoenix e Igniter
+mix archive.install hex phx_new
+mix archive.install hex igniter_new
+
+# crear una aplicación nueva con Ash
+mix igniter.new stoic_quotes \
+  --install ash,ash_phoenix \
+  --with phx.new \
+  &amp;&amp; cd stoic_quotes
+
+# instalar ash_graphql y ash_postgres
+mix igniter.install ash_graphql
+mix igniter.install ash_postgres</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-2-definición-de-dominio-y-recursos"><a class="anchor" href="#paso-2-definición-de-dominio-y-recursos"></a>Paso 2: Definición de Dominio y Recursos</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ash viene con su propio DSL (Domain-Specific Language). Esto significa que el lenguaje usado para definir Recursos es diferente a Elixir. Es principalmente declarativo, a diferencia de Ecto, que tiene un enfoque más imperativo para la definición de schemas y migraciones.</p>
+</div>
+<div class="paragraph">
+<p>La abstracción más importante en Ash son las <strong>Acciones</strong> — las cosas que puedes hacer en tu dominio, como <code>:create_user</code>, <code>:publish_post</code>, <code>:approve_order</code> o <code>:calculate_shipping</code>. Estas acciones se organizan en Recursos, que se agrupan dentro de Dominios. A partir de esas Acciones, extensiones como AshGraphql pueden generar mutaciones de GraphQL, y AshJsonApi puede crear endpoints REST, todo sin configuración adicional.</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-4ed6f7b05bad04981537adb55261bc035c07fe4a.svg" alt="Diagram">
+</div>
+</div>
+<div class="sect2">
+<h3 id="generadores"><a class="anchor" href="#generadores"></a>Generadores</h3>
+<div class="paragraph">
+<p>Usaremos generadores, tareas Mix que crean la base de los archivos:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mix ash.gen.resource StoicQuotes.Quote \
+  --integer-primary-key id \
+  --default-actions create,read,update,destroy \
+  --attribute quote:string:required \
+  --attribute author:string:required \
+  --attribute source:string:required \
+  --extend postgres,graphql</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Esto genera el siguiente archivo:</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_quotes/ash/quote.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Quote do
+  use Ash.Resource,
+    otp_app: :stoic_quotes,
+    domain: StoicQuotes,
+    extensions: [AshGraphql.Resource],
+    data_layer: AshPostgres.DataLayer
+
+  postgres do
+    table "quotes"
+    repo StoicQuotes.Repo
+  end
+
+  graphql do
+    type :quote
+  end
+
+  actions do
+    defaults [:read, :destroy, create: [], update: []]
+  end
+
+  attributes do
+    integer_primary_key :id
+
+    attribute :quote, :string do
+      allow_nil? false
+    end
+
+    attribute :author, :string do
+      allow_nil? false
+    end
+
+    attribute :source, :string do
+      allow_nil? false
+    end
+  end
+end</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_quotes/ash.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Ash do
+  use Ash.Domain, otp_app: :stoic_quotes, extensions: [AshGraphql.Domain]
+
+  resources do
+    resource StoicQuotes.Ash.Quote
+  end
+end</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="modificar-recurso-generado"><a class="anchor" href="#modificar-recurso-generado"></a>Modificar recurso generado</h3>
+<div class="paragraph">
+<p>Luego, realizamos las siguientes modifiaciones.</p>
+</div>
+<div class="paragraph">
+<p><strong>Agregar identidad única al Recurso:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">identities do
+  identity :unique_quote, [:quote]
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Correr codegen para actualizar migraciones:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mix ash.codegen add_unique_quote_identity</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Correr migraciones:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mix ecto.setup &amp;&amp; mix ecto.migrate</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Cambiar Acciones por defecto para que acepten todos los argumentos:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">actions do
+  defaults [:read, :destroy, create: :*, update: :*]
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cambiar atributos a públicos para que se puedan acceder a través de APIs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">attributes do
+  integer_primary_key :id
+
+  attribute :quote, :string do
+    allow_nil? false
+    public? true
+  end
+
+  attribute :author, :string do
+    allow_nil? false
+    public? true
+  end
+
+  attribute :source, :string do
+    allow_nil? false
+    public? true
+  end
+end</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="crear-acción-random"><a class="anchor" href="#crear-acción-random"></a>Crear Acción <code>:random</code></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Ash.Quote do
+  require Ash.Sort
+  ...
+
+  actions do
+    defaults [:read, :destroy, create: :*, update: :*]
+
+    read :random do
+      prepare fn query, _ -&gt;
+        Ash.Query.sort(query, Ash.Sort.expr_sort(fragment("RANDOM()")))
+      end
+    end
+  end
+  ...
+end</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="seeds-y-pruebas"><a class="anchor" href="#seeds-y-pruebas"></a>Seeds y pruebas</h3>
+<div class="paragraph">
+<p>Ejecutar en IEx:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">"""
+[
+  {
+    "quote": "Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy.",
+    "author": "Marcus Aurelius",
+    "source": "Book II, Meditations"
+  },
+  {
+    "quote": "Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil.",
+    "author": "Marcus Aurelius",
+    "source": "Book XI, Meditations"
+  },
+  {
+    "quote": "Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all.",
+    "author": "Marcus Aurelius",
+    "source": "Book X, Meditations"
+  }
+]
+"""
+|&gt; Jason.decode!()
+|&gt; Enum.each(fn attrs -&gt;
+  quote = %{quote: attrs["quote"], author: attrs["author"], source: attrs["source"]}
+  # utiliza la Acción :create por defecto
+  Ash.create!(StoicQuotes.Ash.Quote, quote)
+end)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Luego probar:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">StoicQuotes.Ash.Quote
+|&gt; Ash.Query.for_read(:random)
+|&gt; Ash.read_first!()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En este punto, debería ser equivalente a la definición de schema Ecto usada en capítulos anteriores.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-3-agregar-mutaciones-de-graphql"><a class="anchor" href="#paso-3-agregar-mutaciones-de-graphql"></a>Paso 3: Agregar mutaciones de GraphQL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>En el recurso, agregamos:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">graphql do
+  type :quote
+
+  queries do
+    read_one :random_quote, :random
+    list :list_quotes, :read
+  end
+
+  mutations do
+    create :create_quote, :create
+    update :update_quote, :update
+    destroy :destroy_quote, :destroy
+  end
+end</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="probar-en-graphql-playground"><a class="anchor" href="#probar-en-graphql-playground"></a>Probar en GraphQL Playground</h3>
+<div class="paragraph">
+<p>Para probar consultas de GraphQL, se puede visitar <code><a href="http://localhost:4000/gql/playground" class="bare">http://localhost:4000/gql/playground</a></code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Consulta para obtener una cita aleatoria:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-graphql hljs" data-lang="graphql">query GetRandomQuote {
+  randomQuote {
+    id
+    quote
+    author
+    source
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Mutation para crear una cita nueva:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-graphql hljs" data-lang="graphql">mutation CreateNewStoicQuote($input: CreateQuoteInput!) {
+  createQuote(input: $input) {
+    result {
+      id
+      quote
+      author
+      source
+    }
+    errors {
+      message
+      code
+      fields
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Variables:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "input": {
+    "quote": "Waste no more time arguing what a good man should be. Be one.",
+    "author": "Marcus Aurelius",
+    "source": "Meditations"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-4-realizar-pruebas"><a class="anchor" href="#paso-4-realizar-pruebas"></a>Paso 4: Realizar pruebas</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para probar que un Recurso esté funcionando correctamente, se pueden aplicar los mismos patrones explicados en el capítulo anterior:</p>
+</div>
+<div class="listingblock">
+<div class="title">test/quote_test.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicQuotes.Ash.QuoteTest do
+  use StoicQuotes.DataCase, async: true
+
+  alias StoicQuotes.Ash.Quote
+
+  describe "quote lifecycle" do
+    test "creates a quote successfully" do
+      quote =
+        Quote.create!(%{
+          quote: "Waste no more time arguing what a good man should be. Be one.",
+          author: "Marcus Aurelius",
+          source: "Meditations"
+        })
+
+      assert quote.quote == "Waste no more time arguing what a good man should be. Be one."
+      assert quote.author == "Marcus Aurelius"
+      assert quote.source == "Meditations"
+      assert quote.id
+    end
+
+    test "validates required fields" do
+      assert_raise Ash.Error.Invalid, fn -&gt;
+        Quote.create!(%{})
+      end
+    end
+
+    test "enforces unique quote constraint" do
+      Quote.create!(%{
+        quote: "The happiness of your life depends upon the quality of your thoughts.",
+        author: "Marcus Aurelius",
+        source: "Meditations"
+      })
+
+      assert_raise Ash.Error.Invalid, fn -&gt;
+        Quote.create!(%{
+          quote: "The happiness of your life depends upon the quality of your thoughts.",
+          author: "Different Author",
+          source: "Different Source"
+        })
+      end
+    end
+  end
+
+  describe "quote updates" do
+    setup do
+      quote =
+        Quote.create!(%{
+          quote: "You have power over your mind - not outside events.",
+          author: "Marcus Aurelius",
+          source: "Meditations"
+        })
+
+      {:ok, quote: quote}
+    end
+
+    test "updates a quote", %{quote: quote} do
+      updated_quote = Quote.update!(quote, %{source: "Meditations, Book VIII"})
+      assert updated_quote.source == "Meditations, Book VIII"
+    end
+
+    test "preserves original fields when updating partial data", %{quote: quote} do
+      updated_quote = Quote.update!(quote, %{author: "M. Aurelius"})
+      assert updated_quote.author == "M. Aurelius"
+      assert updated_quote.quote == quote.quote
+      assert updated_quote.source == quote.source
+    end
+  end
+
+  describe "random quote action" do
+    setup do
+      quotes = [
+        %{
+          quote: "The first rule is to keep an untroubled spirit.",
+          author: "Marcus Aurelius",
+          source: "Meditations"
+        },
+        %{
+          quote:
+            "It is not death that a man should fear, but he should fear never beginning to live.",
+          author: "Marcus Aurelius",
+          source: "Meditations"
+        },
+        %{
+          quote: "The best revenge is not to be like your enemy.",
+          author: "Marcus Aurelius",
+          source: "Meditations"
+        }
+      ]
+
+      inserted_quotes =
+        quotes
+        |&gt; Enum.map(fn attrs -&gt;
+          Quote.create!(attrs)
+        end)
+
+      {:ok, quotes: inserted_quotes}
+    end
+
+    test "returns a random quote", %{quotes: quotes} do
+      results =
+        for _ &lt;- 1..10 do
+          Quote
+          |&gt; Ash.Query.for_read(:random)
+          |&gt; Ash.read_one()
+        end
+        |&gt; Enum.reject(&amp;is_nil/1)
+
+      assert length(results) &gt; 0
+      assert Enum.all?(results, fn quote -&gt; quote.id end)
+    end
+
+    test "limits to one quote", %{quotes: quotes} do
+      random_quote =
+        Quote
+        |&gt; Ash.Query.for_read(:random)
+        |&gt; Ash.read_one()
+
+      assert random_quote
+      assert random_quote.id
+      assert is_map(random_quote)
+    end
+  end
+
+  describe "quote deletion" do
+    setup do
+      quote =
+        Quote.create!(%{
+          quote:
+            "How much time he gains who does not look to see what his neighbour says or does or thinks.",
+          author: "Marcus Aurelius",
+          source: "Meditations"
+        })
+
+      {:ok, quote: quote}
+    end
+
+    test "deletes a quote", %{quote: quote} do
+      assert {:ok, _} = Quote.destroy(quote)
+      refute Ash.get(Quote, quote.id)
+    end
+  end
+
+  describe "list quotes" do
+    setup do
+      quotes = [
+        %{
+          quote: "Very little is needed to make a happy life.",
+          author: "Marcus Aurelius",
+          source: "Meditations"
+        },
+        %{
+          quote: "Accept whatever comes to you woven in the pattern of your destiny.",
+          author: "Marcus Aurelius",
+          source: "Meditations"
+        }
+      ]
+
+      inserted_quotes =
+        quotes
+        |&gt; Enum.map(fn attrs -&gt;
+          Quote.create!(attrs)
+        end)
+
+      {:ok, quotes: inserted_quotes}
+    end
+
+    test "lists all quotes", %{quotes: quotes} do
+      all_quotes = Ash.read!(Quote)
+      assert length(all_quotes) &gt;= length(quotes)
+      assert Enum.all?(quotes, fn quote -&gt; quote.id in Enum.map(all_quotes, &amp; &amp;1.id) end)
+    end
+  end
+end</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="referencias"><a class="anchor" href="#referencias"></a>Referencias</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://hexdocs.pm/ash/what-is-ash.html" class="bare">https://hexdocs.pm/ash/what-is-ash.html</a></p>
+</li>
+<li>
+<p><a href="https://hexdocs.pm/ash_graphql/getting-started-with-graphql.html" class="bare">https://hexdocs.pm/ash_graphql/getting-started-with-graphql.html</a></p>
+</li>
+<li>
+<p><a href="https://hexdocs.pm/ash/actions.html" class="bare">https://hexdocs.pm/ash/actions.html</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="testing.html">Testing: Stoic API</a></span>
+  <span class="next"><a href="commands.html">Makefiles</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>
