@@ -820,6 +820,199 @@ end</code></pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="cómo-usar-sqlite-en-vez-de-postgres"><a class="anchor" href="#cómo-usar-sqlite-en-vez-de-postgres"></a>Cómo usar SQLite en vez de Postgres</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="1-cambiar-el-repo"><a class="anchor" href="#1-cambiar-el-repo"></a>1. Cambiar el Repo</h3>
+<div class="paragraph">
+<p>En <code>.lib/stoic_quotes/repo.ex</code>, reemplazar:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">use AshPostgres.Repo,
+  otp_app: :stoic_quotes</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Por:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">use AshSqlite.Repo,
+  otp_app: :stoic_quotes</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Eliminar las funciones <code>prefer_transaction?</code> y <code>installed_extensions</code> si existen en el módulo.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="2-instalar-la-extensión-de-sqlite"><a class="anchor" href="#2-instalar-la-extensión-de-sqlite"></a>2. Instalar la extensión de SQLite</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mix igniter.install ash_sqlite</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="3-actualizar-configuraciones"><a class="anchor" href="#3-actualizar-configuraciones"></a>3. Actualizar configuraciones</h3>
+<div class="paragraph">
+<p>En <code>config/dev.exs</code>, cambiar:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">config :stoic_quotes, StoicQuotes.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "stoic_quotes_dev",
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Por:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">config :stoic_quotes, StoicQuotes.Repo,
+  database: Path.join(__DIR__, "../data.db"),
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En <code>config/test.exs</code>, cambiar:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">config :stoic_quotes, StoicQuotes.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "stoic_quotes_test#{System.get_env("MIX_TEST_PARTITION")}",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: System.schedulers_online() * 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Por:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">config :stoic_quotes, StoicQuotes.Repo,
+  database: Path.join(__DIR__, "../data_#{System.get_env("MIX_TEST_PARTITION")}.db"),
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 10</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="4-actualizar-el-recurso"><a class="anchor" href="#4-actualizar-el-recurso"></a>4. Actualizar el Recurso</h3>
+<div class="paragraph">
+<p>En el archivo del Recurso (<code>lib/stoic_quotes/resources/quote.ex</code> o similar), hacer dos cambios:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Reemplazar el bloque <code>postgres</code> por <code>sqlite</code>:</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>De:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">postgres do
+  table "quotes"
+  repo StoicQuotes.Repo
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">sqlite do
+  table "quotes"
+  repo StoicQuotes.Repo
+end</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Cambiar el <code>data_layer</code> de Postgres a SQLite:</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>De:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">use Ash.Resource,
+  otp_app: :stoic_quotes,
+  domain: StoicQuotes.Ash,
+  extensions: [AshGraphql.Resource],
+  data_layer: AshPostgres.DataLayer</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">use Ash.Resource,
+  otp_app: :stoic_quotes,
+  domain: StoicQuotes.Ash,
+  extensions: [AshGraphql.Resource],
+  data_layer: AshSqlite.DataLayer</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-limpiar-migraciones-antiguas-y-generar-nuevas"><a class="anchor" href="#5-limpiar-migraciones-antiguas-y-generar-nuevas"></a>5. Limpiar migraciones antiguas y generar nuevas</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># Eliminar directorios de migraciones anteriores
+rm -rf priv/resource_snapshots
+rm -rf priv/repo/migrations
+
+# Generar nuevas migraciones compatibles con SQLite
+mix ash_sqlite.generate_migrations --name migrate_to_sqlite
+
+# Ejecutar las migraciones
+mix ecto.migrate</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="6-remover-dependencia-de-postgres"><a class="anchor" href="#6-remover-dependencia-de-postgres"></a>6. Remover dependencia de Postgres</h3>
+<div class="paragraph">
+<p>Finalmente, eliminar la dependencia de <code>ash_postgres</code> en el archivo <code>mix.exs</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir"># Remover de la lista de dependencias:
+{:ash_postgres, "~&gt; 2.0"},</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Y correr:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mix deps.get</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="referencias"><a class="anchor" href="#referencias"></a>Referencias</h2>
 <div class="sectionbody">
 <div class="ulist">

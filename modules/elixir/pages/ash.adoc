@@ -532,6 +532,164 @@ defmodule StoicQuotes.Ash.QuoteTest do
 end
 ----
 
+== Cómo usar SQLite en vez de Postgres
+
+=== 1. Cambiar el Repo
+
+En `.lib/stoic_quotes/repo.ex`, reemplazar:
+
+[source,elixir]
+----
+use AshPostgres.Repo,
+  otp_app: :stoic_quotes
+----
+
+Por:
+
+[source,elixir]
+----
+use AshSqlite.Repo,
+  otp_app: :stoic_quotes
+----
+
+Eliminar las funciones `prefer_transaction?` y `installed_extensions` si existen en el módulo.
+
+=== 2. Instalar la extensión de SQLite
+
+[source,bash]
+----
+mix igniter.install ash_sqlite
+----
+
+=== 3. Actualizar configuraciones
+
+En `config/dev.exs`, cambiar:
+
+[source,elixir]
+----
+config :stoic_quotes, StoicQuotes.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "stoic_quotes_dev",
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+----
+
+Por:
+
+[source,elixir]
+----
+config :stoic_quotes, StoicQuotes.Repo,
+  database: Path.join(__DIR__, "../data.db"),
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+----
+
+En `config/test.exs`, cambiar:
+
+[source,elixir]
+----
+config :stoic_quotes, StoicQuotes.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "stoic_quotes_test#{System.get_env("MIX_TEST_PARTITION")}",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: System.schedulers_online() * 2
+----
+
+Por:
+
+[source,elixir]
+----
+config :stoic_quotes, StoicQuotes.Repo,
+  database: Path.join(__DIR__, "../data_#{System.get_env("MIX_TEST_PARTITION")}.db"),
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 10
+----
+
+=== 4. Actualizar el Recurso
+
+En el archivo del Recurso (`lib/stoic_quotes/resources/quote.ex` o similar), hacer dos cambios:
+
+1. *Reemplazar el bloque `postgres` por `sqlite`:*
+
+De:
+
+[source,elixir]
+----
+postgres do
+  table "quotes"
+  repo StoicQuotes.Repo
+end
+----
+
+A:
+
+[source,elixir]
+----
+sqlite do
+  table "quotes"
+  repo StoicQuotes.Repo
+end
+----
+
+2. *Cambiar el `data_layer` de Postgres a SQLite:*
+
+De:
+
+[source,elixir]
+----
+use Ash.Resource,
+  otp_app: :stoic_quotes,
+  domain: StoicQuotes.Ash,
+  extensions: [AshGraphql.Resource],
+  data_layer: AshPostgres.DataLayer
+----
+
+A:
+
+[source,elixir]
+----
+use Ash.Resource,
+  otp_app: :stoic_quotes,
+  domain: StoicQuotes.Ash,
+  extensions: [AshGraphql.Resource],
+  data_layer: AshSqlite.DataLayer
+----
+
+=== 5. Limpiar migraciones antiguas y generar nuevas
+
+[source,bash]
+----
+# Eliminar directorios de migraciones anteriores
+rm -rf priv/resource_snapshots
+rm -rf priv/repo/migrations
+
+# Generar nuevas migraciones compatibles con SQLite
+mix ash_sqlite.generate_migrations --name migrate_to_sqlite
+
+# Ejecutar las migraciones
+mix ecto.migrate
+----
+
+=== 6. Remover dependencia de Postgres
+
+Finalmente, eliminar la dependencia de `ash_postgres` en el archivo `mix.exs`:
+
+[source,elixir]
+----
+# Remover de la lista de dependencias:
+{:ash_postgres, "~> 2.0"},
+----
+
+Y correr:
+[source,bash]
+----
+mix deps.get
+----
 
 == Referencias
 
