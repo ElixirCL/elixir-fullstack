@@ -614,7 +614,7 @@ config :stoic_quotes, StoicQuotes.Repo,
 
 En el archivo del Recurso (`lib/stoic_quotes/resources/quote.ex` o similar), hacer dos cambios:
 
-1. *Reemplazar el bloque `postgres` por `sqlite`:*
+*Reemplazar el bloque `postgres` por `sqlite`:*
 
 De:
 
@@ -636,7 +636,7 @@ sqlite do
 end
 ----
 
-2. *Cambiar el `data_layer` de Postgres a SQLite:*
+*Cambiar el `data_layer` de Postgres a SQLite:*
 
 De:
 
