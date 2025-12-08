@@ -3,4 +3,5 @@
 * xref:apirest.adoc[]
 * xref:liveview.adoc[]
 * xref:testing.adoc[]
+* xref:ash.adoc[]
 * xref:commands.adoc[]
