@@ -109,7 +109,20 @@ Existen herramientas para facilitar la creación de un manifest como: https://pr
 }
 ----
 
-// TODO: Tutorial de creación de una app simple con Framework7
+== Ejemplo: Tercera Edapp
+
+Un prototipo de interfaz de una aplicación móvil pensada para personas de la tercera edad 
+con botones y sus páginas estáticas descriptivas. Utilizando Framework7 y una plantilla
+que contenga las secciones:
+
+- Juegos
+- Recordatorios
+- Actividades
+- Chat
+
+Se puede ver el resultado en https://ninjas.cl/adultomayor/[Adulto Mayor].
+Se puede ver el código fuente en https://github.com/ElixirCL/elixir-fullstack/tree/main/modules/mobile/examples/f7
+
 
 == Referencias
 

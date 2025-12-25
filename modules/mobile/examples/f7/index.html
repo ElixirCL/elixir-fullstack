@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="es" class="light color-theme-blue">
+    <head>
+        <!-- Title -->
+        <title>Tercera edApp - Aplicación Móvil para la Tercera Edad</title>
+
+        <!-- Meta -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="theme-color" content="#6f42c1" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:"
+        />
+        <meta name="author" content="Ninjas.cl" />
+        <meta name="robots" content="index, follow" />
+        <link rel="manifest" href="manifest.json" />
+
+        <meta
+            name="keywords"
+            content="android, ios, mobile, villa alemana, adulto mayor"
+        />
+
+        <meta
+            name="description"
+            content="Una aplicación para la tercera Edad"
+        />
+
+        <meta
+            property="og:title"
+            content="Tercera edApp - Aplicación Móvil para la Tercera Edad"
+        />
+        <meta
+            property="og:description"
+            content="Una aplicación para la tercera Edad"
+        />
+
+        <meta property="og:image" content="" />
+        <!-- TODO: Add social og:image -->
+
+        <meta name="format-detection" content="telephone=no" />
+
+        <meta
+            name="twitter:title"
+            content="Tercera edApp - Aplicación Móvil para la Tercera Edad"
+        />
+        <meta
+            name="twitter:description"
+            content="Una aplicación para la tercera Edad"
+        />
+
+        <meta name="twitter:image" content="" />
+        <!-- TODO: Add social og:image -->
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <!-- Mobile Specific -->
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover"
+        />
+
+        <!-- Framework7 css -->
+        <link rel="stylesheet" href="css/framework7-bundle.min.css" />
+        <link rel="stylesheet" href="css/app.css" />
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="css/font-awesome/css/all.min.css" />
+        <link
+            rel="stylesheet"
+            href="css/line-awesome/css/line-awesome.min.css"
+        />
+
+        <!-- Style css -->
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/scrollbar.css" />
+
+        <!-- Tercera edAPP custom styles -->
+        <link rel="stylesheet" href="css/edapp.css" />
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" href="img/f7-icon-square.png" />
+        <link rel="icon" href="img/f7-icon.png" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="color-deepblue">
+        <div id="app">
+            <div
+                class="panel panel-left panel-cover panel-resizable panel-init sidebar-left"
+            >
+                <div class="page">
+                    <div class="page-content">
+                        <div class="sidebar-menu">
+                            <h3 class="title">Menú</h3>
+                            <a href="#" class="panel-close"
+                                ><i class="las la-times-circle"></i
+                            ></a>
+                            <div class="nav-bar list menu-list">
+                                <ul>
+                                    <li>
+                                        <a
+                                            href="/home/"
+                                            class="item-link item-selected"
+                                        >
+                                            <svg
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M22.707 11.293L20.707 9.29298L12.707 1.29298C12.5195 1.10551 12.2652 1.0002 12 1.0002C11.7348 1.0002 11.4805 1.10551 11.293 1.29298L3.29301 9.29298L1.29301 11.293C1.11085 11.4816 1.01006 11.7342 1.01234 11.9964C1.01461 12.2586 1.11978 12.5094 1.30519 12.6948C1.4906 12.8802 1.74141 12.9854 2.00361 12.9877C2.26581 12.9899 2.51841 12.8891 2.70701 12.707L3.00001 12.414V22C3.00001 22.2652 3.10537 22.5196 3.2929 22.7071C3.48044 22.8946 3.73479 23 4.00001 23H20C20.2652 23 20.5196 22.8946 20.7071 22.7071C20.8947 22.5196 21 22.2652 21 22V12.414L21.293 12.707C21.4816 12.8891 21.7342 12.9899 21.9964 12.9877C22.2586 12.9854 22.5094 12.8802 22.6948 12.6948C22.8802 12.5094 22.9854 12.2586 22.9877 11.9964C22.99 11.7342 22.8892 11.4816 22.707 11.293ZM19 21H5.00001V10.414L12 3.41398L19 10.414V21Z"
+                                                    fill="#309F5F"
+                                                />
+                                            </svg>
+                                            <span>Inicio</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a
+                                            href="/notifications-app/"
+                                            class="item-link"
+                                        >
+                                            <svg
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M19 1.00012C18.2089 1.00012 17.4355 1.23472 16.7777 1.67424C16.1199 2.11377 15.6072 2.73848 15.3045 3.46939C15.0017 4.20029 14.9225 5.00456 15.0769 5.78048C15.2312 6.55641 15.6122 7.26914 16.1716 7.82855C16.731 8.38796 17.4437 8.76892 18.2196 8.92326C18.9956 9.0776 19.7998 8.99839 20.5307 8.69564C21.2616 8.39289 21.8864 7.8802 22.3259 7.2224C22.7654 6.56461 23 5.79125 23 5.00012C23 3.93926 22.5786 2.92184 21.8284 2.17169C21.0783 1.42155 20.0609 1.00012 19 1.00012ZM19 7.00012C18.6044 7.00012 18.2178 6.88282 17.8889 6.66306C17.56 6.4433 17.3036 6.13094 17.1522 5.76549C17.0009 5.40004 16.9613 4.9979 17.0384 4.60994C17.1156 4.22198 17.3061 3.86561 17.5858 3.58591C17.8655 3.3062 18.2219 3.11572 18.6098 3.03855C18.9978 2.96138 19.3999 3.00099 19.7654 3.15236C20.1308 3.30374 20.4432 3.56008 20.6629 3.88898C20.8827 4.21788 21 4.60456 21 5.00012C21 5.53056 20.7893 6.03926 20.4142 6.41434C20.0391 6.78941 19.5304 7.00012 19 7.00012Z"
+                                                    fill="#B0ACB3"
+                                                />
+                                                <path
+                                                    d="M19.0001 10.9999C18.7349 10.9999 18.4806 11.1053 18.293 11.2928C18.1055 11.4803 18.0001 11.7347 18.0001 11.9999V20.9999H3.00012V5.99994H12.0001C12.2653 5.99994 12.5197 5.89458 12.7072 5.70705C12.8948 5.51951 13.0001 5.26516 13.0001 4.99994C13.0001 4.73473 12.8948 4.48037 12.7072 4.29284C12.5197 4.1053 12.2653 3.99995 12.0001 3.99995H2.00012C1.73491 3.99995 1.48055 4.1053 1.29302 4.29284C1.10548 4.48037 1.00012 4.73473 1.00012 4.99994V21.9999C1.00012 22.2651 1.10548 22.5194 1.29302 22.707C1.48055 22.8945 1.73491 22.9999 2.00012 22.9999H19.0001C19.2653 22.9999 19.5197 22.8945 19.7072 22.707C19.8948 22.5194 20.0001 22.2651 20.0001 21.9999V11.9999C20.0001 11.7347 19.8948 11.4803 19.7072 11.2928C19.5197 11.1053 19.2653 10.9999 19.0001 10.9999Z"
+                                                    fill="#B0ACB3"
+                                                />
+                                            </svg>
+                                            <span>Notificaciones (2)</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/profile/" class="item-link">
+                                            <svg
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M15.7 11.717C16.6839 10.9476 17.4031 9.89041 17.7575 8.69276C18.1118 7.49511 18.0836 6.21673 17.6767 5.03589C17.2698 3.85506 16.5046 2.83063 15.4877 2.10546C14.4708 1.38028 13.253 0.990524 12.004 0.990524C10.755 0.990524 9.53719 1.38028 8.52031 2.10546C7.50342 2.83063 6.73819 3.85506 6.33131 5.03589C5.92443 6.21673 5.89619 7.49511 6.25053 8.69276C6.60487 9.89041 7.32413 10.9476 8.308 11.717C6.44917 12.4566 4.85467 13.7363 3.73027 15.391C2.60587 17.0457 2.00318 18.9994 2 21V22C2 22.2652 2.10536 22.5196 2.29289 22.7071C2.48043 22.8946 2.73478 23 3 23H21C21.2652 23 21.5196 22.8946 21.7071 22.7071C21.8946 22.5196 22 22.2652 22 22V21C21.9975 19.0003 21.3959 17.0473 20.273 15.3927C19.1501 13.7381 17.5573 12.4579 15.7 11.717ZM8 7C8 6.20887 8.2346 5.43551 8.67412 4.77772C9.11365 4.11992 9.73836 3.60723 10.4693 3.30448C11.2002 3.00173 12.0044 2.92252 12.7804 3.07686C13.5563 3.2312 14.269 3.61216 14.8284 4.17157C15.3878 4.73098 15.7688 5.44371 15.9231 6.21964C16.0775 6.99556 15.9983 7.79983 15.6955 8.53073C15.3928 9.26163 14.8801 9.88635 14.2223 10.3259C13.5645 10.7654 12.7911 11 12 11C10.9391 11 9.92172 10.5786 9.17157 9.82842C8.42143 9.07828 8 8.06086 8 7ZM4 21C4 18.8783 4.84285 16.8434 6.34315 15.3431C7.84344 13.8428 9.87827 13 12 13C14.1217 13 16.1566 13.8428 17.6569 15.3431C19.1571 16.8434 20 18.8783 20 21H4Z"
+                                                    fill="#B0ACB3"
+                                                />
+                                            </svg>
+                                            <span>Mi Cuenta</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="/messages-list/"
+                                            class="item-link"
+                                        >
+                                            <svg
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                width="24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="m12 22a9.941 9.941 0 0 0 4.924-1.3l3.76 1.253a.987.987 0 0 0 .316.047 1 1 0 0 0 .948-1.316l-1.248-3.76a9.995 9.995 0 1 0 -8.7 5.076zm0-18a7.989 7.989 0 0 1 6.757 12.269 1 1 0 0 0 -.1.851l.766 2.3-2.3-.766a.991.991 0 0 0 -.851.1 8 8 0 1 1 -4.272-14.754z"
+                                                />
+                                                <path
+                                                    d="m8 10.5h8a1 1 0 0 0 0-2h-8a1 1 0 0 0 0 2z"
+                                                />
+                                                <path
+                                                    d="m8 15.5h4a1 1 0 0 0 0-2h-4a1 1 0 0 0 0 2z"
+                                                />
+                                            </svg>
+                                            <span>Conversaciones</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/welcome/" class="item-link">
+                                            <svg
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                width="24"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="m16.65 3.1a1 1 0 0 0 -.891 1.8 8.459 8.459 0 1 1 -7.518 0 1 1 0 0 0 -.891-1.8 10.459 10.459 0 1 0 9.3 0z"
+                                                    fill="#B0ACB3"
+                                                />
+                                                <path
+                                                    d="m12 13a1 1 0 0 0 1-1v-10a1 1 0 0 0 -2 0v10a1 1 0 0 0 1 1z"
+                                                    fill="#B0ACB3"
+                                                />
+                                            </svg>
+                                            <span> Desconectarse </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sidebar-footer">
+                            <h5 class="name">edAPP</h5>
+                            <p>Versión 1.0.0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="view view-main view-init safe-areas"
+                data-master-detail-breakpoint="800"
+                data-url="/"
+            >
+                <div class="grid no-gutters vh-100 loader-screen">
+                    <div class="align-self-center text-white text-align-center">
+                        <div id="loading-area">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page page-onboading" data-name="home">
+                    <div
+                        class="page-content"
+                        style="
+                            background-image: url(img/background/line-bg.png);
+                            background-size: 100%;
+                            background-repeat: no-repeat;
+                        "
+                    >
+                        <div class="started-swiper-box">
+                            <swiper-container
+                                pagination
+                                loop
+                                space-between="0"
+                                slides-per-view="auto"
+                                class="swiper-init get-started"
+                            >
+                                <swiper-slide>
+                                    <div class="slide-info">
+                                        <div class="dz-media">
+                                            <img
+                                                src="img/onboarding/oldman-smartphone.png"
+                                                class="image-onboarding"
+                                                alt="Old man with Smartphone"
+                                            />
+                                        </div>
+                                        <div class="slide-content">
+                                            <h3 class="dz-title">
+                                                Adulto Mayor<br />
+                                            </h3>
+                                            <p>
+                                                Únase a la aplicación para la
+                                                tercera edad de Villa Alemana
+                                            </p>
+                                        </div>
+                                    </div>
+                                </swiper-slide>
+                                <swiper-slide>
+                                    <div class="slide-info">
+                                        <div class="dz-media">
+                                            <img
+                                                src="img/onboarding/oldwoman-running.png"
+                                                class="image-onboarding"
+                                                alt="Old woman running"
+                                            />
+                                        </div>
+                                        <div class="slide-content">
+                                            <h3 class="dz-title">
+                                                Salud y autocuidado
+                                            </h3>
+                                            <p>
+                                                Encuentre ejercicios y
+                                                recomendaciones de autocuidado
+                                            </p>
+                                        </div>
+                                    </div>
+                                </swiper-slide>
+                                <swiper-slide>
+                                    <div class="slide-info">
+                                        <div class="dz-media">
+                                            <img
+                                                src="img/onboarding/oldman-sudoku.png"
+                                                class="image-onboarding-bigger"
+                                                alt="Old man with sudoku"
+                                            />
+                                        </div>
+                                        <div class="slide-content">
+                                            <h3 class="dz-title">
+                                                Juegos de Memoria
+                                            </h3>
+                                            <p>
+                                                Acceda a juegos para mantener la
+                                                mente activa
+                                            </p>
+                                        </div>
+                                    </div>
+                                </swiper-slide>
+                                <swiper-slide>
+                                    <div class="slide-info">
+                                        <div class="dz-media">
+                                            <img
+                                                src="img/onboarding/oldpeople-party.png"
+                                                class="image-onboarding-biggest"
+                                                alt="Old people party"
+                                            />
+                                        </div>
+                                        <div class="slide-content">
+                                            <h3 class="dz-title">
+                                                Talleres y Actividades
+                                            </h3>
+                                            <p>
+                                                Aprenda distintas habilidades y
+                                                otras entretenidas actividades
+                                            </p>
+                                        </div>
+                                    </div>
+                                </swiper-slide>
+                                <swiper-slide>
+                                    <div class="slide-info">
+                                        <div class="dz-media">
+                                            <img
+                                                src="img/onboarding/oldwoman-chat.png"
+                                                class="image-onboarding-bigger"
+                                                alt="Old woman chat"
+                                            />
+                                        </div>
+                                        <div class="slide-content">
+                                            <h3 class="dz-title">
+                                                Hacer nuevas amistades
+                                            </h3>
+                                            <p>
+                                                Intégrese a la comunidad de
+                                                adultos mayores y conozca nuevas
+                                                personas.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </swiper-slide>
+                                <swiper-slide>
+                                    <div class="slide-info">
+                                        <div class="dz-media">
+                                            <img
+                                                src="img/onboarding/woman-doctor.png"
+                                                class="image-onboarding"
+                                                alt="Woman Doctor"
+                                            />
+                                        </div>
+                                        <div class="slide-content">
+                                            <h3 class="dz-title">
+                                                Contactos de Emergencia
+                                            </h3>
+                                            <p>
+                                                Número de Carabineros, Bomberos,
+                                                Emergencias de Salud y
+                                                Familiares
+                                            </p>
+                                        </div>
+                                    </div>
+                                </swiper-slide>
+                                <swiper-slide>
+                                    <div class="slide-info">
+                                        <div class="dz-media">
+                                            <img
+                                                src="img/onboarding/oldman-pills.png"
+                                                class="image-onboarding"
+                                                alt="Oldman Pills"
+                                            />
+                                        </div>
+                                        <div class="slide-content">
+                                            <h3 class="dz-title">
+                                                Recordatorios y Notificaciones
+                                            </h3>
+                                            <p>
+                                                Recuerde tomar sus medicamentos,
+                                                controles de salud y
+                                                recordatorios varios.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </swiper-slide>
+                            </swiper-container>
+                        </div>
+                    </div>
+                    <a href="/welcome/" class="start-btn">
+                        <span class="icon-bx">
+                            <svg
+                                width="28"
+                                height="28"
+                                viewBox="0 0 28 28"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M27.4875 15.2374L21.2871 21.4378C20.9454 21.7795 20.4975 21.9504 20.0496 21.9504C19.6018 21.9504 19.1539 21.7795 18.8122 21.4378C18.1288 20.7543 18.1288 19.6463 18.8122 18.9629L22.0251 15.75H1.75C0.783508 15.75 0 14.9665 0 14C0 13.0335 0.783508 12.25 1.75 12.25H22.0251L18.8122 9.03711C18.1288 8.35368 18.1288 7.24565 18.8122 6.56222C19.4957 5.87879 20.6036 5.87879 21.2871 6.56222L27.4875 12.7626C28.1708 13.446 28.1708 14.554 27.4875 15.2374Z"
+                                    fill="#4A3749"
+                                />
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- script -->
+        <script src="js/framework7-bundle.min.js"></script>
+        <script src="js/routes.js"></script>
+        <script src="js/store.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/notch-detected-event.js"></script>
+    </body>
+</html>

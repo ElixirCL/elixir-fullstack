@@ -1,0 +1,5 @@
+= Rancho UFO
+
+Es un sitio web de ejemplo creado con React.js, Vite y Tailwind
+
+https://ranchoufo.cl/

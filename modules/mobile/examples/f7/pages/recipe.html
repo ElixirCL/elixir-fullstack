@@ -1,0 +1,124 @@
+<template>
+    <div class="page light">
+        <div class="navbar navbar-style-1">
+            <div class="navbar-inner">
+                <a href="#" class="link back">
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M0.439312 13.0606L5.75391 18.3752C6.04683 18.6682 6.43069 18.8146 6.81459 18.8146C7.1985 18.8146 7.58236 18.6682 7.87528 18.3752C8.46103 17.7894 8.46103 16.8397 7.87528 16.2539L5.12133 13.5H22.5C23.3284 13.5 24 12.8284 24 12C24 11.1716 23.3284 10.5 22.5 10.5H5.12133L7.87528 7.7461C8.46103 7.1603 8.46103 6.21057 7.87528 5.62477C7.28944 5.03898 6.33975 5.03898 5.75391 5.62477L0.439312 10.9394C-0.146437 11.5251 -0.146437 12.4749 0.439312 13.0606Z"
+                            fill="black"
+                        />
+                    </svg>
+                </a>
+                <div class="title">Receta</div>
+                <div class="right">
+                    <a
+                        href="#"
+                        class="link add-wishlist-btn"
+                        @click="${openDemo1}"
+                    >
+                        <i class="far fa-bookmark"></i>
+                        <i class="fas fa-bookmark"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content item-details pt-0">
+            <div class="dz-banner-heading">
+                <div class="overlay-black-light">
+                    <img
+                        src="img/home/duong-ngan-3KdzWXrOQgs-unsplash.jpg"
+                        class="bnr-img"
+                        alt=""
+                    />
+                </div>
+            </div>
+
+            <div class="dz-banner-height"></div>
+
+            <div class="fixed-content container">
+                <div class="text-align-center">
+                    <h4 class="ma-0">Jugo de Kombucha, Limón y Jengibre</h4>
+                    <img
+                        src="img/home/duong-ngan-3KdzWXrOQgs-unsplash.jpg"
+                        style="width: 100%; height: auto"
+                        alt=""
+                    />
+                    <h5>Ingredientes</h5>
+
+                    <p>
+                        1 litro de kombucha casera ya fermentada (de la primera
+                        fermentación).
+                    </p>
+                    <p>Jugo de 1 a 2 limones frescos, al gusto.</p>
+                    <p>1 a 2 cucharadas de jengibre fresco rallado.</p>
+                    <p>
+                        1/2 cucharadita de azúcar, miel o el endulzante de tu
+                        elección (opcional, si quieres más efervescencia).
+                    </p>
+                    <h5>Preparación</h5>
+                    <p>
+                        Prepara la kombucha base: Asegúrate de tener lista tu
+                        kombucha de la primera fermentación. Si la tienes en un
+                        recipiente grande, reserva el SCOBY y el líquido de
+                        arranque para tu siguiente tanda.
+                    </p>
+                    <p>
+                        Combina los ingredientes: En una botella de vidrio con
+                        cierre hermético, añade el jengibre rallado y el jugo de
+                        limón. Si decides usarlo, agrega también el endulzante.
+                    </p>
+                    <p>
+                        Añade la kombucha: Con cuidado, vierte la kombucha base
+                        en la botella, dejando un poco de espacio en la parte
+                        superior para que no se derrame la presión de la
+                        fermentación.
+                    </p>
+
+                    <p>
+                        Sella y etiqueta: Cierra bien la botella y asegúrate de
+                        etiquetarla con la fecha, así no perderás el control de
+                        la fermentación.
+                    </p>
+                    <p>
+                        Segunda fermentación: Deja la botella en un lugar cálido
+                        y oscuro durante 1 a 3 días. Durante este tiempo, los
+                        azúcares se alimentarán de la kombucha, creando burbujas
+                        y potenciando los sabores del jengibre y limón.
+                    </p>
+
+                    <p>
+                        Libera la presión: Es importante "eructar" la botella
+                        una vez al día para liberar el exceso de gas. Esto
+                        previene que la botella explote por la presión
+                        acumulada.
+                    </p>
+                    <p>
+                        Refrigera: Una vez que la kombucha haya alcanzado el
+                        nivel de sabor y carbonatación deseado, métela en el
+                        refrigerador. El frío detendrá la fermentación.
+                    </p>
+                    <p>
+                        Sirve: Antes de servir, puedes colar el jengibre si
+                        prefieres una bebida sin trozos. ¡Disfrútala bien fría!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default (props) => {
+        const openDemo1 = () => {
+            $(".add-wishlist-btn").toggleClass("active");
+        };
+        return $render;
+    };
+</script>

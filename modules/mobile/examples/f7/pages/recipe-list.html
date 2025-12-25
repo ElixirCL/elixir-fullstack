@@ -1,0 +1,241 @@
+<template>
+    <div class="page">
+        <div class="navbar navbar-style-1">
+            <div class="navbar-inner">
+                <a href="#" class="link back">
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M0.439312 13.0606L5.75391 18.3752C6.04683 18.6682 6.43069 18.8146 6.81459 18.8146C7.1985 18.8146 7.58236 18.6682 7.87528 18.3752C8.46103 17.7894 8.46103 16.8397 7.87528 16.2539L5.12133 13.5H22.5C23.3284 13.5 24 12.8284 24 12C24 11.1716 23.3284 10.5 22.5 10.5H5.12133L7.87528 7.7461C8.46103 7.1603 8.46103 6.21057 7.87528 5.62477C7.28944 5.03898 6.33975 5.03898 5.75391 5.62477L0.439312 10.9394C-0.146437 11.5251 -0.146437 12.4749 0.439312 13.0606Z"
+                            fill="black"
+                        />
+                    </svg>
+                </a>
+                <div class="title">Vida Saludable</div>
+                <div class="right">
+                    <a href="#" class="link panel-open" data-panel="left">
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M14 12C14 10.8955 13.1046 10 12 10C10.8954 10 10 10.8955 10 12C10 13.1046 10.8954 14 12 14C13.1046 14 14 13.1046 14 12Z"
+                                fill="black"
+                            />
+                            <path
+                                d="M14 20C14 18.8954 13.1046 18 12 18C10.8954 18 10 18.8954 10 20C10 21.1045 10.8954 22 12 22C13.1046 22 14 21.1045 14 20Z"
+                                fill="black"
+                            />
+                            <path
+                                d="M14 4C14 2.89544 13.1046 2.00001 12 2.00001C10.8954 2.00001 10 2.89544 10 4C10 5.10457 10.8954 6 12 6C13.1046 6 14 5.10457 14 4Z"
+                                fill="black"
+                            />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page-content content-area pt-70">
+            <!-- Search backdrop -->
+            <div class="searchbar-backdrop"></div>
+
+            <div class="container">
+                <!-- Search -->
+                <div class="filter-bx">
+                    <form
+                        data-search-container=".search-list"
+                        data-search-in=".item-title"
+                        class="searchbar searchbar-init search-box list-search-bx"
+                    >
+                        <div class="searchbar-inner">
+                            <div class="searchbar-input-wrap">
+                                <input
+                                    type="search"
+                                    placeholder="Filtrar elementos..."
+                                />
+                                <i class="searchbar-icon">
+                                    <svg
+                                        width="23"
+                                        height="23"
+                                        viewBox="0 0 23 23"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M22.707 21.293L17.6 16.182C19.1017 14.3173 19.8314 11.9479 19.6388 9.56147C19.4462 7.17505 18.3459 4.9533 16.5645 3.35365C14.7832 1.754 12.4563 0.898212 10.063 0.962481C7.66967 1.02675 5.39207 2.00618 3.69913 3.69913C2.00618 5.39207 1.02675 7.66967 0.962481 10.063C0.898212 12.4563 1.754 14.7832 3.35365 16.5645C4.9533 18.3459 7.17505 19.4462 9.56147 19.6388C11.9479 19.8314 14.3173 19.1017 16.182 17.6L21.293 22.711C21.4816 22.8931 21.7342 22.9939 21.9964 22.9917C22.2586 22.9894 22.5094 22.8842 22.6948 22.6988C22.8802 22.5134 22.9854 22.2626 22.9877 22.0004C22.9899 21.7382 22.8891 21.4856 22.707 21.297V21.293ZM2.99999 10.333C2.99999 8.88242 3.43015 7.46442 4.23606 6.25833C5.04197 5.05224 6.18745 4.11222 7.52762 3.55716C8.86779 3.0021 10.3425 2.85692 11.7651 3.13998C13.1878 3.42305 14.4946 4.12164 15.5203 5.14742C16.5459 6.1732 17.2443 7.48009 17.5272 8.90281C17.8101 10.3255 17.6647 11.8002 17.1094 13.1403C16.5542 14.4804 15.614 15.6257 14.4078 16.4315C13.2016 17.2372 11.7836 17.6672 10.333 17.667C8.38871 17.6646 6.52477 16.8911 5.15005 15.5162C3.77534 14.1413 3.00211 12.2773 2.99999 10.333Z"
+                                            fill="#BFBFBF"
+                                        />
+                                    </svg>
+                                </i>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="#" class="filter-btn">
+                        <svg
+                            enable-background="new 0 0 507.918 507.918"
+                            height="24"
+                            viewBox="0 0 507.918 507.918"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <g>
+                                <path
+                                    d="m184.697 215.473v269.358c0 12.751 10.336 23.087 23.087 23.087h92.349c12.751 0 23.087-10.336 23.087-23.087v-269.358l133.905-178.534c7.65-10.201 5.583-24.672-4.617-32.322-3.996-2.997-8.857-4.617-13.852-4.617h-369.395c-12.751 0-23.087 10.336-23.087 23.087 0 4.995 1.62 9.856 4.617 13.852zm207.784-169.299-110.818 147.758c-2.997 3.996-4.617 8.857-4.617 13.852v253.959h-46.174v-253.958c0-4.995-1.62-9.856-4.617-13.852l-110.82-147.759z"
+                                    fill="#000000"
+                                />
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Products -->
+            <div class="container">
+                <swiper-container
+                    space-between="20"
+                    slides-per-view="auto"
+                    class="swiper-init tabbar tab-style-2"
+                >
+                    <swiper-slide>
+                        <a href="#tab-1" class="tab-link tab-link-active"
+                            >Recetas</a
+                        >
+                    </swiper-slide>
+                    <swiper-slide>
+                        <a href="#tab-2" class="tab-link">Salud</a>
+                    </swiper-slide>
+                </swiper-container>
+
+                <div class="list simple-list searchbar-not-found">
+                    <ul>
+                        <li>No se ha encontrado lo buscado.</li>
+                    </ul>
+                </div>
+
+                <swiper-container
+                    space-between="20"
+                    slides-per-view="auto"
+                    class="tabs mt-20 tabs-height-auto"
+                >
+                    <swiper-slide id="tab-1" class="tab tab-active">
+                        <div
+                            class="list search-list mt-0 mb-20 searchbar-found item-list"
+                        >
+                            <ul
+                                class="grid grid-cols-2 medium-grid-cols-3 grid-gap"
+                            >
+                                <li>
+                                    <div class="item-bx item-grid">
+                                        <div class="dz-media">
+                                            <a href="/recipe/"
+                                                ><img
+                                                    src="img/home/kombucha.jpg"
+                                                    alt="Kombucha"
+                                            /></a>
+                                        </div>
+                                        <div class="dz-info">
+                                            <div class="dz-head">
+                                                <h6 class="item-title">
+                                                    <a href="/recipe/"
+                                                        >Jugo de Kombucha,
+                                                        Limón, Jengibre</a
+                                                    >
+                                                </h6>
+                                            </div>
+                                            <ul class="tag-list">
+                                                <li>
+                                                    <a href="/recipe/"
+                                                        >Receta</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                            <div class="dz-meta">
+                                                <ul></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-bx item-grid">
+                                        <div class="dz-media">
+                                            <a href="/recipe/"
+                                                ><img
+                                                    src="img/home/beet.jpg"
+                                                    alt=""
+                                            /></a>
+                                        </div>
+                                        <div class="dz-info">
+                                            <div class="dz-head">
+                                                <h6 class="item-title">
+                                                    <a href="/recipe/"
+                                                        >Jugo de Beterraga y
+                                                        Zanahoria</a
+                                                    >
+                                                </h6>
+                                            </div>
+                                            <ul class="tag-list">
+                                                <li>
+                                                    <a href="/recipe/"
+                                                        >Receta</a
+                                                    >
+                                                </li>
+                                            </ul>
+                                            <div class="dz-meta"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </swiper-slide>
+                    <swiper-slide id="tab-2" class="tab">
+                        <div
+                            class="list search-list mt-0 mb-0 searchbar-found item-list"
+                        >
+                            <ul
+                                class="grid grid-cols-2 medium-grid-cols-3 grid-gap"
+                            >
+                                <li>
+                                    <div class="item-bx item-grid">
+                                        <div class="dz-media">
+                                            <a href="/recipe/"
+                                                ><img
+                                                    src="img/home/knee.jpg"
+                                                    alt=""
+                                            /></a>
+                                        </div>
+                                        <div class="dz-info">
+                                            <div class="dz-head">
+                                                <h6 class="item-title">
+                                                    <a href="/recipe/"
+                                                        >Consejos para el dolor
+                                                        de rodillas</a
+                                                    >
+                                                </h6>
+                                            </div>
+                                            <ul class="tag-list">
+                                                <li>
+                                                    <a href="/recipe/">Salud</a>
+                                                </li>
+                                            </ul>
+                                            <div class="dz-meta"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </swiper-slide>
+                </swiper-container>
+            </div>
+        </div>
+    </div>
+</template>

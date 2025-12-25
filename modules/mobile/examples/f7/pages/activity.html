@@ -1,0 +1,100 @@
+<template>
+    <div class="page light">
+        <div class="navbar navbar-style-1 navbar-transparent">
+            <div class="navbar-inner">
+                <a href="#" class="link back">
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M0.439312 13.0606L5.75391 18.3752C6.04683 18.6682 6.43069 18.8146 6.81459 18.8146C7.1985 18.8146 7.58236 18.6682 7.87528 18.3752C8.46103 17.7894 8.46103 16.8397 7.87528 16.2539L5.12133 13.5H22.5C23.3284 13.5 24 12.8284 24 12C24 11.1716 23.3284 10.5 22.5 10.5H5.12133L7.87528 7.7461C8.46103 7.1603 8.46103 6.21057 7.87528 5.62477C7.28944 5.03898 6.33975 5.03898 5.75391 5.62477L0.439312 10.9394C-0.146437 11.5251 -0.146437 12.4749 0.439312 13.0606Z"
+                            fill="black"
+                        />
+                    </svg>
+                </a>
+                <div class="title">Taller de Taichi</div>
+                <div class="right">
+                    <a
+                        href="#"
+                        class="link add-wishlist-btn"
+                        @click="${openDemo1}"
+                    >
+                        <i class="far fa-bookmark"></i>
+                        <i class="fas fa-bookmark"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content item-details pt-0">
+            <div class="dz-banner-heading">
+                <div class="overlay-black-light">
+                    <img src="img/home/taichi.jpg" class="bnr-img" alt="" />
+                </div>
+            </div>
+
+            <div class="dz-banner-height"></div>
+
+            <div class="fixed-content container">
+                <div class="text-align-center">
+                    <h4 class="ma-0">Taller de Taichi</h4>
+                    <p>
+                        Participa en el Taller de Taichí para Adultos Mayores!
+                        🥋🌿 La Ilustre Municipalidad de Villa Alemana, a través
+                        de la Oficina del Adulto Mayor, invita a nuestros
+                        vecinos a ser parte del Taller de Taichí, una actividad
+                        que promueve el bienestar físico y mental mediante
+                        ejercicios suaves y controlados.
+                    </p>
+                </div>
+
+                <div class="price-bx">
+                    <h3 class="text-primary">
+                        <i class="las la-calendar"></i> Martes
+                    </h3>
+
+                    <h3 class="text-primary">
+                        <i class="las la-clock"></i> 09:15 - 11:15h
+                    </h3>
+                </div>
+
+                <p class="mt-0 mb-30">
+                    ¡No te quedes fuera! Inscríbete y disfruta de una actividad
+                    que mejora la salud, la movilidad y la energía, en un
+                    ambiente de encuentro y comunidad.
+                </p>
+
+                <a
+                    id="join"
+                    @click="${openAlert}"
+                    class="button-large button button-fill"
+                    >¡Quiero Participar!</a
+                >
+                <h3 id="joined" class="text-primary" style="display: none">
+                    ¡Ya estás participando!
+                </h3>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default (props, { $f7 }) => {
+        const openAlert = () => {
+            $f7.dialog.alert(
+                "¡Gracias por participar!\nTe estaremos esperando.",
+                "Ya estás registrado",
+            );
+            $("#join").hide();
+            $("#joined").show();
+        };
+
+        const openDemo1 = () => {
+            $(".add-wishlist-btn").toggleClass("active");
+        };
+        return $render;
+    };
+</script>

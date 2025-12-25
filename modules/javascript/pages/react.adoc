@@ -1,0 +1,172 @@
+= React.js
+
+React.js es un framework de frontend en Javascript, tal cual es Vue.js, Svelte o Angular.
+Sin embargo ha ganado una notable popularidad tanto en la comunidad de Javascript como 
+en la comunidad de Elixir, por lo que es probable encontrar muchos proyectos 
+que utilizan esta tecnología. Se recomienda que se estudie este framework ya que es muy
+similar a como funciona _LiveView_.
+
+Es por esto que se mostrará un proyecto de ejemplo que utiliza los siguientes componentes:
+
+- https://react.dev/[React.js]
+- https://vite.dev/[Vite]
+- https://tailwindcss.com/[Tailwind]
+
+Hay que tener algunas consideraciones al momento de utilizar React y otras tecnologías exclusivas de frontend:
+
+- Puede haber condiciones de carrera al no sincronizarse con el servidor por problemas de conexión.
+- Mayor dificultad de tener un buen SEO ya que dependen de Javascript para funcionar. 
+- Tienden a necesitar mayor cantidad de componentes y herramientas que utilizando solo JS Vainilla.
+
+== Rancho UFO
+
+El https://ranchoufo.cl[Rancho UFO] es un sitio web pensado para un centro deportivo de tenis en canchas 
+de arcilla y se ha creado utilizando un sitio web con react.js y tailwind.
+
+El principal componente es el `index.html` que carga los javascript necesarios.
+
+.index.html
+[source, html]
+----
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rancho Ruta UFO Tenis Club · Página Principal</title>
+        <meta
+            name="description"
+            content="Club de tenis con canchas profesionales, clases para todos los niveles, senderos naturales y experiencias de avistamiento de OVNIs. Donde el deporte se une con la naturaleza."
+        />
+        <meta name="author" content="Ninjas.cl" />
+
+        <meta
+            property="og:title"
+            content="Rancho Ruta UFO Tenis Club · Experiencias de Tenis de Otro Mundo"
+        />
+        <meta
+            property="og:description"
+            content="Experiencia única de tenis en Quilpué, naturaleza y avistamiento de UFOs. Canchas profesionales, clases personalizadas, venta de arcilla e implementos deportivos."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:image"
+            content="https://ranchoufo.cl/ranchoufo.jpg"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="https://ranchoufo.cl" />
+        <meta
+            name="twitter:image"
+            content="https://ranchoufo.cl/ranchoufo.jpg"
+        />
+    </head>
+
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.tsx"></script>
+    </body>
+</html>
+----
+
+.src/main.tsx
+[source, tsx]
+----
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+
+createRoot(document.getElementById("root")!).render(<App />);
+----
+
+.src/App.tsx
+[source, tsx]
+----
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "@/pages/home";
+import NotFound from "@/pages/404";
+
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+
+export default App;
+----
+
+Este es un ejemplo de un componente 
+
+[source, tsx]
+----
+import { ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-tennis.jpg";
+
+const Hero = () => {
+  return (
+    <section
+      id="inicio"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroImage}
+          alt="Rancho Tenis & Naturaleza"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-background/95" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 text-center animate-fade-in">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight">
+            Donde el Tenis es una experiencia de otro mundo.
+          </h1>
+          <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-2xl mx-auto">
+            Juega tenis rodeado de naturaleza, participa en avistamiento de UFOs
+            y otras actividades recreativas y deportivas.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+            <a href="https://api.whatsapp.com/send?phone=56977449637&text=Hola%20Rancho%20UFO%2C%20me%20gustar%C3%ADa%20hacer%20una%20reserva%20">
+              <Button variant="hero" size="lg">
+                ¡Haz click y reserva tu cancha ya!
+              </Button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-float">
+        <ChevronDown className="w-8 h-8 text-primary-foreground" />
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
+----
+
+== Código Fuente
+
+Se puede ver el código completo de la aplicación en:
+
+https://github.com/ElixirCL/elixir-fullstack/tree/main/modules/javascript/examples/ranchoufo.cl

@@ -10,6 +10,9 @@ Si únicamente utilizamos HTML/CSS, solo podremos crear páginas «estáticas»,
 
 * https://lenguajejs.com/javascript/dom/que-es/
 
+Para un libro más completo sobre HTML y Javascript revisar 
+https://ninjas.cl/books/superclubnet/[Super Club Net].
+
 == Sintaxis Básica
 
 [,js]

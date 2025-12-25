@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+    :root {
+        /* Base colors - warm, natural palette */
+        --background: 40 20% 97%;
+        --foreground: 150 15% 15%;
+
+        --card: 40 25% 99%;
+        --card-foreground: 150 15% 15%;
+
+        --popover: 40 25% 99%;
+        --popover-foreground: 150 15% 15%;
+
+        /* Primary - Deep Forest Green (tennis courts/nature) */
+        --primary: 150 45% 25%;
+        --primary-foreground: 40 20% 98%;
+
+        /* Secondary - Terracotta/Clay Orange (tennis courts) */
+        --secondary: 18 65% 55%;
+        --secondary-foreground: 40 20% 98%;
+
+        /* Muted - Warm earth tones */
+        --muted: 40 15% 90%;
+        --muted-foreground: 150 10% 40%;
+
+        /* Accent - Celestial Blue (sky/UFO theme) */
+        --accent: 210 80% 55%;
+        --accent-foreground: 40 20% 98%;
+
+        --destructive: 0 72% 51%;
+        --destructive-foreground: 40 20% 98%;
+
+        --border: 40 15% 85%;
+        --input: 40 15% 85%;
+        --ring: 150 45% 25%;
+
+        --radius: 0.75rem;
+
+        /* Custom tokens for Rancho theme */
+        --hero-gradient-start: 150 50% 20%;
+        --hero-gradient-end: 150 40% 35%;
+        --nature-green: 140 55% 45%;
+        --clay-orange: 18 65% 55%;
+        --sky-blue: 210 80% 55%;
+        --earth-beige: 40 30% 85%;
+
+        /* Transitions */
+        --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .dark {
+        --background: 150 15% 8%;
+        --foreground: 40 20% 95%;
+
+        --card: 150 15% 10%;
+        --card-foreground: 40 20% 95%;
+
+        --popover: 150 15% 10%;
+        --popover-foreground: 40 20% 95%;
+
+        --primary: 150 45% 35%;
+        --primary-foreground: 40 20% 98%;
+
+        --secondary: 18 60% 50%;
+        --secondary-foreground: 40 20% 98%;
+
+        --muted: 150 10% 18%;
+        --muted-foreground: 40 15% 65%;
+
+        --accent: 210 75% 50%;
+        --accent-foreground: 40 20% 98%;
+
+        --destructive: 0 62% 45%;
+        --destructive-foreground: 40 20% 98%;
+
+        --border: 150 10% 20%;
+        --input: 150 10% 20%;
+        --ring: 150 45% 35%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}

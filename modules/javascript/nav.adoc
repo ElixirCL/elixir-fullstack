@@ -1,2 +1,3 @@
 .Javascript
-* xref:chapter.adoc[]
+* xref:javascript.adoc[]
+* xref:react.adoc[]

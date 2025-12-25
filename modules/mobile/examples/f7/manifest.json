@@ -1,0 +1,32 @@
+{
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "icons": [
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "icon512_maskable.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "icon512_rounded.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "src": "img/AppIcon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "es-ES",
+  "name": "Adulto Mayor",
+  "short_name": "Adulto Mayor",
+  "description": "Permite acceder a los beneficios del programa de Adulto Mayor de Villa Alemana",
+  "start_url": "https://ninjas.cl/adultomayor",
+  "scope": "https://ninjas.cl/adultomayor/"
+}
