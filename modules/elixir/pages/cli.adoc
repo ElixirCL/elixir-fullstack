@@ -1,0 +1,328 @@
+= CLI
+
+En este capítulo se creará una pequeña aplicación de línea de comandos
+para aprender lo básico de _Elixir_ y `mix`.
+
+== Paso 1: Crear el Proyecto
+
+Vamos a crear el proyecto utilizando `mix new` y luego hacer `ls`.
+
+[source, sh]
+----
+$ mix new stoic_cli
+$ cd stoic_cli
+$ ls stoic_cli
+----
+
+Debería mostrar algo similar a lo siguiente
+
+[source, text]
+----
+$ mix new stoic_cli
+* creating README.md
+* creating .formatter.exs
+* creating .gitignore
+* creating mix.exs
+* creating lib
+* creating lib/stoic_cli.ex
+* creating test
+* creating test/test_helper.exs
+* creating test/stoic_cli_test.exs
+
+Your Mix project was created successfully.
+You can use "mix" to compile it, test it, and more:
+
+    cd stoic_cli
+    mix test
+
+Run "mix help" for more commands
+$ cd stoic_cli
+$ ls
+README.md lib       mix.exs   test
+----
+
+== Paso 2: Crear el módulo
+
+Vamos al archivo `lib/stoic_cli.ex` y eliminamos el código de fábrica.
+Añadimos nuestras citas como un atributo de módulo.
+
+.lib/stoic_cli.ex
+[source, elixir]
+----
+defmodule StoicCli do
+  @quotes [
+    %{
+      quote:
+        "Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy.",
+      author: "Marcus Aurelius",
+      source: "Book II, Meditations"
+    },
+    %{
+      quote:
+        "Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil.",
+      author: "Marcus Aurelius",
+      source: "Book XI, Meditations"
+    },
+    %{
+      quote:
+        "Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all.",
+      author: "Marcus Aurelius",
+      source: "Book X, Meditations"
+    }
+  ]
+end
+----
+
+== Paso 3: Añadir las funciones de CLI
+
+Ahora añadiremos las funciones necesarias para ejecutar este programa como 
+una aplicación de consola. Por ahora la función `run` solamente muestra
+un mensaje.
+
+.lib/stoic_cli.ex
+[source, elixir]
+----
+defmodule StoicCli do
+  @quotes [
+    %{
+      quote:
+        "Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy.",
+      author: "Marcus Aurelius",
+      source: "Book II, Meditations"
+    },
+    %{
+      quote:
+        "Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil.",
+      author: "Marcus Aurelius",
+      source: "Book XI, Meditations"
+    },
+    %{
+      quote:
+        "Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all.",
+      author: "Marcus Aurelius",
+      source: "Book X, Meditations"
+    }
+  ]
+
+  def main(args) do
+    args
+    |> parse()
+    |> run()
+  end
+
+  defp parse(args) do
+    OptionParser.parse(
+      args,
+      switches: [],
+      aliases: []
+    )
+  end
+
+  defp run(_) do
+    IO.puts("""
+    Usage: stoic_cli
+    """)
+  end
+end
+----
+
+Ahora añadiremos la función lista que muestra las citas.
+Notar que añadimos una opción en `switches` y `aliases`.
+
+
+[source, elixir]
+----
+defp parse(args) do
+  OptionParser.parse(
+    args,
+    switches: [list: :boolean],
+    aliases: [l: :list]
+  )
+end
+----
+
+Además hicimos un pattern match para obtener
+la lista.
+
+[source, elixir]
+----
+defp run({[list: true], _, _}) do
+    list()
+end
+----
+
+Y añadimos la función para mostrar la lista
+
+[source, elixir]
+----
+defp list() do
+  @quotes
+  |> Enum.map(fn quote ->
+    "#{quote.quote} --- #{quote.author} (#{quote.source})"
+  end)
+  |> Enum.join("\n")
+  |> IO.inspect()
+end
+----
+
+quedando el código como sigue
+
+.lib/stoic_cli.ex
+[source, elixir]
+----
+defmodule StoicCli do
+  @quotes [
+    %{
+      quote:
+        "Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy.",
+      author: "Marcus Aurelius",
+      source: "Book II, Meditations"
+    },
+    %{
+      quote:
+        "Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil.",
+      author: "Marcus Aurelius",
+      source: "Book XI, Meditations"
+    },
+    %{
+      quote:
+        "Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all.",
+      author: "Marcus Aurelius",
+      source: "Book X, Meditations"
+    }
+  ]
+
+  def main(args) do
+    args
+    |> parse()
+    |> run()
+  end
+
+  defp parse(args) do
+    OptionParser.parse(
+      args,
+      switches: [list: :boolean],
+      aliases: [l: :list]
+    )
+  end
+
+  defp run({[list: true], _, _}) do
+    list()
+  end
+
+  defp run(_) do
+    IO.puts("""
+    Usage: stoic_cli --list
+    """)
+  end
+
+  defp list() do
+    @quotes
+    |> Enum.map(fn quote ->
+      "#{quote.quote} --- #{quote.author} (#{quote.source})"
+    end)
+    |> Enum.join("\n")
+    |> IO.inspect()
+  end
+end
+----
+
+== Paso 4: Configurar Mix
+
+Ahora necesitamos configurar el archivo `mix.exs` para que
+utilice el módulo y llame a la función `main`.
+
+.mix.exs
+[source, elixir]
+----
+defmodule StoicCli.MixProject do
+  use Mix.Project
+
+  def project do
+    [
+      app: :stoic_cli,
+      version: "0.1.0",
+      elixir: "~> 1.18",
+      start_permanent: Mix.env() == :prod,
+      escript: [main_module: StoicCli],
+      deps: deps()
+    ]
+  end
+  # ...
+----
+
+== Paso 5: .iex.exs
+
+El archivo `.iex.exs` es opcional, pero ayuda
+para precargar código al momento de hacer depuración
+del código.
+
+Primero creamos el archivo
+
+[source, bash]
+----
+$ touch .iex.exs
+----
+
+Luego añadimos un `alias` para que precargue
+el módulo siempre.
+
+.\.iex.exs
+[source, elixir]
+----
+alias StoicCli
+----
+
+Podremos cargar el archivo `.iex.exs` siempre
+que lo necesitemos con
+
+[source, bash]
+----
+$ iex -S mix
+----
+
+[NOTE]
+====
+También es posible cargar iex con el archivo que queremos usar 
+directamente
+
+`$ iex stoic_cli.ex`
+====
+
+Esto abrirá una sesión en la consola interactiva
+precargada con nuestro código, 
+que nos permitirá depurarlo y ejecutar
+comandos y funciones.
+
+Si un módulo es cambiado, se puede recompilar
+utilizando la función `r`.
+
+[source, elixir]
+----
+r(StoicCli)
+----
+
+== Paso 6: Compilar
+
+Ahora solo es necesario compilar el código
+para que genere un ejecutable.
+
+[source, bash]
+----
+$ mix escript.build
+----
+
+Y se podrá ejecutar con
+
+[source, bash]
+----
+$ ./stoic_cli --list
+----
+
+== Pasos Siguientes
+
+Es buena idea investigar los siguientes temas:
+
+- Cómo añadir pruebas unitarias con _ExUnit_.
+- Cómo usar `mix format` (formateador de código)
+- Cómo usar `mix credo` (lint del código)

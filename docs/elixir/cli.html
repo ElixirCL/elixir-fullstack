@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CLI :: Elixir Full-Stack</title>
+    <link rel="canonical" href="https://elixircl.github.io/elixir-fullstack/elixir/cli.html">
+    <link rel="prev" href="elixir.html">
+    <link rel="next" href="apirest.html">
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://elixircl.github.io/elixir-fullstack">Elixir Full-Stack</a>
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field">
+          <input id="search-input" type="text" placeholder="Search the docs">
+        </div>
+      </div>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!--
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    -->
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ROOT" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Elixir Full-Stack</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Historia</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../history/chapter.html">Historia de la World Wide Web y Aplicaciones Móviles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ecosistema Tecnológico y Laboral</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/jobs.html">Mundo Laboral y su Estado del Arte</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/web.html">Ecosistema Web</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../ecosystem/llm.html">Large Language Models (LLM)</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Ingeniería en Software</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/stages.html">Etapas del Desarrollo de un Producto de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/patterns.html">Patrones y Arquitecturas de Software</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/adr.html">Arquitecture Decision Records</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/prd.html">Documento de Requerimiento de Producto (Product Requirement Document - PRD)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/wow.html">Way of Work</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/uat.html">Pruebas de Aceptación de Usuario (User Aceptance Testing - UAT)</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../swe/deprecation.html">Versionado y Política de Compatibilidad y Obsolescencia</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Github</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../github/chapter.html">Github, Static Site Generators, Markdown, Linux y Vim</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hostings</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hosting/chapter.html">Hosting, Dominios y Cpanel</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Networking</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../networking/chapter.html">Redes e Internet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTTP</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../http/chapter.html">HTTP, JSON y APIS</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Seguridad</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../security/security.html">Seguridad de las Aplicaciones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../security/cryptography.html">Criptografía y Autenticación</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">HTML</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../html/chapter.html">HTML, CSS y GIT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Javascript</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/javascript.html">Frontend con Javascript</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/react.html">React.js</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Elixir</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="elixir.html">El Lenguaje Elixir</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="cli.html">CLI</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="apirest.html">REST: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="liveview.html">LiveView: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="ash.html">Ash: Stoic API</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="commands.html">Makefiles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Aplicaciones Móviles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/chapter.html">Aplicaciones Móviles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mobile/pwa.html">Progresive Web Apps</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Videojuegos</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../games/games.html">Videojuegos</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">DevOps</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/devenvs.html">Ambientes de Desarrollo</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/observability.html">Observabilidad e Instrumentación</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/dora.html">Métricas DORA</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../devops/golden.html">Golden Signals</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Elixir Full-Stack</span>
+    <span class="version">Spanish</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Elixir Full-Stack</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">Spanish</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Elixir Full-Stack</a></li>
+    <li>Elixir</li>
+    <li><a href="cli.html">CLI</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="file:///antora/./modules/elixir/pages/cli.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">CLI</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>En este capítulo se creará una pequeña aplicación de línea de comandos
+para aprender lo básico de <em>Elixir</em> y <code>mix</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-1-crear-el-proyecto"><a class="anchor" href="#paso-1-crear-el-proyecto"></a>Paso 1: Crear el Proyecto</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vamos a crear el proyecto utilizando <code>mix new</code> y luego hacer <code>ls</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">$ mix new stoic_cli
+$ cd stoic_cli
+$ ls stoic_cli</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Debería mostrar algo similar a lo siguiente</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">$ mix new stoic_cli
+* creating README.md
+* creating .formatter.exs
+* creating .gitignore
+* creating mix.exs
+* creating lib
+* creating lib/stoic_cli.ex
+* creating test
+* creating test/test_helper.exs
+* creating test/stoic_cli_test.exs
+
+Your Mix project was created successfully.
+You can use "mix" to compile it, test it, and more:
+
+    cd stoic_cli
+    mix test
+
+Run "mix help" for more commands
+$ cd stoic_cli
+$ ls
+README.md lib       mix.exs   test</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-2-crear-el-módulo"><a class="anchor" href="#paso-2-crear-el-módulo"></a>Paso 2: Crear el módulo</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vamos al archivo <code>lib/stoic_cli.ex</code> y eliminamos el código de fábrica.
+Añadimos nuestras citas como un atributo de módulo.</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_cli.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicCli do
+  @quotes [
+    %{
+      quote:
+        "Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy.",
+      author: "Marcus Aurelius",
+      source: "Book II, Meditations"
+    },
+    %{
+      quote:
+        "Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil.",
+      author: "Marcus Aurelius",
+      source: "Book XI, Meditations"
+    },
+    %{
+      quote:
+        "Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all.",
+      author: "Marcus Aurelius",
+      source: "Book X, Meditations"
+    }
+  ]
+end</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-3-añadir-las-funciones-de-cli"><a class="anchor" href="#paso-3-añadir-las-funciones-de-cli"></a>Paso 3: Añadir las funciones de CLI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora añadiremos las funciones necesarias para ejecutar este programa como
+una aplicación de consola. Por ahora la función <code>run</code> solamente muestra
+un mensaje.</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_cli.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicCli do
+  @quotes [
+    %{
+      quote:
+        "Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy.",
+      author: "Marcus Aurelius",
+      source: "Book II, Meditations"
+    },
+    %{
+      quote:
+        "Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil.",
+      author: "Marcus Aurelius",
+      source: "Book XI, Meditations"
+    },
+    %{
+      quote:
+        "Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all.",
+      author: "Marcus Aurelius",
+      source: "Book X, Meditations"
+    }
+  ]
+
+  def main(args) do
+    args
+    |&gt; parse()
+    |&gt; run()
+  end
+
+  defp parse(args) do
+    OptionParser.parse(
+      args,
+      switches: [],
+      aliases: []
+    )
+  end
+
+  defp run(_) do
+    IO.puts("""
+    Usage: stoic_cli
+    """)
+  end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ahora añadiremos la función lista que muestra las citas.
+Notar que añadimos una opción en <code>switches</code> y <code>aliases</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defp parse(args) do
+  OptionParser.parse(
+    args,
+    switches: [list: :boolean],
+    aliases: [l: :list]
+  )
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Además hicimos un pattern match para obtener
+la lista.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defp run({[list: true], _, _}) do
+    list()
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Y añadimos la función para mostrar la lista</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defp list() do
+  @quotes
+  |&gt; Enum.map(fn quote -&gt;
+    "#{quote.quote} --- #{quote.author} (#{quote.source})"
+  end)
+  |&gt; Enum.join("\n")
+  |&gt; IO.inspect()
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>quedando el código como sigue</p>
+</div>
+<div class="listingblock">
+<div class="title">lib/stoic_cli.ex</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicCli do
+  @quotes [
+    %{
+      quote:
+        "Seldom are any found unhappy from not observing what is in the minds of others. But such as observe not well the stirrings of their own souls must of necessity be unhappy.",
+      author: "Marcus Aurelius",
+      source: "Book II, Meditations"
+    },
+    %{
+      quote:
+        "Consider whence each thing came, of what it was compounded, into what it will be changed, how it will be with it when changed, and that it will suffer no evil.",
+      author: "Marcus Aurelius",
+      source: "Book XI, Meditations"
+    },
+    %{
+      quote:
+        "Accustom yourself as much as possible, when any one takes any action, to consider only: To what end is he working? But begin at home; and examine yourself first of all.",
+      author: "Marcus Aurelius",
+      source: "Book X, Meditations"
+    }
+  ]
+
+  def main(args) do
+    args
+    |&gt; parse()
+    |&gt; run()
+  end
+
+  defp parse(args) do
+    OptionParser.parse(
+      args,
+      switches: [list: :boolean],
+      aliases: [l: :list]
+    )
+  end
+
+  defp run({[list: true], _, _}) do
+    list()
+  end
+
+  defp run(_) do
+    IO.puts("""
+    Usage: stoic_cli --list
+    """)
+  end
+
+  defp list() do
+    @quotes
+    |&gt; Enum.map(fn quote -&gt;
+      "#{quote.quote} --- #{quote.author} (#{quote.source})"
+    end)
+    |&gt; Enum.join("\n")
+    |&gt; IO.inspect()
+  end
+end</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-4-configurar-mix"><a class="anchor" href="#paso-4-configurar-mix"></a>Paso 4: Configurar Mix</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora necesitamos configurar el archivo <code>mix.exs</code> para que
+utilice el módulo y llame a la función <code>main</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">mix.exs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">defmodule StoicCli.MixProject do
+  use Mix.Project
+
+  def project do
+    [
+      app: :stoic_cli,
+      version: "0.1.0",
+      elixir: "~&gt; 1.18",
+      start_permanent: Mix.env() == :prod,
+      escript: [main_module: StoicCli],
+      deps: deps()
+    ]
+  end
+  # ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-5-iex-exs"><a class="anchor" href="#paso-5-iex-exs"></a>Paso 5: .iex.exs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El archivo <code>.iex.exs</code> es opcional, pero ayuda
+para precargar código al momento de hacer depuración
+del código.</p>
+</div>
+<div class="paragraph">
+<p>Primero creamos el archivo</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ touch .iex.exs</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Luego añadimos un <code>alias</code> para que precargue
+el módulo siempre.</p>
+</div>
+<div class="listingblock">
+<div class="title">\.iex.exs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">alias StoicCli</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Podremos cargar el archivo <code>.iex.exs</code> siempre
+que lo necesitemos con</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ iex -S mix</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>También es posible cargar iex con el archivo que queremos usar
+directamente</p>
+</div>
+<div class="paragraph">
+<p><code>$ iex stoic_cli.ex</code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Esto abrirá una sesión en la consola interactiva
+precargada con nuestro código,
+que nos permitirá depurarlo y ejecutar
+comandos y funciones.</p>
+</div>
+<div class="paragraph">
+<p>Si un módulo es cambiado, se puede recompilar
+utilizando la función <code>r</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">r(StoicCli)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="paso-6-compilar"><a class="anchor" href="#paso-6-compilar"></a>Paso 6: Compilar</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ahora solo es necesario compilar el código
+para que genere un ejecutable.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ mix escript.build</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Y se podrá ejecutar con</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./stoic_cli --list</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pasos-siguientes"><a class="anchor" href="#pasos-siguientes"></a>Pasos Siguientes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Es buena idea investigar los siguientes temas:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cómo añadir pruebas unitarias con <em>ExUnit</em>.</p>
+</li>
+<li>
+<p>Cómo usar <code>mix format</code> (formateador de código)</p>
+</li>
+<li>
+<p>Cómo usar <code>mix credo</code> (lint del código)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="elixir.html">El Lenguaje Elixir</a></span>
+  <span class="next"><a href="apirest.html">REST: Stoic API</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+<script src="../_/js/vendor/lunr.js"></script>
+<script src="../_/js/search-ui.js" id="search-ui-script" data-site-root-path=".." data-snippet-length="100" data-stylesheet="../_/css/search.css"></script>
+<script async src="../search-index.js"></script>
+  </body>
+</html>

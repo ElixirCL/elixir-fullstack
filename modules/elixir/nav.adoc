@@ -1,5 +1,6 @@
 .Elixir
 * xref:elixir.adoc[]
+* xref:cli.adoc[]
 * xref:apirest.adoc[]
 * xref:liveview.adoc[]
 * xref:testing.adoc[]
