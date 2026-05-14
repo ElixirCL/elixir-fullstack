@@ -183,6 +183,9 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../javascript/react.html">React.js</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../javascript/sync.html">Sincronización con Servidor</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="0">
@@ -589,7 +592,7 @@ del código.</p>
 el módulo siempre.</p>
 </div>
 <div class="listingblock">
-<div class="title">\.iex.exs</div>
+<div class="title">.iex.exs</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">alias StoicCli</code></pre>
 </div>
@@ -657,6 +660,43 @@ para que genere un ejecutable.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./stoic_cli --list</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="archivos-exs"><a class="anchor" href="#archivos-exs"></a>Archivos .exs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Además de la extensión de archivo <code>.ex</code> de <em>Elixir</em>, <em>Elixir</em> también admite archivos <code>.exs</code> para scripting. <em>Elixir</em> trata ambos tipos de archivos exactamente de la misma manera; la única diferencia está en su propósito. Los archivos <code>.ex</code> están pensados para ser compilados, mientras que los archivos <code>.exs</code> se utilizan para scripting.</p>
+</div>
+<div class="paragraph">
+<p>Los archivos <code>.ex</code> se compilan en archivos BEAM, que pueden ejecutarse más tarde, mientras que los <code>.exs</code> se compilan en memoria y se ejecutan al instante.</p>
+</div>
+<div class="paragraph">
+<p>Lo que es diferente es que cargar/incluir archivos <code>.exs</code> requiere una compilación adicional, mientras que los archivos <code>.beam</code> (<code>.ex</code> compilados) no la necesitan. Sin embargo, esa diferencia de "rendimiento" solo afecta la carga inicial.</p>
+</div>
+<div class="paragraph">
+<p>Al momento de crear una biblioteca o aplicación en <em>Elixir</em>, el código fuente está escrito en archivos <code>.ex</code>.</p>
+</div>
+<div class="paragraph">
+<p>Se usa <code>.exs</code> para comandos, scripts, archivos de configuración, pruebas o cualquier otra cosa de corta duración. Estos archivos no necesitan precompilarse y puedes ejecutarlos directamente con <code>elixir</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">stoiccli.exs</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-elixir hljs" data-lang="elixir">$ elixir stoiccli.exs</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="archivos-livemd"><a class="anchor" href="#archivos-livemd"></a>Archivos .livemd</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://livebook.dev/">Livebook</a> es una aplicación web para escribir notebooks de código interactivos y colaborativos. Los notebooks se almacenan como archivos <code>.livemd</code>, un subconjunto de <em>Markdown</em> que combina texto, código y diagramas. Los Livebooks son fáciles de leer, compartir y versionar utilizando tus herramientas habituales.</p>
+</div>
+<div class="paragraph">
+<p>Livebook es una excelente herramienta para documentación. Muchos paquetes de <em>Elixir</em> usan Livebook como tutoriales, pero también puedes ejecutar Livebook directamente dentro del contexto de tu aplicación existente.</p>
 </div>
 </div>
 </div>

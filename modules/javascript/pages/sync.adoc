@@ -1,0 +1,17 @@
+= Sincronización con Servidor
+
+== Socket.io
+
+https://socket.io/[Socket.io]
+
+== Htmx
+
+== Inertia.js
+
+== Websockets
+
+== Server Side Events (SSE)
+
+Una alternativa a _React.js_ y https://htmx.org/[HTMx] es https://data-star.dev/[DataStar].
+El cual implementa la tecnología de https://developer.mozilla.org/es/docs/Web/API/Server-sent_events/Using_server-sent_events[Server Side Events] para lograr 
+"Realtime".

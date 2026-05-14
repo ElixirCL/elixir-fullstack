@@ -267,7 +267,7 @@ $ touch .iex.exs
 Luego añadimos un `alias` para que precargue
 el módulo siempre.
 
-.\.iex.exs
+..iex.exs
 [source, elixir]
 ----
 alias StoicCli
@@ -318,6 +318,31 @@ Y se podrá ejecutar con
 ----
 $ ./stoic_cli --list
 ----
+
+== Archivos .exs
+
+Además de la extensión de archivo `.ex` de _Elixir_, _Elixir_ también admite archivos `.exs` para scripting. _Elixir_ trata ambos tipos de archivos exactamente de la misma manera; la única diferencia está en su propósito. Los archivos `.ex` están pensados para ser compilados, mientras que los archivos `.exs` se utilizan para scripting.
+
+Los archivos `.ex` se compilan en archivos BEAM, que pueden ejecutarse más tarde, mientras que los `.exs` se compilan en memoria y se ejecutan al instante.
+
+Lo que es diferente es que cargar/incluir archivos `.exs` requiere una compilación adicional, mientras que los archivos `.beam` (`.ex` compilados) no la necesitan. Sin embargo, esa diferencia de "rendimiento" solo afecta la carga inicial.
+
+Al momento de crear una biblioteca o aplicación en _Elixir_, el código fuente está escrito en archivos `.ex`.
+
+Se usa `.exs` para comandos, scripts, archivos de configuración, pruebas o cualquier otra cosa de corta duración. Estos archivos no necesitan precompilarse y puedes ejecutarlos directamente con `elixir`.
+
+.stoiccli.exs
+[source, elixir]
+----
+$ elixir stoiccli.exs
+----
+
+== Archivos .livemd
+
+https://livebook.dev/[Livebook] es una aplicación web para escribir notebooks de código interactivos y colaborativos. Los notebooks se almacenan como archivos `.livemd`, un subconjunto de _Markdown_ que combina texto, código y diagramas. Los Livebooks son fáciles de leer, compartir y versionar utilizando tus herramientas habituales.
+
+Livebook es una excelente herramienta para documentación. Muchos paquetes de _Elixir_ usan Livebook como tutoriales, pero también puedes ejecutar Livebook directamente dentro del contexto de tu aplicación existente.
+
 
 == Pasos Siguientes
 

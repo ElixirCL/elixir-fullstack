@@ -1,8 +1,8 @@
 = React.js
 
-React.js es un framework de frontend en Javascript, tal cual es Vue.js, Svelte o Angular.
+https://react.dev/[React.js] es un framework de frontend en Javascript, tal cual es Vue.js, Svelte o Angular.
 Sin embargo ha ganado una notable popularidad tanto en la comunidad de Javascript como 
-en la comunidad de Elixir, por lo que es probable encontrar muchos proyectos 
+en la comunidad de _Elixir_, por lo que es probable encontrar muchos proyectos 
 que utilizan esta tecnología. Se recomienda que se estudie este framework ya que es muy
 similar a como funciona _LiveView_.
 
@@ -11,8 +11,16 @@ Es por esto que se mostrará un proyecto de ejemplo que utiliza los siguientes c
 - https://react.dev/[React.js]
 - https://vite.dev/[Vite]
 - https://tailwindcss.com/[Tailwind]
+- https://tanstack.com/[Tanstack]
+- https://www.typescriptlang.org/[Typescript]
 
-Hay que tener algunas consideraciones al momento de utilizar React y otras tecnologías exclusivas de frontend:
+[NOTE]
+====
+Se recomienda utilizar un gestor de paquetes alternativo como `pnpm` (https://pnpm.io/es/)
+en ves de `npm` vainilla. Ya que `pnpm` cuenta con mejoras en seguridad y velocidad.
+====
+
+Hay que tener algunas consideraciones al momento de utilizar _React_ y otras tecnologías exclusivas de frontend:
 
 - Puede haber condiciones de carrera al no sincronizarse con el servidor por problemas de conexión.
 - Mayor dificultad de tener un buen SEO ya que dependen de Javascript para funcionar. 

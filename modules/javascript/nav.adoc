@@ -1,3 +1,4 @@
 .Javascript
 * xref:javascript.adoc[]
 * xref:react.adoc[]
+* xref:sync.adoc[]
